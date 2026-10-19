@@ -496,12 +496,21 @@ class Worker:
 
         try:
             if job['kind'] == 'meta_sync':
-              from .meta_reporting_worker import MetaReportingWorker
-
-              MetaReportingWorker(
-            self.store,
-            self.meta,
-        ).run(job)
+                from .meta_diagnostics import MetaSyncDiagnostics, MetaSyncFailure
+                diagnostics = MetaSyncDiagnostics.for_job(job, self.meta, self.store)
+                try:
+                    from .meta_reporting_worker import MetaReportingWorker
+                    MetaReportingWorker(self.store, self.meta).run(job, diagnostics=diagnostics)
+                except Exception as exc:
+                    # Meta stages already log allowlisted metadata. Never log str(exc)
+                    # or a traceback, and never persist an arbitrary exception message.
+                    failure = exc if isinstance(exc, MetaSyncFailure) else diagnostics.failure(exc)
+                    try:
+                        with diagnostics.phase('job_status_write'):
+                            self.store.execute("UPDATE jobs SET status='failed',finished_at=?,error=? WHERE id=?",
+                                               (now(), failure.message, job['id']))
+                    except Exception as status_error:
+                        diagnostics.failure(status_error)
             else:
               self.perform(job)
         except Problem as exc:

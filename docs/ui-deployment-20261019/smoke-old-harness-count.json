@@ -1,0 +1,32 @@
+{
+  "prefix": "kdh-meta-phase5b-smoke-e217b8f0",
+  "image_id": "sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d",
+  "network": "none (shared namespace)",
+  "host_ports": [],
+  "database_storage": "new tmpfs",
+  "original_resources_mounted": false,
+  "http_startup": "PASS",
+  "image_source_hashes": {
+    "status": "PASS",
+    "files": 6
+  },
+  "application": {
+    "modules": "PASS",
+    "login_session_csrf_logout": "PASS",
+    "routes": "PASS",
+    "migrations_1_8": "PASS",
+    "no_background_jobs": "PASS"
+  },
+  "status": "FAIL",
+  "error_type": "AssertionError",
+  "app_container": {
+    "id": "369e51caf7cd20cc79118d9bfc5faa3d87235f0dbab8aaa91921596c724b498a",
+    "name": "/kdh-meta-phase5b-smoke-e217b8f0-app",
+    "final_state": "exited"
+  },
+  "postgres_container": {
+    "id": "a09d5f6c5f91ecd0f656b6e33f0a0ad61f6908557ac8f7d7356809bcc60cd99f",
+    "name": "/kdh-meta-phase5b-smoke-e217b8f0-pg",
+    "final_state": "exited"
+  }
+}

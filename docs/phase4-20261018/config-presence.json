@@ -1,0 +1,25 @@
+{
+  "config_file_exists": true,
+  "presence": {
+    "META_APP_SECRET": "PRESENT",
+    "ENCRYPTION_KEY": "PRESENT",
+    "DATABASE_URL": "PRESENT"
+  },
+  "matches_existing_container": {
+    "META_APP_SECRET": true,
+    "ENCRYPTION_KEY": true,
+    "DATABASE_URL": true,
+    "META_APP_ID": true,
+    "META_CONFIG_ID": true,
+    "ADMIN_SESSION_COOKIE_NAME": true
+  },
+  "safe_values": {
+    "JOB_MODE": "request",
+    "META_CLIENT_ID": "client_meta_sandbox",
+    "META_APP_ID": "1831786608275511",
+    "META_CONFIG_ID": "1683586973182335",
+    "APP_URL": "http://localhost:8191",
+    "META_REDIRECT_URI": "http://localhost:8191/api/meta/callback",
+    "ADMIN_SESSION_COOKIE_NAME": "kdh_meta_acceptance_session"
+  }
+}

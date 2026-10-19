@@ -1,0 +1,73 @@
+{
+  "all_table_hashes_unchanged_after_clone_restart": true,
+  "period_counts": [
+    {
+      "entity_type": "page",
+      "rows": 28,
+      "entities": 1,
+      "days": 28
+    },
+    {
+      "entity_type": "post",
+      "rows": 14,
+      "entities": 14,
+      "days": 12
+    }
+  ],
+  "metric_field_names": {
+    "post": [
+      "comments_lifetime",
+      "reactions_lifetime",
+      "shares_lifetime"
+    ],
+    "page": [
+      "comments",
+      "engagements",
+      "posts_published",
+      "reactions",
+      "shares"
+    ]
+  },
+  "snapshots": [
+    {
+      "id": "20ceb21b3c634da1d20b32ee4ffd92b7",
+      "payload_sha256": "9e43ffc1a19628f434f55d09c2db331c1551dc794213c42b12bd0d2e9b57e869",
+      "top_level_field_names": [
+        "daily",
+        "data_origin",
+        "entries",
+        "latest_available_date",
+        "latest_post_date",
+        "requested_end",
+        "requested_start",
+        "source",
+        "status",
+        "timezone",
+        "totals",
+        "warnings"
+      ],
+      "json_valid": true
+    },
+    {
+      "id": "fd4bf4c911faecaa0ec02bf70bbae1e0",
+      "payload_sha256": "a75935485eabea34a89edddc3c09e514c43271ab830b95fd95edbcb17b6fe490",
+      "top_level_field_names": [
+        "daily",
+        "data_origin",
+        "entries",
+        "latest_available_date",
+        "latest_post_date",
+        "requested_end",
+        "requested_start",
+        "source",
+        "status",
+        "timezone",
+        "totals",
+        "warnings"
+      ],
+      "json_valid": true
+    }
+  ],
+  "status": "PASS",
+  "clone_final_state": "exited"
+}

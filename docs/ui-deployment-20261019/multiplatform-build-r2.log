@@ -1,0 +1,47 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/kdh-admin-meta:ui-20261019-43c187981323
+#3 DONE 0.1s
+
+#4 [1/6] FROM docker.io/library/kdh-admin-meta:ui-20261019-43c187981323@sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d
+#4 resolve docker.io/library/kdh-admin-meta:ui-20261019-43c187981323@sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d 0.0s done
+#4 DONE 0.1s
+
+#5 [2/6] WORKDIR /app
+#5 DONE 0.1s
+
+#6 [3/6] COPY --chown=kdh:kdh kdh/ /app/kdh/
+#6 DONE 0.2s
+
+#7 [4/6] COPY --chown=kdh:kdh static/ /app/static/
+#7 DONE 0.4s
+
+#8 [5/6] COPY --chown=kdh:kdh templates/ /app/templates/
+#8 DONE 0.3s
+
+#9 [6/6] COPY --chown=kdh:kdh run.py requirements.lock /app/
+#9 DONE 0.3s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.6s done
+#10 exporting manifest sha256:600fd1437b27a7486b80f6a2b3d5efa5394a484f5533528e4c550a8a45d3302e 0.1s done
+#10 exporting config sha256:945f6b11e9316a57ad28036520dbf7f7cb0c9481233224e6f1c1107fed9e6a43 0.1s done
+#10 exporting attestation manifest sha256:d61709cab1262ec7dde32022183f300a8462d26f84b617d7db17f8502e69d744 0.0s done
+#10 exporting manifest list sha256:d60339c55b6a975a15d7d4b01296c43fe3e5f5d73effb73af0f2cb9444326171
+#10 exporting manifest list sha256:d60339c55b6a975a15d7d4b01296c43fe3e5f5d73effb73af0f2cb9444326171 0.0s done
+#10 naming to docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762 done
+#10 unpacking to docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762
+#10 unpacking to docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762 0.3s done
+#10 DONE 1.4s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/nbcv08m3n70o8qdzx4qegi3eh

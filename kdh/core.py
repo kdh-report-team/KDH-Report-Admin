@@ -145,6 +145,7 @@ def load_config():
         'ENCRYPTION_KEY': os.getenv('ENCRYPTION_KEY', '').strip(),
 
         'JOB_MODE': os.getenv('JOB_MODE', 'worker'),
+        'ADMIN_SESSION_COOKIE_NAME': os.getenv('ADMIN_SESSION_COOKIE_NAME', 'kdh_session'),
 
         'CRON_SECRET': os.getenv('CRON_SECRET', ''),
 

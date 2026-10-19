@@ -1,0 +1,19 @@
+{
+  "head": "664efbc561b401d901947437c63df87348d81437",
+  "branch": "feat/seo-composite-release",
+  "baseline_files_checked": 177,
+  "changed_existing_files": [],
+  "all_original_runtime_projections_unchanged": true,
+  "scripts_syntax_pass": 7,
+  "git_diff_check": "PASS",
+  "known_secret_value_scan": "PASS",
+  "migration_bytes_match_stopped_admin": true,
+  "migration_sha256": "76845dcfff77d057c98f98f6a32a6e5997982360ec6c7f4931c46286b3760abf",
+  "new_files_scope": [
+    "KDH_PHASE5_SANDBOX_DEPLOYMENT_PLAN.md",
+    "docs/phase5-20261018/"
+  ],
+  "new_image_built": false,
+  "original_resources_started": false,
+  "status": "PASS"
+}

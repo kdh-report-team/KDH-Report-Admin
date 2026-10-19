@@ -1,0 +1,13 @@
+{
+  "files": {
+    "static/app.js": "1436f333ea88dcd303c862b8b0100437285422a0d9551612fc3e4ff1e50d1e50",
+    "static/views.js": "605560677ad5c9e69abce26a28ae2f7f57f98e7a69a201d2c4b7cbb3d1a5a759",
+    "static/marketing.js": "6eb95d04d187bf8e5dc10ba3548814d5acbc2dade70c45908de1e1ff5f0a6689",
+    "static/admin-refinement.css": "7cec519ec63df8470da9f8b39019527b87efb35863e744eb89c0867889076384",
+    "templates/index.html": "65fbc8e414b8de97068209b111f86a3cf368003530190040fafa77bfb1f34822",
+    "templates/marketing.html": "9ea3745f14cfc6db2c75728e8c332e0f3373d903db607ab1625502155b67ba89"
+  },
+  "aggregate_sha256": "43c187981323fdb9ef84fa221d6b426613e0b0c3d3f7b4024a8fc871d4cc5ace",
+  "base_image": "sha256:a71421275555eb6e7c9589c06068ade2e5a88edce5b3da6fb0e3ad7f0254254a",
+  "tag": "kdh-admin-meta:ui-20261019-43c187981323"
+}

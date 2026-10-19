@@ -1,0 +1,47 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/kdh-admin-meta:phase7b-20261019-7141f68a486b
+#3 DONE 0.1s
+
+#4 [1/7] FROM docker.io/library/kdh-admin-meta:phase7b-20261019-7141f68a486b@sha256:a71421275555eb6e7c9589c06068ade2e5a88edce5b3da6fb0e3ad7f0254254a
+#4 resolve docker.io/library/kdh-admin-meta:phase7b-20261019-7141f68a486b@sha256:a71421275555eb6e7c9589c06068ade2e5a88edce5b3da6fb0e3ad7f0254254a 0.1s done
+#4 DONE 0.2s
+
+#5 [2/7] COPY --chown=kdh:kdh static/app.js /app/static/app.js
+#5 DONE 0.1s
+
+#6 [3/7] COPY --chown=kdh:kdh static/views.js /app/static/views.js
+#6 DONE 0.1s
+
+#7 [4/7] COPY --chown=kdh:kdh static/marketing.js /app/static/marketing.js
+#7 DONE 0.1s
+
+#8 [5/7] COPY --chown=kdh:kdh static/admin-refinement.css /app/static/admin-refinement.css
+#8 DONE 0.1s
+
+#9 [6/7] COPY --chown=kdh:kdh templates/index.html /app/templates/index.html
+#9 DONE 0.1s
+
+#10 [7/7] COPY --chown=kdh:kdh templates/marketing.html /app/templates/marketing.html
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 0.3s done
+#11 exporting manifest sha256:66bfdff797142bfae252284909557e98ae51fcf57d7d442d54af189088458993 0.0s done
+#11 exporting config sha256:a9e3b414741e108740f3d8e79353136aaab7168c91a5e739b8922f48c1171998 0.0s done
+#11 exporting attestation manifest sha256:e770b1d56053f5484e91c00a74139949b55178d2d8ad43b611c5ab14906a661a
+#11 exporting attestation manifest sha256:e770b1d56053f5484e91c00a74139949b55178d2d8ad43b611c5ab14906a661a 0.0s done
+#11 exporting manifest list sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d 0.0s done
+#11 naming to docker.io/library/kdh-admin-meta:ui-20261019-43c187981323 done
+#11 unpacking to docker.io/library/kdh-admin-meta:ui-20261019-43c187981323
+#11 unpacking to docker.io/library/kdh-admin-meta:ui-20261019-43c187981323 0.2s done
+#11 DONE 0.9s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/mhmjcseh3cglsg3o5zj6mkoji

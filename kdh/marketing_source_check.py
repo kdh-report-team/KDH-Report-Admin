@@ -35,7 +35,9 @@ def candidate_state(store, db, candidate_id):
         candidate = json.loads(row['data'])
     except (TypeError, ValueError):
         raise Problem('Release Candidate không hợp lệ.', 409) from None
-    if not isinstance(candidate, dict) or candidate.get('client_id') != DEFAULT_CLIENT_ID:
+    is_meta = isinstance(candidate, dict) and candidate.get('params', {}).get('source') in ('facebook_content', 'facebook_ads')
+    if (not isinstance(candidate, dict) or not isinstance(candidate.get('client_id'), str)
+            or not candidate['client_id'] or (not is_meta and candidate.get('client_id') != DEFAULT_CLIENT_ID)):
         raise Problem('Không tìm thấy Release Candidate của khách hàng.', 404)
     if candidate.get('dataset_kind') != 'marketing_release_candidate_v1':
         raise Problem('Dataset không phải Release Candidate.', 409)
@@ -78,6 +80,9 @@ def check_candidate(store, db, candidate_id):
 
 def _check_candidate(store, db, candidate_id):
     row, candidate, original, latest, assessment, issues = candidate_state(store, db, candidate_id)
+    if original['params']['source'] in ('facebook_content', 'facebook_ads'):
+        from .meta_marketing import check_source
+        return check_source(store, db, candidate, original, latest, assessment, issues)
     preview = original['marketing']['preview']
     source = original['params']['source']
     spec = SOURCES.get(source)

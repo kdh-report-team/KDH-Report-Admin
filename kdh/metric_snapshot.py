@@ -8,7 +8,7 @@ FIELDS = {
     'ga4': {'sessions': 'sessions', 'active_users': 'activeUsers',
             'page_views': 'screenPageViews', 'engagement_rate': 'engagementRate'},
     'gsc': {key: key for key in ('clicks', 'impressions', 'ctr', 'position')},
-    'keywords': {key: key for key in ('top5', 'top10', 'top20', 'top100')},
+    'keywords': {key: key for key in ('top5', 'top10', 'top20', 'top30','top50', 'top100')},
 }
 
 

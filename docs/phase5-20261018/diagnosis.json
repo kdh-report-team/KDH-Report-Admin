@@ -1,0 +1,642 @@
+{
+  "container_log_signals": [
+    {
+      "name": "/kdh-meta-2b-pg-20261016-132836-5c512a53",
+      "lines_scanned": 107,
+      "signals": {
+        "unclean_shutdown": [],
+        "ready": [
+          "2026-10-16T06:30:43.214940935Z",
+          "2026-10-16T06:30:43.577283215Z",
+          "2026-10-16T08:48:40.285272738Z",
+          "2026-10-17T08:31:19.572513577Z"
+        ],
+        "shutdown": [
+          "2026-10-16T06:30:43.384883827Z",
+          "2026-10-16T06:30:43.390231618Z",
+          "2026-10-16T06:30:43.414240502Z",
+          "2026-10-16T08:26:21.040614621Z",
+          "2026-10-16T08:26:21.064643481Z",
+          "2026-10-16T08:26:21.110073886Z",
+          "2026-10-16T10:30:48.233967955Z",
+          "2026-10-16T10:30:48.237133275Z",
+          "2026-10-16T10:30:48.256736948Z"
+        ],
+        "port_conflict": [],
+        "oom": []
+      }
+    },
+    {
+      "name": "/kdh-meta-3-egress-20261016-132836-5c512a53",
+      "lines_scanned": 57,
+      "signals": {
+        "unclean_shutdown": [],
+        "ready": [
+          "2026-10-16T08:48:55.359559502Z",
+          "2026-10-17T08:31:43.099862257Z"
+        ],
+        "shutdown": [],
+        "port_conflict": [],
+        "oom": []
+      }
+    },
+    {
+      "name": "/kdh-meta-2b-admin-20261016-132836-5c512a53",
+      "lines_scanned": 59,
+      "signals": {
+        "unclean_shutdown": [],
+        "ready": [],
+        "shutdown": [],
+        "port_conflict": [],
+        "oom": []
+      }
+    },
+    {
+      "name": "/kdh-meta-2b-relay-20261016-132836-5c512a53",
+      "lines_scanned": 9,
+      "signals": {
+        "unclean_shutdown": [],
+        "ready": [
+          "2026-10-16T07:15:24.795176882Z",
+          "2026-10-16T07:20:03.479600984Z",
+          "2026-10-16T08:49:16.568815976Z",
+          "2026-10-17T08:32:46.852748751Z"
+        ],
+        "shutdown": [],
+        "port_conflict": [],
+        "oom": []
+      }
+    }
+  ],
+  "retained_target_events": [],
+  "docker_log_time_signals": [
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.961716600",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.965004900",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.975551400",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.977193400",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.977747100",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.981653900",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.984984400",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.984984400",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.989604800",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.990678600",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.990678600",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.992833600",
+      "terms": [
+        "start",
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:12.995068800",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.002760200",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.009445200",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.011628000",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.018793400",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.019349000",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.020509500",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.022101800",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.022101800",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.023646300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.033070400",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.033070400",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.034070300",
+      "terms": [
+        "start",
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.035070700",
+      "terms": [
+        "daemon"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.046173500",
+      "terms": [
+        "daemon"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.046686200",
+      "terms": [
+        "daemon"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.047232500",
+      "terms": [
+        "daemon"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.047769900",
+      "terms": [
+        "daemon"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.119037500",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.119611100",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.125573900",
+      "terms": [
+        "255"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.125573900",
+      "terms": [
+        "255"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.188972000",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.279579800",
+      "terms": [
+        "daemon"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.289144600",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.289706300",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.397499200",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.404584400",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.404584400",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.418625600",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.422295700",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.448876200",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.495789500",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.574055500",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.574604100",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.575174300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.575174300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.575174300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.574604100",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.574604100",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.575174300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.575174300",
+      "terms": [
+        "start",
+        "boot",
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.577689900",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.578201100",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.574604100",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.578640300",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.577197600",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.579275600",
+      "terms": [
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.575962900",
+      "terms": [
+        "start",
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.575962900",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.576481300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.576481300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.578640300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.578640300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.575174300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.576481300",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.582854900",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.582854900",
+      "terms": [
+        "daemon"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.582854900",
+      "terms": [
+        "start",
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.583436100",
+      "terms": [
+        "start",
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.583436100",
+      "terms": [
+        "start",
+        "wsl"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.583436100",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.582854900",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.584229400",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.584229400",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.588164700",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.582854900",
+      "terms": [
+        "start"
+      ]
+    },
+    {
+      "file": "com.docker.backend.exe.log",
+      "timestamp": "2026-10-18T11:48:13.582854900",
+      "terms": [
+        "start"
+      ]
+    }
+  ]
+}

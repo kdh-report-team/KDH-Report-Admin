@@ -371,7 +371,7 @@ class Google:
             eligible = [r for r in rows if start <= r['date'] <= end]
             latest = max((r['date'] for r in eligible), default=None)
             current = [r for r in eligible if r['date'] == latest]
-            totals = {f'top{n}': sum(1 for r in current if 1 <= r['position'] <= n) for n in (5, 10, 20, 100)} if current else {}
+            totals = {f'top{n}': sum(1 for r in current if 1 <= r['position'] <= n) for n in (5, 10, 20, 30, 50, 100)} if current else {}
             return eligible, latest, totals
 
         entries, latest, totals = period(p['start'], p['end'])

@@ -1,0 +1,661 @@
+{
+  "run": "kdh-phase4-pg-20261018-185645-dcfa94f5",
+  "tests": [
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_ads_attribution_and_snapshot_mutations_are_rejected",
+      "status": "PASS",
+      "seconds": 5.75
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_complete_empty_content_period_preserves_zero_and_missing_lifetime",
+      "status": "PASS",
+      "seconds": 5.266
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_content_partial_lifetime_retains_missing_and_period_no_data",
+      "status": "PASS",
+      "seconds": 4.5
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_dual_bundles_immutable_and_viewer_revision_authorization",
+      "status": "PASS",
+      "seconds": 11.562
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_evidence_expiry_and_wrong_asset_currency_fail_closed",
+      "status": "PASS",
+      "seconds": 4.407
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_explicit_ads_lookup_and_missing_permission_never_enumerates_other_accounts",
+      "status": "PASS",
+      "seconds": 2.031
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_failed_or_partial_period_cannot_release_and_unverified_bundle_cannot_publish",
+      "status": "PASS",
+      "seconds": 5.5
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_historical_snapshot_cannot_acquire_receipt_or_dataset_implicitly",
+      "status": "PASS",
+      "seconds": 4.047
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_missing_forged_attestation_and_changed_grant_block_publication",
+      "status": "PASS",
+      "seconds": 5.906
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_partial_ads_persists_observations_without_advancing_complete_watermark",
+      "status": "PASS",
+      "seconds": 2.844
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_receipt_cannot_be_reused_for_a_different_snapshot_identity",
+      "status": "PASS",
+      "seconds": 3.484
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_stale_candidate_hash_and_mismatched_section_are_rejected",
+      "status": "PASS",
+      "seconds": 4.766
+    },
+    {
+      "test": "test_facebook_bundles_postgres.PostgresFacebookBundleTests.test_wrong_client_missing_client_comparison_and_stale_review",
+      "status": "PASS",
+      "seconds": 5.0
+    },
+    {
+      "test": "test_google_platform_success.PostgresGooglePlatformSuccessTests.test_google_success_creates_three_sync_runs_and_daily_metrics",
+      "status": "PASS",
+      "seconds": 4.0
+    },
+    {
+      "test": "test_google_platform_success.PostgresGooglePlatformSuccessTests.test_partial_result_is_saved_exactly_with_provider_specific_fields",
+      "status": "PASS",
+      "seconds": 10.39
+    },
+    {
+      "test": "test_google_platform_success.PostgresGooglePlatformSuccessTests.test_provider_failures_create_no_metrics_or_snapshots_for_failed_source",
+      "status": "PASS",
+      "seconds": 22.657
+    },
+    {
+      "test": "test_google_platform_success.PostgresGooglePlatformSuccessTests.test_snapshot_persistence_failure_marks_sync_and_step_invalid_without_leaking_error",
+      "status": "PASS",
+      "seconds": 2.906
+    },
+    {
+      "test": "test_marketing_publication.PostgresPublicationTests.test_draft_not_readable_with_service_or_viewer",
+      "status": "PASS",
+      "seconds": 9.516
+    },
+    {
+      "test": "test_marketing_publication.PostgresPublicationTests.test_internal_candidate_stays_blocked_for_both_publication_modes",
+      "status": "PASS",
+      "seconds": 8.265
+    },
+    {
+      "test": "test_marketing_publication.PostgresPublicationTests.test_release_tampering_and_fake_verified_flags_do_not_bypass_guard",
+      "status": "PASS",
+      "seconds": 8.453
+    },
+    {
+      "test": "test_marketing_publication.PostgresPublicationTests.test_revoked_reviewer_and_stale_provider_block_publication",
+      "status": "PASS",
+      "seconds": 8.469
+    },
+    {
+      "test": "test_marketing_publication.PostgresPublicationTests.test_separate_release_and_final_publication_keep_original_immutable",
+      "status": "PASS",
+      "seconds": 13.219
+    },
+    {
+      "test": "test_marketing_publication.PostgresPublicationTests.test_superseded_approval_blocks_existing_release_before_publication",
+      "status": "PASS",
+      "seconds": 8.984
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_asset_scope_and_untrusted_flags_cannot_authorize_release",
+      "status": "PASS",
+      "seconds": 7.578
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_auth_csrf_and_reviewer_role",
+      "status": "PASS",
+      "seconds": 5.86
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_confirmed_source_and_comparison_then_approved_without_publication",
+      "status": "PASS",
+      "seconds": 7.203
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_daily_metrics_and_source_snapshot_must_agree",
+      "status": "PASS",
+      "seconds": 7.125
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_external_asset_change_cannot_relabel_provider_origin",
+      "status": "PASS",
+      "seconds": 8.359
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_ga4_unique_users_uses_period_total_not_daily_sum",
+      "status": "PASS",
+      "seconds": 7.922
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_invalid_snapshot_returns_safe_conflict",
+      "status": "PASS",
+      "seconds": 7.547
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_keyword_snapshot_counts_ranks_instead_of_summing_positions",
+      "status": "PASS",
+      "seconds": 6.984
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_origin_and_candidate_changed_after_internal_review_are_blocked",
+      "status": "PASS",
+      "seconds": 7.844
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_permission_failure_snapshot_missing_and_connection_missing_block",
+      "status": "PASS",
+      "seconds": 8.781
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_review_replacement_and_new_sync_block_old_candidate",
+      "status": "PASS",
+      "seconds": 10.25
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_snapshot_tampering_partial_and_demo_are_blocked",
+      "status": "PASS",
+      "seconds": 9.782
+    },
+    {
+      "test": "test_marketing_verification.PostgresVerificationTests.test_succeeded_and_human_review_without_receipt_are_not_provider_confirmation",
+      "status": "PASS",
+      "seconds": 7.75
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_admin_only_csrf_origin_and_config_validation",
+      "status": "PASS",
+      "seconds": 3.187
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_cancelled_inflight_callback_cannot_restore_credentials",
+      "status": "PASS",
+      "seconds": 2.313
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_configuration_supports_localhost_and_preserves_explicit_redirect",
+      "status": "PASS",
+      "seconds": 2.5
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_connect_encrypts_and_status_is_local_allowlist_without_jobs_or_assets",
+      "status": "PASS",
+      "seconds": 3.062
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_denied_and_missing_code_consume_state_without_reflecting_errors",
+      "status": "PASS",
+      "seconds": 3.922
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_disconnect_revokes_and_cancels_pending_callbacks_but_preserves_google",
+      "status": "PASS",
+      "seconds": 3.5
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_expiry_app_change_and_unreadable_credentials_are_honest_statuses",
+      "status": "PASS",
+      "seconds": 3.25
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_failed_revocation_still_removes_local_credentials",
+      "status": "PASS",
+      "seconds": 2.922
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_new_connect_supersedes_inflight_callback",
+      "status": "PASS",
+      "seconds": 2.734
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_not_configured_never_starts_oauth_or_exposes_credentials",
+      "status": "PASS",
+      "seconds": 2.438
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_provider_errors_are_sanitized_and_keep_previous_connection",
+      "status": "PASS",
+      "seconds": 4.953
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_reconnect_is_atomic_and_reuses_connection",
+      "status": "PASS",
+      "seconds": 3.797
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_saved_expiry_distinguishes_zero_missing_malformed_and_expired_data",
+      "status": "PASS",
+      "seconds": 2.984
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_session_revocation_while_callback_inflight_prevents_storage",
+      "status": "PASS",
+      "seconds": 2.344
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_state_is_bound_to_original_session_and_configuration",
+      "status": "PASS",
+      "seconds": 2.781
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_state_is_hashed_expires_single_use_and_separate_from_google",
+      "status": "PASS",
+      "seconds": 2.563
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_status_requires_reauthorization_after_business_config_or_permissions_change",
+      "status": "PASS",
+      "seconds": 2.859
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_wrong_app_invalid_expired_and_wrong_token_type_are_rejected",
+      "status": "PASS",
+      "seconds": 7.609
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_zero_expiry_does_not_bypass_token_scope_or_data_expiry_validation",
+      "status": "PASS",
+      "seconds": 4.469
+    },
+    {
+      "test": "test_meta.PostgresMetaTest.test_zero_expiry_is_stored_and_reported_without_inventing_date",
+      "status": "PASS",
+      "seconds": 3.859
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_failed_content_read_preserves_prior_data",
+      "status": "PASS",
+      "seconds": 3.016
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_missing_page_token_identifies_permission_stage",
+      "status": "PASS",
+      "seconds": 1.578
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_real_constraint_failure_rolls_back_and_records_sqlstate",
+      "status": "PASS",
+      "seconds": 1.297
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_real_deferred_constraint_fails_at_commit",
+      "status": "PASS",
+      "seconds": 1.453
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_real_deferred_failure_preserves_previous_success",
+      "status": "PASS",
+      "seconds": 2.875
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_real_write_failure_preserves_previous_success",
+      "status": "PASS",
+      "seconds": 2.266
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_resync_upserts_metrics_and_keeps_prior_snapshot_immutable",
+      "status": "PASS",
+      "seconds": 2.344
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_snapshot_rejection_keeps_sensitive_payload_out_of_logs",
+      "status": "PASS",
+      "seconds": 1.234
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_success_logs_all_stages_after_commit",
+      "status": "PASS",
+      "seconds": 1.156
+    },
+    {
+      "test": "test_meta_diagnostics.PostgresMetaDiagnosticsTests.test_successful_empty_resync_replaces_only_requested_asset_and_period",
+      "status": "PASS",
+      "seconds": 2.219
+    },
+    {
+      "test": "test_platform_data.PostgresPlatformDataTests.test_connection_asset_sync_and_metric_upsert",
+      "status": "PASS",
+      "seconds": 0.812
+    },
+    {
+      "test": "test_platform_data.PostgresPlatformDataTests.test_migration_four_is_idempotent_and_preserves_snapshots",
+      "status": "PASS",
+      "seconds": 0.797
+    },
+    {
+      "test": "test_platform_data.PostgresPlatformDataTests.test_platform_schema_and_default_client",
+      "status": "PASS",
+      "seconds": 0.485
+    },
+    {
+      "test": "test_platform_data.PostgresPlatformDataTests.test_source_snapshot_rejects_credentials_without_overwriting_saved_data",
+      "status": "PASS",
+      "seconds": 0.609
+    },
+    {
+      "test": "test_platform_data.PostgresPlatformDataTests.test_source_snapshot_upsert_retains_id_and_exact_payload",
+      "status": "PASS",
+      "seconds": 0.703
+    },
+    {
+      "test": "test_platform_data.PostgresPlatformDataTests.test_upgrade_from_v1_preserves_existing_data_and_does_not_reapply",
+      "status": "PASS",
+      "seconds": 0.531
+    },
+    {
+      "test": "test_postgres.PostgresTest.test_artifact_over_four_mb_persists_across_instances",
+      "status": "PASS",
+      "seconds": 2.704
+    },
+    {
+      "test": "test_postgres.PostgresTest.test_atomic_enqueue_and_processing_claim",
+      "status": "PASS",
+      "seconds": 5.281
+    },
+    {
+      "test": "test_postgres.PostgresTest.test_auth_encryption_reports_and_export_persist_across_instances",
+      "status": "PASS",
+      "seconds": 7.828
+    },
+    {
+      "test": "test_postgres.PostgresTest.test_integrity_error_returns_normal_user_validation",
+      "status": "PASS",
+      "seconds": 2.953
+    },
+    {
+      "test": "test_postgres.PostgresTest.test_oauth_callback_can_land_on_a_different_instance",
+      "status": "PASS",
+      "seconds": 6.719
+    },
+    {
+      "test": "test_postgres.PostgresTest.test_refresh_cannot_overwrite_a_new_connection_from_another_instance",
+      "status": "PASS",
+      "seconds": 2.406
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_admin_draft_preview_reads_captured_revision_without_writes_or_provider_calls",
+      "status": "PASS",
+      "seconds": 3.656
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_admin_endpoints_require_admin_session_and_csrf",
+      "status": "PASS",
+      "seconds": 3.407
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_comparison_metadata_and_coverage",
+      "status": "PASS",
+      "seconds": 3.265
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_concurrent_revisions_use_distinct_numbers_and_chain_parents",
+      "status": "PASS",
+      "seconds": 2.891
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_create_id_order_and_full_contract",
+      "status": "PASS",
+      "seconds": 2.984
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_credentials_in_persisted_metadata_rejected_without_echo",
+      "status": "PASS",
+      "seconds": 3.172
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_cross_client_and_period_mismatch_are_rejected",
+      "status": "PASS",
+      "seconds": 2.609
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_demo_and_malformed_metadata_cannot_be_final",
+      "status": "PASS",
+      "seconds": 3.219
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_draft_edits_and_published_immutability",
+      "status": "PASS",
+      "seconds": 5.0
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_final_checks_every_section_and_all_required_seo_sources",
+      "status": "PASS",
+      "seconds": 3.75
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_internal_auth_is_bearer_only_read_only_and_does_not_leak_token",
+      "status": "PASS",
+      "seconds": 3.813
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_migration_is_registered_once_and_failure_is_atomic",
+      "status": "PASS",
+      "seconds": 2.703
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_mixed_sections_preserve_existing_non_google_dataset_without_adapter",
+      "status": "PASS",
+      "seconds": 3.328
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_preview_reads_persisted_section_assignments_and_datasets_without_mutation",
+      "status": "PASS",
+      "seconds": 3.969
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_provisional_partial_and_final_reject_invalid_or_stale_data",
+      "status": "PASS",
+      "seconds": 3.406
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_published_snapshots_survive_source_dataset_and_client_changes",
+      "status": "PASS",
+      "seconds": 3.687
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_real_job_snapshot_can_be_bundled_without_altering_legacy_dataset",
+      "status": "PASS",
+      "seconds": 3.532
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_revision_preserves_old_data_and_latest_read_ignores_new_draft",
+      "status": "PASS",
+      "seconds": 2.718
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_unknown_and_failed_quality_do_not_become_zero_or_complete",
+      "status": "PASS",
+      "seconds": 3.063
+    },
+    {
+      "test": "test_report_bundles.PostgresBundleTest.test_validation_is_atomic_and_does_not_accept_inline_data",
+      "status": "PASS",
+      "seconds": 5.516
+    },
+    {
+      "test": "test_viewer_access.PostgresViewerTests.test_acl_customer_scope_and_snapshot_customer_must_match",
+      "status": "PASS",
+      "seconds": 11.031
+    },
+    {
+      "test": "test_viewer_access.PostgresViewerTests.test_active_session_and_service_identity_both_required",
+      "status": "PASS",
+      "seconds": 11.0
+    },
+    {
+      "test": "test_viewer_access.PostgresViewerTests.test_disabled_user_and_report_type_scope",
+      "status": "PASS",
+      "seconds": 10.344
+    },
+    {
+      "test": "test_viewer_access.PostgresViewerTests.test_internal_preview_console_and_acl_admin_only",
+      "status": "PASS",
+      "seconds": 8.312
+    },
+    {
+      "test": "test_viewer_access.PostgresViewerTests.test_logout_revoke_only_current_session",
+      "status": "PASS",
+      "seconds": 3.266
+    },
+    {
+      "test": "test_viewer_access.PostgresViewerTests.test_report_grant_required_and_revocation_immediate",
+      "status": "PASS",
+      "seconds": 9.718
+    },
+    {
+      "test": "test_viewer_access.PostgresViewerTests.test_revision_range_and_draft_remain_private",
+      "status": "PASS",
+      "seconds": 10.61
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_active_and_role_rechecked",
+      "status": "PASS",
+      "seconds": 8.437
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_binding_and_scope_tampering_rejected",
+      "status": "PASS",
+      "seconds": 8.672
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_concurrent_redemption_exactly_one_wins",
+      "status": "PASS",
+      "seconds": 8.797
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_draft_allowlist_and_service_auth",
+      "status": "PASS",
+      "seconds": 10.0
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_exact_scope_new_token_replay_and_no_admin_session",
+      "status": "PASS",
+      "seconds": 8.516
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_expiry",
+      "status": "PASS",
+      "seconds": 8.14
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_identity_conflict_preserves_existing_session",
+      "status": "PASS",
+      "seconds": 9.782
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_login_resumes_same_report",
+      "status": "PASS",
+      "seconds": 10.515
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_parent_revocation_immediate",
+      "status": "PASS",
+      "seconds": 9.297
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_preview_is_separate",
+      "status": "PASS",
+      "seconds": 8.813
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_report_selection_and_login_are_owned_by_admin",
+      "status": "PASS",
+      "seconds": 9.375
+    },
+    {
+      "test": "test_viewer_handoff.PostgresHandoffTests.test_revocation_before_redeem",
+      "status": "PASS",
+      "seconds": 10.687
+    }
+  ],
+  "cleanup": "removed_verified_disposable_container_only",
+  "context": "desktop-linux",
+  "daemon": "29.7.2",
+  "image_id": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+  "database": {
+    "container_id": "c1f0cb391d03ec68b7439712f312cbb2262c5d2e184837c7f26eba7682d6c79d",
+    "name": "phase4_acceptance",
+    "user": "phase4_fixture",
+    "host": "127.0.0.1",
+    "port": 54250,
+    "storage": "tmpfs",
+    "network": "default bridge, loopback published port only"
+  },
+  "postgres_version": "16.15 (Debian 16.15-1.pgdg13+2)",
+  "migrations": [
+    {
+      "version": 1,
+      "name": "reporting_platform_foundation"
+    },
+    {
+      "version": 2,
+      "name": "report_bundle_snapshots"
+    },
+    {
+      "version": 3,
+      "name": "meta_oauth_states"
+    },
+    {
+      "version": 4,
+      "name": "source_snapshots"
+    },
+    {
+      "version": 5,
+      "name": "marketing_dataset_reviews"
+    },
+    {
+      "version": 6,
+      "name": "marketing_verified_releases"
+    },
+    {
+      "version": 7,
+      "name": "report_viewer_grants"
+    },
+    {
+      "version": 8,
+      "name": "viewer_handoff"
+    }
+  ],
+  "selected": 117,
+  "previously_skipped_selected": 104,
+  "classes": {
+    "PostgresBundleTest": 20,
+    "PostgresFacebookBundleTests": 13,
+    "PostgresGooglePlatformSuccessTests": 4,
+    "PostgresHandoffTests": 12,
+    "PostgresMetaDiagnosticsTests": 10,
+    "PostgresMetaTest": 20,
+    "PostgresPlatformDataTests": 6,
+    "PostgresPublicationTests": 6,
+    "PostgresTest": 6,
+    "PostgresVerificationTests": 13,
+    "PostgresViewerTests": 7
+  },
+  "summary": {
+    "run": 117,
+    "pass": 117,
+    "fail": 0,
+    "error": 0,
+    "skip": 0
+  },
+  "success": true
+}

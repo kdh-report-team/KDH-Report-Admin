@@ -4,14 +4,25 @@ import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import { JSDOM, VirtualConsole } from 'jsdom';
 
+function assertOnlyProviderLogos(root) {
+  const allowed = new Set(['facebook', 'meta', 'tiktok', 'google', 'googleanalytics', 'googlesearchconsole', 'googlesheets', 'youtube'].map(name => `/static/brands/${name}.svg`));
+  for (const img of root.querySelectorAll('img')) {
+    assert.ok(allowed.has(img.getAttribute('src')), 'Untrusted content must not create an image');
+    assert.ok(img.parentElement.matches('.brand-mark[aria-hidden="true"]'));
+    assert.equal(img.getAttribute('alt'), '');
+    assert.ok(Array.from(img.attributes).every(attr => ['src', 'width', 'height', 'alt', 'decoding'].includes(attr.name)));
+  }
+}
+
 // Marketing workflow uses the same production API module and real DOM forms.
-async function marketingHarness({ confirmed = false, role = 'admin' } = {}) {
+async function marketingHarness({ confirmed = false, role = 'admin', metaDataset = null, evidenceError = false } = {}) {
   const page = await fs.readFile(new URL('../templates/marketing.html', import.meta.url), 'utf8');
   const dom = new JSDOM(page, { url: 'http://localhost/marketing', runScripts: 'outside-only' });
   const w = dom.window, calls = [];
   const params = { source: 'gsc', report_type: 'gsc', start: '2026-09-01', end: '2026-09-03', previous_start: '2026-08-29', previous_end: '2026-08-31' };
   const preview = { widgets: [{ metric_id: 'gsc.clicks', label: '<img src=x onerror=alert(1)>', value: null, comparison: { previous_value: 0 }, unit: 'count', status: 'no_data' }], evidence_cards: [], opportunity_candidates: [] };
   const snapshots = { origin: { id: 'origin', params, dataset_kind: 'marketing_internal_preview_v1', marketing: { preview } }, candidate: { id: 'candidate', params, dataset_kind: 'marketing_release_candidate_v1', release_candidate: { origin_dataset_id: 'origin' }, marketing: { preview } }, release: { id: 'release', params, dataset_kind: 'marketing_release_snapshot_v1', marketing: { widgets: preview.widgets } } };
+  if (metaDataset) snapshots.origin = structuredClone(metaDataset);
   const review = { dataset_id: 'origin', dataset_sha256: 'hash-origin', checks: { can_approve_internal: true }, issues: [], latest_review: null };
   const approval = { state: 'release_review', latest_approval: null, checks: { candidate_sha256: 'hash-candidate', dataset_sha256: 'hash-origin', internal_review_id: 'review-1', provider_origin_confirmed: confirmed, state: confirmed ? 'provider_origin_confirmed' : 'release_blocked', issues: confirmed ? [] : ['provider_origin_unconfirmed'], checks: [] } };
   let report = null;
@@ -20,10 +31,14 @@ async function marketingHarness({ confirmed = false, role = 'admin' } = {}) {
     calls.push({ path, body, method: options.method, headers: options.headers });
     let result;
     if (path === '/api/auth/me') result = { user: { role }, csrf: 'fixture-csrf' };
-    else if (path === '/api/marketing/workflow') result = { client_id: 'client_kinderhealth', new_url: 'http://localhost:8080', sources: [{ id: 'gsc', label: 'Search Console' }], assets: [], snapshots: Object.values(snapshots).map(s => ({ id: s.id, kind: s.dataset_kind, source: 'gsc', start: params.start, end: params.end })) };
+    else if (path === '/api/marketing/workflow') result = { client_id: metaDataset ? 'client_meta_sandbox' : 'client_kinderhealth', new_url: 'http://localhost:8080', viewer_handoff_supported: !metaDataset, sources: [{ id: metaDataset ? 'facebook_content' : 'gsc', label: 'Source fixture' }], assets: metaDataset ? [{ id: 'page-fixture', name: 'VIO fixture', external_id: '1234', asset_type: 'facebook_page' }] : [], snapshots: Object.values(snapshots).map(s => ({ id: s.id, kind: s.dataset_kind, source: s.params.source, start: s.params.start, end: s.params.end })) };
     else if (path === '/api/users') result = [{ id: 'viewer', name: 'Viewer', email: 'test@example.test', active: 1 }];
     else if (path.startsWith('/api/datasets/')) result = snapshots[path.split('/').at(-1)];
     else if (path === '/api/marketing/datasets') result = { dataset_id: 'origin' };
+    else if (path.endsWith('/source-evidence')) {
+      if (evidenceError) return { ok: false, status: 409, json: async () => ({ error: 'Evidence fixture mismatch' }) };
+      result = { receipt_valid: true, receipt_exists: true, snapshot_hash_matches: true, daily_consistent: true, fresh: true, verified: false, publishable: false, checked_at: '2026-10-19T02:00:00Z', note: 'Receipt adapter; chưa thay thế human review hoặc source-check trên Candidate.' };
+    }
     else if (path.endsWith('/review')) {
       if (options.method === 'POST') review.latest_review = { id: 'review-1', decision: body.decision, matches_current_snapshot: true };
       result = review;
@@ -52,6 +67,51 @@ async function marketingHarness({ confirmed = false, role = 'admin' } = {}) {
   const click = async selector => { $(selector).click(); await idle(); };
   return { w, $, calls, idle, open, click, close: () => w.close() };
 }
+
+test('Marketing presentation keeps hidden report links hidden and all workflow destinations reachable', async () => {
+  const h = await marketingHarness();
+  try {
+    const style = h.w.document.createElement('style');
+    style.textContent = await fs.readFile(new URL('../static/style.css', import.meta.url), 'utf8')
+      + await fs.readFile(new URL('../static/marketing.css', import.meta.url), 'utf8')
+      + await fs.readFile(new URL('../static/admin-refinement.css', import.meta.url), 'utf8');
+    h.w.document.head.append(style);
+    const link = h.$('#selected-report-open');
+    assert.equal(link.hidden, true);
+    assert.equal(link.getAttribute('href'), null);
+    assert.equal(h.w.getComputedStyle(link).display, 'none');
+    for (const anchor of h.w.document.querySelectorAll('.workflow-steps a')) {
+      assert.ok(h.$(anchor.getAttribute('href')), 'Workflow link must have a destination');
+    }
+    assert.equal(h.w.document.querySelectorAll('.workflow-steps a').length, 4);
+    assert.ok(h.calls.every(call => call.method === 'GET'));
+  } finally { h.close(); }
+});
+
+test('Marketing opening a release points to publication without creating or approving another object', async () => {
+  const h = await marketingHarness();
+  try {
+    await h.open('release');
+    assert.match(h.$('#source-state').textContent, /Đã tạo snapshot phát hành/);
+    assert.doesNotMatch(h.$('#source-state').textContent, /Chưa có bản chờ/);
+    assert.equal(h.$('#create-bundle').disabled, false);
+    assert.equal(h.$('#approve-release').disabled, true);
+    assert.equal(h.$('#publish-final').disabled, true);
+    assert.ok(h.calls.every(call => call.method === 'GET'));
+  } finally { h.close(); }
+});
+
+test('Admin shell omits an unconfigured dashboard link and retains configured navigation', async () => {
+  const { shell } = await import('../static/views.js');
+  for (const url of ['', 'http://localhost:8088']) {
+    const dom = new JSDOM(shell({ name: 'Admin fixture', role: 'admin' }, { dashboard_url: url }, 'overview'));
+    try {
+      assert.equal(dom.window.document.querySelectorAll('.nav-link').length, 14);
+      assert.equal(Boolean(dom.window.document.querySelector('.topbar-right a')), Boolean(url));
+      assert.equal(dom.window.document.querySelector('.breadcrumb a').getAttribute('href'), '#overview');
+    } finally { dom.window.close(); }
+  }
+});
 
 test('Marketing UI shows missing values, escapes labels and never calls provider APIs', async () => {
   const h = await marketingHarness(); try {
@@ -110,16 +170,83 @@ test('Marketing UI stops loading internal data for a Viewer session', async () =
   } finally { h.close(); }
 });
 
+function marketingMetaFixture() {
+  return { id: 'origin', client_id: 'client_meta_sandbox', dataset_kind: 'marketing_internal_preview_v1',
+    params: { source: 'facebook_content', report_type: 'facebook-content', start: '2026-10-15', end: '2026-10-15', compare: false, previous_start: null, previous_end: null },
+    marketing: { verified: false, publishable: false, review_status: 'pending', preview: {
+      asset_id: 'page-fixture', meta_snapshot: { snapshot_id: 'snapshot-fixture', sync_run_ids: ['run-fixture'], external_id: '1234', timezone: 'UTC', fetched_at: '2026-10-19T01:00:00Z' },
+      widgets: [
+        { label: 'Bài đăng trong kỳ', value: 1, unit: 'count', status: 'available' },
+        { label: 'Engagements trong kỳ', value: null, unit: 'count', status: 'no_data' },
+        { label: 'Reactions lifetime', value: 2, unit: 'count', status: 'available' },
+        { label: 'Comments lifetime', value: 0, unit: 'count', status: 'available' },
+        { label: 'Shares lifetime', value: null, unit: 'count', status: 'no_data' }
+      ], evidence_cards: [{ metric_id: 'facebook_content.posts_published', status: 'recorded_unverified', evidence_id: 'evidence-fixture', asset_id: 'page-fixture', lineage: { sync_run_ids: ['run-fixture'] } }], opportunity_candidates: []
+    } }
+  };
+}
+
+test('Marketing sandbox opens existing Meta Dataset and evidence without creating or approving anything', async () => {
+  const fixture = marketingMetaFixture();
+  const original = structuredClone(fixture);
+  const h = await marketingHarness({ metaDataset: fixture });
+  try {
+    assert.match(h.$('#workflow-client').textContent, /client_meta_sandbox/);
+    await h.open('origin');
+    const text = h.$('#snapshot-preview').textContent;
+    assert.match(text, /VIO fixture/);
+    assert.match(text, /2026-10-15 → 2026-10-15/);
+    assert.match(text, /Không so sánh kỳ trước/);
+    assert.match(text, /snapshot-fixture.*run-fixture/);
+    assert.match(text, /Receipt adapter: Hợp lệ/);
+    assert.match(text, /Chưa xác minh hoặc phê duyệt/);
+    assert.equal(h.$('.meta-review-notice').closest('details'), null);
+    assert.equal(h.$('.review-provenance').open, false);
+    assert.ok(h.$('.review-provenance').textContent.includes('snapshot-fixture'));
+    assert.match(text, /lifetime.*không phải tương tác phát sinh trong kỳ/);
+    const rows = [...h.$('#snapshot-preview tbody').rows];
+    assert.equal(rows[1].cells[1].textContent, 'Chưa có dữ liệu');
+    assert.equal(rows[3].cells[1].textContent, '0');
+    assert.equal(rows[4].cells[1].textContent, 'Chưa có dữ liệu');
+    assert.equal(h.$('#create-candidate').disabled, true);
+    assert.equal(h.$('#approve-release').disabled, true);
+    assert.equal(h.$('#publish-final').disabled, true);
+    assert.ok(h.calls.every(call => call.method === 'GET'));
+    assert.deepEqual(fixture, original);
+    assert.ok([...h.w.document.querySelectorAll('[name="compare_start"], [name="compare_end"]')].every(input => input.disabled));
+    await h.open('candidate');
+    assert.match(h.$('#viewer-handoff-note').textContent, /chưa được cấp cho client sandbox/);
+    assert.equal(h.$('#internal-preview').hidden, true);
+  } finally { h.close(); }
+});
+
+test('Marketing sandbox refuses a foreign Dataset and keeps review disabled when evidence fails', async () => {
+  for (const foreign of [true, false]) {
+    const fixture = marketingMetaFixture();
+    if (foreign) fixture.client_id = 'client_kinderhealth';
+    const h = await marketingHarness({ metaDataset: fixture, evidenceError: !foreign });
+    try {
+      await h.open('origin');
+      assert.equal(h.$('#workflow-message').dataset.error, 'true');
+      assert.equal(h.$('#approve-internal').disabled, true);
+      assert.equal(h.$('#create-candidate').disabled, true);
+      assert.ok(h.calls.every(call => call.method === 'GET'));
+    } finally { h.close(); }
+  }
+});
+
 const html = await fs.readFile(new URL('../templates/index.html', import.meta.url), 'utf8');
 const source = {};
 for (const file of ['api.js', 'ui.js', 'views.js', 'meta_reporting_ui.js', 'app.js']) source[file] = await fs.readFile(new URL('../static/' + file, import.meta.url), 'utf8');
 const types = [{ id: 'seo', label: 'Website Traffic & SEO', can_generate: true }, { id: 'ga4', label: 'Google Analytics 4', can_generate: true }, { id: 'gmb', label: 'Google Business Profile', can_generate: true }];
 const admin = { id: 'admin', name: 'Admin kiểm thử', email: 'admin@example.test', role: 'admin', allowed: types.map(t => t.id), active: 1 };
-const overview = { reports: [], report_count: 0, jobs: [], running: 0, failed: 0, sources: {}, google_connected: false, types, last_export: null, dashboard_url: 'http://localhost:8088', organization: { name: 'KinderHealth', author: '' } };
+const overview = { reports: [], report_count: 0, jobs: [], running: 0, failed: 0, sources: {}, google_connected: false, types, last_export: null, dashboard_url: 'http://localhost:8088', client_context: { client_id: 'client_kinderhealth', environment: 'primary' }, organization: { name: 'KinderHealth', author: '' } };
+const platformStatusFixture = { client_context: { client_id: 'client_kinderhealth', environment: 'primary' }, platforms: [], sources: {}, assets: [] };
+const syncHistoryFixture = { client_id: 'client_kinderhealth', runs: [], assets: [], truncated: false };
 
-async function harness({ signedIn = true, role = 'admin', dataset = null, demo = false, requestMode = false, setupRequired = false, googleConfigured = false, googleConnected = false, googleSources = {}, metaStatus = { configured: false, connected: false, has_connection: false, status: 'disconnected' }, metaReadError = null, metaConnectError = null, metaRevoked = true, jobs = [], uploads = [], reports = [], datasetRecords = {}, datasetErrors = {}, reportBundleResult = { report_id: 'rpt_test_bundle', revision: 1, status: 'draft' }, reportBundleError = null, reportBundleDetail = null, reportBundleReadError = null, reportBundleUpdateResult = { report_id: 'rpt_test_bundle', revision: 1, status: 'draft' }, reportBundleUpdateError = null } = {}) {
+async function harness({ signedIn = true, role = 'admin', dataset = null, demo = false, requestMode = false, setupRequired = false, googleConfigured = false, googleConnected = false, googleSources = {}, metaStatus = { configured: false, connected: false, has_connection: false, status: 'disconnected' }, metaReadError = null, metaConnectError = null, metaRevoked = true, metaAssets = { selected: [], discovered: {} }, metaAssetsError = null, metaKpis = null, metaKpisError = null, platformStatus = platformStatusFixture, syncHistory = syncHistoryFixture, overviewData = overview, initialHash = 'overview', jobs = [], uploads = [], reports = [], reportBundles = [], datasetRecords = {}, datasetErrors = {}, reportBundleResult = { report_id: 'rpt_test_bundle', revision: 1, status: 'draft' }, reportBundleError = null, reportBundleDetail = null, reportBundleReadError = null, reportBundleUpdateResult = { report_id: 'rpt_test_bundle', revision: 1, status: 'draft' }, reportBundleUpdateError = null } = {}) {
   const errors = [], requests = [], gates = new Map(); const virtualConsole = new VirtualConsole(); virtualConsole.on('jsdomError', e => errors.push(e));
-  const dom = new JSDOM(html, { url: 'http://localhost/#overview', runScripts: 'outside-only', pretendToBeVisual: true, virtualConsole });
+  const dom = new JSDOM(html, { url: 'http://localhost/#' + initialHash, runScripts: 'outside-only', pretendToBeVisual: true, virtualConsole });
   const w = dom.window;
   w.structuredClone = structuredClone;
   w.HTMLDialogElement.prototype.showModal = function () { this.setAttribute('open', ''); };
@@ -146,7 +273,9 @@ async function harness({ signedIn = true, role = 'admin', dataset = null, demo =
     else if (path === '/api/auth/login') { signedIn = true; result = { user, csrf: 'csrf-test' }; }
     else if (path === '/api/auth/setup') { setupRequired = false; result = {}; }
     else if (path === '/api/auth/logout') { signedIn = false; result = {}; }
-    else if (path === '/api/overview') result = demo ? { ...overview, sources: googleSources, demo_enabled: true, demo_datasets: { seo: 'dataset-1' }, demo_sources: dataset.sources } : { ...overview, sources: googleSources, job_mode: requestMode ? 'request' : 'worker' };
+    else if (path === '/api/overview') result = demo ? { ...overviewData, sources: googleSources, demo_enabled: true, demo_datasets: { seo: 'dataset-1' }, demo_sources: dataset.sources } : { ...overviewData, sources: googleSources, job_mode: requestMode ? 'request' : 'worker' };
+    else if (path === '/api/platform-status') result = { ...platformStatus, assets: [...(platformStatus.assets || []), ...metaAssets.selected.map(asset => ({ ...asset, provider: 'meta', name: asset.name || 'Fixture Asset' }))] };
+    else if (path === '/api/sync-history' || path.startsWith('/api/sync-history?')) result = syncHistory;
     else if (path === '/api/uploads' && options.method === 'POST') result = {};
     else if (path === '/api/uploads') result = uploads;
     else if (path === '/api/analyses') { params = body; result = { job_id: 'job-1', created: true }; }
@@ -178,11 +307,28 @@ async function harness({ signedIn = true, role = 'admin', dataset = null, demo =
       if (metaReadError) { status = metaReadError.status; result = { error: metaReadError.message }; }
       else result = metaStatus;
     }
-    else if (path === '/api/meta/reporting/assets') result = { selected: [], discovered: {} };
+    else if (path === '/api/meta/reporting/assets' && options.method === 'POST') {
+      const assetType = body.source === 'facebook_content' ? 'facebook_page' : 'facebook_ad_account';
+      metaAssets.selected = [{ id: 'meta-asset-test', asset_type: assetType, external_id: body.external_id, enabled: body.enabled }];
+      result = { asset_id: 'meta-asset-test', enabled: body.enabled };
+    }
+    else if (path === '/api/meta/reporting/assets' || path === '/api/meta/reporting/assets?source=facebook_content') {
+      if (metaAssetsError) { status = metaAssetsError.status; result = { error: metaAssetsError.message }; }
+      else result = metaAssets;
+    }
+    else if (path.startsWith('/api/meta/reporting/kpis/') && options.method === 'GET') {
+      if (metaKpisError?.network) throw new Error('Network fixture failure');
+      if (metaKpisError) { status = metaKpisError.status; result = { error: metaKpisError.message }; }
+      else result = metaKpis;
+    }
+    else if (path === '/api/meta/reporting/assets?source=facebook_ads&external_id=act_123') result = {
+      client_id: 'client_meta_sandbox', selected: [], discovered: { facebook_ads: [{ id: 'act_123', name: 'Authorized fixture account' }] }
+    };
     else if (path === '/api/google' && options.method === 'DELETE') { providerConnected = false; result = { message: 'Đã ngắt kết nối Google.' }; }
     else if (path === '/api/google') result = { configured: googleConfigured, connected: providerConnected, email: providerConnected ? 'connected@example.test' : null, connected_at: providerConnected ? '2026-09-01T00:00:00Z' : null, checked_at: null, sources: googleSources, assets: { ga4: 'property-config', gsc: 'property-url', keywords: 'sheet-config' } };
     else if (path === '/api/jobs') result = jobs;
     else if (path === '/api/reports') result = reports;
+    else if (path === '/api/report-bundles' && options.method !== 'POST') result = reportBundles;
     else if (path === '/api/report-bundles' && options.method === 'POST') {
       if (reportBundleError) { status = reportBundleError.status; result = { error: reportBundleError.message }; }
       else { createdBundlePayload = body; currentBundlePayload = body; capturedSections = captureSections(body.sections); result = reportBundleResult; }
@@ -250,7 +396,9 @@ test('Demo opens a labeled snapshot and switching to real data requires a fresh 
 
 test('Login uses application credentials, keeps Google separate, and exposes navigation', async () => {
   const h = await harness({ signedIn: false }); try {
-    assert.match(h.document.body.textContent, /Tài khoản ứng dụng và kết nối dữ liệu Google/);
+    assert.ok(h.document.querySelector('#auth-form'));
+    assert.equal(h.document.querySelector('.login-assurance'), null);
+    assert.equal(h.requests.some(request => request.path.startsWith('/api/google')), false);
     h.document.querySelector('#auth-email').value = 'admin@example.test'; h.document.querySelector('#auth-password').value = 'test-only-password';
     h.document.querySelector('#auth-form').requestSubmit();
     await h.until(() => h.document.querySelector('h1')?.textContent === 'Tổng quan');
@@ -376,7 +524,7 @@ test('Failed source remains an error, does not render fake KPI and cannot export
     h.w.location.hash = 'analysis?dataset=dataset-1'; await h.until(() => h.document.querySelector('#analysis-results'));
     assert.equal(h.document.querySelector('#export-button').disabled, true);
     assert.match(h.document.querySelector('#analysis-results').textContent, /Thiếu quyền <img/);
-    assert.equal(h.document.querySelector('#analysis-results img'), null);
+    assertOnlyProviderLogos(h.document.querySelector('#analysis-results'));
     assert.equal(h.document.querySelector('#analysis-results .kpi'), null);
     assert.deepEqual(h.errors, []);
   } finally { h.close(); }
@@ -531,11 +679,11 @@ test('Primary navigation is complete and provider routes remain reachable withou
     }
     h.w.location.hash = 'connections/google'; await h.until(() => h.document.querySelector('.breadcrumb strong')?.textContent.includes('Google') && h.document.querySelector('[data-action="connect-google"]'));
     assert.ok(h.document.querySelector('.nav-link[href="#connections"].active'));
-    assert.equal(h.document.querySelector('[data-action=connect-google]').disabled, true); assert.match(h.document.querySelector('#content').textContent, /Chưa cấu hình Google OAuth/);
+    assert.equal(h.document.querySelector('[data-action=connect-google]').disabled, true); assert.match(h.document.querySelector('#content').textContent, /Google OAuth chưa được cấu hình/);
     h.w.location.hash = 'connections/facebook'; await h.until(() => h.document.querySelector('#content h1')?.textContent.includes('Facebook'));
     assert.match(h.document.querySelector('#content').textContent, /Chưa cấu hình Meta OAuth/); assert.equal(h.document.querySelector('#content button[disabled]').textContent, 'Kết nối Meta');
     h.w.location.hash = 'connections/tiktok'; await h.until(() => h.document.querySelector('#content h1')?.textContent.includes('TikTok'));
-    assert.match(h.document.querySelector('#content').textContent, /TikTok API chưa được tích hợp ở backend/); assert.equal(h.document.querySelector('#content button[disabled]').textContent, 'Kết nối TikTok'); assert.ok(h.document.querySelector('a[href="https://business-api.tiktok.com/portal/docs"]'));
+    assert.match(h.document.querySelector('#content').textContent, /TikTok chưa tích hợp/); assert.equal(h.document.querySelector('#content button[disabled]').textContent, 'Kết nối TikTok'); assert.ok(h.document.querySelector('a[href="https://business-api.tiktok.com/portal/docs"]'));
     assert.deepEqual(h.errors, []);
   } finally { h.close(); }
   const viewer = await harness({ role: 'viewer' }); try {
@@ -617,7 +765,7 @@ test('Dataset list uses unique IDs from real jobs and reports and filters loaded
     assert.ok(table.querySelector('a[href="#datasets/dataset-alpha"]'));
     assert.ok(table.querySelector('a[href="#analysis?dataset=dataset-alpha"]'));
     assert.equal(h.document.querySelector('.datasets-summary article:first-child strong').textContent, '2');
-    assert.match(h.document.querySelector('.datasets-discovery-note').textContent, /tối đa 50/);
+    assert.match(h.document.querySelector('.datasets-discovery-note').textContent, /Tối đa 50/);
 
     h.document.querySelector('[name="status"]').value = 'valid';
     h.document.querySelector('[name="status"]').dispatchEvent(new h.w.Event('change', { bubbles: true }));
@@ -751,11 +899,174 @@ test('Clients, assets, and sync routes render without invented API calls or reco
 
     h.w.location.hash = 'sync';
     await h.until(() => h.document.querySelector('.nav-link[href="#sync"].active') && h.document.querySelector('.sync-history'));
-    assert.match(h.document.querySelector('.sync-history').textContent, /Test operator/);
-    assert.match(h.document.querySelector('.sync-history').textContent, /Thành công/);
+    assert.match(h.document.querySelector('.sync-check-history').textContent, /Test operator/);
+    assert.match(h.document.querySelector('.sync-check-history').textContent, /Thành công/);
+    assert.match(h.document.querySelector('.sync-history').textContent, /Không có sync_run phù hợp/);
     assert.equal(h.requests.filter(r => r.path === '/api/jobs').length, 1);
     assert.equal(h.requests.filter(r => r.path === '/api/google').length, 2);
+    assert.equal(h.requests.filter(r => r.path === '/api/sync-history').length, 1);
     assert.equal(h.requests.some(r => r.path === '/api/sync'), false);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Overview shows real platform status, current client and next actions without discovery calls', async () => {
+  const platformStatus = {
+    client_context: { client_id: 'client_meta_sandbox', environment: 'sandbox' }, assets: [],
+    platforms: [
+      { id: 'seo_website', label: 'SEO & Website', group: 'Google', integration: 'adapter_present', source_status: { ga4: { state: 'not_configured', label: 'Chưa cấu hình' } } },
+      { id: 'facebook_content', label: 'Facebook Content', group: 'Meta', integration: 'adapter_present', source_status: { facebook_content: { state: 'sync_succeeded', label: 'Đồng bộ thành công · có dữ liệu', verification: 'unverified', permission: { required: ['pages_read_user_content'], missing: ['pages_read_user_content'] }, asset: { name: 'VIO Agency' }, latest_run: { requested_start: '2026-10-15', requested_end: '2026-10-15', record_count: 1 } } } },
+      { id: 'facebook_ads', label: 'Facebook Ads', group: 'Meta', integration: 'adapter_present', source_status: { facebook_ads: { state: 'sync_empty', label: 'Đồng bộ thành công · không có bản ghi', permission: { required: ['ads_read'], missing: [] } } } },
+      { id: 'tiktok_ads', label: 'TikTok Ads', group: 'TikTok', integration: 'planned', source_status: { tiktok_ads: { state: 'unavailable', label: 'Chưa cấu hình tích hợp' } } }
+    ]
+  };
+  const h = await harness({ platformStatus });
+  try {
+    await h.until(() => h.document.querySelector('.platform-overview'));
+    const text = h.document.querySelector('.platform-overview').textContent;
+    assert.match(text, /client_meta_sandbox · Sandbox/);
+    for (const label of ['SEO & Website', 'Facebook Content', 'Facebook Ads', 'TikTok Ads']) assert.match(text, new RegExp(label));
+    assert.match(text, /VIO Agency/);
+    assert.match(text, /Đã lưu · chưa xác minh/);
+    assert.match(text, /Thiếu scope: pages_read_user_content/);
+    assert.match(text, /Scope yêu cầu có trong OAuth đã lưu/);
+    assert.match(text, /Đồng bộ thành công · không có bản ghi/);
+    assert.match(text, /Chưa cấu hình tích hợp/);
+    assert.ok(h.document.querySelector('.platform-workflow-links a[href="/marketing"]'));
+    assert.ok(h.document.querySelector('.platform-status-card a[href="#connections/facebook?start=2026-10-15&end=2026-10-15"]'));
+    assert.equal(h.requests.some(request => /\/api\/meta\/reporting\/(assets|sync)/.test(request.path)), false);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Sandbox overview hides unscoped KinderHealth reports and activity', async () => {
+  const platformStatus = {
+    client_context: { client_id: 'client_meta_sandbox', environment: 'sandbox' }, assets: [],
+    platforms: [{ id: 'facebook_content', label: 'Facebook Content', group: 'Meta', integration: 'adapter_present', source_status: { facebook_content: { state: 'connected_no_asset', label: 'Đã kết nối · chưa chọn tài sản' } } }]
+  };
+  const overviewData = { ...overview, client_context: platformStatus.client_context,
+    report_count: 9, reports: [{ id: 'primary-report', name: 'KinderHealth production report', report_type: 'seo', version: 2, created_at: '2026-10-18T00:00:00Z', valid: true }],
+    jobs: [{ id: 'primary-job', kind: 'analysis', status: 'succeeded', params: { report_type: 'seo' } }], running: 1, failed: 0 };
+  const h = await harness({ platformStatus, overviewData });
+  try {
+    await h.until(() => h.document.querySelector('.sandbox-workflow'));
+    const content = h.document.querySelector('#content');
+    assert.match(content.textContent, /client_meta_sandbox · Sandbox/);
+    assert.match(content.textContent, /Mở lại dữ liệu đã lưu và tiếp tục duyệt báo cáo của client sandbox/);
+    assert.doesNotMatch(content.textContent, /KinderHealth production report/);
+    assert.equal(content.querySelector('.overview-stats'), null);
+    assert.equal(content.querySelector('.overview-dashboard-grid'), null);
+    assert.equal(content.querySelector('.overview-recent-section'), null);
+    assert.equal(h.document.querySelector('.sidebar-status'), null);
+    assert.equal(content.querySelector('[data-action="check-google"]'), null);
+    assert.equal(content.querySelector('.platform-overview .platform-workflow-links'), null);
+    assert.ok(content.querySelector('.platform-status-card a[href="#connections/facebook"]'));
+    assert.equal(content.querySelector('a[href="#datasets"]'), null);
+    assert.equal(content.querySelector('a[href="#reports"]'), null);
+    assert.ok(content.querySelector('.sandbox-workflow a[href="#sync"]'));
+    assert.ok(content.querySelector('.sandbox-workflow a[href="/marketing"]'));
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Reports library lists published Bundle revisions and only offers configured Viewer handoff', async () => {
+  const reportBundles = [
+    { report_id: 'rpt_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', revision: 2, client_id: 'client_kinderhealth', name: 'SEO September', status: 'final', default_section: 'seo', start_date: '2026-09-01', end_date: '2026-09-30', published_at: '2026-10-01T00:00:00Z', viewer_handoff_supported: true },
+    { report_id: 'rpt_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', revision: 1, client_id: 'client_meta_sandbox', name: 'VIO Content', status: 'provisional', default_section: 'facebook_content', start_date: '2026-10-15', end_date: '2026-10-15', published_at: '2026-10-19T00:00:00Z', viewer_handoff_supported: false },
+    { report_id: 'rpt_cccccccccccccccccccccccccccccccc', revision: 1, client_id: 'client_kinderhealth', name: 'Draft only', status: 'draft', default_section: 'facebook_ads', start_date: '2026-10-01', end_date: '2026-10-02', published_at: null, viewer_handoff_supported: true }
+  ];
+  const h = await harness({ initialHash: 'reports', reportBundles });
+  try {
+    await h.until(() => h.document.querySelector('.report-bundle-library'));
+    const library = h.document.querySelector('.report-bundle-library');
+    assert.match(library.textContent, /SEO September/);
+    assert.match(library.textContent, /client_kinderhealth/);
+    assert.match(library.textContent, /Facebook Content/);
+    assert.match(library.textContent, /client_meta_sandbox/);
+    assert.doesNotMatch(library.textContent, /Draft only/);
+    const links = [...library.querySelectorAll('a[href^="/auth/handoff/start"]')];
+    assert.equal(links.length, 1);
+    assert.equal(links[0].getAttribute('href'), '/auth/handoff/start?mode=published&target_id=rpt_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&revision=2');
+    assert.equal(library.querySelectorAll('.connection-unavailable').length, 1);
+    assert.deepEqual(h.requests.filter(request => request.path === '/api/report-bundles').map(request => request.method), ['GET']);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Sync center filters persisted Meta sync runs and opens their period without resync', async () => {
+  const syncHistory = {
+    client_id: 'client_meta_sandbox', truncated: false,
+    assets: [{ id: 'page-db-id', provider: 'meta', asset_type: 'facebook_page', name: 'VIO Agency', external_id: '2188688654687066' }],
+    runs: [{ id: 'sync-run-2024', client_id: 'client_meta_sandbox', provider: 'meta', sync_type: 'backfill', asset_id: 'page-db-id', asset_type: 'facebook_page', asset_name: 'VIO Agency', asset_external_id: '2188688654687066', requested_start: '2024-03-01', requested_end: '2024-03-07', status: 'succeeded', record_count: 3, latest_available_date: '2024-03-07', created_at: '2024-03-08T00:00:00Z', job_kind: 'meta_sync' }]
+  };
+  const h = await harness({ initialHash: 'sync', syncHistory, overviewData: { ...overview, client_context: { client_id: 'client_meta_sandbox', environment: 'sandbox' } } });
+  try {
+    await h.until(() => h.document.querySelector('.sync-history tbody a[href^="#connections/facebook?"]'));
+    const tableText = h.document.querySelector('.sync-history').textContent;
+    assert.match(h.document.querySelector('.sync-client-scope').textContent, /client_meta_sandbox/);
+    assert.match(tableText, /VIO Agency/);
+    assert.match(tableText, /01\/03\/2024/);
+    assert.equal(h.document.querySelector('.sync-history tbody a[href^="#connections/facebook?"]').getAttribute('href'), '#connections/facebook?start=2024-03-01&end=2024-03-07');
+    const form = h.document.querySelector('#sync-history-filter');
+    form.elements.start.value = '2024-03-01';
+    form.elements.end.value = '2024-03-07';
+    form.elements.source.value = 'facebook_content';
+    form.dispatchEvent(new h.w.Event('submit', { bubbles: true, cancelable: true }));
+    await h.until(() => h.requests.some(request => request.path.includes('/api/sync-history?start=2024-03-01')));
+    await h.until(() => h.document.querySelector('#sync-history-filter') !== form);
+    assert.ok(h.requests.some(request => request.path.includes('source=facebook_content')));
+    assert.equal(h.requests.some(request => /\/api\/meta\/reporting\/(assets|sync)/.test(request.path)), false);
+    assert.equal(h.requests.some(request => request.path === '/api/google' || request.path === '/api/jobs'), false);
+    assert.equal(h.document.querySelector('.sync-sources').hidden, true);
+    assert.equal(h.document.querySelector('[data-action="check-google"]'), null);
+    assert.match(h.document.querySelector('.sync-check-history').textContent, /dữ liệu chung được ẩn trong sandbox/);
+    assert.deepEqual([...h.document.querySelectorAll('.sync-summary strong')].map(item => item.textContent), ['—', '—', '—']);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Assets page never presents primary Google configuration as a Meta sandbox asset', async () => {
+  const platformStatus = {
+    client_context: { client_id: 'client_meta_sandbox', environment: 'sandbox' },
+    sources: { facebook_content: { state: 'asset_selected', label: 'Đã chọn tài sản · chưa đồng bộ' } },
+    platforms: [],
+    assets: [{ id: 'page-db-id', provider: 'meta', asset_type: 'facebook_page', external_id: '2188688654687066', name: 'VIO Agency', currency: null, timezone: 'UTC' }]
+  };
+  const h = await harness({ initialHash: 'assets', platformStatus });
+  try {
+    await h.until(() => h.document.querySelector('.assets-table tbody tr'));
+    const text = h.document.querySelector('.assets-table').textContent;
+    assert.match(text, /VIO Agency/);
+    assert.match(text, /2188688654687066/);
+    assert.doesNotMatch(text, /property-config|property-url|sheet-config/);
+    assert.match(h.document.querySelector('.assets-notice').textContent, /không hiển thị tài sản Google thuộc client khác/);
+    assert.equal(h.requests.some(request => request.path === '/api/google'), false);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Sandbox connections do not expose or call the Primary Google connection', async () => {
+  const platformStatus = {
+    client_context: { client_id: 'client_meta_sandbox', environment: 'sandbox' },
+    platforms: [
+      { id: 'facebook_content', label: 'Facebook Content', source_status: { facebook_content: { state: 'sync_succeeded', label: 'Đồng bộ thành công · có dữ liệu', verification: 'unverified', permission: { required: ['pages_read_user_content'], missing: ['pages_read_user_content'] }, asset: { name: 'VIO Agency', external_id: '2188688654687066' }, latest_run: { requested_start: '2026-10-15', requested_end: '2026-10-15', record_count: 1 } } } },
+      { id: 'facebook_ads', label: 'Facebook Ads', source_status: { facebook_ads: { state: 'connected_no_asset', label: 'Đã kết nối · chưa chọn tài sản', permission: { required: ['ads_read'], missing: [] } } } },
+      { id: 'tiktok_ads', label: 'TikTok Ads', source_status: { tiktok_ads: { state: 'unavailable', label: 'Chưa cấu hình tích hợp' } } }
+    ]
+  };
+  const h = await harness({ initialHash: 'connections', platformStatus, metaStatus: { configured: true, connected: true, status: 'connected', client_id: 'client_meta_sandbox' }, overviewData: { ...overview, client_context: platformStatus.client_context } });
+  try {
+    await h.until(() => h.document.querySelector('.connection-meta') && h.document.querySelector('.connection-provider-grid .connection-source'));
+    const text = h.document.querySelector('#content').textContent;
+    assert.match(text, /client_meta_sandbox · Sandbox/);
+    assert.match(text, /Google OAuth và tài sản SEO thuộc client Primary/);
+    assert.match(text, /VIO Agency · 2188688654687066/);
+    assert.match(text, /Đã lưu · chưa xác minh/);
+    assert.match(text, /Thiếu scope: pages_read_user_content/);
+    assert.match(text, /Scope yêu cầu có trong OAuth đã lưu/);
+    assert.equal(h.document.querySelector('.connection-google'), null);
+    assert.equal(h.requests.some(request => request.path === '/api/google'), false);
+    assert.equal(h.requests.some(request => request.path.startsWith('/api/meta/reporting/')), false);
     assert.deepEqual(h.errors, []);
   } finally { h.close(); }
 });
@@ -809,8 +1120,15 @@ test('Google connection checks and disconnect use the existing routes and action
   } finally { h.close(); }
 });
 
-test('Meta connection shows persisted identity and revokes through its own API only', async () => {
-  const h = await harness({ metaStatus: { configured: true, connected: true, has_connection: true, status: 'connected', account_id: 'meta-user-test', account_name: '<img src=x onerror=alert(1)>', connected_at: '2026-09-01T00:00:00Z', expires_at: '2026-11-01T00:00:00Z', scopes: ['public_profile'] }, metaRevoked: false });
+test('Meta connection shows persisted identity, per-source scopes, and revokes through its own API only', async () => {
+  const h = await harness({
+    metaStatus: { configured: true, connected: true, has_connection: true, status: 'connected', account_id: 'meta-user-test', account_name: '<img src=x onerror=alert(1)>', connected_at: '2026-09-01T00:00:00Z', expires_at: '2026-11-01T00:00:00Z', scopes: ['public_profile'] },
+    platformStatus: { ...platformStatusFixture, sources: {
+      facebook_content: { permission: { required: ['pages_read_user_content'], missing: ['pages_read_user_content'] } },
+      facebook_ads: { permission: { required: ['ads_read'], missing: [] } }
+    } },
+    metaRevoked: false
+  });
   try {
     const before = h.requests.length;
     h.w.location.hash = 'connections/facebook';
@@ -818,11 +1136,13 @@ test('Meta connection shows persisted identity and revokes through its own API o
     const content = h.document.querySelector('#content');
     assert.match(content.textContent, /meta-user-test/);
     assert.match(content.textContent, /<img src=x onerror=alert\(1\)>/);
-    assert.equal(content.querySelector('img'), null);
+    assertOnlyProviderLogos(content);
     assert.match(content.textContent, /Đã kết nối OAuth/);
     assert.match(content.textContent, /public_profile/);
-    assert.match(content.textContent, /Đã xác thực Meta. Chưa chọn tài sản dữ liệu/);
-    assert.match(content.textContent, /Chưa khám phá tài sản hoặc đồng bộ/);
+    assert.doesNotMatch(content.textContent, /Đã xác thực Meta. Chưa chọn tài sản dữ liệu/);
+    assert.match(content.textContent, /Trạng thái cấp quyền đã lưu; chưa kiểm tra thu hồi tại Meta/);
+    assert.match(content.textContent, /Thiếu scope: pages_read_user_content/);
+    assert.match(content.textContent, /Scope yêu cầu có trong OAuth đã lưu · chưa kiểm tra thu hồi/);
     assert.equal(h.document.querySelector('[data-action="connect-facebook"]').disabled, false);
     h.document.querySelector('[data-action="disconnect-meta"]').click();
     assert.ok(h.document.querySelector('#modal').open);
@@ -830,9 +1150,462 @@ test('Meta connection shows persisted identity and revokes through its own API o
     await h.until(() => !h.document.querySelector('[data-action="disconnect-meta"]'));
     assert.match(h.document.querySelector('#toasts').textContent, /Meta chưa xác nhận thu hồi/);
     assert.match(h.document.querySelector('.connection-meta').textContent, /Chưa kết nối/);
-    assert.deepEqual(h.requests.slice(before).map(r => [r.method, r.path]), [['GET', '/api/meta'], ['GET', '/api/meta/reporting/assets'], ['DELETE', '/api/meta'], ['GET', '/api/meta']]);
+    assert.deepEqual(h.requests.slice(before).map(r => [r.method, r.path]), [['GET', '/api/meta'], ['GET', '/api/platform-status'], ['DELETE', '/api/meta'], ['GET', '/api/meta'], ['GET', '/api/platform-status']]);
     assert.deepEqual(h.errors, []);
   } finally { h.close(); }
+});
+
+for (const adsRead of [false, true]) {
+  test(`Meta connection page does not discover assets on render${adsRead ? ' even with ads_read' : ''}`, async () => {
+    const h = await harness({ initialHash: 'connections/facebook?oauth=success', metaStatus: {
+      client_id: 'client_meta_sandbox', configured: true, connected: true, status: 'connected',
+      scopes: ['pages_show_list', 'pages_read_engagement', ...(adsRead ? ['ads_read'] : [])]
+    } });
+    try {
+      await h.until(() => h.document.querySelector('.meta-reporting-card'));
+      assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta/reporting/')), []);
+      h.document.querySelector('[data-action="meta-load-assets"]').click();
+      await h.until(() => h.requests.some(r => r.path === '/api/meta/reporting/assets?source=facebook_content'));
+      await h.until(() => h.document.querySelector('#meta-reporting-region[data-discovery-loaded="true"]'));
+      assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta')).map(r => [r.method, r.path]), [
+        ['GET', '/api/meta'], ['GET', '/api/meta/reporting/assets?source=facebook_content']
+      ]);
+      assert.equal(h.w.location.hash, '#connections/facebook');
+      assert.match(h.document.querySelector('#content').textContent, /Đã kết nối Meta/);
+      assert.deepEqual(h.errors, []);
+    } finally { h.close(); }
+  });
+}
+
+test('Meta connection rendering does not auto-discover for primary or malformed client IDs', async () => {
+  for (const clientId of ['client_kinderhealth', 'client_other', undefined, null, ['client_meta_sandbox']]) {
+    const h = await harness({ initialHash: 'connections/facebook', metaStatus: {
+      client_id: clientId, configured: true, connected: true, status: 'connected', scopes: ['ads_read']
+    }, metaAssets: { selected: [], discovered: { facebook_ads: [{ id: 'act_123', name: 'Fixture Ad Account' }] } } });
+    try {
+      await h.until(() => h.document.querySelector('.meta-reporting-card'));
+      assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta/reporting/')).map(r => r.path), []);
+      assert.equal(h.document.querySelector('[data-action="meta-select-asset"][data-source="facebook_ads"]'), null);
+      assert.match(h.document.querySelector('.meta-reporting-card').textContent, /Ad Account cần kiểm tra/);
+      assert.deepEqual(h.errors, []);
+    } finally { h.close(); }
+  }
+});
+
+test('Meta Content discovery runs only after an explicit action', async () => {
+  const h = await harness({ initialHash: 'connections/facebook', metaStatus: {
+    client_id: 'client_meta_sandbox', configured: true, connected: true, status: 'connected', scopes: ['ads_read']
+  } });
+  try {
+    await h.until(() => h.document.querySelector('.meta-reporting-card'));
+    assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta/reporting/')), []);
+    h.document.querySelector('[data-action="meta-load-assets"]').click();
+    await h.until(() => h.requests.some(r => r.path === '/api/meta/reporting/assets?source=facebook_content'));
+    await h.until(() => h.document.querySelector('#meta-reporting-region[data-discovery-loaded="true"]'));
+    h.w.location.hash = 'overview';
+    await h.until(() => h.document.querySelector('.overview-page'));
+    h.w.location.hash = 'connections/facebook';
+    await h.until(() => h.document.querySelector('.meta-reporting-card'));
+    assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta/reporting/')).map(r => r.path), ['/api/meta/reporting/assets?source=facebook_content']);
+    assert.equal(h.requests.filter(r => r.path === '/api/meta').length, 2);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta sandbox Page selection preserves the POST contract and reloads Content-only discovery', async () => {
+  const h = await harness({ initialHash: 'connections/facebook', metaStatus: {
+    client_id: 'client_meta_sandbox', configured: true, connected: true, status: 'connected', scopes: ['ads_read']
+  }, metaAssets: { selected: [], discovered: { facebook_content: [{ id: '1234', name: 'Fixture Page' }] } } });
+  try {
+    h.document.querySelector('[data-action="meta-load-assets"]').click();
+    await h.until(() => h.document.querySelector('[data-action="meta-select-asset"]'));
+    h.document.querySelector('[data-action="meta-select-asset"][data-source="facebook_content"]').click();
+    await h.until(() => h.document.querySelector('[data-action="meta-select-asset"][data-enabled="false"]'));
+    const calls = h.requests.filter(r => r.path.startsWith('/api/meta'));
+    assert.deepEqual(calls.map(r => [r.method, r.path]), [
+      ['GET', '/api/meta'], ['GET', '/api/meta/reporting/assets?source=facebook_content'],
+      ['POST', '/api/meta/reporting/assets'], ['GET', '/api/meta'],
+    ]);
+    assert.deepEqual(calls.find(r => r.method === 'POST').body, { source: 'facebook_content', external_id: '1234', enabled: true });
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta sandbox filtered discovery errors preserve error handling without unfiltered fallback', async () => {
+  for (const status of [403, 502, 401]) {
+    const h = await harness({ initialHash: 'connections/facebook', metaStatus: {
+      client_id: 'client_meta_sandbox', configured: true, connected: true, status: 'connected', scopes: ['ads_read']
+    }, metaAssetsError: { status, message: 'Không đọc được danh sách Page thử nghiệm.' } });
+    try {
+      h.document.querySelector('[data-action="meta-load-assets"]').click();
+      if (status === 401) {
+        await h.until(() => h.document.querySelector('#auth-form'));
+        assert.match(h.document.body.textContent, /Phiên hết hạn/);
+      } else {
+        await h.until(() => h.document.querySelector('#content')?.textContent.includes('Chưa tải được danh sách Page:'));
+        assert.match(h.document.querySelector('#content').textContent, /Không đọc được danh sách Page thử nghiệm/);
+        assert.ok(h.document.querySelector('.connection-meta'));
+      }
+      if (status === 401) assert.equal(h.document.querySelector('.meta-reporting-card'), null);
+      else assert.ok(h.document.querySelector('.meta-reporting-card'));
+      assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta/reporting/')).map(r => [r.method, r.path]), [
+        ['GET', '/api/meta/reporting/assets?source=facebook_content']
+      ]);
+      assert.deepEqual(h.errors, []);
+    } finally { h.close(); }
+  }
+});
+
+test('Meta asset status refresh does not trigger provider discovery', async () => {
+  const metaStatus = { client_id: 'client_meta_sandbox', configured: true, connected: false, status: 'disconnected', scopes: ['ads_read'] };
+  const h = await harness({ initialHash: 'connections/facebook', metaStatus });
+  try {
+    await h.until(() => h.document.querySelector('.connection-meta'));
+    assert.equal(h.requests.some(r => r.path.startsWith('/api/meta/reporting/')), false);
+    Object.assign(metaStatus, { connected: true, status: 'connected' });
+    h.w.dispatchEvent(new h.w.HashChangeEvent('hashchange'));
+    await h.until(() => h.document.querySelector('.meta-reporting-card'));
+    metaStatus.client_id = 'client_kinderhealth';
+    h.w.dispatchEvent(new h.w.HashChangeEvent('hashchange'));
+    await h.until(() => h.document.querySelector('.meta-reporting-card'));
+    assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta/reporting/')).map(r => r.path), []);
+    assert.equal(h.requests.filter(r => r.path === '/api/meta').length, 3);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+function metaContentKpiFixture() {
+  return {
+    client_id: 'client_meta_sandbox', asset_id: 'meta-page-fixture', source: 'facebook_content',
+    period: { start: '2026-09-01', end: '2026-09-03' },
+    data_origin: 'persisted_unverified', verified: false, publishable: false,
+    metrics: {
+      'facebook_content.posts_published': {
+        status: 'available', unit: 'count', summary: { value: 2, coverage_days: 3, expected_days: 3 },
+        series: [{ date: '2026-09-01', value: 2 }, { date: '2026-09-02', value: 0 }, { date: '2026-09-03', value: 0 }],
+        freshness: { latest_sync_status: 'succeeded', latest_sync_at: '2026-09-04T01:00:00Z' }
+      },
+      'facebook_content.engagements': {
+        status: 'no_data', unit: 'count', summary: { value: null, coverage_days: 0, expected_days: 3 }, series: []
+      }
+    }
+  };
+}
+
+async function openMetaKpiFixture(metaKpis) {
+  const isAds = metaKpis.source === 'facebook_ads';
+  const h = await harness({ initialHash: 'connections/facebook', metaKpis, metaStatus: {
+    client_id: 'client_meta_sandbox', configured: true, connected: true, status: 'connected', scopes: ['pages_show_list']
+  }, metaAssets: {
+    selected: [{ id: 'meta-page-fixture', asset_type: isAds ? 'facebook_ad_account' : 'facebook_page', external_id: isAds ? 'act_1234' : '1234', enabled: true }],
+    discovered: { [metaKpis.source]: [{ id: isAds ? 'act_1234' : '1234', name: 'Fixture asset' }] }
+  } });
+  try {
+    await h.until(() => h.document.querySelector('[data-action="meta-view-kpis"]'));
+    h.document.querySelector('#meta-sync-start').value = metaKpis.period.start;
+    h.document.querySelector('#meta-sync-end').value = metaKpis.period.end;
+    h.document.querySelector('[data-action="meta-view-kpis"]').click();
+    await h.until(() => h.document.querySelector('#modal .meta-kpi-card, #modal .meta-snapshot-kpi'));
+    return h;
+  } catch (error) { h.close(); throw error; }
+}
+
+test('Meta Content KPI explains null period engagement, daily coverage and unverified persisted data', async () => {
+  const h = await openMetaKpiFixture(metaContentKpiFixture());
+  try {
+    const modal = h.document.querySelector('#modal');
+    const [posts, engagement] = modal.querySelectorAll('.meta-kpi-card');
+    assert.equal(posts.querySelector('h2').textContent, '2');
+    assert.match(posts.textContent, /Bài đăng mới trong kỳ/);
+    assert.match(posts.textContent, /Số ngày có dữ liệu:\s*3\s*\/\s*3/);
+    assert.match(posts.textContent, /Độ phủ ngày gồm cả ngày không có bài đăng/);
+    assert.equal(engagement.querySelector('h2').textContent, '—');
+    assert.match(engagement.textContent, /no_data/);
+    assert.match(engagement.textContent, /Tương tác phát sinh trong kỳ chưa có dữ liệu theo ngày từ Meta/);
+    assert.match(engagement.textContent, /Số ngày có dữ liệu:\s*0\s*\/\s*3/);
+    assert.match(modal.textContent, /Dữ liệu Meta chưa được xác minh độc lập/);
+    assert.match(modal.textContent, /Không sử dụng làm bằng chứng báo cáo chính thức/);
+    assert.match(modal.textContent, /KPI được đọc từ dữ liệu đã lưu trong Admin, không cập nhật trực tiếp từ Meta/);
+    assert.match(modal.textContent, /chưa đồng nghĩa với đã xác minh hoặc đủ điều kiện phát hành/);
+    assert.doesNotMatch(modal.textContent, /\bVerified\b|\bPublishable\b|Đã xác minh|Đủ điều kiện phát hành/);
+    assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta')).map(r => [r.method, r.path]), [
+      ['GET', '/api/meta'],
+      ['GET', '/api/meta/reporting/kpis/meta-page-fixture?start=2026-09-01&end=2026-09-03']
+    ]);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta Content KPI ignores unsupported lifetime details and never imputes missing shares or snapshot time', async () => {
+  const payload = metaContentKpiFixture();
+  // Extra fields are deliberately outside the current KPI contract, not a new contract.
+  payload.entries = [
+    { post_id: '1234_a', reactions_lifetime: 7, comments_lifetime: 3, shares_lifetime: null },
+    { post_id: '1234_b', reactions_lifetime: 5, comments_lifetime: 1 }
+  ];
+  const original = structuredClone(payload);
+  const h = await openMetaKpiFixture(payload);
+  try {
+    const modal = h.document.querySelector('#modal');
+    assert.equal(modal.querySelectorAll('.meta-kpi-card').length, 2);
+    assert.deepEqual([...modal.querySelectorAll('.meta-kpi-card h2')].map(e => e.textContent), ['2', '—']);
+    assert.match(modal.textContent, /không được quy thành tương tác phát sinh trong kỳ hoặc cộng lặp qua các ngày/);
+    assert.doesNotMatch(modal.textContent, /Reactions lifetime|Comments lifetime|Shares lifetime|1234_a|1234_b/);
+    // A sync timestamp is not a snapshot timestamp; the endpoint exposes no lifetime coverage.
+    assert.doesNotMatch(modal.textContent, /Thời điểm.*snapshot|2026-09-04|Số bài có dữ liệu/);
+    assert.deepEqual(payload, original);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta Content KPI preserves real zero and nonzero period engagement without claiming verification', async () => {
+  for (const value of [0, 8]) {
+    const payload = metaContentKpiFixture();
+    payload.metrics['facebook_content.engagements'] = {
+      status: 'available', unit: 'count', summary: { value, coverage_days: 3, expected_days: 3 }, series: []
+    };
+    const h = await openMetaKpiFixture(payload);
+    try {
+      const card = h.document.querySelectorAll('#modal .meta-kpi-card')[1];
+      assert.equal(card.querySelector('h2').textContent, String(value));
+      assert.match(card.textContent, /Có dữ liệu lưu, chưa xác minh/);
+      assert.doesNotMatch(card.textContent, /chưa có dữ liệu theo ngày|no_data/);
+      assert.deepEqual(h.errors, []);
+    } finally { h.close(); }
+  }
+});
+
+test('Meta Content KPI keeps missing value and coverage unknown and preserves error status', async () => {
+  for (const status of ['available', 'permission_denied', 'stale']) {
+    const payload = metaContentKpiFixture();
+    payload.metrics['facebook_content.engagements'] = { status, summary: { value: null, coverage_days: null } };
+    const h = await openMetaKpiFixture(payload);
+    try {
+      const card = h.document.querySelectorAll('#modal .meta-kpi-card')[1];
+      assert.equal(card.querySelector('h2').textContent, '—');
+      assert.match(card.textContent, /Số ngày có dữ liệu:\s*—\s*\/\s*—/);
+      if (status === 'available') assert.match(card.textContent, /chưa có dữ liệu theo ngày từ Meta/);
+      else {
+        assert.ok(card.textContent.includes(status));
+        assert.doesNotMatch(card.textContent, /chưa có dữ liệu theo ngày từ Meta/);
+      }
+      assert.deepEqual(h.errors, []);
+    } finally { h.close(); }
+  }
+});
+
+test('Meta Ads no_data renders unavailable values and keeps the unverified guard visible', async () => {
+  const payload = metaContentKpiFixture();
+  payload.source = 'facebook_ads';
+  payload.metrics = Object.fromEntries([
+    ['spend', 'currency'], ['impressions', 'count'], ['clicks', 'count'], ['leads', 'count']
+  ].map(([key, unit]) => [`facebook_ads.${key}`, {
+    status: 'no_data', unit, currency: unit === 'currency' ? 'VND' : null,
+    summary: { value: null, coverage_days: 0, expected_days: 3 }, series: [],
+    freshness: { latest_sync_status: 'succeeded', latest_sync_at: '2026-10-18T00:00:00Z' }
+  }]));
+  const h = await openMetaKpiFixture(payload);
+  try {
+    const modal = h.document.querySelector('#modal');
+    assert.equal(modal.querySelectorAll('.meta-kpi-card').length, 4);
+    for (const card of modal.querySelectorAll('.meta-kpi-card')) {
+      assert.equal(card.querySelector('h2').textContent, '—');
+      assert.match(card.textContent, /no_data/);
+      assert.match(card.textContent, /Số ngày có dữ liệu:\s*0\s*\/\s*3/);
+    }
+    assert.match(modal.textContent, /Dữ liệu Meta chưa được xác minh độc lập/);
+    assert.match(modal.textContent, /Không sử dụng làm bằng chứng báo cáo chính thức/);
+    assert.doesNotMatch(modal.textContent, /\bVerified\b|\bPublishable\b|Đã xác minh|Đủ điều kiện phát hành/);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta KPI response is not represented as no_data while its request is still pending', async () => {
+  const payload = metaContentKpiFixture();
+  payload.source = 'facebook_ads';
+  const path = '/api/meta/reporting/kpis/meta-page-fixture?start=2026-09-01&end=2026-09-03';
+  const h = await harness({ initialHash: 'connections/facebook', metaKpis: payload, metaStatus: {
+    client_id: 'client_meta_sandbox', configured: true, connected: true, status: 'connected', scopes: ['ads_read']
+  }, metaAssets: {
+    selected: [{ id: 'meta-page-fixture', asset_type: 'facebook_ad_account', external_id: 'act_123', enabled: true }],
+    discovered: { facebook_ads: [{ id: 'act_123', name: 'Fixture Ad Account' }] }
+  } });
+  try {
+    await h.until(() => h.document.querySelector('[data-action="meta-view-kpis"]'));
+    h.document.querySelector('#meta-sync-start').value = '2026-09-01';
+    h.document.querySelector('#meta-sync-end').value = '2026-09-03';
+    const release = h.hold(path);
+    const button = h.document.querySelector('[data-action="meta-view-kpis"]');
+    button.click();
+    await h.until(() => h.requests.some(request => request.path === path));
+    assert.equal(button.disabled, true);
+    assert.equal(h.document.querySelector('#modal').open, true);
+    assert.match(h.document.querySelector('#modal .meta-kpi-loading').textContent, /Đang tải KPI/);
+    assert.doesNotMatch(h.document.querySelector('#modal').textContent, /no_data/);
+    release();
+    await h.until(() => h.document.querySelector('#modal .meta-kpi-card'));
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta KPI sync states remain source-specific and empty is not inferred from missing metrics', async () => {
+  for (const source of ['facebook_content', 'facebook_ads']) {
+    for (const scenario of ['unsynced', 'empty', 'missing', 'data', 'failed', 'permission', 'running']) {
+      const payload = metaContentKpiFixture();
+      payload.source = source;
+      payload.metrics = {
+        [`${source}.${source === 'facebook_ads' ? 'spend' : 'posts_published'}`]: {
+          status: scenario === 'permission' ? 'permission_denied' : scenario === 'data' ? 'available' : 'no_data',
+          summary: { value: scenario === 'data' ? 0 : null }, series: [],
+          freshness: { latest_sync_status: scenario === 'unsynced' ? null : scenario === 'failed' ? 'failed' : scenario === 'running' ? 'running' : 'succeeded' },
+          warnings: scenario === 'empty' ? ['Latest sync returned no rows; earlier stored data may be stale.'] : []
+        },
+        // A different source must never contaminate this asset's state.
+        [`${source === 'facebook_ads' ? 'facebook_content' : 'facebook_ads'}.unrelated`]: {
+          status: 'permission_denied', summary: { value: 99 }, freshness: { latest_sync_status: 'failed' }
+        }
+      };
+      const h = await openMetaKpiFixture(payload);
+      try {
+        const text = h.document.querySelector('.meta-kpi-sync-state').textContent;
+        const expected = { unsynced: /Chưa có kết quả đồng bộ/, empty: /Đồng bộ thành công nhưng/, missing: /KPI trong kỳ chưa có dữ liệu đủ điều kiện/, data: /Có dữ liệu đã lưu/, failed: /bị lỗi hoặc chưa hoàn tất/, permission: /bị lỗi hoặc chưa hoàn tất/, running: /đang chờ hoặc đang chạy/ };
+        assert.match(text, expected[scenario]);
+        assert.equal(h.document.querySelector('.meta-kpi-card h2').textContent, scenario === 'data' ? '0' : '—');
+        assert.match(h.document.querySelector('.meta-kpi-card').textContent, /Số ngày có dữ liệu:\s*—\s*\/\s*—/);
+        assert.match(h.document.querySelector('#modal').textContent, /chưa được xác minh độc lập/);
+        if (scenario === 'empty' && source === 'facebook_ads') assert.match(text, /Insights không trả dữ liệu/);
+        assert.deepEqual(h.errors, []);
+      } finally { h.close(); }
+    }
+  }
+});
+
+test('Meta KPI request failures replace loading without fabricating empty data', async () => {
+  for (const error of [{ status: 403, message: 'Thiếu quyền fixture' }, { status: 502, message: 'Provider fixture failure' }, { network: true }]) {
+    const h = await harness({ initialHash: 'connections/facebook', metaKpisError: error,
+      metaStatus: { configured: true, connected: true, client_id: 'client_meta_sandbox' },
+      metaAssets: { selected: [{ id: 'meta-page-fixture', asset_type: 'facebook_page', external_id: '1234', enabled: true }], discovered: { facebook_content: [{ id: '1234', name: 'Fixture Page' }] } }
+    });
+    try {
+      await h.until(() => h.document.querySelector('[data-action="meta-view-kpis"]'));
+      h.document.querySelector('[data-action="meta-view-kpis"]').click();
+      await h.until(() => h.document.querySelector('.meta-kpi-request-error'));
+      assert.equal(h.document.querySelector('.meta-kpi-loading'), null);
+      assert.equal(h.document.querySelector('.meta-kpi-card'), null);
+      assert.match(h.document.querySelector('#modal').textContent, /Không tải được KPI/);
+      assert.doesNotMatch(h.document.querySelector('#modal').textContent, /no_data|Đồng bộ thành công/);
+      assert.deepEqual(h.errors, []);
+    } finally { h.close(); }
+  }
+});
+
+test('Meta KPI late response cannot reopen a dismissed loading modal', async () => {
+  const h = await harness({ initialHash: 'connections/facebook', metaKpis: metaContentKpiFixture(),
+    metaStatus: { configured: true, connected: true, client_id: 'client_meta_sandbox' },
+    metaAssets: { selected: [{ id: 'meta-page-fixture', asset_type: 'facebook_page', external_id: '1234', enabled: true }], discovered: { facebook_content: [{ id: '1234', name: 'Fixture Page' }] } }
+  });
+  try {
+    await h.until(() => h.document.querySelector('[data-action="meta-view-kpis"]'));
+    h.document.querySelector('#meta-sync-start').value = '2026-09-01';
+    h.document.querySelector('#meta-sync-end').value = '2026-09-03';
+    const release = h.hold('/api/meta/reporting/kpis/meta-page-fixture?start=2026-09-01&end=2026-09-03');
+    const button = h.document.querySelector('[data-action="meta-view-kpis"]');
+    button.click();
+    await h.until(() => h.document.querySelector('.meta-kpi-loading'));
+    h.document.querySelector('#modal [data-action="close-modal"]').click();
+    release();
+    await h.until(() => !button.disabled);
+    assert.equal(h.document.querySelector('#modal').open, false);
+    assert.equal(h.document.querySelector('.meta-kpi-card'), null);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta Ads discovery requires explicit account ID and operator confirmation, preserving Content-only startup', async () => {
+  const h = await harness({ initialHash: 'connections/facebook', metaStatus: {
+    client_id: 'client_meta_sandbox', configured: true, connected: true, status: 'connected', scopes: ['ads_read']
+  } });
+  try {
+    h.document.querySelector('[data-action="meta-load-assets"]').click();
+    await h.until(() => h.requests.some(r => r.path === '/api/meta/reporting/assets?source=facebook_content'));
+    await h.until(() => h.document.querySelector('#meta-reporting-region[data-discovery-loaded="true"]'));
+    await h.until(() => h.document.querySelector('[data-action="meta-discover-ads"]'));
+    assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta/reporting')).map(r => r.path), [
+      '/api/meta/reporting/assets?source=facebook_content'
+    ]);
+    const button = h.document.querySelector('[data-action="meta-discover-ads"]');
+    h.document.querySelector('#meta-ads-account').value = 'act_123';
+    button.click();
+    await h.until(() => h.document.querySelector('#toasts').textContent.includes('xác nhận quyền'));
+    assert.equal(h.requests.some(r => r.path.includes('external_id=')), false);
+    h.document.querySelector('#meta-ads-authorized').checked = true;
+    await h.until(() => !button.disabled);
+    button.click();
+    await h.until(() => h.document.querySelector('.meta-reporting-card').textContent.includes('Authorized fixture account'));
+    assert.deepEqual(h.requests.filter(r => r.path.startsWith('/api/meta/reporting')).map(r => [r.method, r.path]), [
+      ['GET', '/api/meta/reporting/assets?source=facebook_content'],
+      ['GET', '/api/meta/reporting/assets?source=facebook_ads&external_id=act_123']
+    ]);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta snapshot lifetime displays partial shares and fetched timestamp without changing period engagement', async () => {
+  const data = metaContentKpiFixture();
+  data.snapshot_metrics = { snapshot_id: 'fixture-snapshot', fetched_at: '2026-09-04T02:03:04Z', timezone: 'UTC',
+    verified: false, publishable: false, kpis: [
+      { key: 'shares_lifetime', label: 'Shares lifetime', grain: 'snapshot', status: 'partial', value: null,
+        observed_sum: 5, coverage: { available: 1, expected: 2, unit: 'posts' } },
+      { key: 'comments_lifetime', label: 'Comments lifetime', grain: 'snapshot', status: 'available', value: 0,
+        coverage: { available: 2, expected: 2, unit: 'posts' } }
+    ] };
+  const h = await openMetaKpiFixture(data);
+  try {
+    const section = h.document.querySelector('.meta-snapshot-metrics');
+    assert.match(section.textContent, /2026-09-04T02:03:04Z/);
+    assert.match(section.textContent, /1 \/ 2 bài có dữ liệu/);
+    assert.match(section.textContent, /Tổng trên các bài có dữ liệu: 5. Chưa phải tổng đầy đủ/);
+    assert.deepEqual([...section.querySelectorAll('h2')].map(e => e.textContent), ['—', '0']);
+    assert.match(section.textContent, /Chưa xác minh/);
+    assert.equal(h.document.querySelectorAll('#modal .meta-kpi-card h2')[1].textContent, '—');
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta Ads snapshot uses exact currency values instead of duplicate legacy totals', async () => {
+  const data = metaContentKpiFixture();
+  data.source = 'facebook_ads';
+  data.metrics = { 'facebook_ads.spend': { status: 'available', unit: 'currency', currency: 'VND',
+    summary: { value: 999999, coverage_days: 2, expected_days: 2 }, series: [] } };
+  data.snapshot_metrics = { fetched_at: '2026-09-04T02:03:04Z', timezone: 'America/Los_Angeles', kpis: [
+    { key: 'spend', label: 'Chi phí', status: 'available', value: '0.30', currency: 'USD',
+      coverage: { available: 2, expected: 2, unit: 'days' } }
+  ] };
+  const h = await openMetaKpiFixture(data);
+  try {
+    const modal = h.document.querySelector('#modal');
+    assert.equal(modal.querySelector('.meta-snapshot-kpi h2').textContent, '0.30 USD');
+    assert.equal(modal.querySelector('.meta-kpi-card'), null);
+    assert.doesNotMatch(modal.textContent, /VND|999999/);
+    assert.match(modal.textContent, /America\/Los_Angeles/);
+    assert.match(modal.textContent, /chưa được xác minh độc lập/);
+    assert.deepEqual(h.errors, []);
+  } finally { h.close(); }
+});
+
+test('Meta card distinguishes no scheduled token expiry from a missing expiry', async () => {
+  for (const unbounded of [true, false]) {
+    const h = await harness({ metaStatus: { configured: true, connected: true, has_connection: true, status: 'connected', expires_at: null, expires_at_unbounded: unbounded, data_access_expires_at: '2026-11-01T00:00:00Z', scopes: [] } });
+    try {
+      h.w.location.hash = 'connections/facebook';
+      await h.until(() => h.document.querySelector('[data-action="disconnect-meta"]'));
+      const facts = [...h.document.querySelectorAll('.connection-meta .connection-facts > div')];
+      const expiry = facts.find(el => el.querySelector('dt').textContent === 'Hết hạn token');
+      assert.equal(expiry.querySelector('dd').textContent, unbounded ? 'Không có mốc hết hạn cố định' : '—');
+      assert.match(h.document.querySelector('.connection-meta').textContent, /chưa kiểm tra thu hồi tại Meta/);
+      assert.deepEqual(h.errors, []);
+    } finally { h.close(); }
+  }
 });
 
 test('Meta card exposes connect before authentication without fabricating assets', async () => {
@@ -864,7 +1637,7 @@ test('Meta callback messages remain on Facebook and never start Google checks or
       assert.match(h.document.querySelector('#content').textContent, message);
       assert.equal(h.document.querySelector('#content h1').textContent, 'Facebook');
     }
-    assert.ok(h.requests.slice(before).every(r => r.method === 'GET' && r.path === '/api/meta'));
+    assert.ok(h.requests.slice(before).every(r => r.method === 'GET' && ['/api/meta', '/api/platform-status'].includes(r.path)));
     assert.deepEqual(h.errors, []);
   } finally { h.close(); }
 });
@@ -1238,7 +2011,7 @@ test('Report Builder preview reads the saved revision and deduplicates Dataset r
     assert.match(h.document.querySelector('.report-preview-section#report-preview-seo').textContent, /120/);
     assert.match(h.document.querySelector('.report-preview-summary').textContent, /September report/);
     assert.match(h.document.querySelector('.report-preview-summary').textContent, /BẢN NHÁP/);
-    assert.match(h.document.querySelector('.report-builder-preview').textContent, /báo cáo chưa được xuất bản/);
+    assert.match(h.document.querySelector('.report-builder-preview').textContent, /Báo cáo chưa được xuất bản/);
     assert.equal(h.document.querySelectorAll('.report-preview-section input, .report-preview-section select, .report-preview-section textarea').length, 0);
     assert.equal(h.document.querySelector('[data-action="publish-confirm"]'), null);
     assert.deepEqual(h.requests.slice(before), [
@@ -1354,7 +2127,7 @@ test('Preview preserves missing metrics, real zero values, partial quality and e
     assert.match(h.document.querySelector('.report-preview-quality').textContent, /partial/);
     assert.match(h.document.querySelector('.report-preview-quality').textContent, /Fixture: incomplete period/);
     assert.doesNotMatch(h.document.querySelector('.report-preview-quality').textContent, /Không có cảnh báo/);
-    assert.equal(h.document.querySelector('#report-preview-gmb img'), null);
+    assertOnlyProviderLogos(h.document.querySelector('#report-preview-gmb'));
     assert.match(h.document.querySelector('#report-preview-gmb').textContent, /<img src=x onerror=alert\(1\)>/);
     h.document.querySelector('[data-action="report-builder-preview-back-dataset"]').click();
     assert.match(h.document.querySelector('[aria-current="step"]').textContent, /Chọn Dataset/);

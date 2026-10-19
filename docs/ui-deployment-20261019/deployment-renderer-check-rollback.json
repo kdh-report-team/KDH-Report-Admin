@@ -1,0 +1,9 @@
+{
+  "image_id": "sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d",
+  "tag": "kdh-admin-meta:ui-20261019-43c187981323",
+  "rollback_container": "kdh-meta-2b-admin-20261016-132836-5c512a53-before-ui-20261019",
+  "provider_calls": 0,
+  "status": "BLOCKED",
+  "error_type": "AssertionError",
+  "rollback": "PASS; prior application restored"
+}

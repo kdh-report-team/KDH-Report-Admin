@@ -1,0 +1,30 @@
+{
+  "safe_values": {
+    "JOB_MODE": "request",
+    "META_CLIENT_ID": "client_meta_sandbox",
+    "APP_URL": "http://localhost:8191",
+    "META_REDIRECT_URI": "http://localhost:8191/api/meta/callback",
+    "META_APP_ID": "1831786608275511",
+    "META_CONFIG_ID": "1683586973182335",
+    "ADMIN_SESSION_COOKIE_NAME": "kdh_meta_acceptance_session",
+    "COOKIE_SECURE": "0"
+  },
+  "presence": {
+    "ENCRYPTION_KEY": "PRESENT",
+    "META_APP_SECRET": "PRESENT",
+    "DATABASE_URL": "PRESENT"
+  },
+  "config_matches_container": {
+    "JOB_MODE": true,
+    "META_CLIENT_ID": true,
+    "APP_URL": true,
+    "META_REDIRECT_URI": true,
+    "META_APP_ID": true,
+    "META_CONFIG_ID": true,
+    "ADMIN_SESSION_COOKIE_NAME": true,
+    "COOKIE_SECURE": true,
+    "ENCRYPTION_KEY": true,
+    "META_APP_SECRET": true,
+    "DATABASE_URL": true
+  }
+}

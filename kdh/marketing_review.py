@@ -69,7 +69,9 @@ def _dataset(db, dataset_id):
             "not_marketing_dataset",
         )
 
-    if data.get("client_id") != DEFAULT_CLIENT_ID:
+    is_meta = data.get('params', {}).get('source') in ('facebook_content', 'facebook_ads')
+    if (not isinstance(data.get('client_id'), str) or not data['client_id']
+            or (not is_meta and data.get("client_id") != DEFAULT_CLIENT_ID)):
         raise Problem(
             "Dataset khong thuoc khach hang hien tai.",
             404,
@@ -107,6 +109,7 @@ def _assess(row, data):
     quality = quality if isinstance(quality, dict) else {}
 
     source = params.get("source")
+    is_meta = source in ('facebook_content', 'facebook_ads')
     source_data = (
         sources.get(source)
         if isinstance(source, str)
@@ -122,6 +125,8 @@ def _assess(row, data):
         "start": params.get("previous_start"),
         "end": params.get("previous_end"),
     }
+    if is_meta and params.get('compare') is False:
+        comparison = None
 
     # Dataset must remain the internal snapshot
     # created by Step 8.8.2.
@@ -130,7 +135,7 @@ def _assess(row, data):
         data.get("data_origin") == "persisted_unverified",
         "untrusted_origin",
     )
-    check(params.get("compare") is True, "comparison_required")
+    check(params.get("compare") is (False if is_meta else True), "comparison_required")
     check(params.get("demo") is not True, "demo_data")
     check(
         params.get("report_type") == row["report_type"],
@@ -180,7 +185,7 @@ def _assess(row, data):
         "invalid_preview",
     )
     check(
-        preview.get("client_id") == DEFAULT_CLIENT_ID,
+        preview.get("client_id") == (data['client_id'] if is_meta else DEFAULT_CLIENT_ID),
         "client_mismatch",
     )
     check(
@@ -343,7 +348,7 @@ def _assess(row, data):
 
     return {
         "dataset_id": row["id"],
-        "client_id": DEFAULT_CLIENT_ID,
+        "client_id": data['client_id'],
         "source": source,
         "dataset_sha256": snapshot_hash,
         "review_status": (
@@ -523,7 +528,7 @@ def submit_marketing_review(
             (
                 review_id,
                 dataset_id,
-                DEFAULT_CLIENT_ID,
+                data['client_id'],
                 reviewer_id,
                 result["dataset_sha256"],
                 decision,

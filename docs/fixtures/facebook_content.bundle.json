@@ -1,0 +1,891 @@
+{
+  "schema_version": "1.0",
+  "report": {
+    "id": "rpt_f970ac9970eb4868590addebc027e6dd",
+    "revision": 1,
+    "status": "final",
+    "name": "Offline facebook_content"
+  },
+  "client": {
+    "id": "client_meta_sandbox",
+    "name": "Meta HTTP Tests",
+    "slug": "meta-http-test",
+    "timezone": "Asia/Ho_Chi_Minh"
+  },
+  "period": {
+    "start": "2026-09-01",
+    "end": "2026-09-02"
+  },
+  "comparison": null,
+  "freshness": {
+    "generated_at": "2026-10-17T11:05:33.241161+00:00",
+    "published_at": "2026-10-17T11:05:33.284761+00:00"
+  },
+  "quality": {
+    "status": "complete",
+    "warnings": [
+      "facebook_content: facebook_content: Tương tác trên từng post là lifetime tại thời điểm lấy; không cộng vào KPI tương tác theo ngày.",
+      "facebook_content: facebook_content: Page/Post views, reach và follower Insights chưa được truy vấn; không suy đoán các giá trị này.",
+      "facebook_content: facebook_content: Đồng bộ Meta thành công không tự thay thế xác minh nguồn và phê duyệt phát hành.",
+      "facebook_content: facebook_content: Application adapter verification and authorized review; not an independent Meta audit.",
+      "facebook_content: facebook_content: Unavailable/partial optional metrics are not verified claims. Lifetime is not period engagement."
+    ]
+  },
+  "navigation": {
+    "default_section": "facebook_content",
+    "sections": [
+      "facebook_content"
+    ]
+  },
+  "branding": {},
+  "sections": {
+    "facebook_content": {
+      "dataset_id": "c08456952e7ed9a8bdf1a374e5b82b25",
+      "report_type": "facebook-content",
+      "created_at": "2026-10-17T11:05:33.211865+00:00",
+      "valid": true,
+      "position": 0,
+      "quality": {
+        "status": "complete",
+        "warnings": [
+          "facebook_content: Tương tác trên từng post là lifetime tại thời điểm lấy; không cộng vào KPI tương tác theo ngày.",
+          "facebook_content: Page/Post views, reach và follower Insights chưa được truy vấn; không suy đoán các giá trị này.",
+          "facebook_content: Đồng bộ Meta thành công không tự thay thế xác minh nguồn và phê duyệt phát hành.",
+          "facebook_content: Application adapter verification and authorized review; not an independent Meta audit.",
+          "facebook_content: Unavailable/partial optional metrics are not verified claims. Lifetime is not period engagement."
+        ]
+      },
+      "data": {
+        "id": "c08456952e7ed9a8bdf1a374e5b82b25",
+        "client_id": "client_meta_sandbox",
+        "created_at": "2026-10-17T11:05:33.211865+00:00",
+        "dataset_kind": "marketing_release_snapshot_v1",
+        "data_origin": "provider_origin_confirmed",
+        "params": {
+          "report_type": "facebook-content",
+          "start": "2026-09-01",
+          "end": "2026-09-02",
+          "compare": false,
+          "previous_start": null,
+          "previous_end": null,
+          "source": "facebook_content"
+        },
+        "sources": {
+          "facebook_content": {
+            "source": "facebook_content",
+            "requested_start": "2026-09-01",
+            "requested_end": "2026-09-02",
+            "status": "ready",
+            "data_origin": "provider_origin_confirmed",
+            "timezone": "UTC",
+            "latest_available_date": "2026-09-02",
+            "latest_post_date": "2026-09-01",
+            "daily": [
+              {
+                "date": "2026-09-01",
+                "posts_published": 1,
+                "reactions": null,
+                "comments": null,
+                "shares": null,
+                "engagements": null
+              },
+              {
+                "date": "2026-09-02",
+                "posts_published": 0,
+                "reactions": null,
+                "comments": null,
+                "shares": null,
+                "engagements": null
+              }
+            ],
+            "entries": [
+              {
+                "date": "2026-09-01",
+                "post_id": "1234_1",
+                "reactions_lifetime": 4,
+                "comments_lifetime": 2,
+                "shares_lifetime": 3
+              }
+            ],
+            "totals": {
+              "posts_published": 1,
+              "reactions": null,
+              "comments": null,
+              "shares": null,
+              "engagements": null
+            },
+            "warnings": [
+              "Tương tác trên từng post là lifetime tại thời điểm lấy; không cộng vào KPI tương tác theo ngày.",
+              "Page/Post views, reach và follower Insights chưa được truy vấn; không suy đoán các giá trị này.",
+              "Đồng bộ Meta thành công không tự thay thế xác minh nguồn và phê duyệt phát hành.",
+              "Application adapter verification and authorized review; not an independent Meta audit.",
+              "Unavailable/partial optional metrics are not verified claims. Lifetime is not period engagement."
+            ],
+            "contract_version": "meta-reporting-v1",
+            "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+            "identity": {
+              "client_id": "client_meta_sandbox",
+              "external_id": "1234",
+              "asset_type": "facebook_page",
+              "account": null
+            },
+            "provenance": {
+              "provider": "meta",
+              "graph_version": "v26.0",
+              "app_id": "test-app",
+              "account_id": "999123",
+              "grant_observed_at": "2026-10-17T11:05:33.022132+00:00",
+              "grant_connected_at": "2026-10-17T11:05:32.761948+00:00",
+              "permissions": [
+                "ads_read",
+                "pages_read_engagement",
+                "pages_read_user_content",
+                "pages_show_list"
+              ],
+              "asset_access_confirmed": true,
+              "pagination_complete": true
+            },
+            "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+            "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2",
+            "sync_run_id": "67be95c72728774c0f963f6e6266c59a",
+            "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+            "kpis": [
+              {
+                "key": "posts_published",
+                "metric_id": "facebook_content.posts_published",
+                "label": "Bài đăng mới trong kỳ",
+                "unit": "count",
+                "currency": null,
+                "value": 1,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "sum",
+                "grain": "day",
+                "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_content",
+                "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                "evidence_id": "25387def1cbd0100fe08a201caf0f1f0535c7b69aa7984435b46ea5604e8d93a",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "engagements",
+                "metric_id": "facebook_content.engagements",
+                "label": "Tương tác phát sinh trong kỳ",
+                "unit": "count",
+                "currency": null,
+                "value": null,
+                "status": "no_data",
+                "coverage": {
+                  "available": 0,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "sum",
+                "grain": "day",
+                "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": false,
+                "publishable": false,
+                "type": "kpi",
+                "source": "facebook_content",
+                "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                "evidence_id": "ef203ee96a07cc418a144da7325a216fb1e06d0cecc9fecb2fa35a455c49b1fc",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+                },
+                "evidence_status": "not_ready"
+              },
+              {
+                "key": "reactions_lifetime",
+                "metric_id": "facebook_content.reactions_lifetime",
+                "label": "Reactions lifetime",
+                "unit": "count",
+                "currency": null,
+                "value": 4,
+                "status": "available",
+                "coverage": {
+                  "available": 1,
+                  "expected": 1,
+                  "unit": "posts"
+                },
+                "observed_sum": 4,
+                "aggregation": "sum_posts_at_fetch",
+                "grain": "snapshot",
+                "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_content",
+                "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                "evidence_id": "2e27b714e7f1ba89a1b2368672f4b8b52009d8d88c4b0c69a572ba5a72d7df22",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "comments_lifetime",
+                "metric_id": "facebook_content.comments_lifetime",
+                "label": "Comments lifetime",
+                "unit": "count",
+                "currency": null,
+                "value": 2,
+                "status": "available",
+                "coverage": {
+                  "available": 1,
+                  "expected": 1,
+                  "unit": "posts"
+                },
+                "observed_sum": 2,
+                "aggregation": "sum_posts_at_fetch",
+                "grain": "snapshot",
+                "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_content",
+                "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                "evidence_id": "84f09f725e5eabc559433a06c14565f9b297ecf18fcbc10d01e08c492134eb5f",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "shares_lifetime",
+                "metric_id": "facebook_content.shares_lifetime",
+                "label": "Shares lifetime",
+                "unit": "count",
+                "currency": null,
+                "value": 3,
+                "status": "available",
+                "coverage": {
+                  "available": 1,
+                  "expected": 1,
+                  "unit": "posts"
+                },
+                "observed_sum": 3,
+                "aggregation": "sum_posts_at_fetch",
+                "grain": "snapshot",
+                "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_content",
+                "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                "evidence_id": "4aefe8a23650a182cd2d300e5cce440dec3ade1db7a01d7ef55e312727e82209",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              }
+            ]
+          }
+        },
+        "marketing": {
+          "schema_version": "1.0",
+          "kind": "approved_release",
+          "widgets": [
+            {
+              "key": "posts_published",
+              "metric_id": "facebook_content.posts_published",
+              "label": "Bài đăng mới trong kỳ",
+              "unit": "count",
+              "currency": null,
+              "value": 1,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "sum",
+              "grain": "day",
+              "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_content",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "evidence_id": "25387def1cbd0100fe08a201caf0f1f0535c7b69aa7984435b46ea5604e8d93a",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "67be95c72728774c0f963f6e6266c59a"
+                ],
+                "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "engagements",
+              "metric_id": "facebook_content.engagements",
+              "label": "Tương tác phát sinh trong kỳ",
+              "unit": "count",
+              "currency": null,
+              "value": null,
+              "status": "no_data",
+              "coverage": {
+                "available": 0,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "sum",
+              "grain": "day",
+              "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": false,
+              "publishable": false,
+              "type": "kpi",
+              "source": "facebook_content",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "evidence_id": "ef203ee96a07cc418a144da7325a216fb1e06d0cecc9fecb2fa35a455c49b1fc",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "67be95c72728774c0f963f6e6266c59a"
+                ],
+                "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+              },
+              "evidence_status": "not_ready"
+            },
+            {
+              "key": "reactions_lifetime",
+              "metric_id": "facebook_content.reactions_lifetime",
+              "label": "Reactions lifetime",
+              "unit": "count",
+              "currency": null,
+              "value": 4,
+              "status": "available",
+              "coverage": {
+                "available": 1,
+                "expected": 1,
+                "unit": "posts"
+              },
+              "observed_sum": 4,
+              "aggregation": "sum_posts_at_fetch",
+              "grain": "snapshot",
+              "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_content",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "evidence_id": "2e27b714e7f1ba89a1b2368672f4b8b52009d8d88c4b0c69a572ba5a72d7df22",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "67be95c72728774c0f963f6e6266c59a"
+                ],
+                "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "comments_lifetime",
+              "metric_id": "facebook_content.comments_lifetime",
+              "label": "Comments lifetime",
+              "unit": "count",
+              "currency": null,
+              "value": 2,
+              "status": "available",
+              "coverage": {
+                "available": 1,
+                "expected": 1,
+                "unit": "posts"
+              },
+              "observed_sum": 2,
+              "aggregation": "sum_posts_at_fetch",
+              "grain": "snapshot",
+              "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_content",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "evidence_id": "84f09f725e5eabc559433a06c14565f9b297ecf18fcbc10d01e08c492134eb5f",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "67be95c72728774c0f963f6e6266c59a"
+                ],
+                "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "shares_lifetime",
+              "metric_id": "facebook_content.shares_lifetime",
+              "label": "Shares lifetime",
+              "unit": "count",
+              "currency": null,
+              "value": 3,
+              "status": "available",
+              "coverage": {
+                "available": 1,
+                "expected": 1,
+                "unit": "posts"
+              },
+              "observed_sum": 3,
+              "aggregation": "sum_posts_at_fetch",
+              "grain": "snapshot",
+              "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_content",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "evidence_id": "4aefe8a23650a182cd2d300e5cce440dec3ade1db7a01d7ef55e312727e82209",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "67be95c72728774c0f963f6e6266c59a"
+                ],
+                "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "evidence_id": "25387def1cbd0100fe08a201caf0f1f0535c7b69aa7984435b46ea5604e8d93a",
+            "metric_id": "facebook_content.posts_published",
+            "claim": null,
+            "metric": "Bài đăng mới trong kỳ",
+            "before": null,
+            "after": 1,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_content",
+            "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "67be95c72728774c0f963f6e6266c59a"
+              ],
+              "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+              "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "2e27b714e7f1ba89a1b2368672f4b8b52009d8d88c4b0c69a572ba5a72d7df22",
+            "metric_id": "facebook_content.reactions_lifetime",
+            "claim": null,
+            "metric": "Reactions lifetime",
+            "before": null,
+            "after": 4,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_content",
+            "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "67be95c72728774c0f963f6e6266c59a"
+              ],
+              "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+              "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "84f09f725e5eabc559433a06c14565f9b297ecf18fcbc10d01e08c492134eb5f",
+            "metric_id": "facebook_content.comments_lifetime",
+            "claim": null,
+            "metric": "Comments lifetime",
+            "before": null,
+            "after": 2,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_content",
+            "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "67be95c72728774c0f963f6e6266c59a"
+              ],
+              "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+              "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "4aefe8a23650a182cd2d300e5cce440dec3ade1db7a01d7ef55e312727e82209",
+            "metric_id": "facebook_content.shares_lifetime",
+            "claim": null,
+            "metric": "Shares lifetime",
+            "before": null,
+            "after": 3,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_content",
+            "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "67be95c72728774c0f963f6e6266c59a"
+              ],
+              "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+              "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          }
+        ],
+        "opportunities": [],
+        "executive_summary": {
+          "verified_kpi_count": 4,
+          "limitations": [
+            "Chỉ kết luận trên KPI có bằng chứng. Lifetime không phải tương tác trong kỳ; không cộng reach/frequency theo ngày.",
+            "Chưa có mục tiêu/khối lượng công việc được nhập và duyệt thì chưa đánh giá mức đạt cam kết."
+          ]
+        },
+        "platforms": {
+          "ga4": {
+            "label": "Google Analytics 4",
+            "integration": "adapter_present",
+            "status": "not_in_report"
+          },
+          "gsc": {
+            "label": "Google Search Console",
+            "integration": "adapter_present",
+            "status": "not_in_report"
+          },
+          "keywords": {
+            "label": "Keyword Ranking",
+            "integration": "detail_rows_present",
+            "status": "not_in_report"
+          },
+          "google_ads": {
+            "label": "Google Ads",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "facebook_ads": {
+            "label": "Meta / Facebook & Instagram Ads",
+            "integration": "adapter_present",
+            "status": "not_in_report"
+          },
+          "facebook_content": {
+            "label": "Facebook Page Content",
+            "integration": "adapter_present",
+            "status": "included"
+          },
+          "instagram": {
+            "label": "Instagram Organic",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "tiktok_ads": {
+            "label": "TikTok Ads",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "tiktok_organic": {
+            "label": "TikTok Organic",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "youtube": {
+            "label": "YouTube Analytics",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "gmb": {
+            "label": "Google Business Profile",
+            "integration": "csv_only",
+            "status": "not_in_report"
+          },
+          "crm": {
+            "label": "Leads / CRM / Bookings / Revenue",
+            "integration": "planned",
+            "status": "not_in_report"
+          }
+        },
+        "release": {
+          "schema_version": "1.0",
+          "version": 1,
+          "candidate_id": "b08ab24c1d3ad6a51c3338dd3bd0c31d",
+          "origin_dataset_id": "b0b44f128ce689f250bf3a56a5b06874",
+          "approval_id": "0f8030a72912a66c2262a79695f830b0",
+          "internal_review_id": "d029dee7111f4c508a9011614e41ef0a",
+          "candidate_sha256": "a2f982e1bbe719bf72bbfcd5f1192725a6ce9a55aa4e21d64d39ae8ae97064f2",
+          "dataset_sha256": "2757786dbdde933dda90249272b00d7daed9fdfbe9b40ed8f224f56d094a84ac",
+          "reviewer_id": "b4b095b703cd89050424275f56966b04",
+          "approved_at": "2026-10-17T11:05:33.185094+00:00",
+          "state": "release_approved",
+          "provider_origin_confirmed": true,
+          "quality": "complete",
+          "checks": [
+            {
+              "evidence_id": "25387def1cbd0100fe08a201caf0f1f0535c7b69aa7984435b46ea5604e8d93a",
+              "metric_id": "facebook_content.posts_published",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2",
+                  "external_id": "1234",
+                  "timezone": "UTC",
+                  "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                  "currency": null,
+                  "attribution": null,
+                  "sync_run_id": "67be95c72728774c0f963f6e6266c59a",
+                  "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "2e27b714e7f1ba89a1b2368672f4b8b52009d8d88c4b0c69a572ba5a72d7df22",
+              "metric_id": "facebook_content.reactions_lifetime",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2",
+                  "external_id": "1234",
+                  "timezone": "UTC",
+                  "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                  "currency": null,
+                  "attribution": null,
+                  "sync_run_id": "67be95c72728774c0f963f6e6266c59a",
+                  "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "84f09f725e5eabc559433a06c14565f9b297ecf18fcbc10d01e08c492134eb5f",
+              "metric_id": "facebook_content.comments_lifetime",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2",
+                  "external_id": "1234",
+                  "timezone": "UTC",
+                  "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                  "currency": null,
+                  "attribution": null,
+                  "sync_run_id": "67be95c72728774c0f963f6e6266c59a",
+                  "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "4aefe8a23650a182cd2d300e5cce440dec3ade1db7a01d7ef55e312727e82209",
+              "metric_id": "facebook_content.shares_lifetime",
+              "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "67be95c72728774c0f963f6e6266c59a"
+                  ],
+                  "snapshot_id": "e3f447d7cb4d208a12e0e26fecfa89e8",
+                  "snapshot_sha256": "cf520623d87c6977dc243dd554b92c9a78301d0f15c8a4810f2d6319fd194ed2",
+                  "external_id": "1234",
+                  "timezone": "UTC",
+                  "fetched_at": "2026-10-17T11:05:33.022132+00:00",
+                  "currency": null,
+                  "attribution": null,
+                  "sync_run_id": "67be95c72728774c0f963f6e6266c59a",
+                  "asset_id": "5465faaa61b4dadd1d77dbc9efa02ec4",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            }
+          ],
+          "policy": {
+            "provisional": true,
+            "final": true
+          },
+          "seal": "SANITIZED_FIXTURE_SEAL_NOT_VALID_FOR_PUBLICATION"
+        }
+      }
+    }
+  }
+}

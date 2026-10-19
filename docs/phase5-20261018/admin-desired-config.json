@@ -1,0 +1,113 @@
+{
+  "name": "kdh-meta-2b-admin-20261016-132836-5c512a53",
+  "image_tag": "kdh-admin-meta:phase5-20261018-1db981c78d84",
+  "image_id_required_after_build": true,
+  "Config": {
+    "User": "kdh",
+    "WorkingDir": "/app",
+    "Cmd": [
+      "python",
+      "run.py"
+    ],
+    "Entrypoint": null,
+    "Healthcheck": {
+      "Test": [
+        "CMD-SHELL",
+        "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8090/health',timeout=3).read()\""
+      ],
+      "Interval": 3000000000,
+      "Timeout": 4000000000,
+      "Retries": 10
+    }
+  },
+  "HostConfig": {
+    "ReadonlyRootfs": true,
+    "CapDrop": [
+      "ALL"
+    ],
+    "CapAdd": null,
+    "SecurityOpt": [
+      "no-new-privileges"
+    ],
+    "Memory": 536870912,
+    "NanoCpus": 1000000000,
+    "PidsLimit": null,
+    "Tmpfs": {
+      "/tmp": "rw,noexec,nosuid,size=64m"
+    },
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "Init": null,
+    "ShmSize": 67108864,
+    "Dns": [
+      "127.0.0.1"
+    ],
+    "ExtraHosts": null,
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    }
+  },
+  "env_source": "Copy ALL values from original Admin inspect into child process memory; do not log/write plaintext",
+  "environment_keys": [
+    "ADMIN_SESSION_COOKIE_NAME",
+    "ALL_PROXY",
+    "APP_URL",
+    "COOKIE_SECURE",
+    "CRON_SECRET",
+    "DASHBOARD_URL",
+    "DATABASE_URL",
+    "DATA_DIR",
+    "ENCRYPTION_KEY",
+    "GA4_PROPERTY_ID",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    "GOOGLE_REDIRECT_URI",
+    "GPG_KEY",
+    "GSC_PROPERTY",
+    "HOST",
+    "HTTPS_PROXY",
+    "HTTP_PROXY",
+    "INITIAL_ADMIN_EMAIL",
+    "INITIAL_ADMIN_PASSWORD",
+    "JOB_MODE",
+    "KEYWORD_SHEET",
+    "KEYWORD_SPREADSHEET_ID",
+    "LANG",
+    "LEGACY_REPORT_DIR",
+    "META_APP_ID",
+    "META_APP_SECRET",
+    "META_CLIENT_ID",
+    "META_CONFIG_ID",
+    "META_REDIRECT_URI",
+    "META_REPORTING_ALLOW_PRIMARY_CLIENT",
+    "NO_PROXY",
+    "PATH",
+    "PORT",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONUNBUFFERED",
+    "PYTHON_SHA256",
+    "PYTHON_VERSION",
+    "REPORT_NEW_BASE_URL",
+    "REPORT_SERVICE_TOKEN"
+  ],
+  "mounts": [
+    {
+      "type": "volume",
+      "source": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+      "target": "/app/instance",
+      "read_only": false
+    }
+  ],
+  "network": {
+    "name": "kdh-meta-2b-net-20261016-132836-5c512a53",
+    "ipv4": "192.168.0.3",
+    "internal": true
+  },
+  "host_port_bindings": {},
+  "only_relay_publishes": "127.0.0.1:8191 -> 8090/tcp",
+  "rollback_image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+  "applied": false
+}

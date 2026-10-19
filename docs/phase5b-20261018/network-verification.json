@@ -1,0 +1,27 @@
+{
+  "internal_network": true,
+  "only_active_8191_binding": [
+    {
+      "id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+      "port": "8090/tcp",
+      "host_ip": "127.0.0.1"
+    }
+  ],
+  "provider_api_requests": 0,
+  "admin": {
+    "deny_nonallowlisted_authority_port_and_ip": "PASS",
+    "deny_wrong_sni": "PASS",
+    "deny_direct_internet_and_proxy_bypass": "PASS",
+    "allow_meta_tls_certificate_verified": "PASS",
+    "provider_http_requests": 0
+  },
+  "gateway": {
+    "deny_postgres_and_unrestricted_internet": "PASS",
+    "default_route_absent": true
+  },
+  "relay": {
+    "deny_postgres_and_unrestricted_internet": "PASS",
+    "default_route_absent": true
+  },
+  "status": "PASS"
+}

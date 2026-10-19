@@ -82,6 +82,19 @@ class BundleCases:
         self.assertEqual(payload['sections']['seo']['data'], original)
         self.assertIsNone(payload['sections']['seo']['data']['sources']['ga4']['totals']['activeUsers'])
 
+    def test_admin_bundle_library_includes_revision_metadata_and_handoff_state(self):
+        report_id = self.create()
+        self.assertEqual(self.publish(report_id, status='final').status_code, 200)
+        response = self.client.get('/api/report-bundles')
+        self.assertEqual(response.status_code, 200, response.get_data(as_text=True))
+        item = next(row for row in response.json if row['report_id'] == report_id and row['revision'] == 1)
+        self.assertEqual(item['client_id'], 'client_kinderhealth')
+        self.assertEqual(item['default_section'], 'overview')
+        self.assertEqual(item['schema_version'], '1.0')
+        self.assertEqual(item['status'], 'final')
+        self.assertTrue(item['published_at'])
+        self.assertTrue(item['viewer_handoff_supported'])
+
     def test_admin_draft_preview_reads_captured_revision_without_writes_or_provider_calls(self):
         report_id = self.create()
         path = f'/api/report-bundles/{report_id}?revision=1'

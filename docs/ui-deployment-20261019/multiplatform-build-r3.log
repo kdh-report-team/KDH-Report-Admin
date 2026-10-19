@@ -1,0 +1,50 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#2 copy /context /
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/kdh-admin-meta:ui-20261019-43c187981323
+#3 DONE 0.1s
+
+#4 [1/7] FROM docker.io/library/kdh-admin-meta:ui-20261019-43c187981323@sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d
+#4 resolve docker.io/library/kdh-admin-meta:ui-20261019-43c187981323@sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d 0.0s done
+#4 CACHED
+
+#5 [2/7] RUN rm -f /app/kdh/meta.py.bak
+#5 DONE 0.1s
+
+#6 [3/7] WORKDIR /app
+#6 DONE 0.1s
+
+#7 [4/7] COPY --chown=kdh:kdh kdh/ /app/kdh/
+#7 DONE 0.1s
+
+#8 [5/7] COPY --chown=kdh:kdh static/ /app/static/
+#8 DONE 0.1s
+
+#9 [6/7] COPY --chown=kdh:kdh templates/ /app/templates/
+#9 DONE 0.1s
+
+#10 [7/7] COPY --chown=kdh:kdh run.py requirements.lock /app/
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 0.3s done
+#11 exporting manifest sha256:872382f17026ca03682b8ea988bc3e1a9bf85106f1563fca8d2992a847ce40b6 0.0s done
+#11 exporting config sha256:8675b6ae799f8cc41e91141f0650dacca25dd4abe2894dbf437f908769973a93 0.0s done
+#11 exporting attestation manifest sha256:b1afb730e75f804ed181ca399b36469e6a84a09cf621056e6a1f7b2543ce511f 0.0s done
+#11 exporting manifest list sha256:926d563949e1ecfa70aca33e0aff42f1e73f9f184178a27a099107833ea8c626
+#11 exporting manifest list sha256:926d563949e1ecfa70aca33e0aff42f1e73f9f184178a27a099107833ea8c626 0.0s done
+#11 naming to docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762-r3 done
+#11 unpacking to docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762-r3
+#11 unpacking to docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762-r3 0.3s done
+#11 DONE 0.9s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/zxl9mzcukoe8vfrxbsov1y6s6

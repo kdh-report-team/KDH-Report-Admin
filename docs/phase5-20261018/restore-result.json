@@ -1,0 +1,263 @@
+{
+  "test_prefix": "kdh-phase5-20261018-59770a49",
+  "network": "none",
+  "host_ports": [],
+  "volumes": {
+    "postgres": {
+      "name": "kdh-phase5-20261018-59770a49-postgres-restore",
+      "file_bytes_ownership_modes_match": true,
+      "entries": 1456,
+      "manifest_sha256": "140e057f6cbd8a494775361ed0ee2aff2e11a5c37f425093fa92c076022b3b8a"
+    },
+    "appdata": {
+      "name": "kdh-phase5-20261018-59770a49-appdata-restore",
+      "file_bytes_ownership_modes_match": true,
+      "entries": 2,
+      "manifest_sha256": "56e99666a3be9fd6ea14db8e1ba04a2ccfff9bf484650cd5d2eece6aea23b8a8"
+    }
+  },
+  "read_only_sql": true,
+  "container_id": "5d11b9250b6a5ec3b6612057886a4ac34726601fd43155b88c89cf1eb0540d99",
+  "container_name": "kdh-phase5-20261018-59770a49-pg-restore",
+  "version": "16.15 (Debian 16.15-1.pgdg13+2)",
+  "database": "meta_acceptance_20261016_132836",
+  "data_checksums": "off",
+  "migrations": [
+    {
+      "version": 1,
+      "name": "reporting_platform_foundation",
+      "applied_at": "2026-10-16T06:44:59.644089+00:00"
+    },
+    {
+      "version": 2,
+      "name": "report_bundle_snapshots",
+      "applied_at": "2026-10-16T06:44:59.651766+00:00"
+    },
+    {
+      "version": 3,
+      "name": "meta_oauth_states",
+      "applied_at": "2026-10-16T06:44:59.659557+00:00"
+    },
+    {
+      "version": 4,
+      "name": "source_snapshots",
+      "applied_at": "2026-10-16T06:44:59.677756+00:00"
+    },
+    {
+      "version": 5,
+      "name": "marketing_dataset_reviews",
+      "applied_at": "2026-10-16T06:44:59.691760+00:00"
+    },
+    {
+      "version": 6,
+      "name": "marketing_verified_releases",
+      "applied_at": "2026-10-16T06:44:59.734507+00:00"
+    },
+    {
+      "version": 7,
+      "name": "report_viewer_grants",
+      "applied_at": "2026-10-16T06:44:59.747535+00:00"
+    },
+    {
+      "version": 8,
+      "name": "viewer_handoff",
+      "applied_at": "2026-10-16T06:44:59.770236+00:00"
+    }
+  ],
+  "connections": [
+    {
+      "id": "7c624e8bffe9bde457dd5beb5b7cc882",
+      "client_id": "client_meta_sandbox",
+      "provider": "meta",
+      "status": "connected"
+    }
+  ],
+  "assets": [
+    {
+      "id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "client_id": "client_meta_sandbox",
+      "provider": "meta",
+      "asset_type": "facebook_page",
+      "external_id": "2188688654687066",
+      "name": "VIO Agency",
+      "enabled": 1
+    }
+  ],
+  "sync_runs": [
+    {
+      "id": "69dc769777f802b87c7107b771fcd4b7",
+      "client_id": "client_meta_sandbox",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "provider": "meta",
+      "status": "failed",
+      "requested_start": "2026-09-19",
+      "requested_end": "2026-10-16",
+      "record_count": 0,
+      "job_id": "f5ee2d424f00a9e4c744fe22e79b76f0",
+      "started_at": "2026-10-17T09:20:54.983173+00:00",
+      "finished_at": "2026-10-17T09:21:00.585808+00:00"
+    },
+    {
+      "id": "f97f3c6928bc4925be67fe1103188254",
+      "client_id": "client_meta_sandbox",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "provider": "meta",
+      "status": "succeeded",
+      "requested_start": "2026-09-19",
+      "requested_end": "2026-10-16",
+      "record_count": 42,
+      "job_id": "7a6938a431afb32547d3880cde6bff68",
+      "started_at": "2026-10-17T09:45:30.282223+00:00",
+      "finished_at": "2026-10-17T09:45:31.480933+00:00"
+    },
+    {
+      "id": "07dc15d6ec61cd8f1b0da894616e3e7d",
+      "client_id": "client_meta_sandbox",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "provider": "meta",
+      "status": "succeeded",
+      "requested_start": "2025-07-19",
+      "requested_end": "2025-08-16",
+      "record_count": 49,
+      "job_id": "5b66dc5e64fc6659d450c8855a5e868d",
+      "started_at": "2026-10-17T09:47:01.652225+00:00",
+      "finished_at": "2026-10-17T09:47:03.140160+00:00"
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "20ceb21b3c634da1d20b32ee4ffd92b7",
+      "sync_run_id": "07dc15d6ec61cd8f1b0da894616e3e7d",
+      "client_id": "client_meta_sandbox",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "source_key": "facebook_content",
+      "requested_start": "2025-07-19",
+      "requested_end": "2025-08-16",
+      "created_at": "2026-10-17T09:47:03.140160+00:00"
+    },
+    {
+      "id": "fd4bf4c911faecaa0ec02bf70bbae1e0",
+      "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+      "client_id": "client_meta_sandbox",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "source_key": "facebook_content",
+      "requested_start": "2026-09-19",
+      "requested_end": "2026-10-16",
+      "created_at": "2026-10-17T09:45:31.480933+00:00"
+    }
+  ],
+  "metric_groups": [
+    {
+      "client_id": "client_meta_sandbox",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "provider": "meta",
+      "entity_type": "page",
+      "rows": 57,
+      "entities": 1,
+      "first_date": "2025-07-19",
+      "last_date": "2026-10-16"
+    },
+    {
+      "client_id": "client_meta_sandbox",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "provider": "meta",
+      "entity_type": "post",
+      "rows": 34,
+      "entities": 34,
+      "first_date": "2025-07-19",
+      "last_date": "2026-10-15"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "f5ee2d424f00a9e4c744fe22e79b76f0",
+      "kind": "meta_sync",
+      "status": "failed",
+      "created_at": "2026-10-17T09:20:54.765683+00:00",
+      "started_at": "2026-10-17T09:20:54.905572+00:00",
+      "finished_at": "2026-10-17T09:21:00.629153+00:00"
+    },
+    {
+      "id": "7a6938a431afb32547d3880cde6bff68",
+      "kind": "meta_sync",
+      "status": "succeeded",
+      "created_at": "2026-10-17T09:45:29.753013+00:00",
+      "started_at": "2026-10-17T09:45:30.079862+00:00",
+      "finished_at": "2026-10-17T09:45:31.480933+00:00"
+    },
+    {
+      "id": "5b66dc5e64fc6659d450c8855a5e868d",
+      "kind": "meta_sync",
+      "status": "succeeded",
+      "created_at": "2026-10-17T09:47:01.401485+00:00",
+      "started_at": "2026-10-17T09:47:01.561278+00:00",
+      "finished_at": "2026-10-17T09:47:03.140160+00:00"
+    }
+  ],
+  "duplicate_metric_keys": "0",
+  "table_integrity": {
+    "connections": {
+      "rows": 1,
+      "sha256": "e8deac1ce5a3a3b0b4a6a0b9b0066ef9812b4a13a6847b49ad152e85f7872714"
+    },
+    "source_assets": {
+      "rows": 1,
+      "sha256": "a21afbe12bb3395195c1aff1e6a7f5ca582743564555cb75a375530419311e4f"
+    },
+    "jobs": {
+      "rows": 3,
+      "sha256": "8f29360a01ee78c9f50719988639aa3a7516cbf21924335ce449e5328d1c6d73"
+    },
+    "sync_runs": {
+      "rows": 3,
+      "sha256": "bdb09293c67ae9bb1e31480a7ad9050eb89be61126a5be1d29d7c2bb49e0ae4d"
+    },
+    "source_snapshots": {
+      "rows": 2,
+      "sha256": "f38a90b0b21687d05db6a900a636ba5bf72a86eaf49098e65b956438f9b9f75d"
+    },
+    "daily_metrics": {
+      "rows": 91,
+      "sha256": "4bdc9eeace5e1f90a9d290788bbe5611d2d9a990a06f82bf8f234739b8c73f16"
+    },
+    "secrets": {
+      "rows": 1,
+      "sha256": "c5631827253d7cf768add6ae25522a15c72c4945ecdfb08246b46b49fa7a74a1"
+    },
+    "datasets": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "reports": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "source_attestations": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "marketing_release_approvals": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "marketing_release_snapshots": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "oauth_compatibility": {
+    "decrypt_with_existing_key": true,
+    "access_token_present": true,
+    "scopes": [
+      "pages_show_list",
+      "ads_read",
+      "pages_read_engagement",
+      "pages_read_user_content",
+      "public_profile"
+    ],
+    "live_validity_checked": false,
+    "all_secret_records_decryptable": 1
+  },
+  "status": "PASS",
+  "clone_final_state": "exited"
+}

@@ -30,8 +30,16 @@ def register_meta_reporting_routes(app, store, require, body, meta):
     @app.get('/api/meta/reporting/assets')
     @require('admin')
     def reporting_assets():
+        if set(request.args) - {'source', 'external_id'} or any(len(request.args.getlist(k)) > 1 for k in request.args):
+            raise Problem('Yêu cầu nguồn Meta không hợp lệ.')
+        source = request.args.get('source')
         conn = connection()
-        discovered = MetaReportingReader(meta).discover()
+        if 'external_id' in request.args:
+            if source != 'facebook_ads':
+                raise Problem('Exact account lookup requires facebook_ads.')
+            discovered = {'facebook_ads': [MetaReportingReader(meta).ad_account(request.args['external_id'])], 'facebook_content': []}
+        else:
+            discovered = MetaReportingReader(meta).discover(source=source)
         selected = store.all('''SELECT id,asset_type,external_id,name,enabled,currency,timezone
             FROM source_assets WHERE client_id=? AND provider='meta' AND connection_id=?
             ORDER BY name''', (meta.client_id, conn['id']))
@@ -47,7 +55,8 @@ def register_meta_reporting_routes(app, store, require, body, meta):
         if not isinstance(external_id, str) or not re.fullmatch(r'act_\d+' if source == 'facebook_ads' else r'\d+', external_id):
             raise Problem('ID tài sản Meta không hợp lệ.')
         conn = connection()
-        assets = MetaReportingReader(meta).discover()[source]
+        reader = MetaReportingReader(meta)
+        assets = [reader.ad_account(external_id)] if source == 'facebook_ads' else reader.discover(source=source)[source]
         match = next((item for item in assets if item['id'] == external_id), None)
         if not match:
             raise Problem('Tài sản không nằm trong phạm vi Meta đã cấp quyền.', 403, 'meta_asset_not_permitted')
@@ -56,7 +65,8 @@ def register_meta_reporting_routes(app, store, require, body, meta):
             name=str(match.get('name') or external_id)[:160], connection_id=conn['id'],
             currency=match.get('currency') if source == 'facebook_ads' else None,
             timezone=match.get('timezone_name') if source == 'facebook_ads' else 'UTC',
-            metadata={'source_key': source, 'data_origin': 'meta_api_unverified'},
+            metadata={'source_key': source, 'data_origin': 'meta_api_unverified',
+                      'business': match.get('business') if source == 'facebook_ads' else None},
             enabled=data['enabled'])
         store.event(g.user['id'], 'meta_asset_selection', {'asset_id': asset_id, 'source': source,
                                                             'enabled': data['enabled']})
@@ -77,6 +87,8 @@ def register_meta_reporting_routes(app, store, require, body, meta):
         source = next((key for key, (asset_type, _) in SOURCES.items() if asset_type == asset['asset_type']), None)
         if source is None:
             raise Problem('Loại tài sản Meta chưa được hỗ trợ.')
+        if source == 'facebook_ads':
+            MetaReportingReader(meta).require_ads_permission()
         job_id, created = enqueue(store, g.user['id'], 'meta_sync',
             {'source': source, 'asset_id': asset['id'], 'report_type':
                 'facebook-ads' if source == 'facebook_ads' else 'facebook-content',
@@ -176,6 +188,18 @@ def register_meta_reporting_routes(app, store, require, body, meta):
                 asset_id=asset_id,
             )
 
+        snapshot_metrics = None
+        from .meta_marketing import scoped_snapshot
+        from .meta_contract import metrics as snapshot_kpis
+        try:
+            _, run, snap, payload = scoped_snapshot(store, meta.client_id, source, asset_id, first.isoformat(), last.isoformat())
+            if payload.get('contract_version') == 'meta-reporting-v1':
+                snapshot_metrics = {'snapshot_id': snap['id'], 'sync_run_id': run['id'],
+                                    'fetched_at': payload.get('fetched_at'), 'timezone': payload.get('timezone'),
+                                    'kpis': snapshot_kpis(payload), 'verified': False, 'publishable': False}
+        except Problem:
+            pass  # Legacy/failed periods remain visible through the existing KPI status contract.
+
         return jsonify(
             client_id=meta.client_id,
             asset_id=asset_id,
@@ -188,6 +212,7 @@ def register_meta_reporting_routes(app, store, require, body, meta):
             verified=False,
             publishable=False,
             metrics=metrics,
+            snapshot_metrics=snapshot_metrics,
         )
     
     @app.get('/api/meta/reporting/preview')

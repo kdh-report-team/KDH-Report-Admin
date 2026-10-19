@@ -25,19 +25,30 @@ from .platform_data import DEFAULT_CLIENT_ID
 # The full Metric Catalog remains available separately.
 # Unknown IDs remain visible as not_defined, not fabricated.
 PREVIEW_METRICS = {
-    "ga4": (
-        "ga4.sessions",
-        "ga4.active_users",
-        "ga4.page_views",
-    ),
-    "gsc": (
-        "gsc.clicks",
-        "gsc.impressions",
-        "gsc.ctr",
-    ),
-    "keywords": (
-        "keywords.top10",
-    ),
+
+"ga4": (
+    "ga4.sessions",
+    "ga4.active_users",
+    "ga4.page_views",
+    "ga4.engagement_rate",
+),
+
+"gsc": (
+    "gsc.clicks",
+    "gsc.impressions",
+    "gsc.ctr",
+    "gsc.position",
+),
+
+"keywords": (
+    "keywords.top5",
+    "keywords.top10",
+    "keywords.top20",
+    "keywords.top30",
+    "keywords.top50",
+    "keywords.top100",
+),
+
     "google_ads": (
         "google_ads.spend",
         "google_ads.clicks",
@@ -166,6 +177,11 @@ def build_marketing_preview(
             raise ValueError(
                 "asset_id requires a selected source."
             )
+
+    if source in ('facebook_content', 'facebook_ads'):
+        from .meta_marketing import build_preview
+        return build_preview(store, client_id=client_id, source=source, asset_id=asset_id,
+                             start=start, end=end, compare_start=compare_start, compare_end=compare_end)
 
     period, days = _period(start, end)
 
@@ -403,9 +419,10 @@ def register_marketing_preview_routes(
         permitted = permitted_metric_sources(g.user)
 
         try:
+            from .marketing_console import marketing_client
             payload = build_marketing_preview(
                 store,
-                client_id=DEFAULT_CLIENT_ID,
+                client_id=marketing_client(),
                 allowed_sources=permitted,
                 start=request.args["start"],
                 end=request.args["end"],

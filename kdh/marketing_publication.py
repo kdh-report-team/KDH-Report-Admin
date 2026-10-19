@@ -41,19 +41,24 @@ def create_release_snapshot(store, actor, candidate_id, data, session_id=None):
         source = checks['source']
         # All eligible cards must refer to a single asset and explicit snapshot.
         witnesses = checks['checks'][0]['witnesses']
-        current, previous = witnesses[0], witnesses[1]
         reader = ReadView(db)
-        _, payload, current_is_previous = period_snapshot(reader, client_id=checks['client_id'],
-            asset_id=current['asset_id'], source=source, **preview['period'], sync_ids=[current['sync_run_id']])
-        _, previous_payload, previous_is_previous = period_snapshot(reader, client_id=checks['client_id'],
-            asset_id=previous['asset_id'], source=source, **preview['comparison'], sync_ids=[previous['sync_run_id']])
-        if current_is_previous:
-            raise Problem('Kỳ chính cần snapshot được đồng bộ trực tiếp cho kỳ đó.', 409, 'release_scope_unsupported')
-        normalized = copy.deepcopy(payload)
-        detail = 'entries' if source == 'keywords' else 'daily'
-        normalized['previous'] = copy.deepcopy(previous_payload.get('previous' if previous_is_previous else 'totals'))
-        normalized['previous_' + detail] = copy.deepcopy(previous_payload.get(('previous_' if previous_is_previous else '') + detail, []))
-        normalized['previous_latest_available_date'] = previous['latest_available_date']
+        is_meta = source in ('facebook_content', 'facebook_ads')
+        if is_meta:
+            from .meta_marketing import release_source
+            normalized, current = release_source(reader, candidate, checks)
+        else:
+            current, previous = witnesses[0], witnesses[1]
+            _, payload, current_is_previous = period_snapshot(reader, client_id=checks['client_id'],
+                asset_id=current['asset_id'], source=source, **preview['period'], sync_ids=[current['sync_run_id']])
+            _, previous_payload, previous_is_previous = period_snapshot(reader, client_id=checks['client_id'],
+                asset_id=previous['asset_id'], source=source, **preview['comparison'], sync_ids=[previous['sync_run_id']])
+            if current_is_previous:
+                raise Problem('Kỳ chính cần snapshot được đồng bộ trực tiếp cho kỳ đó.', 409, 'release_scope_unsupported')
+            normalized = copy.deepcopy(payload)
+            detail = 'entries' if source == 'keywords' else 'daily'
+            normalized['previous'] = copy.deepcopy(previous_payload.get('previous' if previous_is_previous else 'totals'))
+            normalized['previous_' + detail] = copy.deepcopy(previous_payload.get(('previous_' if previous_is_previous else '') + detail, []))
+            normalized['previous_latest_available_date'] = previous['latest_available_date']
         timestamp, dataset_id = now(), uid()
         version = db.execute('SELECT COALESCE(MAX(version),0)+1 AS n FROM marketing_release_snapshots WHERE candidate_id=?',
                              (candidate_id,)).fetchone()['n']
@@ -62,13 +67,15 @@ def create_release_snapshot(store, actor, candidate_id, data, session_id=None):
         for card in preview['evidence_cards']:
             widget = next(item for item in widgets if item['evidence_id'] == card['evidence_id'])
             widget.update(verified=True, publishable=True, status='available')
+            if is_meta:
+                widget['evidence_status'] = 'provider_origin_confirmed'
             cards.append({'evidence_id': card['evidence_id'], 'metric_id': card['metric_id'],
-                'claim': None, 'metric': widget['label'], 'before': card['comparison']['previous_value'],
+                'claim': None, 'metric': widget['label'], 'before': card['comparison']['previous_value'] if card['comparison'] else None,
                 'after': card['value'], 'period': preview['period'], 'source': source,
                 'asset_id': card['asset_id'], 'data_date': current['latest_available_date'],
                 'verification': 'provider_origin_confirmed', 'review_status': 'approved',
                 'lineage': copy.deepcopy(card['lineage']),
-                'quality': {'status': 'complete', 'warnings': ['Xác nhận qua adapter của hệ thống; không phải kiểm toán độc lập của Google.']}})
+                'quality': {'status': 'complete', 'warnings': ['Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp.']}})
         approved_ids = set(json.loads(approval['approved_opportunity_ids']))
         opportunities = [{'id': item['id'], 'title': item['title'],
             'reason': 'Biến động giữa hai kỳ đã đạt ngưỡng cần xem xét của quy tắc ' + item['rule_id'] + '.',
@@ -92,7 +99,8 @@ def create_release_snapshot(store, actor, candidate_id, data, session_id=None):
             'marketing': {'schema_version': '1.0', 'kind': 'approved_release', 'widgets': widgets},
             'evidence': cards, 'opportunities': opportunities,
             'executive_summary': {'verified_kpi_count': len(cards),
-                'limitations': ['Chỉ kết luận trên KPI có bằng chứng. Lưu lượng tăng không xác nhận từ khóa lên Top Google.',
+                'limitations': ['Chỉ kết luận trên KPI có bằng chứng. Lifetime không phải tương tác trong kỳ; không cộng reach/frequency theo ngày.' if is_meta else
+                               'Chỉ kết luận trên KPI có bằng chứng. Lưu lượng tăng không xác nhận từ khóa lên Top Google.',
                                'Chưa có mục tiêu/khối lượng công việc được nhập và duyệt thì chưa đánh giá mức đạt cam kết.']},
             'platforms': {key: {'label': spec['label'], 'integration': spec['integration'],
                 'status': 'included' if key == source else 'not_in_report'} for key, spec in SOURCES.items()},

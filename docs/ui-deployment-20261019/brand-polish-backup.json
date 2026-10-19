@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "backup_directory": "C:\\Users\\Admin\\AppData\\Local\\KDH-Meta-Backups\\kdh-phase5-20261018-59770a49\\multiplatform-20261019-164112-ef95c3f2",
+  "files": {
+    "database.dump": {
+      "bytes": 115955,
+      "sha256": "62abe52a2bf1e27046796cb9b83b5e588191c924596ac1f8dd5cd2cd4d54faf9",
+      "encrypted_sha256": "77647b379318a4dfff3eac393fd8e5f4f095f1443f7e5a33f3032b065b4d35f9"
+    },
+    "appdata.tar": {
+      "bytes": 10240,
+      "sha256": "f77ec5b60fbc313cb6c77164b9d79b2062870a0a82c0befbe52c3d125ce82e95",
+      "encrypted_sha256": "317f42c8883f2421cb6a721a8ae6296b6081c2b62dcb80474188d44f5c259e1f"
+    },
+    "admin-env.json": {
+      "bytes": 1733,
+      "sha256": "7baa838377fd5532ad16de91dcfdaeb3ef103254b6187a2578339bb30f56e65f",
+      "encrypted_sha256": "da8d7cd3369a4ca6bc2403fd78b6691767796c6dd02c8644e1766207a6c70f17"
+    }
+  },
+  "private_acl_inherited": true,
+  "appdata_entries": 2,
+  "restore_container": "kdh-foundation-restore-ca9a1834e0-pg",
+  "restore_container_id": "db62ec230d315e8bdf7964db4be7dbc5686a952443f59310b82da24f0b487dcc",
+  "restore_network": "none",
+  "restore_host_ports": [],
+  "restore_storage": "tmpfs",
+  "restore_integrity": "PASS",
+  "restore_migrations": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "off_host_copy": false
+}

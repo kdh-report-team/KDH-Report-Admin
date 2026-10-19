@@ -1,0 +1,50 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762-r3
+#3 DONE 0.1s
+
+#4 [1/7] FROM docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762-r3@sha256:926d563949e1ecfa70aca33e0aff42f1e73f9f184178a27a099107833ea8c626
+#4 resolve docker.io/library/kdh-admin-meta:multiplatform-20261019-36536d720762-r3@sha256:926d563949e1ecfa70aca33e0aff42f1e73f9f184178a27a099107833ea8c626 0.1s done
+#4 DONE 0.2s
+
+#5 [2/7] RUN rm -f /app/kdh/meta.py.bak
+#5 DONE 0.2s
+
+#6 [3/7] WORKDIR /app
+#6 DONE 0.1s
+
+#7 [4/7] COPY --chown=kdh:kdh kdh/ /app/kdh/
+#7 DONE 0.1s
+
+#8 [5/7] COPY --chown=kdh:kdh static/ /app/static/
+#8 DONE 0.1s
+
+#9 [6/7] COPY --chown=kdh:kdh templates/ /app/templates/
+#9 DONE 0.1s
+
+#10 [7/7] COPY --chown=kdh:kdh run.py requirements.lock /app/
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 0.5s done
+#11 exporting manifest sha256:08ca5411c70ae06ff09cee912a223f33e8ec9f68634e32b2e532a494c129cb8e 0.0s done
+#11 exporting config sha256:f356e1a476172408ecc943855a0f76f9443deecb65ccb67bf49d0a72c033e556 0.0s done
+#11 exporting attestation manifest sha256:e7455c5b02058a63b80b3c26d6b201e75ffd5bdc974e65a6b2afc00ccea98c2e
+#11 exporting attestation manifest sha256:e7455c5b02058a63b80b3c26d6b201e75ffd5bdc974e65a6b2afc00ccea98c2e 0.0s done
+#11 exporting manifest list sha256:61fc38a6e3d5e64271db0d88ed994b7d355f659d0a3dbbe2dee68632d9baa030 0.0s done
+#11 naming to docker.io/library/kdh-admin-meta:brand-polish-20261019-5a9912259a3a done
+#11 unpacking to docker.io/library/kdh-admin-meta:brand-polish-20261019-5a9912259a3a
+#11 unpacking to docker.io/library/kdh-admin-meta:brand-polish-20261019-5a9912259a3a 0.3s done
+#11 DONE 1.3s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/wrdnac9c7clkvmg0iv35qpa6s

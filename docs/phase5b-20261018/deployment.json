@@ -1,0 +1,27 @@
+{
+  "image_id": "sha256:de56eef854fe84f7e8d8a630c2de62ae65399b0c1204fe24e7f29c997adbbfb5",
+  "stage": "deployed_pending_full_verification",
+  "rollback": "NOT REQUIRED",
+  "gateway_policy": {
+    "uid": 10001,
+    "effective_capabilities": 0,
+    "bounding_capabilities": 0,
+    "no_new_privileges": true,
+    "ip_forward": false,
+    "default_route": false
+  },
+  "admin_id": "51843a6c05fadeffc22955e8edbddd5a08246dc7ae9ba6c86380c173f59d6990",
+  "admin_name": "kdh-meta-2b-admin-20261016-132836-5c512a53",
+  "admin_health": "healthy",
+  "admin_ip": "192.168.0.3",
+  "relay_policy": {
+    "uid": 10001,
+    "effective_capabilities": 0,
+    "bounding_capabilities": 0,
+    "no_new_privileges": true,
+    "ip_forward": false,
+    "default_route": false
+  },
+  "status": "PASS",
+  "http_health": 200
+}

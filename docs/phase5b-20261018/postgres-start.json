@@ -1,0 +1,7 @@
+{
+  "container_id": "41c3cebbed98beab58091b359ba12e4b54f7eb90a41fbe4b9cb5a86539cb87d1",
+  "status": "PASS",
+  "health": "healthy",
+  "internal_ip": "192.168.0.2",
+  "original_data_hashes_match": true
+}

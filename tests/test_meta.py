@@ -16,7 +16,13 @@ from kdh.meta import Meta
 
 
 class MetaCases:
+    client_id = 'client_kinderhealth'
+    permissions = ('pages_show_list', 'pages_read_engagement', 'ads_read')
+
     def prepare(self):
+        network = patch('kdh.meta.requests.request', side_effect=AssertionError('Unmocked Meta request'))
+        network.start()
+        self.addCleanup(network.stop)
         self.meta = self.app.extensions['meta']
         self.app.config.update(META_APP_ID='123456', META_APP_SECRET='test-meta-secret',
                                META_CONFIG_ID='654321', META_GRAPH_VERSION='v26.0',
@@ -24,7 +30,7 @@ class MetaCases:
         self.expiry = int((datetime.now(timezone.utc) + timedelta(days=60)).timestamp())
         self.metadata = {'is_valid': True, 'type': 'USER', 'app_id': '123456', 'user_id': 'test-user',
                          'expires_at': self.expiry, 'data_access_expires_at': self.expiry,
-                         'scopes': ['public_profile', 'pages_show_list', 'pages_read_engagement', 'ads_read']}
+                         'scopes': list(self.permissions)}
 
     def post(self, path, data=None):
         return self.client.post(path, json=data or {}, headers=self.headers)
@@ -128,7 +134,7 @@ class MetaCases:
         self.assertEqual(status.status_code, 200)
         self.assertTrue(status.json['connected'])
         self.assertEqual(status.json['account_name'], 'OAuth Test User')
-        self.assertEqual(status.json['client_id'], 'client_kinderhealth')
+        self.assertEqual(status.json['client_id'], self.client_id)
         self.assertEqual(status.json['scopes'], self.metadata['scopes'])
         self.assertEqual(status.headers['Cache-Control'], 'no-store')
         public = status.get_data(as_text=True) + pack(self.store.all('SELECT * FROM events'))
@@ -136,7 +142,7 @@ class MetaCases:
             self.assertNotIn(secret, public)
         connection = self.store.one("SELECT * FROM connections WHERE provider='meta' AND status='connected'")
         self.assertEqual(connection['secret_name'], self.meta.secret_name)
-        self.assertEqual(connection['client_id'], 'client_kinderhealth')
+        self.assertEqual(connection['client_id'], self.client_id)
         for table, rows in before.items():
             self.assertEqual(self.store.all('SELECT * FROM ' + table), rows)
 
@@ -219,10 +225,11 @@ class MetaCases:
     def test_wrong_app_invalid_expired_and_wrong_token_type_are_rejected(self):
         valid = dict(self.metadata)
         for invalid in ({'app_id': 'other'}, {'is_valid': False}, {'type': 'PAGE'}, {'user_id': 'wrong-user'},
-                        {'expires_at': 0}, {'expires_at': 'private'}, {'data_access_expires_at': 1},
+                        {'expires_at': 1}, {'expires_at': None}, {'expires_at': False},
+                        {'expires_at': '0'}, {'expires_at': 'private'}, {'data_access_expires_at': 1},
                         {'scopes': []}, {'scopes': [None]}, {'scopes': ['public_profile']},
                         *({'scopes': [scope for scope in valid['scopes'] if scope != missing]}
-                          for missing in ('pages_show_list', 'pages_read_engagement', 'ads_read'))):
+                          for missing in self.permissions)):
             with self.subTest(invalid=invalid):
                 self.metadata = {**valid, **invalid}
                 state = self.start()
@@ -230,6 +237,55 @@ class MetaCases:
                     self.assertIn('oauth=failed', self.callback(state).location)
                 self.assertIsNone(self.meta.read())
                 self.assertIsNone(self.store.one("SELECT * FROM connections WHERE provider='meta'"))
+
+    def test_zero_expiry_is_stored_and_reported_without_inventing_date(self):
+        for data_expiry in (None, 0, self.expiry):
+            with self.subTest(data_expiry=data_expiry):
+                self.metadata.update(expires_at=0, data_access_expires_at=data_expiry)
+                self.connect()
+                self.assertEqual(self.meta.read()['expires_at'], 0)
+                with patch('kdh.meta.requests.request', side_effect=AssertionError('Status must stay local')):
+                    status = self.client.get('/api/meta').json
+                self.assertTrue(status['connected'])
+                self.assertIsNone(status['expires_at'])
+                self.assertIs(status['expires_at_unbounded'], True)
+                self.assertEqual(bool(status['data_access_expires_at']), bool(data_expiry))
+                for secret in ('test-long-token', 'test-short-token', 'test-meta-secret'):
+                    self.assertNotIn(secret, json.dumps(status))
+
+    def test_zero_expiry_does_not_bypass_token_scope_or_data_expiry_validation(self):
+        self.connect()
+        original = self.meta.read()
+        valid = {**self.metadata, 'expires_at': 0}
+        for invalid in ({'is_valid': False}, {'app_id': 'other'}, {'type': 'PAGE'},
+                        {'user_id': 'wrong-user'}, {'scopes': []},
+                        {'data_access_expires_at': 1}, {'data_access_expires_at': False}):
+            with self.subTest(invalid=invalid):
+                self.metadata = {**valid, **invalid}
+                state = self.start()
+                with patch('kdh.meta.requests.request', side_effect=self.provider):
+                    self.assertIn('oauth=failed', self.callback(state).location)
+                self.assertEqual(self.meta.read(), original)
+
+    def test_saved_expiry_distinguishes_zero_missing_malformed_and_expired_data(self):
+        self.metadata['expires_at'] = 0
+        self.connect()
+        original = self.meta.read()
+        for changes, expected in (
+            ({'expires_at': None}, 'error'), ({'expires_at': False}, 'error'),
+            ({'expires_at': 0.0}, 'error'), ({'expires_at': ''}, 'error'),
+            ({'expires_at': 'private'}, 'error'),
+            ({'data_access_expires_at': '2000-01-01T00:00:00+00:00'}, 'expired'),
+            ({'data_access_expires_at': 'private'}, 'error'),
+        ):
+            with self.subTest(changes=changes):
+                token = {**original, **changes}
+                self.store.execute('UPDATE secrets SET value=? WHERE name=?',
+                                   (self.meta.cipher.encrypt(pack(token).encode()), self.meta.secret_name))
+                with patch('kdh.meta.requests.request', side_effect=AssertionError('Status must stay local')):
+                    status = self.client.get('/api/meta').json
+                self.assertEqual(status['status'], expected)
+                self.assertFalse(status['connected'])
 
     def test_status_requires_reauthorization_after_business_config_or_permissions_change(self):
         self.connect()
@@ -239,14 +295,16 @@ class MetaCases:
             self.assertFalse(self.client.get('/api/meta').json['configured'])
             self.assertEqual(self.post('/api/meta/connect').status_code, 503)
         token = self.meta.read()
-        token['scopes'] = ['public_profile']
-        self.store.execute('UPDATE secrets SET value=? WHERE name=?',
-                           (self.meta.cipher.encrypt(pack(token).encode()), self.meta.secret_name))
-        with patch('kdh.meta.requests.request', side_effect=AssertionError('Status must stay local')):
-            status = self.client.get('/api/meta').json
-        self.assertFalse(status['connected'])
-        self.assertTrue(status['has_connection'])
-        self.assertEqual(status['status'], 'reconnect_required')
+        for missing in self.permissions:
+            with self.subTest(missing=missing):
+                token['scopes'] = [scope for scope in self.permissions if scope != missing]
+                self.store.execute('UPDATE secrets SET value=? WHERE name=?',
+                                   (self.meta.cipher.encrypt(pack(token).encode()), self.meta.secret_name))
+                with patch('kdh.meta.requests.request', side_effect=AssertionError('Status must stay local')):
+                    status = self.client.get('/api/meta').json
+                self.assertFalse(status['connected'])
+                self.assertTrue(status['has_connection'])
+                self.assertEqual(status['status'], 'reconnect_required')
 
     def test_expiry_app_change_and_unreadable_credentials_are_honest_statuses(self):
         self.connect()
@@ -346,11 +404,38 @@ class MetaCases:
 class SQLiteMetaTest(MetaCases, unittest.TestCase):
     def setUp(self):
         # A developer's optional Meta sandbox must not change this OAuth fixture.
-        with patch.dict(os.environ, {'META_CLIENT_ID': 'client_kinderhealth'}):
+        with patch.dict(os.environ, {'META_CLIENT_ID': self.client_id}):
             test_app.AppTest.setUp(self)
         self.prepare()
 
     tearDown = test_app.AppTest.tearDown
+
+
+class SQLiteSandboxMetaTest(SQLiteMetaTest):
+    client_id = 'client_meta_sandbox'
+    permissions = ('pages_show_list', 'pages_read_engagement')
+
+    def test_sandbox_connect_preserves_kinderhealth_connection_and_assets(self):
+        primary = Meta(self.store, {**self.app.config, 'META_CLIENT_ID': 'client_kinderhealth'}, self.meta.cipher)
+        session_id = digest(self.client.get_cookie('kdh_session').value)
+        state = parse_qs(urlsplit(primary.authorization_url(session_id)).query)['state'][0]
+        self.metadata['scopes'] = ['pages_show_list', 'pages_read_engagement', 'ads_read']
+        with patch('kdh.meta.requests.request', side_effect=self.provider):
+            self.assertEqual(primary.callback(state, 'test-code', session_id), 'success')
+        connection = self.store.one("SELECT * FROM connections WHERE client_id='client_kinderhealth' AND provider='meta'")
+        primary.platform.upsert_asset(client_id='client_kinderhealth', provider='meta',
+            asset_type='facebook_page', external_id='1234', name='Isolated primary fixture',
+            connection_id=connection['id'])
+        before = {table: self.store.all("SELECT * FROM " + table + " WHERE client_id='client_kinderhealth'")
+                  for table in ('connections', 'source_assets')}
+        original = self.store.one('SELECT value FROM secrets WHERE name=?', (primary.secret_name,))
+        self.metadata['scopes'] = list(self.permissions)
+        self.connect()
+        self.assertTrue(self.meta.info()['connected'])
+        self.assertTrue(primary.info()['connected'])
+        self.assertEqual(self.store.one('SELECT value FROM secrets WHERE name=?', (primary.secret_name,)), original)
+        for table, rows in before.items():
+            self.assertEqual(self.store.all("SELECT * FROM " + table + " WHERE client_id='client_kinderhealth'"), rows)
 
 
 @unittest.skipUnless(os.getenv('TEST_DATABASE_URL'), 'Set TEST_DATABASE_URL to an isolated PostgreSQL test database')

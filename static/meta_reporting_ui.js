@@ -60,8 +60,12 @@ export function metaReportingCard(payload = {}, dates = {}) {
             const remote = Array.isArray(discovered[spec.source])
                 ? discovered[spec.source]
                 : [];
+            const knownAssets = selected
+                .filter(asset => asset.asset_type === spec.type && asset.enabled)
+                .map(asset => ({ id: asset.external_id, name: asset.name, persisted: true }));
+            const items = [...new Map([...remote, ...knownAssets].map(item => [String(item.id), item])).values()];
 
-            const assetCards = remote
+            const assetCards = items
                 .map((item) => {
                     const externalId = String(item.id ?? "");
 
@@ -223,6 +227,14 @@ export function metaReportingCard(payload = {}, dates = {}) {
                 Khoảng thời gian tối đa 90 ngày.
                 Không đồng bộ ngày hôm nay khi chưa kết thúc.
             </p>
+
+            <div class="field">
+                <label for="meta-ads-account">Ad Account cần kiểm tra (act_...)</label>
+                <input id="meta-ads-account" placeholder="act_123456" autocomplete="off">
+                <label><input id="meta-ads-authorized" type="checkbox"> Tôi đã xác nhận đúng chủ sở hữu và được phép kiểm tra tài khoản này.</label>
+                <button type="button" class="btn secondary" data-action="meta-discover-ads">Kiểm tra Ad Account đã chỉ định</button>
+                <p class="form-note">Quyền Page không thay thế quyền Ad Account. Chỉ kiểm tra khi bạn chủ động yêu cầu; chưa đồng bộ dữ liệu.</p>
+            </div>
 
             ${sections}
 

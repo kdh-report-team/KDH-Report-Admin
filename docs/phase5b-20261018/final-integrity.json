@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "head": "664efbc561b401d901947437c63df87348d81437",
+  "branch": "feat/seo-composite-release",
+  "baseline_files_checked": 198,
+  "changed_baseline_files": [],
+  "source_manifest_files_unchanged": 61,
+  "artifact_python_parse_pass": 9,
+  "javascript_syntax": "PASS",
+  "git_diff_check": "PASS",
+  "known_secret_and_token_scan": "PASS",
+  "business_table_checksums": "12/12 match",
+  "security_source_and_network_definitions_unchanged": true,
+  "rollback_old_container_stopped": true,
+  "rollback_old_image_available": true,
+  "containers": [
+    {
+      "kind": "admin",
+      "name": "/kdh-meta-2b-admin-20261016-132836-5c512a53",
+      "id": "51843a6c05fadeffc22955e8edbddd5a08246dc7ae9ba6c86380c173f59d6990",
+      "image": "sha256:de56eef854fe84f7e8d8a630c2de62ae65399b0c1204fe24e7f29c997adbbfb5",
+      "state": "running",
+      "health": "healthy",
+      "published_ports": {
+        "8090/tcp": null
+      },
+      "networks": {
+        "kdh-meta-2b-net-20261016-132836-5c512a53": "192.168.0.3"
+      }
+    },
+    {
+      "kind": "pg",
+      "name": "/kdh-meta-2b-pg-20261016-132836-5c512a53",
+      "id": "41c3cebbed98beab58091b359ba12e4b54f7eb90a41fbe4b9cb5a86539cb87d1",
+      "image": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+      "state": "running",
+      "health": "healthy",
+      "published_ports": {
+        "5432/tcp": null
+      },
+      "networks": {
+        "kdh-meta-2b-net-20261016-132836-5c512a53": "192.168.0.2"
+      }
+    },
+    {
+      "kind": "gateway",
+      "name": "/kdh-meta-3-egress-20261016-132836-5c512a53",
+      "id": "c264a6c245cfd98fedd717e0f2e60743058e8d26e7a2577702622e23c993b0e6",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "state": "running",
+      "health": "not configured",
+      "published_ports": {
+        "8090/tcp": null
+      },
+      "networks": {
+        "kdh-meta-2b-net-20261016-132836-5c512a53": "192.168.0.10",
+        "kdh-meta-3-outbound-20261016-132836-5c512a53": "192.168.32.2"
+      }
+    },
+    {
+      "kind": "relay",
+      "name": "/kdh-meta-2b-relay-20261016-132836-5c512a53",
+      "id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "state": "running",
+      "health": "not configured",
+      "published_ports": {
+        "8090/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8191"
+          }
+        ]
+      },
+      "networks": {
+        "kdh-meta-2b-ingress-20261016-132836-5c512a53": "192.168.16.2",
+        "kdh-meta-2b-net-20261016-132836-5c512a53": "192.168.0.4"
+      }
+    }
+  ],
+  "provider_api_calls": 0,
+  "new_syncs": 0,
+  "new_attestations_approvals_releases": 0
+}

@@ -1,11 +1,13 @@
 """Thin Flask endpoints. Renderer authentication is separate from admin sessions."""
 import re
 import secrets
+from urllib.parse import urlsplit
 
 from flask import Response, g, jsonify, request
 
 from .core import Problem, pack
 from . import report_bundles as service
+from .platform_data import DEFAULT_CLIENT_ID
 
 
 def _revision_arg():
@@ -20,6 +22,18 @@ def _revision_arg():
 
 
 def register_report_bundle_routes(app, store, require, body):
+    def handoff_supported(client_id):
+        if client_id != DEFAULT_CLIENT_ID:
+            return False
+        try:
+            value = str(app.config.get('REPORT_NEW_BASE_URL', '')).rstrip('/')
+            parsed = urlsplit(value)
+            return bool(parsed.scheme in ('http', 'https') and parsed.hostname and not parsed.username
+                        and not parsed.password and not parsed.path and not parsed.query and not parsed.fragment
+                        and (parsed.scheme != 'http' or parsed.hostname in ('localhost', '127.0.0.1', '::1')))
+        except ValueError:
+            return False
+
     @app.post('/api/report-bundles')
     @require('admin')
     def create_report_bundle():
@@ -28,9 +42,19 @@ def register_report_bundle_routes(app, store, require, body):
     @app.get('/api/report-bundles')
     @require('admin')
     def list_report_bundles():
-        return jsonify(store.all('''SELECT bundle_key AS report_id,revision,parent_id,client_id,name,
-            status,start_date,end_date,quality_status,created_at,published_at
-            FROM report_bundles ORDER BY created_at DESC,bundle_key,revision DESC LIMIT 200'''))
+        from .marketing_console import sandbox_marketing_client
+        client = sandbox_marketing_client()
+        if client:
+            rows = store.all('''SELECT bundle_key AS report_id,revision,parent_id,client_id,name,
+                status,start_date,end_date,default_section,schema_version,quality_status,created_at,published_at
+                FROM report_bundles WHERE client_id=? ORDER BY created_at DESC,bundle_key,revision DESC LIMIT 200''', (client,))
+        else:
+            rows = store.all('''SELECT bundle_key AS report_id,revision,parent_id,client_id,name,
+                status,start_date,end_date,default_section,schema_version,quality_status,created_at,published_at
+                FROM report_bundles ORDER BY created_at DESC,bundle_key,revision DESC LIMIT 200''')
+        for row in rows:
+            row['viewer_handoff_supported'] = handoff_supported(row['client_id'])
+        return jsonify(rows)
 
     @app.get('/api/report-bundles/<report_id>')
     @require('admin')

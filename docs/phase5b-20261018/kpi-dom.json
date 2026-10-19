@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "input": "actual sandbox read-only KPI response",
+  "renderer": "deployed hash-matched KPI action in JSDOM",
+  "displayed_posts": 14,
+  "daily_coverage": "28/28",
+  "period_engagement": "no_data / —",
+  "engagement_coverage": "0/28",
+  "unverified_banner": true,
+  "historical_lifetime_not_fabricated": true,
+  "provider_requests": 0,
+  "full_browser_e2e": "NOT TESTED"
+}

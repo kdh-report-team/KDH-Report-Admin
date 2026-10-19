@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "tag": "kdh-admin-meta:multiplatform-20261019-36536d720762-r3",
+  "image_id": "sha256:926d563949e1ecfa70aca33e0aff42f1e73f9f184178a27a099107833ea8c626",
+  "source_sha256": "36536d7207624baa53906d9559efced0d6930a20d4ee0072cc072b5ca2fa2809",
+  "base_image": "sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d",
+  "base_reference": "kdh-admin-meta:ui-20261019-43c187981323",
+  "build_context_sha256": "0694b9405f1a8897048ad0298436dc0a0789a5d50445a2531a773d92ec889a71",
+  "note": "R2 uses a verified local tag for the same immutable base image."
+}

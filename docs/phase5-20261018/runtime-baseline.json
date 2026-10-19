@@ -1,0 +1,188 @@
+[
+  {
+    "Id": "41c3cebbed98beab58091b359ba12e4b54f7eb90a41fbe4b9cb5a86539cb87d1",
+    "Name": "/kdh-meta-2b-pg-20261016-132836-5c512a53",
+    "Image": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+    "Created": "2026-10-16T06:30:40.873305775Z",
+    "RestartCount": 0,
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 255,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-17T08:31:18.965683813Z",
+      "FinishedAt": "2026-10-18T11:48:29.795055961Z",
+      "Error": ""
+    },
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "kdh-meta-2b-pgdata-20261016-132836-5c512a53",
+        "Source": "/var/lib/docker/volumes/kdh-meta-2b-pgdata-20261016-132836-5c512a53/_data",
+        "Destination": "/var/lib/postgresql/data",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "bindings": {},
+    "networks": {
+      "kdh-meta-2b-net-20261016-132836-5c512a53": {
+        "NetworkID": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+        "IPAddress": "",
+        "IPAMConfig": null
+      }
+    },
+    "restart_policy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  },
+  {
+    "Id": "c264a6c245cfd98fedd717e0f2e60743058e8d26e7a2577702622e23c993b0e6",
+    "Name": "/kdh-meta-3-egress-20261016-132836-5c512a53",
+    "Image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+    "Created": "2026-10-16T08:48:54.22578093Z",
+    "RestartCount": 0,
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 255,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-17T08:31:42.200195892Z",
+      "FinishedAt": "2026-10-18T11:48:29.795014267Z",
+      "Error": ""
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase3\\gateway",
+        "Destination": "/gateway",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "bindings": {},
+    "networks": {
+      "kdh-meta-2b-net-20261016-132836-5c512a53": {
+        "NetworkID": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+        "IPAddress": "",
+        "IPAMConfig": {
+          "IPv4Address": "192.168.0.10"
+        }
+      },
+      "kdh-meta-3-outbound-20261016-132836-5c512a53": {
+        "NetworkID": "e6413878da9c290bbba590f857318c81fcdfee77630622d788723bde24f76258",
+        "IPAddress": "",
+        "IPAMConfig": null
+      }
+    },
+    "restart_policy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  },
+  {
+    "Id": "3b3cb91e860b57cf7b8ac414078728b085d4cbf620014a1a186a0145dc66f371",
+    "Name": "/kdh-meta-2b-admin-20261016-132836-5c512a53",
+    "Image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+    "Created": "2026-10-17T09:11:54.028466525Z",
+    "RestartCount": 0,
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 255,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-17T09:13:56.972585952Z",
+      "FinishedAt": "2026-10-18T11:48:29.790084871Z",
+      "Error": ""
+    },
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+        "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+        "Destination": "/app/instance",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "bindings": {
+      "8090/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8191"
+        }
+      ]
+    },
+    "networks": {
+      "kdh-meta-2b-net-20261016-132836-5c512a53": {
+        "NetworkID": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+        "IPAddress": "",
+        "IPAMConfig": {
+          "IPv4Address": "192.168.0.3"
+        }
+      }
+    },
+    "restart_policy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  },
+  {
+    "Id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+    "Name": "/kdh-meta-2b-relay-20261016-132836-5c512a53",
+    "Image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+    "Created": "2026-10-16T07:15:23.194910073Z",
+    "RestartCount": 0,
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "ExitCode": 255,
+      "OOMKilled": false,
+      "StartedAt": "2026-10-17T08:32:45.787581897Z",
+      "FinishedAt": "2026-10-18T11:48:29.795014287Z",
+      "Error": ""
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\relay",
+        "Destination": "/relay",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "bindings": {
+      "8090/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8191"
+        }
+      ]
+    },
+    "networks": {
+      "kdh-meta-2b-ingress-20261016-132836-5c512a53": {
+        "NetworkID": "9b5f9931cded44124cd928c6065f48bd97ba51c5afabdd5ac46e82849c044a0b",
+        "IPAddress": "",
+        "IPAMConfig": {
+          "IPv4Address": "192.168.16.2"
+        }
+      },
+      "kdh-meta-2b-net-20261016-132836-5c512a53": {
+        "NetworkID": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+        "IPAddress": "",
+        "IPAMConfig": null
+      }
+    },
+    "restart_policy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  }
+]

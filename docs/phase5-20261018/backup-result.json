@@ -1,0 +1,57 @@
+{
+  "run_id": "20261016-132836-5c512a53",
+  "test_prefix": "kdh-phase5-20261018-59770a49",
+  "private_backup_directory": "C:\\Users\\Admin\\AppData\\Local\\KDH-Meta-Backups\\kdh-phase5-20261018-59770a49",
+  "encryption": "Fernet; key protected by Windows DPAPI CurrentUser",
+  "private_acl": true,
+  "originals_stopped": true,
+  "archives": {
+    "postgres": {
+      "volume": "kdh-meta-2b-pgdata-20261016-132836-5c512a53",
+      "file": "postgres.tar.fernet",
+      "archive_sha256": "bb46a6d37bdaf32985f3c331ae2b6c2aa20bea19c7c7fcfadd5e43e3fc26c68c",
+      "encrypted_sha256": "1ccb6ac905b1e87fa5edfff99ea25e193e5665b696ca18e132041e2fea27e3f7",
+      "bytes": 52203520,
+      "entries": 1456,
+      "two_independent_reads_match": true,
+      "decrypt_roundtrip": true
+    },
+    "appdata": {
+      "volume": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+      "file": "appdata.tar.fernet",
+      "archive_sha256": "b59960cace514cd265eb47c6f016b407694de1e91fe03388023ac87da763aefe",
+      "encrypted_sha256": "050fc0a7c6d3942da1342f37b0c213e2af96365891d4403925b35e9e479bbdc0",
+      "bytes": 10240,
+      "entries": 2,
+      "two_independent_reads_match": true,
+      "decrypt_roundtrip": true
+    }
+  },
+  "helpers": [
+    {
+      "id": "4a6f6f8dfe2c43362c1e200c66a8246d49cc4250bceef0c0e3409a1b235756ea",
+      "name": "kdh-phase5-20261018-59770a49-postgres-read1",
+      "source_read_only": true
+    },
+    {
+      "id": "b003f020ae320497119fc98874d5801ea191bc19e95615d12d12b8b41e8802c5",
+      "name": "kdh-phase5-20261018-59770a49-postgres-read2",
+      "source_read_only": true
+    },
+    {
+      "id": "4d7d8c09be1d479540333196ca7b7f039661b72d4df1a3e8ff5d0bcf28d346cd",
+      "name": "kdh-phase5-20261018-59770a49-appdata-read1",
+      "source_read_only": true
+    },
+    {
+      "id": "5f3d2011c656977e9ae6cf63ec99a86d13a12b1a26da1499b1cd1d7657f57a53",
+      "name": "kdh-phase5-20261018-59770a49-appdata-read2",
+      "source_read_only": true
+    }
+  ],
+  "config_backup": {
+    "encrypted_sha256": "17f50afba4fb5541106da4376812aeb4205c9fee5923f31e883996a197a93f57",
+    "decrypt_roundtrip": true
+  },
+  "status": "PASS"
+}

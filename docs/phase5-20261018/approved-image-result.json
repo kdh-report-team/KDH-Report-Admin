@@ -1,0 +1,7 @@
+{
+  "image_id": "sha256:de56eef854fe84f7e8d8a630c2de62ae65399b0c1204fe24e7f29c997adbbfb5",
+  "tag": "kdh-admin-meta:phase5-20261018-1db981c78d84",
+  "source_sha256": "1db981c78d84f9b0c7582948d734c62cf0b6064da893f0c7dfedba7ebb0baae5",
+  "created": "2026-10-18T13:17:52.353983977Z",
+  "runtime_acceptance": "NOT TESTED"
+}

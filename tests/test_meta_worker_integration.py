@@ -19,12 +19,15 @@ class FakeMeta:
         return {'connected': True}
 
     def read(self):
-        return {'account_id': '999123', 'access_token': 'FAKE_USER_TOKEN'}
+        return {'account_id': '999123', 'access_token': 'FAKE_USER_TOKEN',
+                'scopes': ['pages_show_list', 'pages_read_engagement', 'ads_read']}
 
     def call(self, method, path, *, token=None, params=None):
         if method != 'GET':
             raise AssertionError('Test only supports GET')
         key = (path, (params or {}).get('level'))
+        if path == 'act_123':
+            return {'id': 'act_123', 'currency': 'VND', 'timezone_name': 'Asia/Ho_Chi_Minh'}
         if key not in self.replies:
             raise AssertionError(f'Unexpected Meta endpoint: {key}')
         return self.replies[key]

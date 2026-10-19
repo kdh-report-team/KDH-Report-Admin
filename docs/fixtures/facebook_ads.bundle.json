@@ -1,0 +1,2080 @@
+{
+  "schema_version": "1.0",
+  "report": {
+    "id": "rpt_ef699fdc526b7c544485d38377972cf9",
+    "revision": 1,
+    "status": "final",
+    "name": "Offline facebook_ads"
+  },
+  "client": {
+    "id": "client_meta_sandbox",
+    "name": "Meta HTTP Tests",
+    "slug": "meta-http-test",
+    "timezone": "Asia/Ho_Chi_Minh"
+  },
+  "period": {
+    "start": "2026-09-01",
+    "end": "2026-09-02"
+  },
+  "comparison": null,
+  "freshness": {
+    "generated_at": "2026-10-17T11:05:34.817725+00:00",
+    "published_at": "2026-10-17T11:05:34.862915+00:00"
+  },
+  "quality": {
+    "status": "complete",
+    "warnings": [
+      "facebook_ads: facebook_ads: Reach/frequency period totals are unavailable; never sum daily unique counts.",
+      "facebook_ads: facebook_ads: Missing conversions remain null. Results means action_type=lead only.",
+      "facebook_ads: facebook_ads: Application adapter verification and authorized review; not an independent Meta audit.",
+      "facebook_ads: facebook_ads: Unavailable/partial optional metrics are not verified claims. Lifetime is not period engagement."
+    ]
+  },
+  "navigation": {
+    "default_section": "facebook_ads",
+    "sections": [
+      "facebook_ads"
+    ]
+  },
+  "branding": {},
+  "sections": {
+    "facebook_ads": {
+      "dataset_id": "d459bc8e2a4c60c2bcca3bfd76fc6977",
+      "report_type": "facebook-ads",
+      "created_at": "2026-10-17T11:05:34.783196+00:00",
+      "valid": true,
+      "position": 0,
+      "quality": {
+        "status": "complete",
+        "warnings": [
+          "facebook_ads: Reach/frequency period totals are unavailable; never sum daily unique counts.",
+          "facebook_ads: Missing conversions remain null. Results means action_type=lead only.",
+          "facebook_ads: Application adapter verification and authorized review; not an independent Meta audit.",
+          "facebook_ads: Unavailable/partial optional metrics are not verified claims. Lifetime is not period engagement."
+        ]
+      },
+      "data": {
+        "id": "d459bc8e2a4c60c2bcca3bfd76fc6977",
+        "client_id": "client_meta_sandbox",
+        "created_at": "2026-10-17T11:05:34.783196+00:00",
+        "dataset_kind": "marketing_release_snapshot_v1",
+        "data_origin": "provider_origin_confirmed",
+        "params": {
+          "report_type": "facebook-ads",
+          "start": "2026-09-01",
+          "end": "2026-09-02",
+          "compare": false,
+          "previous_start": null,
+          "previous_end": null,
+          "source": "facebook_ads"
+        },
+        "sources": {
+          "facebook_ads": {
+            "source": "facebook_ads",
+            "requested_start": "2026-09-01",
+            "requested_end": "2026-09-02",
+            "status": "ready",
+            "data_origin": "provider_origin_confirmed",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "account_timezone": "Asia/Ho_Chi_Minh",
+            "report_timezone": "Asia/Ho_Chi_Minh",
+            "currency": "VND",
+            "attribution": {
+              "action_report_time": "impression",
+              "action_attribution_windows": [
+                "7d_click",
+                "1d_view"
+              ],
+              "use_account_attribution_setting": false,
+              "use_unified_attribution_setting": false,
+              "result_action_type": "lead"
+            },
+            "latest_available_date": "2026-09-02",
+            "daily": [
+              {
+                "date": "2026-09-01",
+                "spend": 100.75,
+                "spend_decimal": "100.75",
+                "impressions": 120,
+                "clicks": 10,
+                "link_clicks": null,
+                "reach": 90,
+                "leads": 2.0,
+                "ctr": 0.08333333333333333,
+                "cpc": 10.075,
+                "cpm": 839.5833333333334
+              },
+              {
+                "date": "2026-09-02",
+                "spend": 20.25,
+                "spend_decimal": "20.25",
+                "impressions": 50,
+                "clicks": 4,
+                "link_clicks": null,
+                "reach": 30,
+                "leads": 1.0,
+                "ctr": 0.08,
+                "cpc": 5.0625,
+                "cpm": 405.0
+              }
+            ],
+            "entries": [
+              {
+                "date": "2026-09-01",
+                "spend": 100.75,
+                "spend_decimal": "100.75",
+                "impressions": 120,
+                "clicks": 10,
+                "link_clicks": null,
+                "reach": null,
+                "leads": null,
+                "ctr": 0.08333333333333333,
+                "cpc": 10.075,
+                "cpm": 839.5833333333334,
+                "campaign_id": "campaign_1",
+                "campaign_name": "Sandbox Campaign"
+              }
+            ],
+            "totals": {
+              "impressions": 170,
+              "clicks": 14,
+              "link_clicks": null,
+              "leads": 3.0,
+              "spend": 121.0,
+              "spend_decimal": "121.00",
+              "reach": null,
+              "frequency": null,
+              "ctr": 0.08235294117647059,
+              "cpc": 8.642857142857142,
+              "cpm": 711.7647058823529,
+              "results": 3.0,
+              "cost_per_result": 40.333333333333336,
+              "purchases": null,
+              "roas": null
+            },
+            "warnings": [
+              "Reach/frequency period totals are unavailable; never sum daily unique counts.",
+              "Missing conversions remain null. Results means action_type=lead only.",
+              "Application adapter verification and authorized review; not an independent Meta audit.",
+              "Unavailable/partial optional metrics are not verified claims. Lifetime is not period engagement."
+            ],
+            "contract_version": "meta-reporting-v1",
+            "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+            "identity": {
+              "client_id": "client_meta_sandbox",
+              "external_id": "act_123",
+              "asset_type": "facebook_ad_account",
+              "account": {
+                "id": "act_123",
+                "name": "Sandbox Ads",
+                "currency": "VND",
+                "timezone_name": "Asia/Ho_Chi_Minh",
+                "business": null,
+                "account_status": null
+              }
+            },
+            "provenance": {
+              "provider": "meta",
+              "graph_version": "v26.0",
+              "app_id": "test-app",
+              "account_id": "999123",
+              "grant_observed_at": "2026-10-17T11:05:34.573267+00:00",
+              "grant_connected_at": "2026-10-17T11:05:34.442806+00:00",
+              "permissions": [
+                "ads_read",
+                "pages_read_engagement",
+                "pages_read_user_content",
+                "pages_show_list"
+              ],
+              "asset_access_confirmed": true,
+              "pagination_complete": true
+            },
+            "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+            "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+            "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "kpis": [
+              {
+                "key": "spend",
+                "metric_id": "facebook_ads.spend",
+                "label": "Chi phí",
+                "unit": "currency",
+                "currency": "VND",
+                "value": "121.00",
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "decimal_sum",
+                "grain": "day",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "cdcfcf4c77210be52969f383df0c656fe910c24ddc42893b4eba750b8505cf10",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "impressions",
+                "metric_id": "facebook_ads.impressions",
+                "label": "Lượt hiển thị",
+                "unit": "count",
+                "currency": null,
+                "value": 170,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "sum",
+                "grain": "day",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "a121ccaded806595f04193ef1ce7c8ac5caa81aeb95923a2fb7aff7a8fff2377",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "clicks",
+                "metric_id": "facebook_ads.clicks",
+                "label": "Tất cả lượt nhấp",
+                "unit": "count",
+                "currency": null,
+                "value": 14,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "sum",
+                "grain": "day",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "aa7b2903972ff27b90405ad557aaf9d6fc8b657f6fd5a2ba7abaeeea9a5167e2",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "link_clicks",
+                "metric_id": "facebook_ads.link_clicks",
+                "label": "Lượt nhấp liên kết",
+                "unit": "count",
+                "currency": null,
+                "value": null,
+                "status": "no_data",
+                "coverage": {
+                  "available": 0,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "sum",
+                "grain": "day",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": false,
+                "publishable": false,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "6d864cadccba50609c896b7ce79a72cdd229aeb7fc0b464f238f731f3a7807b0",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "not_ready"
+              },
+              {
+                "key": "ctr",
+                "metric_id": "facebook_ads.ctr",
+                "label": "CTR tất cả lượt nhấp",
+                "unit": "ratio",
+                "currency": null,
+                "value": 0.08235294117647059,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "clicks/impressions",
+                "grain": "period",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "c5877ac2a4c4ff215a8d7f349e36d67ee4b224b8027e02da554b806e84fcb658",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "cpc",
+                "metric_id": "facebook_ads.cpc",
+                "label": "CPC",
+                "unit": "currency",
+                "currency": "VND",
+                "value": 8.642857142857142,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "spend/clicks",
+                "grain": "period",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "22ae4b8aa8fb12be96b37b8b5049bbe8ae7c42249f6672dfaf40539f815cdfed",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "cpm",
+                "metric_id": "facebook_ads.cpm",
+                "label": "CPM",
+                "unit": "currency",
+                "currency": "VND",
+                "value": 711.7647058823529,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "1000*spend/impressions",
+                "grain": "period",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "736ba945ac727548f97e30dc205969a45398ac9d4c0835e9a8a29bab47734307",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "reach",
+                "metric_id": "facebook_ads.reach",
+                "label": "Tiếp cận duy nhất",
+                "unit": "count",
+                "currency": null,
+                "value": null,
+                "status": "no_data",
+                "coverage": {
+                  "available": 0,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "non_additive",
+                "grain": "period",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": false,
+                "publishable": false,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "09d0c184e3afa2a78e1ac3774ffe00670421405b5663099e6c9889cbaffbe24a",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "not_ready"
+              },
+              {
+                "key": "frequency",
+                "metric_id": "facebook_ads.frequency",
+                "label": "Tần suất",
+                "unit": "number",
+                "currency": null,
+                "value": null,
+                "status": "no_data",
+                "coverage": {
+                  "available": 0,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "non_additive",
+                "grain": "period",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": false,
+                "publishable": false,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "3fbde270bd9686e1395338529b7c8c2fcfc955d1ec6e8ade00ac5363270141b3",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "not_ready"
+              },
+              {
+                "key": "leads",
+                "metric_id": "facebook_ads.leads",
+                "label": "Lead (action_type=lead)",
+                "unit": "count",
+                "currency": null,
+                "value": 3.0,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "sum",
+                "grain": "day",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": {
+                  "action_report_time": "impression",
+                  "action_attribution_windows": [
+                    "7d_click",
+                    "1d_view"
+                  ],
+                  "use_account_attribution_setting": false,
+                  "use_unified_attribution_setting": false,
+                  "result_action_type": "lead"
+                },
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "cb41ae5b83242600a524391fe2abceada3dee3c8af738e86e20a046d06756df2",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "results",
+                "metric_id": "facebook_ads.results",
+                "label": "Kết quả (action_type=lead)",
+                "unit": "count",
+                "currency": null,
+                "value": 3.0,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "sum",
+                "grain": "day",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": {
+                  "action_report_time": "impression",
+                  "action_attribution_windows": [
+                    "7d_click",
+                    "1d_view"
+                  ],
+                  "use_account_attribution_setting": false,
+                  "use_unified_attribution_setting": false,
+                  "result_action_type": "lead"
+                },
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "6cd86950a6255ebd369fffe2350341c767c1f1a95bf00807215a9f3fe545ab91",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "cost_per_result",
+                "metric_id": "facebook_ads.cost_per_result",
+                "label": "Chi phí/Lead",
+                "unit": "currency",
+                "currency": "VND",
+                "value": 40.333333333333336,
+                "status": "available",
+                "coverage": {
+                  "available": 2,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "spend/lead",
+                "grain": "period",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": {
+                  "action_report_time": "impression",
+                  "action_attribution_windows": [
+                    "7d_click",
+                    "1d_view"
+                  ],
+                  "use_account_attribution_setting": false,
+                  "use_unified_attribution_setting": false,
+                  "result_action_type": "lead"
+                },
+                "provider": "meta",
+                "verified": true,
+                "publishable": true,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "b8cff5acffe66f62473d407cee2e77a3f335a817e51769462b29ac9d0b5cc7e9",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "provider_origin_confirmed"
+              },
+              {
+                "key": "purchases",
+                "metric_id": "facebook_ads.purchases",
+                "label": "Lượt mua",
+                "unit": "count",
+                "currency": null,
+                "value": null,
+                "status": "no_data",
+                "coverage": {
+                  "available": 0,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "unsupported",
+                "grain": "period",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": false,
+                "publishable": false,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "22b0e9fb60869777d875f3fdd81e727877c4678e85140df89fc5159866d99b03",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "not_ready"
+              },
+              {
+                "key": "roas",
+                "metric_id": "facebook_ads.roas",
+                "label": "ROAS",
+                "unit": "number",
+                "currency": null,
+                "value": null,
+                "status": "no_data",
+                "coverage": {
+                  "available": 0,
+                  "expected": 2,
+                  "unit": "days"
+                },
+                "observed_sum": null,
+                "aggregation": "unsupported",
+                "grain": "period",
+                "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                "attribution": null,
+                "provider": "meta",
+                "verified": false,
+                "publishable": false,
+                "type": "kpi",
+                "source": "facebook_ads",
+                "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                "evidence_id": "b647e647edf5aef3c7652f1e3fe5b6484760824e1aff740bf6386d7fe8d9f3bf",
+                "comparison": null,
+                "period": {
+                  "start": "2026-09-01",
+                  "end": "2026-09-02"
+                },
+                "daily_observations": [],
+                "lineage": {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+                },
+                "evidence_status": "not_ready"
+              }
+            ]
+          }
+        },
+        "marketing": {
+          "schema_version": "1.0",
+          "kind": "approved_release",
+          "widgets": [
+            {
+              "key": "spend",
+              "metric_id": "facebook_ads.spend",
+              "label": "Chi phí",
+              "unit": "currency",
+              "currency": "VND",
+              "value": "121.00",
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "decimal_sum",
+              "grain": "day",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "cdcfcf4c77210be52969f383df0c656fe910c24ddc42893b4eba750b8505cf10",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "impressions",
+              "metric_id": "facebook_ads.impressions",
+              "label": "Lượt hiển thị",
+              "unit": "count",
+              "currency": null,
+              "value": 170,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "sum",
+              "grain": "day",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "a121ccaded806595f04193ef1ce7c8ac5caa81aeb95923a2fb7aff7a8fff2377",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "clicks",
+              "metric_id": "facebook_ads.clicks",
+              "label": "Tất cả lượt nhấp",
+              "unit": "count",
+              "currency": null,
+              "value": 14,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "sum",
+              "grain": "day",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "aa7b2903972ff27b90405ad557aaf9d6fc8b657f6fd5a2ba7abaeeea9a5167e2",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "link_clicks",
+              "metric_id": "facebook_ads.link_clicks",
+              "label": "Lượt nhấp liên kết",
+              "unit": "count",
+              "currency": null,
+              "value": null,
+              "status": "no_data",
+              "coverage": {
+                "available": 0,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "sum",
+              "grain": "day",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": false,
+              "publishable": false,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "6d864cadccba50609c896b7ce79a72cdd229aeb7fc0b464f238f731f3a7807b0",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "not_ready"
+            },
+            {
+              "key": "ctr",
+              "metric_id": "facebook_ads.ctr",
+              "label": "CTR tất cả lượt nhấp",
+              "unit": "ratio",
+              "currency": null,
+              "value": 0.08235294117647059,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "clicks/impressions",
+              "grain": "period",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "c5877ac2a4c4ff215a8d7f349e36d67ee4b224b8027e02da554b806e84fcb658",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "cpc",
+              "metric_id": "facebook_ads.cpc",
+              "label": "CPC",
+              "unit": "currency",
+              "currency": "VND",
+              "value": 8.642857142857142,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "spend/clicks",
+              "grain": "period",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "22ae4b8aa8fb12be96b37b8b5049bbe8ae7c42249f6672dfaf40539f815cdfed",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "cpm",
+              "metric_id": "facebook_ads.cpm",
+              "label": "CPM",
+              "unit": "currency",
+              "currency": "VND",
+              "value": 711.7647058823529,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "1000*spend/impressions",
+              "grain": "period",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "736ba945ac727548f97e30dc205969a45398ac9d4c0835e9a8a29bab47734307",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "reach",
+              "metric_id": "facebook_ads.reach",
+              "label": "Tiếp cận duy nhất",
+              "unit": "count",
+              "currency": null,
+              "value": null,
+              "status": "no_data",
+              "coverage": {
+                "available": 0,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "non_additive",
+              "grain": "period",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": false,
+              "publishable": false,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "09d0c184e3afa2a78e1ac3774ffe00670421405b5663099e6c9889cbaffbe24a",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "not_ready"
+            },
+            {
+              "key": "frequency",
+              "metric_id": "facebook_ads.frequency",
+              "label": "Tần suất",
+              "unit": "number",
+              "currency": null,
+              "value": null,
+              "status": "no_data",
+              "coverage": {
+                "available": 0,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "non_additive",
+              "grain": "period",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": false,
+              "publishable": false,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "3fbde270bd9686e1395338529b7c8c2fcfc955d1ec6e8ade00ac5363270141b3",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "not_ready"
+            },
+            {
+              "key": "leads",
+              "metric_id": "facebook_ads.leads",
+              "label": "Lead (action_type=lead)",
+              "unit": "count",
+              "currency": null,
+              "value": 3.0,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "sum",
+              "grain": "day",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": {
+                "action_report_time": "impression",
+                "action_attribution_windows": [
+                  "7d_click",
+                  "1d_view"
+                ],
+                "use_account_attribution_setting": false,
+                "use_unified_attribution_setting": false,
+                "result_action_type": "lead"
+              },
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "cb41ae5b83242600a524391fe2abceada3dee3c8af738e86e20a046d06756df2",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "results",
+              "metric_id": "facebook_ads.results",
+              "label": "Kết quả (action_type=lead)",
+              "unit": "count",
+              "currency": null,
+              "value": 3.0,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "sum",
+              "grain": "day",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": {
+                "action_report_time": "impression",
+                "action_attribution_windows": [
+                  "7d_click",
+                  "1d_view"
+                ],
+                "use_account_attribution_setting": false,
+                "use_unified_attribution_setting": false,
+                "result_action_type": "lead"
+              },
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "6cd86950a6255ebd369fffe2350341c767c1f1a95bf00807215a9f3fe545ab91",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "cost_per_result",
+              "metric_id": "facebook_ads.cost_per_result",
+              "label": "Chi phí/Lead",
+              "unit": "currency",
+              "currency": "VND",
+              "value": 40.333333333333336,
+              "status": "available",
+              "coverage": {
+                "available": 2,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "spend/lead",
+              "grain": "period",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": {
+                "action_report_time": "impression",
+                "action_attribution_windows": [
+                  "7d_click",
+                  "1d_view"
+                ],
+                "use_account_attribution_setting": false,
+                "use_unified_attribution_setting": false,
+                "result_action_type": "lead"
+              },
+              "provider": "meta",
+              "verified": true,
+              "publishable": true,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "b8cff5acffe66f62473d407cee2e77a3f335a817e51769462b29ac9d0b5cc7e9",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "provider_origin_confirmed"
+            },
+            {
+              "key": "purchases",
+              "metric_id": "facebook_ads.purchases",
+              "label": "Lượt mua",
+              "unit": "count",
+              "currency": null,
+              "value": null,
+              "status": "no_data",
+              "coverage": {
+                "available": 0,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "unsupported",
+              "grain": "period",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": false,
+              "publishable": false,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "22b0e9fb60869777d875f3fdd81e727877c4678e85140df89fc5159866d99b03",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "not_ready"
+            },
+            {
+              "key": "roas",
+              "metric_id": "facebook_ads.roas",
+              "label": "ROAS",
+              "unit": "number",
+              "currency": null,
+              "value": null,
+              "status": "no_data",
+              "coverage": {
+                "available": 0,
+                "expected": 2,
+                "unit": "days"
+              },
+              "observed_sum": null,
+              "aggregation": "unsupported",
+              "grain": "period",
+              "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+              "attribution": null,
+              "provider": "meta",
+              "verified": false,
+              "publishable": false,
+              "type": "kpi",
+              "source": "facebook_ads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "evidence_id": "b647e647edf5aef3c7652f1e3fe5b6484760824e1aff740bf6386d7fe8d9f3bf",
+              "comparison": null,
+              "period": {
+                "start": "2026-09-01",
+                "end": "2026-09-02"
+              },
+              "daily_observations": [],
+              "lineage": {
+                "sync_run_ids": [
+                  "a08d5bc4bb478424d8be1840ebc59588"
+                ],
+                "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+              },
+              "evidence_status": "not_ready"
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "evidence_id": "cdcfcf4c77210be52969f383df0c656fe910c24ddc42893b4eba750b8505cf10",
+            "metric_id": "facebook_ads.spend",
+            "claim": null,
+            "metric": "Chi phí",
+            "before": null,
+            "after": "121.00",
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "a121ccaded806595f04193ef1ce7c8ac5caa81aeb95923a2fb7aff7a8fff2377",
+            "metric_id": "facebook_ads.impressions",
+            "claim": null,
+            "metric": "Lượt hiển thị",
+            "before": null,
+            "after": 170,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "aa7b2903972ff27b90405ad557aaf9d6fc8b657f6fd5a2ba7abaeeea9a5167e2",
+            "metric_id": "facebook_ads.clicks",
+            "claim": null,
+            "metric": "Tất cả lượt nhấp",
+            "before": null,
+            "after": 14,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "c5877ac2a4c4ff215a8d7f349e36d67ee4b224b8027e02da554b806e84fcb658",
+            "metric_id": "facebook_ads.ctr",
+            "claim": null,
+            "metric": "CTR tất cả lượt nhấp",
+            "before": null,
+            "after": 0.08235294117647059,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "22ae4b8aa8fb12be96b37b8b5049bbe8ae7c42249f6672dfaf40539f815cdfed",
+            "metric_id": "facebook_ads.cpc",
+            "claim": null,
+            "metric": "CPC",
+            "before": null,
+            "after": 8.642857142857142,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "736ba945ac727548f97e30dc205969a45398ac9d4c0835e9a8a29bab47734307",
+            "metric_id": "facebook_ads.cpm",
+            "claim": null,
+            "metric": "CPM",
+            "before": null,
+            "after": 711.7647058823529,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "cb41ae5b83242600a524391fe2abceada3dee3c8af738e86e20a046d06756df2",
+            "metric_id": "facebook_ads.leads",
+            "claim": null,
+            "metric": "Lead (action_type=lead)",
+            "before": null,
+            "after": 3.0,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "6cd86950a6255ebd369fffe2350341c767c1f1a95bf00807215a9f3fe545ab91",
+            "metric_id": "facebook_ads.results",
+            "claim": null,
+            "metric": "Kết quả (action_type=lead)",
+            "before": null,
+            "after": 3.0,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          },
+          {
+            "evidence_id": "b8cff5acffe66f62473d407cee2e77a3f335a817e51769462b29ac9d0b5cc7e9",
+            "metric_id": "facebook_ads.cost_per_result",
+            "claim": null,
+            "metric": "Chi phí/Lead",
+            "before": null,
+            "after": 40.333333333333336,
+            "period": {
+              "start": "2026-09-01",
+              "end": "2026-09-02"
+            },
+            "source": "facebook_ads",
+            "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+            "data_date": "2026-09-02",
+            "verification": "provider_origin_confirmed",
+            "review_status": "approved",
+            "lineage": {
+              "sync_run_ids": [
+                "a08d5bc4bb478424d8be1840ebc59588"
+              ],
+              "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+              "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba"
+            },
+            "quality": {
+              "status": "complete",
+              "warnings": [
+                "Xác nhận qua adapter và review của hệ thống; không phải kiểm toán độc lập của nhà cung cấp."
+              ]
+            }
+          }
+        ],
+        "opportunities": [],
+        "executive_summary": {
+          "verified_kpi_count": 9,
+          "limitations": [
+            "Chỉ kết luận trên KPI có bằng chứng. Lifetime không phải tương tác trong kỳ; không cộng reach/frequency theo ngày.",
+            "Chưa có mục tiêu/khối lượng công việc được nhập và duyệt thì chưa đánh giá mức đạt cam kết."
+          ]
+        },
+        "platforms": {
+          "ga4": {
+            "label": "Google Analytics 4",
+            "integration": "adapter_present",
+            "status": "not_in_report"
+          },
+          "gsc": {
+            "label": "Google Search Console",
+            "integration": "adapter_present",
+            "status": "not_in_report"
+          },
+          "keywords": {
+            "label": "Keyword Ranking",
+            "integration": "detail_rows_present",
+            "status": "not_in_report"
+          },
+          "google_ads": {
+            "label": "Google Ads",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "facebook_ads": {
+            "label": "Meta / Facebook & Instagram Ads",
+            "integration": "adapter_present",
+            "status": "included"
+          },
+          "facebook_content": {
+            "label": "Facebook Page Content",
+            "integration": "adapter_present",
+            "status": "not_in_report"
+          },
+          "instagram": {
+            "label": "Instagram Organic",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "tiktok_ads": {
+            "label": "TikTok Ads",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "tiktok_organic": {
+            "label": "TikTok Organic",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "youtube": {
+            "label": "YouTube Analytics",
+            "integration": "planned",
+            "status": "not_in_report"
+          },
+          "gmb": {
+            "label": "Google Business Profile",
+            "integration": "csv_only",
+            "status": "not_in_report"
+          },
+          "crm": {
+            "label": "Leads / CRM / Bookings / Revenue",
+            "integration": "planned",
+            "status": "not_in_report"
+          }
+        },
+        "release": {
+          "schema_version": "1.0",
+          "version": 1,
+          "candidate_id": "c842d351d8652b6f91cc1b735a29463c",
+          "origin_dataset_id": "f7527352297ecb804ac1776979822a58",
+          "approval_id": "03c03caeb90307e33f353d586215c5e3",
+          "internal_review_id": "ee02b5d4370bc205a93fe33e8c99953f",
+          "candidate_sha256": "c6af9402f054ec1cf8cecd77b6081097b4ec47c8d3b9f7dbc6a602ed39e191ec",
+          "dataset_sha256": "f8dd693781cd091c8af077315f2e0d5c9ca8c3d2a729c0bf3a8612f623fe36e4",
+          "reviewer_id": "11eccdbffbda2b62ee62692dc63b15ba",
+          "approved_at": "2026-10-17T11:05:34.749014+00:00",
+          "state": "release_approved",
+          "provider_origin_confirmed": true,
+          "quality": "complete",
+          "checks": [
+            {
+              "evidence_id": "cdcfcf4c77210be52969f383df0c656fe910c24ddc42893b4eba750b8505cf10",
+              "metric_id": "facebook_ads.spend",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "a121ccaded806595f04193ef1ce7c8ac5caa81aeb95923a2fb7aff7a8fff2377",
+              "metric_id": "facebook_ads.impressions",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "aa7b2903972ff27b90405ad557aaf9d6fc8b657f6fd5a2ba7abaeeea9a5167e2",
+              "metric_id": "facebook_ads.clicks",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "c5877ac2a4c4ff215a8d7f349e36d67ee4b224b8027e02da554b806e84fcb658",
+              "metric_id": "facebook_ads.ctr",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "22ae4b8aa8fb12be96b37b8b5049bbe8ae7c42249f6672dfaf40539f815cdfed",
+              "metric_id": "facebook_ads.cpc",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "736ba945ac727548f97e30dc205969a45398ac9d4c0835e9a8a29bab47734307",
+              "metric_id": "facebook_ads.cpm",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "cb41ae5b83242600a524391fe2abceada3dee3c8af738e86e20a046d06756df2",
+              "metric_id": "facebook_ads.leads",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "6cd86950a6255ebd369fffe2350341c767c1f1a95bf00807215a9f3fe545ab91",
+              "metric_id": "facebook_ads.results",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            },
+            {
+              "evidence_id": "b8cff5acffe66f62473d407cee2e77a3f335a817e51769462b29ac9d0b5cc7e9",
+              "metric_id": "facebook_ads.cost_per_result",
+              "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+              "issues": [],
+              "status": "provider_origin_confirmed",
+              "witnesses": [
+                {
+                  "sync_run_ids": [
+                    "a08d5bc4bb478424d8be1840ebc59588"
+                  ],
+                  "snapshot_id": "b6508fcfebe9b13b34b3de259b2c98ea",
+                  "snapshot_sha256": "d04a50b868ea897835f467f32ab60551bbb045fc9ae31df281908eb80e476cba",
+                  "external_id": "act_123",
+                  "timezone": "Asia/Ho_Chi_Minh",
+                  "fetched_at": "2026-10-17T11:05:34.573267+00:00",
+                  "currency": "VND",
+                  "attribution": {
+                    "action_report_time": "impression",
+                    "action_attribution_windows": [
+                      "7d_click",
+                      "1d_view"
+                    ],
+                    "use_account_attribution_setting": false,
+                    "use_unified_attribution_setting": false,
+                    "result_action_type": "lead"
+                  },
+                  "sync_run_id": "a08d5bc4bb478424d8be1840ebc59588",
+                  "asset_id": "b5f1534e816cf548e87e17ab764e1761",
+                  "period": {
+                    "start": "2026-09-01",
+                    "end": "2026-09-02"
+                  },
+                  "latest_available_date": "2026-09-02"
+                }
+              ]
+            }
+          ],
+          "policy": {
+            "provisional": true,
+            "final": true
+          },
+          "seal": "SANITIZED_FIXTURE_SEAL_NOT_VALID_FOR_PUBLICATION"
+        }
+      }
+    }
+  }
+}

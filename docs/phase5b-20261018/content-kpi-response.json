@@ -1,0 +1,246 @@
+{
+  "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+  "client_id": "client_meta_sandbox",
+  "data_origin": "persisted_unverified",
+  "metrics": {
+    "facebook_content.engagements": {
+      "aggregation": "sum",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "client_id": "client_meta_sandbox",
+      "currency": null,
+      "data_origin": "persisted_unverified",
+      "freshness": {
+        "last_metric_date": null,
+        "latest_available_date": "2026-10-16",
+        "latest_sync_at": "2026-10-17T09:45:30.282223+00:00",
+        "latest_sync_status": "succeeded"
+      },
+      "grain": "day",
+      "label": "Tổng tương tác",
+      "metric_id": "facebook_content.engagements",
+      "period": {
+        "end": "2026-10-16",
+        "start": "2026-09-19"
+      },
+      "reason": "No eligible, succeeded-sync metric rows for the selected period.",
+      "series": [],
+      "source": "facebook_content",
+      "status": "no_data",
+      "summary": {
+        "coverage_days": 0,
+        "expected_days": 28,
+        "value": null
+      },
+      "unit": "count",
+      "warnings": []
+    },
+    "facebook_content.posts_published": {
+      "aggregation": "sum",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "client_id": "client_meta_sandbox",
+      "currency": null,
+      "data_origin": "persisted_unverified",
+      "freshness": {
+        "last_metric_date": "2026-10-16",
+        "latest_available_date": "2026-10-16",
+        "latest_sync_at": "2026-10-17T09:45:30.282223+00:00",
+        "latest_sync_status": "succeeded"
+      },
+      "grain": "day",
+      "label": "Bài đăng mới",
+      "metric_id": "facebook_content.posts_published",
+      "period": {
+        "end": "2026-10-16",
+        "start": "2026-09-19"
+      },
+      "reason": null,
+      "series": [
+        {
+          "date": "2026-09-19",
+          "fetched_at": "2026-10-17T09:45:31.442605+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-09-20",
+          "fetched_at": "2026-10-17T09:45:31.445690+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-09-21",
+          "fetched_at": "2026-10-17T09:45:31.447262+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-09-22",
+          "fetched_at": "2026-10-17T09:45:31.448737+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-09-23",
+          "fetched_at": "2026-10-17T09:45:31.449721+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-09-24",
+          "fetched_at": "2026-10-17T09:45:31.450734+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-09-25",
+          "fetched_at": "2026-10-17T09:45:31.451367+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-09-26",
+          "fetched_at": "2026-10-17T09:45:31.452488+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-09-27",
+          "fetched_at": "2026-10-17T09:45:31.453370+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-09-28",
+          "fetched_at": "2026-10-17T09:45:31.454228+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-09-29",
+          "fetched_at": "2026-10-17T09:45:31.455030+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-09-30",
+          "fetched_at": "2026-10-17T09:45:31.455693+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-01",
+          "fetched_at": "2026-10-17T09:45:31.456336+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 2
+        },
+        {
+          "date": "2026-10-02",
+          "fetched_at": "2026-10-17T09:45:31.456887+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-03",
+          "fetched_at": "2026-10-17T09:45:31.457451+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-10-04",
+          "fetched_at": "2026-10-17T09:45:31.458379+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-05",
+          "fetched_at": "2026-10-17T09:45:31.459175+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-10-06",
+          "fetched_at": "2026-10-17T09:45:31.459924+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched_at": "2026-10-17T09:45:31.460570+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-08",
+          "fetched_at": "2026-10-17T09:45:31.461250+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-10-09",
+          "fetched_at": "2026-10-17T09:45:31.461945+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-10",
+          "fetched_at": "2026-10-17T09:45:31.462501+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-11",
+          "fetched_at": "2026-10-17T09:45:31.463899+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-12",
+          "fetched_at": "2026-10-17T09:45:31.464856+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-13",
+          "fetched_at": "2026-10-17T09:45:31.465674+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 2
+        },
+        {
+          "date": "2026-10-14",
+          "fetched_at": "2026-10-17T09:45:31.467007+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        },
+        {
+          "date": "2026-10-15",
+          "fetched_at": "2026-10-17T09:45:31.467721+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 1
+        },
+        {
+          "date": "2026-10-16",
+          "fetched_at": "2026-10-17T09:45:31.468404+00:00",
+          "sync_run_id": "f97f3c6928bc4925be67fe1103188254",
+          "value": 0
+        }
+      ],
+      "source": "facebook_content",
+      "status": "available",
+      "summary": {
+        "coverage_days": 28,
+        "expected_days": 28,
+        "value": 14
+      },
+      "unit": "count",
+      "warnings": []
+    }
+  },
+  "period": {
+    "end": "2026-10-16",
+    "start": "2026-09-19"
+  },
+  "publishable": false,
+  "snapshot_metrics": null,
+  "source": "facebook_content",
+  "verified": false
+}

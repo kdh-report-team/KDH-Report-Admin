@@ -36,6 +36,7 @@ SOURCE_REPORT_TYPES = {
 MAX_DATASET_BYTES = 1024 * 1024
 
 ALLOWED_FIELDS = {
+    "client_id",
     "source",
     "start",
     "end",
@@ -156,15 +157,15 @@ def _validate_internal_preview(
 
     if (
         not isinstance(period, dict)
-        or not isinstance(comparison, dict)
+        or (source not in ('facebook_content', 'facebook_ads') and not isinstance(comparison, dict))
         or not all(
             isinstance(period.get(key), str)
             for key in ("start", "end")
         )
-        or not all(
+        or (comparison is not None and not all(
             isinstance(comparison.get(key), str)
             for key in ("start", "end")
-        )
+        ))
     ):
         raise Problem(
             "Invalid Preview periods.",
@@ -179,16 +180,26 @@ def create_marketing_dataset(
     actor_id,
     allowed_sources,
     payload,
-    client_id=DEFAULT_CLIENT_ID,
+    client_id=None,
 ):
     """Insert one new internal-only Dataset snapshot."""
 
     data = _validate_input(payload)
     source = data["source"]
+    is_meta = source in ('facebook_content', 'facebook_ads')
+    if is_meta:
+        if client_id is not None and data.get('client_id', client_id) != client_id:
+            raise Problem('Conflicting client identity.', 403, 'client_not_allowed')
+        client_id = data.get('client_id', client_id)
+    elif 'client_id' in data:
+        raise Problem('Explicit client input is supported for Meta only.', 400, 'invalid_dataset_input')
+    else:
+        client_id = client_id or DEFAULT_CLIENT_ID
 
     if (
         not isinstance(client_id, str)
-        or client_id != DEFAULT_CLIENT_ID
+        or not client_id.strip()
+        or (not is_meta and client_id != DEFAULT_CLIENT_ID)
     ):
         raise Problem(
             "Client is not supported by this builder.",
@@ -288,9 +299,9 @@ def create_marketing_dataset(
             "report_type": report_type,
             "start": period["start"],
             "end": period["end"],
-            "compare": True,
-            "previous_start": previous["start"],
-            "previous_end": previous["end"],
+            "compare": previous is not None,
+            "previous_start": previous["start"] if previous else None,
+            "previous_end": previous["end"] if previous else None,
             "source": source,
         },
         "sources": {

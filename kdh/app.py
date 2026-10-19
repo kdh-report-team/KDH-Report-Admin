@@ -30,6 +30,7 @@ from .marketing_publication import register_marketing_publication_routes
 from .viewer_access import register_viewer_routes
 from .viewer_handoff import register_handoff_routes
 from .marketing_console import register_marketing_console
+from .platform_registry import platform_status as build_platform_status, sync_history as read_sync_history
 
 def _bootstrap_initial_admin(store, email, password):
     if store.one('SELECT id FROM users LIMIT 1'):
@@ -59,6 +60,9 @@ def create_app(overrides=None):
     app = Flask(__name__, static_folder=str(ROOT / 'static'), template_folder=str(ROOT / 'templates'))
     app.config.update(load_config())
     app.config.update(overrides or {})
+    session_cookie_name = app.config['ADMIN_SESSION_COOKIE_NAME']
+    if not isinstance(session_cookie_name, str) or not re.fullmatch(r'[A-Za-z0-9_\-]{1,64}', session_cookie_name):
+        raise RuntimeError('ADMIN_SESSION_COOKIE_NAME must be a valid cookie name.')
     if app.config['JOB_MODE'] not in ('request', 'worker'):
         raise RuntimeError('JOB_MODE must be request or worker.')
     store = Store(app.config['DATA_DIR'], app.config['DATABASE_URL'])
@@ -97,6 +101,43 @@ def create_app(overrides=None):
         if report_type not in TYPES or not allowed(g.user, report_type):
             raise Problem('Bạn chưa được cấp quyền cho báo cáo này.', 403)
 
+    def sandbox_client():
+        return configured_client_id() == 'client_meta_sandbox'
+
+    def configured_client_id():
+        return app.config.get('META_CLIENT_ID') or meta.client_id
+
+    def legacy_scope_problem():
+        return Problem('Dữ liệu legacy không có client lineage để mở trong sandbox.', 404,
+                       'client_scope_unavailable')
+
+    def is_internal_marketing_dataset(data):
+        if not isinstance(data, dict):
+            return False
+        kind = data.get('dataset_kind')
+        return (isinstance(kind, str) and kind.startswith('marketing_')) or 'marketing' in data
+
+    def sandbox_job_visible(row):
+        if not sandbox_client():
+            return True
+        try:
+            params = json.loads(row['params'])
+        except (TypeError, ValueError):
+            return False
+        if row['kind'] != 'meta_sync' or not isinstance(params, dict):
+            return False
+        asset = store.one(
+            "SELECT client_id,provider,asset_type FROM source_assets WHERE id=?",
+            (params.get('asset_id'),),
+        )
+        if not asset or asset['client_id'] != configured_client_id() or asset['provider'] != 'meta':
+            return False
+        expected_report = {
+            'facebook_page': 'facebook-content',
+            'facebook_ad_account': 'facebook-ads',
+        }.get(asset['asset_type'])
+        return bool(expected_report and params.get('report_type') == expected_report)
+
 
     def get_dataset(dataset_id):
         row = store.one(
@@ -113,33 +154,30 @@ def create_app(overrides=None):
         check_report(row["report_type"])
 
         data = json.loads(row["data"])
+        internal_marketing = is_internal_marketing_dataset(data)
+
+        # The legacy Dataset table has no client column. In the isolated Meta
+        # sandbox, only Marketing snapshots carrying the exact client lineage
+        # can be opened; unknown or primary-client rows fail closed.
+        if sandbox_client() and (
+            not internal_marketing or data.get('client_id') != configured_client_id()
+        ):
+            raise legacy_scope_problem()
 
         # Protect internal Marketing Datasets from legacy
         # viewer/operator endpoints, even when an ID is known.
-        if isinstance(data, dict):
-            kind = data.get("dataset_kind")
-
-            internal_marketing = (
-                (
-                    isinstance(kind, str)
-                    and kind.startswith("marketing_")
-                )
-                or "marketing" in data
+        if internal_marketing and g.user["role"] != "admin":
+            raise Problem(
+                "Dataset Marketing chỉ dành cho Admin.",
+                403,
+                "marketing_dataset_admin_only",
             )
-
-            if (
-                internal_marketing
-                and g.user["role"] != "admin"
-            ):
-                raise Problem(
-                    "Dataset Marketing chỉ dành cho Admin.",
-                    403,
-                    "marketing_dataset_admin_only",
-                )
 
         return data
 
     def get_report(report_id):
+        if sandbox_client():
+            raise legacy_scope_problem()
         row = store.one('SELECT * FROM reports WHERE id=?', (report_id,))
         if not row:
             raise Problem('Không tìm thấy phiên bản báo cáo.', 404)
@@ -150,6 +188,8 @@ def create_app(overrides=None):
         row = store.one('SELECT * FROM jobs WHERE id=?', (job_id,))
         if not row:
             raise Problem('Không tìm thấy tác vụ.', 404)
+        if not sandbox_job_visible(row):
+            raise legacy_scope_problem()
         if row['kind'] == 'connection' and g.user['role'] != 'admin':
             raise Problem('Bạn không có quyền xem tác vụ kết nối.', 403)
         check_report(json.loads(row['params'])['report_type'])
@@ -162,7 +202,7 @@ def create_app(overrides=None):
         # grant access nor affect this read-only API.
         if request.path.startswith('/api/internal/'):
             return
-        g.session_id = digest(request.cookies.get('kdh_session', ''))
+        g.session_id = digest(request.cookies.get(session_cookie_name, ''))
         g.session = store.one('SELECT * FROM sessions WHERE id=? AND expires_at>?', (g.session_id, now()))
         if g.session:
             g.user = store.one('SELECT * FROM users WHERE id=? AND active=1', (g.session['user_id'],))
@@ -289,7 +329,7 @@ def create_app(overrides=None):
         store.execute('INSERT INTO sessions VALUES (?,?,?,?)',
                       (digest(token), user['id'], csrf, (datetime.now(timezone.utc) + timedelta(hours=8)).isoformat()))
         result = jsonify(user=public_user(user), csrf=csrf)
-        result.set_cookie('kdh_session', token, max_age=8 * 3600, httponly=True, secure=app.config['COOKIE_SECURE'], samesite='Lax', path='/')
+        result.set_cookie(session_cookie_name, token, max_age=8 * 3600, httponly=True, secure=app.config['COOKIE_SECURE'], samesite='Lax', path='/')
         store.event(user['id'], 'login')
         return result
 
@@ -298,21 +338,23 @@ def create_app(overrides=None):
     def logout():
         store.execute('DELETE FROM sessions WHERE id=?', (g.session_id,))
         result = jsonify(message='Đã đăng xuất.')
-        result.delete_cookie('kdh_session', path='/')
+        result.delete_cookie(session_cookie_name, path='/')
         return result
 
     @app.get('/api/overview')
     @require()
     def overview():
         worker.expire_stale()
+        sandbox = meta.client_id == 'client_meta_sandbox'
         visible = [k for k in TYPES if allowed(g.user, k)]
-        reports = store.all('SELECT id,report_type,name,version,created_at,valid,origin FROM reports ORDER BY created_at DESC')
+        reports = [] if sandbox else store.all('SELECT id,report_type,name,version,created_at,valid,origin FROM reports ORDER BY created_at DESC')
         reports = [r for r in reports if r['report_type'] in visible]
-        jobs = [job_view(r) for r in store.all('SELECT j.*,u.name AS actor FROM jobs j LEFT JOIN users u ON u.id=j.user_id ORDER BY j.created_at DESC LIMIT 100')
-                if json.loads(r['params'])['report_type'] in visible and (r['kind'] != 'connection' or g.user['role'] == 'admin')]
+        jobs = [] if sandbox else [job_view(r) for r in store.all('SELECT j.*,u.name AS actor FROM jobs j LEFT JOIN users u ON u.id=j.user_id ORDER BY j.created_at DESC LIMIT 100')
+                                   if json.loads(r['params'])['report_type'] in visible and (r['kind'] != 'connection' or g.user['role'] == 'admin')]
         sources, demo_sources, demo_datasets = {}, {}, {}
         permitted_sources = {s for k in visible for s in TYPES[k][1]}
-        for row in store.all('SELECT report_type,data FROM datasets ORDER BY created_at DESC LIMIT 100'):
+        dataset_rows = [] if sandbox else store.all('SELECT report_type,data FROM datasets ORDER BY created_at DESC LIMIT 100')
+        for row in dataset_rows:
             if row['report_type'] not in visible:
                 continue
             snapshot = json.loads(row['data'])
@@ -327,21 +369,41 @@ def create_app(overrides=None):
                 if value['status'] in GOOD and not target[k].get('last_success_at'):
                     target[k]['last_success_at'] = value['fetched_at']
                     target[k]['last_success_data_date'] = value['latest_available_date']
-        info = google.info()
+        info = {'connected': False} if sandbox else google.info()
         return jsonify(reports=reports[:6], report_count=len(reports), jobs=jobs[:6],
                        job_mode=app.config['JOB_MODE'], upload_limit_mb=app.config['MAX_CONTENT_LENGTH'] // (1024 * 1024),
-                       demo_enabled=bool(store.setting('demo_pack')), demo_sources=demo_sources, demo_datasets=demo_datasets,
+                       demo_enabled=bool(store.setting('demo_pack')) and not sandbox, demo_sources=demo_sources, demo_datasets=demo_datasets,
                        running=sum(j['status'] in ('queued','running') for j in jobs),
                        failed=sum(j['status'] in ('failed','partial','interrupted') for j in jobs),
                        sources=sources, google_connected=info['connected'], types=[{'id': k,'label': TYPES[k][0],'can_generate': bool(TYPES[k][1])} for k in visible],
                        last_export=next((j for j in jobs if j['kind']=='export' and j['status']=='succeeded'), None),
-                       dashboard_url=app.config['DASHBOARD_URL'], organization=store.setting('organization', {'name':'KinderHealth','author':''}))
+                       dashboard_url=app.config['DASHBOARD_URL'],
+                       client_context={'client_id': meta.client_id,
+                                       'environment': 'sandbox' if meta.client_id == 'client_meta_sandbox' else 'primary'},
+                       organization=store.setting('organization', {'name':'KinderHealth','author':''}))
 
     @app.get('/api/google')
     @require('admin')
     def google_info():
         return jsonify(**google.info(), assets={'ga4': app.config['GA4_PROPERTY_ID'], 'gsc':app.config['GSC_PROPERTY'],
                        'keywords': app.config['KEYWORD_SPREADSHEET_ID'] + ' / ' + app.config['KEYWORD_SHEET']})
+
+    @app.get('/api/platform-status')
+    @require('admin')
+    def platform_status_api():
+        result = build_platform_status(store, google, meta)
+        result['job_mode'] = app.config['JOB_MODE']
+        return jsonify(result)
+
+    @app.get('/api/sync-history')
+    @require('admin')
+    def unified_sync_history():
+        allowed_filters = {'start', 'end', 'provider', 'status', 'source', 'asset_id'}
+        if (set(request.args) - allowed_filters or
+                any(len(request.args.getlist(key)) != 1 for key in request.args)):
+            raise Problem('Bộ lọc lịch sử đồng bộ không hợp lệ.', 400, 'invalid_sync_filter')
+        filters = {key: request.args.get(key) for key in request.args}
+        return jsonify(read_sync_history(store, meta.client_id, filters))
 
     @app.post('/api/google/connect')
     @require('admin')
@@ -411,6 +473,9 @@ def create_app(overrides=None):
     @app.post('/api/analyses')
     @require()
     def analysis():
+        if sandbox_client():
+            raise Problem('Phân tích legacy chưa có client lineage trong sandbox; dùng workflow Marketing theo nguồn.',
+                          403, 'client_scope_unavailable')
         p = filters(body())
         if p.get('demo') and not store.setting('demo_pack'):
             raise Problem('Bộ dữ liệu demo chưa được cài đặt.', 409)
@@ -428,6 +493,9 @@ def create_app(overrides=None):
     @require()
     def export(dataset_id):
         data = get_dataset(dataset_id)
+        if sandbox_client():
+            raise Problem('Dataset sandbox chỉ được xử lý trong workflow Marketing.', 409,
+                          'client_scope_workflow_required')
         if not valid_dataset(data):
             raise Problem('Chưa thể xuất: cần các nguồn bắt buộc và kỳ so sánh hợp lệ.', 409)
         job_id, created = enqueue(store, g.user['id'], 'export', {**data['params'], 'dataset_id': dataset_id})
@@ -436,7 +504,11 @@ def create_app(overrides=None):
     @app.post('/api/datasets/<dataset_id>/save')
     @require('admin','operator')
     def save(dataset_id):
-        report_id = save_report(store, g.user['id'], get_dataset(dataset_id))
+        data = get_dataset(dataset_id)
+        if sandbox_client():
+            raise Problem('Dataset sandbox chỉ được xử lý trong workflow Marketing.', 409,
+                          'client_scope_workflow_required')
+        report_id = save_report(store, g.user['id'], data)
         store.event(g.user['id'], 'save_report', {'report_id':report_id})
         return jsonify(report_id=report_id), 201
 
@@ -445,7 +517,7 @@ def create_app(overrides=None):
     def jobs():
         worker.expire_stale()
         rows = store.all('SELECT j.*,u.name AS actor FROM jobs j LEFT JOIN users u ON u.id=j.user_id ORDER BY j.created_at DESC LIMIT 300')
-        return jsonify([job_view(r) for r in rows if allowed(g.user, json.loads(r['params'])['report_type']) and (r['kind']!='connection' or g.user['role']=='admin')])
+        return jsonify([job_view(r) for r in rows if sandbox_job_visible(r) and allowed(g.user, json.loads(r['params'])['report_type']) and (r['kind']!='connection' or g.user['role']=='admin')])
 
     @app.get('/api/jobs/<job_id>')
     @require()
@@ -467,6 +539,9 @@ def create_app(overrides=None):
     @app.post('/api/demo/seed')
     @require('admin')
     def install_demo():
+        if sandbox_client():
+            raise Problem('Demo legacy không khả dụng trong client sandbox.', 403,
+                          'client_scope_unavailable')
         from .demo import seed_demo
         return jsonify(seed_demo(store, g.user['id']))
 
@@ -503,12 +578,17 @@ def create_app(overrides=None):
     @app.get('/api/reports')
     @require()
     def reports():
+        if sandbox_client():
+            return jsonify([])
         rows = store.all('SELECT r.id,r.report_type,r.name,r.version,r.dataset_id,r.created_at,r.start_date,r.end_date,r.valid,r.origin,p.published_at FROM reports r LEFT JOIN publications p ON r.id=p.report_id ORDER BY r.created_at DESC')
         return jsonify([r for r in rows if allowed(g.user,r['report_type'])])
 
     @app.post('/api/reports/import')
     @require('admin')
     def import_reports():
+        if sandbox_client():
+            raise Problem('Import báo cáo legacy chưa có client lineage trong sandbox.', 403,
+                          'client_scope_unavailable')
         return jsonify(report_ids=import_legacy(store, app.config, g.user['id']))
 
     @app.get('/api/reports/<report_id>/html')
@@ -529,6 +609,8 @@ def create_app(overrides=None):
     @app.get('/api/uploads')
     @require()
     def uploads():
+        if sandbox_client():
+            return jsonify([])
         check_report('gmb')
         rows = store.all('SELECT id,name,start_date,end_date,created_at,data FROM uploads ORDER BY created_at DESC')
         for row in rows:
@@ -541,6 +623,9 @@ def create_app(overrides=None):
     @app.post('/api/uploads')
     @require('admin','operator')
     def upload():
+        if sandbox_client():
+            raise Problem('Upload legacy chưa có client lineage trong sandbox.', 403,
+                          'client_scope_unavailable')
         check_report('gmb')
         file = request.files.get('file')
         if not file or not (file.filename or '').lower().endswith('.csv'):
@@ -610,6 +695,8 @@ def create_app(overrides=None):
     @app.get('/api/events')
     @require('admin')
     def events():
+        if sandbox_client():
+            return jsonify([])
         rows = store.all('SELECT e.*,u.name AS actor FROM events e LEFT JOIN users u ON u.id=e.user_id ORDER BY e.at DESC LIMIT 200')
         for r in rows:
             r['detail']=json.loads(r['detail'])
@@ -618,6 +705,8 @@ def create_app(overrides=None):
     @app.get('/api/schedules')
     @require('admin')
     def schedules():
+        if sandbox_client():
+            return jsonify([])
         rows=store.all('SELECT * FROM schedules ORDER BY next_run')
         for r in rows:
             r['params']=json.loads(r['params'])
@@ -626,6 +715,9 @@ def create_app(overrides=None):
     @app.post('/api/schedules')
     @require('admin')
     def create_schedule():
+        if sandbox_client():
+            raise Problem('Lịch legacy chưa có client lineage trong sandbox.', 403,
+                          'client_scope_unavailable')
         data=body()
         start,end=period_dates('last7')
         p=filters({**data,'start':start,'end':end})
@@ -657,6 +749,9 @@ def create_app(overrides=None):
     @app.patch('/api/schedules/<schedule_id>')
     @require('admin')
     def toggle_schedule(schedule_id):
+        if sandbox_client():
+            raise Problem('Lịch legacy chưa có client lineage trong sandbox.', 403,
+                          'client_scope_unavailable')
         row=store.one('SELECT * FROM schedules WHERE id=?',(schedule_id,))
         if not row:
             raise Problem('Không tìm thấy lịch.',404)

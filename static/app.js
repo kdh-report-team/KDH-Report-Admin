@@ -23,15 +23,15 @@ import {
 
 import { pages, connectionPlatforms, loginView, shell, overviewView, clientsView, assetsView, syncView, connectionsView, platformConnectionsView, platformDetailView, analysisView, analysisResults, datasetsView, datasetsTable, datasetDetailView, datasetDetailNotFoundView, reportBuilderView, reportBuilderPeriodWarning, reportBuilderConfigValidation, reportBuilderSectionOptions, reportBuilderPreviewView, reportsView, activityView, uploadsView, usersView, settingsView, schedulesView, skeletonView, jobProgress, dataTable } from './views.js';
 
-const state = { user: null, overview: null, page: 'overview', generation: 0, authEpoch: 0, dataset: null, datasetDetail: null, datasetDetailTab: 'summary', datasets: [], reportBuilder: null, draft: null, job: null, tab: 'summary', tablePage: 0, uploads: [], reports: [], users: [], schedules: [], reportFilter: {}, jobFilter: '' };
+const state = { user: null, overview: null, platformStatus: null, syncHistory: null, syncFilters: {}, page: 'overview', generation: 0, authEpoch: 0, dataset: null, datasetDetail: null, datasetDetailTab: 'summary', datasets: [], reportBuilder: null, draft: null, job: null, tab: 'summary', tablePage: 0, uploads: [], reports: [], reportBundles: [], users: [], schedules: [], reportFilter: {}, jobFilter: '' };
 const $ = s => document.querySelector(s);
-function clearSessionData() { state.authEpoch++; state.generation++; state.dataset = null; state.datasetDetail = null; state.datasetDetailTab = 'summary'; state.datasets = []; state.reportBuilder = null; state.draft = null; state.job = null; state.overview = null; state.uploads = []; state.reports = []; state.users = []; state.schedules = []; state.jobs = []; state.events = []; state.connection = null; state.settings = null; state.reportFilter = {}; state.jobFilter = ''; state.tab = 'summary'; state.tablePage = 0; $('#modal').close(); $('#modal').replaceChildren(); }
+function clearSessionData() { state.authEpoch++; state.generation++; state.dataset = null; state.datasetDetail = null; state.datasetDetailTab = 'summary'; state.datasets = []; state.reportBuilder = null; state.draft = null; state.job = null; state.overview = null; state.platformStatus = null; state.syncHistory = null; state.syncFilters = {}; state.uploads = []; state.reports = []; state.reportBundles = []; state.users = []; state.schedules = []; state.jobs = []; state.events = []; state.connection = null; state.settings = null; state.reportFilter = {}; state.jobFilter = ''; state.tab = 'summary'; state.tablePage = 0; $('#modal').close(); $('#modal').replaceChildren(); }
 function today() { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Ho_Chi_Minh', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
 function offset(day, n) { const d = new Date(day + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
 function period(kind) { const t = today(); if (kind === 'this_month') return { start: t.slice(0, 8) + '01', end: t }; if (kind === 'previous_month') { const end = offset(t.slice(0, 8) + '01', -1); return { start: end.slice(0, 8) + '01', end }; } const end = offset(t, -1); return { start: offset(end, kind === 'last7' ? -6 : -27), end }; }
 function sameFilters(a, b) { const fields = ['report_type', 'start', 'end', 'compare', 'exclude_products', 'demo']; if (a?.report_type === 'gmb') fields.push('upload_id', 'previous_upload_id'); return a && b && fields.every(k => (a[k] ?? (k === 'compare' || k === 'exclude_products' || k === 'demo' ? false : '')) === (b[k] ?? (k === 'compare' || k === 'exclude_products' || k === 'demo' ? false : ''))); }
 function isDirty() { return !!state.dataset && !sameFilters(state.draft, state.dataset.params); }
-function footer() { return `<footer class="page-footer"><span>KINDERHEALTH · BÁO CÁO MARKETING NỘI BỘ</span><span>Asia/Ho_Chi_Minh (UTC+7) · Dữ liệu được kiểm tra theo từng nguồn</span></footer>`; }
+function footer() { return `<footer class="page-footer"><span>KDH Report Admin</span><span>Quản trị dữ liệu & báo cáo</span></footer>`; }
 function errorInModal(err) { const b = $('#modal .modal-body'); if (b && $('#modal').open) { b.querySelector('.modal-error')?.remove(); const e = document.createElement('div'); e.className = 'modal-error'; e.innerHTML = notice(err.message, 'red'); b.append(e); } else toast(err.message, true); }
 async function handleError(err) { if (err.cancelled) return; if (err.status === 401 && state.user) { clearSessionData(); state.user = null; setCsrf(''); $('#modal').close(); history.replaceState(null, '', '#overview'); $('#app').innerHTML = loginView(false, 'Phiên hết hạn. Vui lòng đăng nhập lại.'); } else errorInModal(err); }
 
@@ -86,7 +86,7 @@ async function navigate() {
         const read = async path => { const result = await api(path); if (version !== state.generation) throw new Error('Đã chuyển màn hình hoặc phiên đăng nhập.'); return result; };
         let html = '';
         if (['connections', 'assets', 'users', 'settings', 'schedules', 'report-builder'].includes(page) && state.user.role !== 'admin') throw Object.assign(new Error('Màn hình này chỉ dành cho quản trị viên.'), { status: 403 });
-        if (page === 'overview') { state.overview = await read('/overview'); html = overviewView(state.overview, state.user); }
+        if (page === 'overview') { state.overview = await read('/overview'); state.platformStatus = state.user.role === 'admin' ? await read('/platform-status') : null; html = overviewView({ ...state.overview, platform_status: state.platformStatus }, state.user); }
         if (page === 'clients') html = clientsView();
         if (page === 'datasets') {
             if (route.length > 1) {
@@ -157,29 +157,52 @@ async function navigate() {
             state.reportBuilder.preselectionError = preselectionError;
             html = reportBuilderView(state.reportBuilder, state.overview.types);
         }
-        if (page === 'assets') { state.connection = await read('/google'); html = assetsView(state.connection); }
-        if (page === 'sync') { const sources = await Promise.all([read('/jobs'), state.user.role === 'admin' ? read('/google') : Promise.resolve(null)]); state.jobs = sources[0]; state.connection = sources[1]; html = syncView(state.jobs, state.overview, state.user, state.connection); }
+        if (page === 'assets') {
+            const platformStatus = await read('/platform-status');
+            const google = platformStatus.client_context?.environment === 'sandbox'
+                ? { configured: false, connected: false, sources: {}, assets: {} }
+                : await read('/google');
+            state.connection = google; state.platformStatus = platformStatus; html = assetsView(google, platformStatus);
+        }
+        if (page === 'sync') {
+            const sandbox = state.overview.client_context?.environment === 'sandbox';
+            const jobs = sandbox ? [] : await read('/jobs');
+            const [google, syncHistory] = state.user.role === 'admin'
+                ? await Promise.all([sandbox ? Promise.resolve(null) : read('/google'), read('/sync-history')])
+                : [null, { client_id: state.overview.client_context?.client_id, runs: [], assets: [] }];
+            state.jobs = jobs; state.connection = google; state.syncHistory = syncHistory; state.syncFilters = {};
+            html = syncView(jobs, state.overview, state.user, google, syncHistory);
+        }
         if (page === 'connections') {
             const platform = state.connectionPlatform;
             if (platform === 'facebook') {
-                const status = await read('/meta');
-                html = platformDetailView(platform, status);
+                const [status, platformStatus] = await Promise.all([read('/meta'), read('/platform-status')]);
+                state.platformStatus = platformStatus;
+                html = platformDetailView(platform, status, platformStatus);
 
                 if (status.connected) {
-                    try {
-                        const assets = await read('/meta/reporting/assets');
-                        html += metaReportingCard(assets, period('last28'));
-                    } catch (err) {
-                        if (err.status === 401 || err.cancelled) throw err;
-                        html += notice('Chưa lấy được danh sách tài sản Meta: ' + err.message, 'amber');
-                    }
+                    const query = new URLSearchParams(parts[1] || '');
+                    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+                    const requestedStart = query.get('start');
+                    const requestedEnd = query.get('end');
+                    const range = datePattern.test(requestedStart || '') && datePattern.test(requestedEnd || '') && requestedStart <= requestedEnd
+                        ? { start: requestedStart, end: requestedEnd } : period('last28');
+                    const selected = (state.platformStatus?.assets || []).filter(asset => asset.provider === 'meta').map(asset => ({ ...asset, enabled: true }));
+                    html += `<section class="card meta-asset-loader"><div><h2>Tài sản Meta</h2><p>Danh sách đã chọn được đọc từ Admin. Yêu cầu tới Meta chỉ chạy khi bạn chủ động tải Page hoặc kiểm tra Ad Account cụ thể.</p></div><button type="button" class="btn secondary" data-action="meta-load-assets">Tải danh sách Page được cấp quyền</button></section>`;
+                    html += `<div id="meta-reporting-region">${metaReportingCard({ client_id: status.client_id, selected, discovered: {} }, range)}</div>`;
                 }
             }
             else if (platform === 'tiktok') html = platformDetailView(platform);
+            else if (platform === 'google' && state.overview.client_context?.environment === 'sandbox') html = platformDetailView('google');
+            else if (!platform && state.overview.client_context?.environment === 'sandbox') {
+                const [meta, platformStatus] = await Promise.all([read('/meta'), read('/platform-status')]);
+                state.platformStatus = platformStatus;
+                html = platformConnectionsView({}, meta, platformStatus);
+            }
             else {
-                const [google, meta] = await Promise.all([read('/google'), read('/meta')]);
-                state.connection = google;
-                html = platform === 'google' ? connectionsView(google, meta) : platformConnectionsView(google, meta);
+                const [google, meta, platformStatus] = await Promise.all([read('/google'), read('/meta'), read('/platform-status')]);
+                state.connection = google; state.platformStatus = platformStatus;
+                html = platform === 'google' ? connectionsView(google, meta, platformStatus) : platformConnectionsView(google, meta, platformStatus);
             }
             if (oauthResult && ['google', 'facebook'].includes(platform)) {
                 const name = platform === 'facebook' ? 'Meta' : 'Google';
@@ -189,7 +212,7 @@ async function navigate() {
             }
         }
         if (page === 'analysis') { const requested = new URLSearchParams(parts[1]).get('dataset') || (!state.dataset && state.draft.demo && !state.draft.upload_id ? state.overview.demo_datasets?.[state.draft.report_type] : null); if (requested && state.dataset?.id !== requested) { state.dataset = await read('/datasets/' + encodeURIComponent(requested)); state.draft = { ...state.dataset.params }; state.tab = 'summary'; state.tablePage = 0; } if (state.overview.types.some(t => t.id === 'gmb')) state.uploads = await read('/uploads'); html = analysisView(state, state.overview.types, state.user); }
-        if (page === 'reports') { state.reports = await read('/reports'); html = reportsView(state.reports, state.overview.types, state.user, state.reportFilter); }
+        if (page === 'reports') { const [reports, bundles] = await Promise.all([read('/reports'), state.user.role === 'admin' ? read('/report-bundles') : Promise.resolve([])]); state.reports = reports; state.reportBundles = bundles; html = reportsView(state.reports, state.overview.types, state.user, state.reportFilter, state.reportBundles); }
         if (page === 'activity') { const results = await Promise.all([read('/jobs'), state.user.role === 'admin' ? read('/events') : Promise.resolve([])]); state.jobs = results[0]; state.events = results[1]; html = activityView(state.jobs, state.events, state.user, state.jobFilter); }
         if (page === 'uploads') { state.uploads = await read('/uploads'); html = uploadsView(state.uploads, state.user, state.overview.upload_limit_mb); }
         if (page === 'users') { state.users = await read('/users'); html = usersView(state.users); }
@@ -447,6 +470,12 @@ async function act(action, el) {
     switch (action) {
         case 'restart': return start();
         case 'refresh-page': return navigate();
+        case 'sync-history-reset': {
+            state.syncFilters = {};
+            state.syncHistory = await api('/sync-history');
+            $('#content').innerHTML = syncView(state.jobs, state.overview, state.user, state.connection, state.syncHistory) + footer();
+            break;
+        }
         case 'menu': $('#sidebar').classList.toggle('open'); break;
         case 'close-modal': $('#modal').close(); break;
         case 'toggle-password': { const input = $('#auth-password'); input.type = input.type === 'password' ? 'text' : 'password'; break; }
@@ -463,6 +492,31 @@ async function act(action, el) {
 
             toast('Đã cập nhật lựa chọn tài sản Meta.');
             await navigate();
+            break;
+        }
+
+        case 'meta-load-assets': {
+            const generation = state.generation;
+            try {
+                const data = await api('/meta/reporting/assets?source=facebook_content');
+                if (generation !== state.generation) break;
+                data.selected = (state.platformStatus?.assets || []).filter(asset => asset.provider === 'meta').map(asset => ({ ...asset, enabled: true }));
+                const query = new URLSearchParams(location.hash.split('?')[1] || '');
+                const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+                const start = query.get('start'), end = query.get('end');
+                const dates = datePattern.test(start || '') && datePattern.test(end || '') && start <= end ? { start, end } : period('last28');
+                const region = $('#meta-reporting-region');
+                if (!region) break;
+                region.dataset.discoveryLoaded = 'true';
+                region.innerHTML = metaReportingCard(data, dates);
+            } catch (err) {
+                if (generation !== state.generation) break;
+                if (err.status === 401 || err.cancelled) throw err;
+                const region = $('#meta-reporting-region');
+                if (!region) break;
+                region.dataset.discoveryLoaded = 'true';
+                region.innerHTML = notice('Chưa tải được danh sách Page: ' + err.message, 'amber') + metaReportingCard({ client_id: state.platformStatus?.client_context?.client_id, selected: [], discovered: {} }, period('last28'));
+            }
             break;
         }
 
@@ -529,6 +583,17 @@ async function act(action, el) {
         }
 
                 
+        case 'meta-discover-ads': {
+            const accountId = $('#meta-ads-account')?.value.trim();
+            if (!/^act_\d+$/.test(accountId || '') || !$('#meta-ads-authorized')?.checked) {
+                throw new Error('Nhập đúng Ad Account ID và xác nhận quyền kiểm tra tài khoản.');
+            }
+            const data = await api('/meta/reporting/assets?source=facebook_ads&external_id=' + encodeURIComponent(accountId));
+            const start = $('#meta-sync-start')?.value;
+            const end = $('#meta-sync-end')?.value;
+            $('.meta-reporting-card').outerHTML = metaReportingCard(data, { start, end });
+            break;
+        }
         case 'meta-view-kpis': {
             const start = $('#meta-sync-start')?.value;
             const end = $('#meta-sync-end')?.value;
@@ -545,14 +610,50 @@ async function act(action, el) {
                 end
             });
 
-            const data = await api(
+            modal('KPI Facebook', '<p class="meta-kpi-loading" role="status" aria-live="polite">Đang tải KPI của tài sản đã chọn…</p>', button('Đóng', 'close-modal'));
+            const loading = $('#modal .meta-kpi-loading');
+            const generation = state.generation;
+            let data;
+            try {
+                data = await api(
                 '/meta/reporting/kpis/'
                 + encodeURIComponent(id)
                 + '?'
                 + query.toString()
-            );
+                );
+            } catch (err) {
+                if (generation !== state.generation || !loading.isConnected || !$('#modal').open) break;
+                if (loading.isConnected) {
+                    loading.className = 'meta-kpi-request-error';
+                    loading.textContent = 'Không tải được KPI. Hãy kiểm tra lỗi kết nối hoặc quyền truy cập bên dưới.';
+                }
+                throw err;
+            }
+            if (!loading.isConnected || !$('#modal').open || generation !== state.generation) break;
 
             const isAds = data.source === 'facebook_ads';
+            const sourceMetrics = Object.entries(data.metrics || {})
+                .filter(([key]) => key.startsWith(data.source + '.')).map(([, value]) => value);
+            const syncStates = sourceMetrics.map(metric => metric.freshness?.latest_sync_status);
+            const failed = syncStates.some(status => ['failed', 'partial', 'interrupted'].includes(status))
+                || sourceMetrics.some(metric => /error|permission|revoked/.test(metric.status || ''));
+            const emptySync = !failed && sourceMetrics.some(metric =>
+                metric.freshness?.latest_sync_status === 'succeeded'
+                && metric.warnings?.includes('Latest sync returned no rows; earlier stored data may be stale.'));
+            const stored = sourceMetrics.some(metric => metric.summary?.value != null)
+                || data.snapshot_metrics?.kpis?.some(metric => metric.value != null);
+            const syncMessage = failed
+                ? 'Lần đồng bộ trong kỳ bị lỗi hoặc chưa hoàn tất. Dữ liệu cũ, nếu có, chưa chứng minh lần đồng bộ mới thành công.'
+                : syncStates.some(status => ['running', 'queued'].includes(status))
+                    ? 'Đồng bộ đang chờ hoặc đang chạy; chưa có kết quả hoàn tất.'
+                    : emptySync
+                        ? (isAds ? 'Đồng bộ thành công nhưng Insights không trả dữ liệu cho kỳ đã đồng bộ.' : 'Đồng bộ thành công nhưng nguồn không trả bản ghi cho kỳ đã đồng bộ.')
+                        : stored ? 'Có dữ liệu đã lưu cho kỳ này; chưa được xác minh độc lập.'
+                            : syncStates.every(status => status == null)
+                                ? 'Chưa có kết quả đồng bộ cho kỳ đã chọn của tài sản này.'
+                                : 'Đã đồng bộ nhưng KPI trong kỳ chưa có dữ liệu đủ điều kiện. Không suy ra giá trị bằng 0.';
+            const hasAdsSnapshot = isAds && Array.isArray(data.snapshot_metrics?.kpis)
+                && data.snapshot_metrics.kpis.length > 0;
 
             // Danh sách KPI cần hiển thị
             const definitions = isAds
@@ -565,16 +666,16 @@ async function act(action, el) {
                 : [
                     [
                         'facebook_content.posts_published',
-                        'Bài đăng mới'
+                        'Bài đăng mới trong kỳ'
                     ],
                     [
                         'facebook_content.engagements',
-                        'Tổng tương tác'
+                        'Tương tác phát sinh trong kỳ'
                     ]
                 ];
 
             // Tạo các thẻ KPI
-            const cards = definitions.map(([key, label]) => {
+            const cards = (hasAdsSnapshot ? [] : definitions).map(([key, label]) => {
                 const metric = data.metrics?.[key];
                 const value = metric?.summary?.value;
 
@@ -593,6 +694,13 @@ async function act(action, el) {
                     : '—';
 
                 const coverage = metric?.summary;
+                const semantics = key === 'facebook_content.posts_published'
+                    ? 'Số bài được đăng trong kỳ đã chọn (UTC). Độ phủ ngày gồm cả ngày không có bài đăng.'
+                    : key === 'facebook_content.engagements'
+                        && (!metric || metric.status === 'no_data'
+                            || (metric.status === 'available' && value == null))
+                        ? 'Tương tác phát sinh trong kỳ chưa có dữ liệu theo ngày từ Meta.'
+                        : '';
 
                 return `
                     <div class="details meta-kpi-card">
@@ -608,11 +716,13 @@ async function act(action, el) {
                             }
                         </p>
 
+                        ${semantics ? `<p class="form-note meta-kpi-semantics">${esc(semantics)}</p>` : ''}
+
                         <small>
                             Số ngày có dữ liệu:
-                            ${esc(coverage?.coverage_days ?? 0)}
+                            ${esc(coverage?.coverage_days ?? '—')}
                             /
-                            ${esc(coverage?.expected_days ?? 0)}
+                            ${esc(coverage?.expected_days ?? '—')}
                         </small>
                     </div>
                 `;
@@ -626,7 +736,7 @@ async function act(action, el) {
             const graphMetric = data.metrics?.[chartKey];
 
             const points = (
-                graphMetric?.status === 'available'
+                !hasAdsSnapshot && graphMetric?.status === 'available'
                 && Array.isArray(graphMetric.series)
             )
                 ? graphMetric.series
@@ -666,6 +776,28 @@ async function act(action, el) {
         : '<p class="form-note">Chưa có dữ liệu đủ điều kiện để vẽ biểu đồ.</p>';
 
 
+            const snapshot = data.snapshot_metrics;
+            const snapshotMetrics = Array.isArray(snapshot?.kpis)
+                ? snapshot.kpis.filter(metric => isAds || metric.grain === 'snapshot') : [];
+            const snapshotCards = snapshotMetrics.map(metric => {
+                const value = metric.value;
+                const valid = metric.status === 'available'
+                    && ((typeof value === 'number' && Number.isFinite(value))
+                        || (metric.key === 'spend' && typeof value === 'string' && /^\d+(\.\d+)?$/.test(value)));
+                const coverage = metric.coverage || {};
+                const partial = metric.status === 'partial' && typeof metric.observed_sum === 'number'
+                    && Number.isFinite(metric.observed_sum);
+                return `<div class="details meta-snapshot-kpi"><strong>${esc(metric.label)}</strong>
+                    <h2>${valid ? esc(value) + (metric.currency ? ' ' + esc(metric.currency) : '') : '—'}</h2>
+                    <p>${esc(metric.status)} · Chưa xác minh</p>
+                    <small>${esc(coverage.available ?? '—')} / ${esc(coverage.expected ?? '—')} ${coverage.unit === 'posts' ? 'bài có dữ liệu' : 'ngày có dữ liệu'}</small>
+                    ${partial ? `<p>Tổng trên các bài có dữ liệu: ${num(metric.observed_sum)}. Chưa phải tổng đầy đủ.</p>` : ''}</div>`;
+            }).join('');
+            const snapshotSection = snapshotCards ? `<section class="meta-snapshot-metrics">
+                <h3>${isAds ? 'KPI theo snapshot Ads' : 'Bộ đếm lifetime của các bài trong kỳ'}</h3>
+                <p>Thời điểm lấy snapshot: ${esc(snapshot.fetched_at || '—')} · Múi giờ: ${esc(snapshot.timezone || '—')}</p>
+                <div class="source-summary-list">${snapshotCards}</div></section>` : '';
+
             // Mở hộp thoại KPI
             modal(
                 isAds
@@ -678,6 +810,7 @@ async function act(action, el) {
                     'amber'
                 )
 
+                + `<p class="meta-kpi-sync-state" role="status">${esc(syncMessage)}</p>`
                 + `<p><strong>Kỳ báo cáo:</strong>
                     ${esc(start)} → ${esc(end)}
                    </p>`
@@ -686,6 +819,14 @@ async function act(action, el) {
                     ${cards}
                    </div>`
 
+                + (data.source === 'facebook_content' ? `<p class="form-note meta-content-semantics">
+                    KPI được đọc từ dữ liệu đã lưu trong Admin, không cập nhật trực tiếp từ Meta.
+                    Bộ đếm lifetime của bài viết là số tích lũy tại thời điểm lấy dữ liệu;
+                    không được quy thành tương tác phát sinh trong kỳ hoặc cộng lặp qua các ngày.
+                    Dữ liệu đã lưu chưa đồng nghĩa với đã xác minh hoặc đủ điều kiện phát hành.
+                   </p>` : '')
+
+                + snapshotSection
                 + `<h3>Biểu đồ theo ngày</h3>`
 
                 + graph,
@@ -818,7 +959,14 @@ document.addEventListener('submit', async event => {
         if (form.id === 'auth-form') { if (form.dataset.setup === 'true') { await api('/auth/setup', 'POST', fields); $('#app').innerHTML = loginView(false); toast('Đã tạo tài khoản. Hãy đăng nhập để bắt đầu.'); } else { const r = await api('/auth/login', 'POST', fields); clearSessionData(); state.user = r.user; setCsrf(r.csrf); await start(); } }
         if (form.id === 'analysis-form') await runAnalysis();
         if (form.id === 'report-builder-form') { readReportBuilderForm(); validateReportBuilderForm(); state.reportBuilder.step = 2; renderReportBuilder(); }
-        if (form.id === 'report-filter') { state.reportFilter = fields; $('#content').innerHTML = reportsView(state.reports, state.overview.types, state.user, state.reportFilter) + footer(); }
+        if (form.id === 'report-filter') { state.reportFilter = fields; $('#content').innerHTML = reportsView(state.reports, state.overview.types, state.user, state.reportFilter, state.reportBundles) + footer(); }
+        if (form.id === 'sync-history-filter') {
+            const filters = Object.fromEntries(Object.entries(fields).filter(([, value]) => value));
+            const query = new URLSearchParams(filters);
+            state.syncFilters = filters;
+            state.syncHistory = await api('/sync-history' + (query.size ? '?' + query.toString() : ''));
+            $('#content').innerHTML = syncView(state.jobs, state.overview, state.user, state.connection, state.syncHistory, state.syncFilters) + footer();
+        }
         if (form.id === 'upload-form') { await api('/uploads', 'POST', data); toast('CSV hợp lệ, đã lưu dữ liệu.'); await navigate(); }
         if (form.id === 'settings-form') { await api('/settings', 'PATCH', fields); toast('Đã lưu cài đặt.'); }
         if (form.id === 'user-form') { fields.allowed = data.getAll('allowed'); fields.active = form.dataset.id ? data.has('active') : true; await api('/users' + (form.dataset.id ? '/' + form.dataset.id : ''), form.dataset.id ? 'PATCH' : 'POST', fields); $('#modal').close(); toast('Đã lưu người dùng.'); if (form.dataset.id === state.user.id) { state.user = null; await start(); } else await navigate(); }

@@ -19,8 +19,8 @@ SOURCES = {
     "gsc": {"label": "Google Search Console", "provider": "google", "asset_type": "search_console_property", "entity_type": "website", "integration": "adapter_present", "dimensions": ["date", "query", "page", "device", "country", "search_type"]},
     "keywords": {"label": "Keyword Ranking", "provider": "google", "asset_type": "keyword_sheet", "entity_type": "keyword", "integration": "detail_rows_present", "dimensions": ["snapshot_date", "keyword", "landing_url", "device", "location"]},
     "google_ads": {"label": "Google Ads", "provider": "google", "asset_type": "google_ads_customer", "entity_type": "ad_account", "integration": "planned", "dimensions": ["date", "campaign", "ad_group", "ad", "keyword", "device", "location"]},
-    "facebook_ads": {"label": "Meta / Facebook & Instagram Ads", "provider": "meta", "asset_type": "facebook_ad_account", "entity_type": "ad_account", "integration": "oauth_only", "dimensions": ["date", "campaign", "ad_set", "ad", "placement", "device", "age", "gender"]},
-    "facebook_content": {"label": "Facebook Page Content", "provider": "meta", "asset_type": "facebook_page", "entity_type": "page", "integration": "oauth_only", "dimensions": ["date", "post", "content_type", "topic"]},
+    "facebook_ads": {"label": "Meta / Facebook & Instagram Ads", "provider": "meta", "asset_type": "facebook_ad_account", "entity_type": "ad_account", "integration": "adapter_present", "dimensions": ["date", "campaign", "ad_set", "ad", "placement", "device", "age", "gender"]},
+    "facebook_content": {"label": "Facebook Page Content", "provider": "meta", "asset_type": "facebook_page", "entity_type": "page", "integration": "adapter_present", "dimensions": ["date", "post", "content_type", "topic"]},
     "instagram": {"label": "Instagram Organic", "provider": "meta", "asset_type": "instagram_business_account", "entity_type": "profile", "integration": "planned", "dimensions": ["date", "media", "content_type", "topic"]},
     "tiktok_ads": {"label": "TikTok Ads", "provider": "tiktok", "asset_type": "tiktok_ad_account", "entity_type": "ad_account", "integration": "planned", "dimensions": ["date", "campaign", "ad_group", "ad", "placement", "device"]},
     "tiktok_organic": {"label": "TikTok Organic", "provider": "tiktok", "asset_type": "tiktok_profile", "entity_type": "profile", "integration": "planned", "dimensions": ["snapshot_date", "video", "topic", "hashtag"]},
@@ -81,6 +81,7 @@ _METRIC_ROWS = {
         top5|Từ khóa Top 5|count|latest|snapshot
         top10|Từ khóa Top 10|count|latest|snapshot
         top20|Từ khóa Top 20|count|latest|snapshot
+        top30|Từ khóa Top 30|count|latest|snapshot
         top50|Từ khóa Top 50|count|latest|snapshot
         top100|Từ khóa Top 100|count|latest|snapshot
         improved_keywords|Từ khóa tăng hạng|count|latest|snapshot
@@ -147,6 +148,9 @@ _METRIC_ROWS = {
     """,
     "facebook_content": """
         posts_published|Bài đăng mới|count|sum
+        reactions_lifetime|Reactions lifetime|count|latest|snapshot
+        comments_lifetime|Comments lifetime|count|latest|snapshot
+        shares_lifetime|Shares lifetime|count|latest|snapshot
         views|Lượt xem nội dung|count|sum
         reach|Tiếp cận duy nhất|count|distinct
         reactions|Lượt bày tỏ cảm xúc|count|sum

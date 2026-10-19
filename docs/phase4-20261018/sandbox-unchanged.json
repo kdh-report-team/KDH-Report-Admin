@@ -1,0 +1,34 @@
+[
+  {
+    "name": "/kdh-meta-2b-pg-20261016-132836-5c512a53",
+    "id_unchanged": true,
+    "image_unchanged": true,
+    "state_unchanged": true,
+    "bindings_unchanged": true,
+    "network_ids_unchanged": true
+  },
+  {
+    "name": "/kdh-meta-3-egress-20261016-132836-5c512a53",
+    "id_unchanged": true,
+    "image_unchanged": true,
+    "state_unchanged": true,
+    "bindings_unchanged": true,
+    "network_ids_unchanged": true
+  },
+  {
+    "name": "/kdh-meta-2b-admin-20261016-132836-5c512a53",
+    "id_unchanged": true,
+    "image_unchanged": true,
+    "state_unchanged": true,
+    "bindings_unchanged": true,
+    "network_ids_unchanged": true
+  },
+  {
+    "name": "/kdh-meta-2b-relay-20261016-132836-5c512a53",
+    "id_unchanged": true,
+    "image_unchanged": true,
+    "state_unchanged": true,
+    "bindings_unchanged": true,
+    "network_ids_unchanged": true
+  }
+]

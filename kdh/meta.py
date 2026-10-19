@@ -12,6 +12,7 @@ from cryptography.fernet import InvalidToken
 
 from .core import Problem, digest, now, pack
 from .google import SourceError
+from .meta_diagnostics import MetaExpirationError, MetaOAuthDiagnostics, MetaRequestError
 from .platform_data import DEFAULT_CLIENT_ID, PlatformData
 
 # Required read permissions for the app's Facebook Login for Business configuration.
@@ -21,6 +22,10 @@ REQUIRED_PERMISSIONS = (
     'pages_show_list',
     'pages_read_engagement',
     'ads_read',
+)
+SANDBOX_REQUIRED_PERMISSIONS = (
+    'pages_show_list',
+    'pages_read_engagement',
 )
 
 
@@ -59,6 +64,11 @@ class Meta:
         self.secret_name = "meta:" + self.client_id
         self.platform = PlatformData(store)
 
+    def required_permissions(self):
+        if self.client_id == 'client_meta_sandbox':
+            return SANDBOX_REQUIRED_PERMISSIONS
+        return REQUIRED_PERMISSIONS
+
     def configured(self):
         try:
             uri = urlsplit(self.config['META_REDIRECT_URI'])
@@ -87,28 +97,48 @@ class Meta:
         result = {'configured': self.configured(), 'connected': False, 'has_connection': False,
                   'status': 'disconnected', 'client_id': self.client_id, 'account_id': None,
                   'account_name': None, 'connected_at': None, 'expires_at': None,
-                  'data_access_expires_at': None, 'scopes': []}
+                  'data_access_expires_at': None, 'expires_at_unbounded': False, 'scopes': []}
         try:
             token = self.read()
         except (InvalidToken, ValueError, TypeError):
             return {**result, 'has_connection': True, 'status': 'error'}
         if not token:
             return result
-        if not isinstance(token, dict) or not isinstance(token.get('expires_at'), str):
+        if not isinstance(token, dict):
+            return {**result, 'has_connection': True, 'status': 'error'}
+        token_expiry = token.get('expires_at')
+        unbounded = type(token_expiry) is int and token_expiry == 0
+        try:
+            # Only an explicit numeric zero denotes no scheduled token expiry.
+            # Missing/malformed stored metadata must never imply a valid grant.
+            expiry_values = [] if unbounded else [token_expiry]
+            if token.get('data_access_expires_at') is not None:
+                expiry_values.append(token['data_access_expires_at'])
+            expiry_dates = []
+            for value in expiry_values:
+                if not isinstance(value, str):
+                    raise ValueError
+                date = datetime.fromisoformat(value)
+                if date.tzinfo is None:
+                    raise ValueError
+                expiry_dates.append(date)
+        except (ValueError, OverflowError):
             return {**result, 'has_connection': True, 'status': 'error'}
         # Explicit allowlist: no token, secret, provider response, or proof is public.
         result.update({key: token.get(key) for key in
                        ('account_id', 'account_name', 'connected_at', 'expires_at',
                         'data_access_expires_at', 'scopes')})
         result['has_connection'] = True
-        expires = [token.get('expires_at'), token.get('data_access_expires_at')]
-        expired = any(value and value <= now() for value in expires)
+        result['expires_at_unbounded'] = unbounded
+        if unbounded:
+            result['expires_at'] = None
+        expired = any(value <= datetime.now(timezone.utc) for value in expiry_dates)
         result['status'] = 'expired' if expired else 'connected'
         scopes = token.get('scopes')
         if (not result['configured'] or token.get('app_id') != self.config['META_APP_ID'] or
                 token.get('config_id') != self.config.get('META_CONFIG_ID') or
                 not isinstance(scopes, list) or not all(isinstance(scope, str) for scope in scopes) or
-                not set(REQUIRED_PERMISSIONS).issubset(scopes)):
+                not set(self.required_permissions()).issubset(scopes)):
             result['status'] = 'reconnect_required'
         result['connected'] = result['status'] == 'connected'
         return result
@@ -139,19 +169,35 @@ class Meta:
         try:
             response = requests.request(method, f"https://graph.facebook.com/{self.config['META_GRAPH_VERSION']}/{path}",
                                         **transport, headers=headers, timeout=(3, 5), allow_redirects=False)
-            if not 200 <= response.status_code < 300:
-                raise SourceError('meta_oauth_error', 'Meta chưa xác nhận yêu cầu. Hãy kết nối lại hoặc thử lại sau.')
+        except requests.RequestException:
+            raise MetaRequestError(failure_layer='transport') from None
+        try:
             value = response.json()
-        except (requests.RequestException, ValueError):
-            raise SourceError('meta_oauth_error', 'Không thể xác nhận kết nối Meta. Vui lòng thử lại.') from None
-        if not isinstance(value, dict) or 'error' in value:
-            raise SourceError('meta_oauth_error', 'Meta trả về phản hồi không hợp lệ. Vui lòng thử lại.')
+        except ValueError:
+            # An HTML error page is still an HTTP failure, not normalized data.
+            layer = 'response_decode' if 200 <= response.status_code < 300 else 'graph_api'
+            raise MetaRequestError(http_status=response.status_code, failure_layer=layer) from None
+        if not 200 <= response.status_code < 300 or (isinstance(value, dict) and 'error' in value):
+            raise MetaRequestError(http_status=response.status_code,
+                                   graph_error=value.get('error') if isinstance(value, dict) else None) from None
+        if not isinstance(value, dict):
+            raise MetaRequestError(http_status=response.status_code, failure_layer='response_decode') from None
         return value
 
     def proof(self, token):
         return hmac.new(self.config['META_APP_SECRET'].encode(), token.encode(), hashlib.sha256).hexdigest()
 
     def callback(self, state, code, session_id, error=''):
+        diagnostics = MetaOAuthDiagnostics()
+        try:
+            result = self._callback(state, code, session_id, error, diagnostics)
+        except Exception as exc:
+            diagnostics.finish(exc=exc)
+            raise
+        diagnostics.finish(result=result)
+        return result
+
+    def _callback(self, state, code, session_id, error, diagnostics):
         state_hash = digest(state)
         with self.store.connect(immediate=True) as db:
             claimed = db.execute('''UPDATE meta_oauth_states SET consumed=1
@@ -159,42 +205,53 @@ class Meta:
                 (state_hash, self.client_id, session_id, self.config_hash(), now())).rowcount
             if not claimed:
                 raise Problem('Phiên kết nối Meta đã hết hạn hoặc không hợp lệ.', 400)
+        failure = None
         try:
+            diagnostics.start('callback_validation')
             # A denied callback must also validate and consume state; never reflect provider error text.
             if error:
                 return 'denied' if error == 'access_denied' else 'failed'
             if not code or not self.configured():
                 raise Problem('Thiếu mã cấp quyền hoặc cấu hình Meta không hợp lệ.', 400)
             client = {'client_id': self.config['META_APP_ID'], 'client_secret': self.config['META_APP_SECRET']}
+            diagnostics.start('code_exchange')
             short = self.call('GET', 'oauth/access_token', params={**client, 'code': code,
                               'redirect_uri': self.config['META_REDIRECT_URI']})
             if not isinstance(short.get('access_token'), str) or not short['access_token']:
                 raise Problem('Meta chưa cấp access token.', 502)
+            diagnostics.start('long_token_exchange')
             long = self.call('GET', 'oauth/access_token', params={**client, 'grant_type': 'fb_exchange_token',
                              'fb_exchange_token': short['access_token']})
             access_token = long.get('access_token')
             if not isinstance(access_token, str) or not access_token:
                 raise Problem('Meta chưa cấp access token dài hạn.', 502)
+            diagnostics.start('token_inspection')
             metadata = self.call('GET', 'debug_token', token=client['client_id'] + '|' + client['client_secret'],
                                  params={'input_token': access_token}).get('data')
+            diagnostics.start('token_validation')
             if (not isinstance(metadata, dict) or metadata.get('is_valid') is not True or
                     metadata.get('app_id') != client['client_id'] or metadata.get('type') != 'USER' or
                     not isinstance(metadata.get('user_id'), str) or not metadata['user_id']):
                 raise Problem('Meta không xác nhận token thuộc ứng dụng và tài khoản này.', 502)
+            diagnostics.start('expiration_validation')
             expires_at = self.expiration(metadata.get('expires_at'), required=True)
-            data_expires_at = self.expiration(metadata.get('data_access_expires_at'))
+            data_expires_at = self.expiration(metadata.get('data_access_expires_at'), field='data_access_expires_at')
+            diagnostics.start('permissions_validation')
             scopes = metadata.get('scopes')
             if (not isinstance(scopes, list) or not all(isinstance(scope, str) for scope in scopes) or
-                    not set(REQUIRED_PERMISSIONS).issubset(scopes)):
+                    not set(self.required_permissions()).issubset(scopes)):
                 raise Problem('Meta chưa xác nhận đủ quyền đọc yêu cầu. Hãy kiểm tra cấu hình đăng nhập Meta.', 502)
+            diagnostics.start('profile_fetch')
             profile = self.call('GET', 'me', token=access_token,
                                 params={'fields': 'id,name', 'appsecret_proof': self.proof(access_token)})
+            diagnostics.start('profile_validation')
             if profile.get('id') != metadata['user_id'] or not isinstance(profile.get('name'), str):
                 raise Problem('Meta không xác nhận danh tính tài khoản.', 502)
             token = {'access_token': access_token, 'app_id': client['client_id'], 'client_id': self.client_id,
                      'config_id': self.config['META_CONFIG_ID'],
                      'account_id': profile['id'], 'account_name': profile['name'], 'connected_at': now(),
                      'expires_at': expires_at, 'data_access_expires_at': data_expires_at, 'scopes': scopes}
+            diagnostics.start('connection_write')
             with self.store.connect(immediate=True) as db:
                 # Disconnect/new connect may have cancelled this attempt during provider requests.
                 valid = db.execute('''DELETE FROM meta_oauth_states
@@ -210,22 +267,42 @@ class Meta:
                 self.platform.upsert_connection(client_id=self.client_id, provider='meta',
                     external_account_id=profile['id'], account_name=profile['name'], secret_name=self.secret_name, db=db)
             return 'success'
+        except Exception as exc:
+            failure = exc
+            raise
         finally:
-            self.store.execute('DELETE FROM meta_oauth_states WHERE state=?', (state_hash,))
+            try:
+                self.store.execute('DELETE FROM meta_oauth_states WHERE state=?', (state_hash,))
+            except Exception as exc:
+                # Preserve the primary stage if cleanup also fails.
+                cleanup = MetaOAuthDiagnostics()
+                cleanup.attempt_id = diagnostics.attempt_id
+                cleanup.start('state_cleanup')
+                cleanup.finish(exc=exc)
+                if failure is not None:
+                    raise failure from None
+                diagnostics.start('state_cleanup')
+                raise
 
     @staticmethod
-    def expiration(value, required=False):
-        if not required and (value is None or value == 0):
+    def expiration(value, required=False, *, field='expires_at'):
+        if not required and value is None:
             return None
+        if value is None:
+            raise MetaExpirationError(field, 'missing')
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise MetaExpirationError(field, 'invalid_type')
+        if value == 0:
+            # Graph uses zero for no scheduled expiry. Keep the explicit sentinel
+            # for the required token field, distinct from absent metadata.
+            return 0 if required else None
         try:
-            if isinstance(value, bool) or not isinstance(value, (int, float)):
-                raise ValueError
             expiry = datetime.fromtimestamp(value, timezone.utc)
-            if expiry <= datetime.now(timezone.utc):
-                raise ValueError
-            return expiry.isoformat()
         except (ValueError, OverflowError, OSError):
-            raise Problem('Thời hạn token Meta không hợp lệ. Hãy kết nối lại.', 502) from None
+            raise MetaExpirationError(field, 'out_of_range') from None
+        if expiry <= datetime.now(timezone.utc):
+            raise MetaExpirationError(field, 'past')
+        return expiry.isoformat()
 
     def clear_connections(self, db):
         """Disconnect previous Meta credentials and disable stale selected assets."""

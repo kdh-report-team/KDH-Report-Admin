@@ -1,0 +1,57 @@
+{
+  "test_facebook_bundles_postgres.PostgresFacebookBundleTests": {
+    "count": 13,
+    "reason": "Requires the guarded disposable PostgreSQL acceptance runner",
+    "new_phase4": true
+  },
+  "test_google_platform_success.PostgresGooglePlatformSuccessTests": {
+    "count": 4,
+    "reason": "Requires an isolated PostgreSQL test database",
+    "new_phase4": false
+  },
+  "test_marketing_publication.PostgresPublicationTests": {
+    "count": 6,
+    "reason": "Requires disposable PostgreSQL",
+    "new_phase4": false
+  },
+  "test_marketing_verification.PostgresVerificationTests": {
+    "count": 13,
+    "reason": "Requires disposable PostgreSQL",
+    "new_phase4": false
+  },
+  "test_meta.PostgresMetaTest": {
+    "count": 20,
+    "reason": "Set TEST_DATABASE_URL to an isolated PostgreSQL test database",
+    "new_phase4": false
+  },
+  "test_meta_diagnostics.PostgresMetaDiagnosticsTests": {
+    "count": 10,
+    "reason": "Requires disposable TEST_DATABASE_URL and TEST_META_POSTGRES=1; never production",
+    "new_phase4": false
+  },
+  "test_platform_data.PostgresPlatformDataTests": {
+    "count": 6,
+    "reason": "Requires an isolated PostgreSQL test database",
+    "new_phase4": false
+  },
+  "test_postgres.PostgresTest": {
+    "count": 6,
+    "reason": "Set TEST_DATABASE_URL to an isolated Postgres test database",
+    "new_phase4": false
+  },
+  "test_report_bundles.PostgresBundleTest": {
+    "count": 20,
+    "reason": "Set TEST_DATABASE_URL to an isolated PostgreSQL test database",
+    "new_phase4": false
+  },
+  "test_viewer_access.PostgresViewerTests": {
+    "count": 7,
+    "reason": "Requires disposable PostgreSQL",
+    "new_phase4": false
+  },
+  "test_viewer_handoff.PostgresHandoffTests": {
+    "count": 12,
+    "reason": "Requires disposable PostgreSQL",
+    "new_phase4": false
+  }
+}

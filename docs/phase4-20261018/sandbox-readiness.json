@@ -1,0 +1,121 @@
+{
+  "database_target": {
+    "host": "kdh-meta-2b-pg-20261016-132836-5c512a53",
+    "database": "meta_acceptance_20261016_132836",
+    "port": 5432
+  },
+  "proxy_target": {
+    "HTTP_PROXY": {
+      "host": "192.168.0.10",
+      "port": 3128,
+      "scheme": "http",
+      "has_userinfo": false
+    },
+    "HTTPS_PROXY": {
+      "host": "192.168.0.10",
+      "port": 3128,
+      "scheme": "http",
+      "has_userinfo": false
+    }
+  },
+  "cookie": {
+    "ADMIN_SESSION_COOKIE_NAME": "kdh_meta_acceptance_session"
+  },
+  "source_comparison": {
+    "kdh/migrations.py": {
+      "container_sha256": "76845dcfff77d057c98f98f6a32a6e5997982360ec6c7f4931c46286b3760abf",
+      "local_sha256": "76845dcfff77d057c98f98f6a32a6e5997982360ec6c7f4931c46286b3760abf",
+      "same_bytes": true,
+      "same_normalized_newlines": true
+    },
+    "kdh/meta_reporting.py": {
+      "container_sha256": "bc852472f7ae86ef97b6d67f3a4906d37e8cfd5529a336b53f7978ccd99ee3ab",
+      "local_sha256": "804d6276a8fd9775995261b9d80eca8ae7b1415ed9603434fcf304ae5a345ad4",
+      "same_bytes": false,
+      "same_normalized_newlines": false
+    },
+    "kdh/meta_contract.py": {
+      "container_file": "MISSING"
+    },
+    "kdh/meta_marketing.py": {
+      "container_file": "MISSING"
+    },
+    "kdh/app.py": {
+      "container_sha256": "8aac608bd9329175a462597f826d5e6c43413bf61923834807cfe92dc4953631",
+      "local_sha256": "8aac608bd9329175a462597f826d5e6c43413bf61923834807cfe92dc4953631",
+      "same_bytes": true,
+      "same_normalized_newlines": true
+    },
+    "static/app.js": {
+      "container_sha256": "55b4a9a04adca0bf09e00b36d1137a1eb24043651f7441172836620c218f6fe6",
+      "local_sha256": "1eec4146c81953bc399fdf9819005c88ea60280545866b4de82047acc8cadc7a",
+      "same_bytes": false,
+      "same_normalized_newlines": false
+    }
+  },
+  "networks": [
+    {
+      "Name": "kdh-meta-2b-net-20261016-132836-5c512a53",
+      "Id": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+      "Internal": true,
+      "Driver": "bridge",
+      "IPAM": {
+        "Driver": "default",
+        "Options": {},
+        "Config": [
+          {
+            "Subnet": "192.168.0.0/20",
+            "Gateway": "192.168.0.1"
+          }
+        ]
+      }
+    },
+    {
+      "Name": "kdh-meta-2b-ingress-20261016-132836-5c512a53",
+      "Id": "9b5f9931cded44124cd928c6065f48bd97ba51c5afabdd5ac46e82849c044a0b",
+      "Internal": false,
+      "Driver": "bridge",
+      "IPAM": {
+        "Driver": "default",
+        "Options": {},
+        "Config": [
+          {
+            "Subnet": "192.168.16.0/20",
+            "Gateway": "192.168.16.1"
+          }
+        ]
+      }
+    },
+    {
+      "Name": "kdh-meta-3-outbound-20261016-132836-5c512a53",
+      "Id": "e6413878da9c290bbba590f857318c81fcdfee77630622d788723bde24f76258",
+      "Internal": false,
+      "Driver": "bridge",
+      "IPAM": {
+        "Driver": "default",
+        "Options": {},
+        "Config": [
+          {
+            "Subnet": "192.168.32.0/20",
+            "Gateway": "192.168.32.1"
+          }
+        ]
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "Name": "kdh-meta-2b-pgdata-20261016-132836-5c512a53",
+      "Driver": "local",
+      "CreatedAt": "2026-10-16T06:30:40Z",
+      "Scope": "local"
+    },
+    {
+      "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+      "Driver": "local",
+      "CreatedAt": "2026-10-16T06:44:56Z",
+      "Scope": "local"
+    }
+  ],
+  "port_8191_accepting": false
+}

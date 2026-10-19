@@ -1,0 +1,103 @@
+{
+  "database": "meta_acceptance_20261016_132836",
+  "read_only": "on",
+  "tables": {
+    "connections": {
+      "rows": 1,
+      "sha256": "e8deac1ce5a3a3b0b4a6a0b9b0066ef9812b4a13a6847b49ad152e85f7872714"
+    },
+    "source_assets": {
+      "rows": 1,
+      "sha256": "a21afbe12bb3395195c1aff1e6a7f5ca582743564555cb75a375530419311e4f"
+    },
+    "jobs": {
+      "rows": 3,
+      "sha256": "8f29360a01ee78c9f50719988639aa3a7516cbf21924335ce449e5328d1c6d73"
+    },
+    "sync_runs": {
+      "rows": 3,
+      "sha256": "bdb09293c67ae9bb1e31480a7ad9050eb89be61126a5be1d29d7c2bb49e0ae4d"
+    },
+    "source_snapshots": {
+      "rows": 2,
+      "sha256": "f38a90b0b21687d05db6a900a636ba5bf72a86eaf49098e65b956438f9b9f75d"
+    },
+    "daily_metrics": {
+      "rows": 91,
+      "sha256": "4bdc9eeace5e1f90a9d290788bbe5611d2d9a990a06f82bf8f234739b8c73f16"
+    },
+    "secrets": {
+      "rows": 1,
+      "sha256": "c5631827253d7cf768add6ae25522a15c72c4945ecdfb08246b46b49fa7a74a1"
+    },
+    "datasets": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "reports": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "source_attestations": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "marketing_release_approvals": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "marketing_release_snapshots": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "migrations": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "assets": [
+    {
+      "id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "client_id": "client_meta_sandbox",
+      "provider": "meta",
+      "asset_type": "facebook_page",
+      "external_id": "2188688654687066",
+      "name": "VIO Agency",
+      "enabled": 1
+    }
+  ],
+  "period_counts": [
+    {
+      "entity_type": "page",
+      "rows": 28,
+      "entities": 1,
+      "days": 28
+    },
+    {
+      "entity_type": "post",
+      "rows": 14,
+      "entities": 14,
+      "days": 12
+    }
+  ],
+  "oauth": {
+    "decrypt_with_existing_key": true,
+    "access_token_present": true,
+    "stored_scopes": [
+      "pages_show_list",
+      "ads_read",
+      "pages_read_engagement",
+      "pages_read_user_content",
+      "public_profile"
+    ],
+    "live_validity_checked": false
+  },
+  "new_jobs_snapshots_attestations_releases": 0,
+  "status": "PASS"
+}

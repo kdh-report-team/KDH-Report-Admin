@@ -1,0 +1,25 @@
+{
+  "checked": 164,
+  "changed_baseline_files": [
+    "tests/test_meta_reporting_routes.py"
+  ],
+  "unchanged_baseline_files": 163,
+  "missing": [],
+  "added_files": [
+    "KDH_PHASE4_POSTGRES_ACCEPTANCE.md",
+    "docs/phase4-20261018/baseline.json",
+    "docs/phase4-20261018/build-manifest.json",
+    "docs/phase4-20261018/config-presence.json",
+    "docs/phase4-20261018/git-integrity.json",
+    "docs/phase4-20261018/postgres-results.json",
+    "docs/phase4-20261018/sandbox-inspect.json",
+    "docs/phase4-20261018/sandbox-readiness.json",
+    "docs/phase4-20261018/sandbox-unchanged.json",
+    "docs/phase4-20261018/security-config-hashes.json",
+    "docs/phase4-20261018/skip-inventory.json",
+    "tests/run_postgres_acceptance.py",
+    "tests/test_facebook_bundles_postgres.py"
+  ],
+  "head_unchanged": true,
+  "branch_unchanged": true
+}

@@ -1,0 +1,13 @@
+{
+  "initial_result": "STOP before gateway/Admin mutation",
+  "reason": "guard treated inactive historical IPAM request as active allocation",
+  "retained_container_id": "af2d1346b5bfc2b544b0ccf844469d2dfbf98715aa289ade3e54ab778d76b86f",
+  "retained_container_running": false,
+  "retained_endpoint_id_present": false,
+  "active_internal_endpoints_at_review": [
+    "192.168.0.2/20"
+  ],
+  "historical_container_modified": false,
+  "resolution": "execution helper permits only this exact inactive retained container; all active endpoint/IP gates remain enforced",
+  "production_source_changed": false
+}

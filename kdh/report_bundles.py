@@ -295,6 +295,12 @@ def validate_sections(db, sections, metadata, inherited=None):
         if not isinstance(data, dict):
             raise Problem('Dataset phải là một đối tượng JSON.', 400, 'invalid_dataset')
         _check_no_credentials(data)
+        if (row['report_type'] in ('facebook-content', 'facebook-ads')
+                and str(data.get('dataset_kind', '')).startswith('marketing_')):
+            expected_source = row['report_type'].replace('-', '_')
+            if (key != expected_source or data.get('params', {}).get('source') != expected_source
+                    or data.get('client_id') != metadata['client_id']):
+                raise Problem('Meta section/client/source mismatch.', 400, 'meta_bundle_scope_mismatch')
         quality = _quality(row, data, metadata)
         result[key] = {'dataset_id': dataset_id, 'report_type': row['report_type'],
                        'created_at': row['created_at'], 'valid': bool(row['valid']),

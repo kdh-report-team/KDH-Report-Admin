@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "head": "664efbc561b401d901947437c63df87348d81437",
+  "branch": "feat/seo-composite-release",
+  "originals_unchanged_stopped": true,
+  "backup_encrypted_and_plaintext_checksums_match": true,
+  "dpapi_decryption": "PASS",
+  "oauth_encryption_key_unchanged": true,
+  "independent_restore": "PASS",
+  "off_host_backup": "NOT AVAILABLE",
+  "source_file_count": 61,
+  "source_manifest_sha256": "1db981c78d84f9b0c7582948d734c62cf0b6064da893f0c7dfedba7ebb0baae5",
+  "migration_versions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "new_migrations": 0
+}

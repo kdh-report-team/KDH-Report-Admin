@@ -1,0 +1,19 @@
+{
+  "ui_deployment": "PASS",
+  "overall": "UI_PASS_WITH_META_DISCONNECT_DURING_DEPLOY_WINDOW",
+  "changed_tables": [
+    "connections",
+    "secrets",
+    "source_assets"
+  ],
+  "unaffected_business_tables": 26,
+  "content_records_unchanged": true,
+  "latest_meta_disconnect_at": "2026-10-19T07:37:19.967794+00:00",
+  "provider_revocation_confirmed_by_app": true,
+  "api_calls_by_deployment_verifier": 0,
+  "admin_container": "22f75e8e5e140dd87aca972a22bd5e8893cb57d08eb6857881605ca930d8927c",
+  "image_id": "sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d",
+  "healthy": true,
+  "rollback_image_preserved": true,
+  "branch": "feat/seo-composite-release"
+}

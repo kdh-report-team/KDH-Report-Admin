@@ -2,11 +2,13 @@
 
 Requires an existing Meta user OAuth grant. Does not expose access tokens,
 Page tokens, provider errors, or Meta's paging.next URLs to the browser.
-This module does not attest provider origin for marketing publication.
+New fetches carry server-only adapter receipts; verification and human approval
+remain separate and are mandatory before Marketing publication.
 """
 
 from __future__ import annotations
 
+from contextlib import nullcontext
 from datetime import date, datetime, time as dt_time, timezone, timedelta
 from zoneinfo import ZoneInfo
 import json
@@ -22,6 +24,24 @@ SOURCES = {
 }
 MAX_PAGES = 30
 MAX_ROWS = 15000
+
+
+def _retryable_source_error(exc):
+    from .google import SourceError
+    if not isinstance(exc, SourceError):
+        return False
+    # Only structured, transient failures are retryable. A generic OAuth/API
+    # error is not evidence of a temporary outage; preserve the original error.
+    if exc.status not in ('meta_oauth_error', 'timeout'):
+        return False
+    if getattr(exc, 'failure_layer', None) == 'response_decode':
+        return False
+    if getattr(exc, 'http_status', None) in (401, 403) or getattr(exc, 'graph_code', None) in (10, 100, 102, 190, 200):
+        return False
+    return (exc.status == 'timeout'
+            or getattr(exc, 'failure_layer', None) == 'transport'
+            or getattr(exc, 'is_transient', None) is True
+            or getattr(exc, 'http_status', None) in (429, 500, 502, 503, 504))
 
 
 def safe_number(value, default=None):
@@ -72,16 +92,36 @@ def _total(daily, key):
 
 
 class MetaReportingReader:
-    def __init__(self, meta):
+    def __init__(self, meta, diagnostics=None):
         self.meta = meta
+        self.diagnostics = diagnostics
 
-    def _token(self):
+    def _phase(self, stage):
+        return self.diagnostics.phase(stage) if self.diagnostics else nullcontext()
+
+    def _credentials(self):
         if not self.meta.info()['connected']:
             raise Problem('Meta OAuth hết hạn hoặc chưa kết nối.', 409, 'meta_reconnect_required')
         token = self.meta.read() or {}
         if not isinstance(token.get('access_token'), str) or not token['access_token']:
             raise Problem('Meta không có Access Token hợp lệ.', 409, 'meta_reconnect_required')
-        return token['access_token']
+        return token
+
+    def _token(self):
+        return self._credentials()['access_token']
+
+    @staticmethod
+    def _can_read_ads(credentials):
+        scopes = credentials.get('scopes')
+        return (isinstance(scopes, list) and all(isinstance(scope, str) for scope in scopes)
+                and 'ads_read' in scopes)
+
+    def require_ads_permission(self):
+        credentials = self._credentials()
+        if not self._can_read_ads(credentials):
+            raise Problem('Meta chưa được cấp quyền ads_read. Không thể đồng bộ Facebook Ads; '
+                          'Facebook Content vẫn có thể sử dụng quyền Page.', 403, 'meta_ads_permission')
+        return credentials['access_token']
 
     def _page_rows(self, path, token, params):
         """Use cursor-based pagination only; never dereference untrusted next URL."""
@@ -99,18 +139,23 @@ class MetaReportingReader:
                     payload = self.meta.call('GET', path, token=token, params=query)
                     break
                 except Exception as exc:
-                    from .google import SourceError
-                    if not isinstance(exc, SourceError) or attempt == 2:
+                    if not _retryable_source_error(exc) or attempt == 2:
                         raise
                     time.sleep(attempt + 1)
-            rows = payload.get('data')
+            rows = payload.get('data') if isinstance(payload, dict) else None
             if not isinstance(rows, list):
                 raise Problem('Meta trả về danh sách dữ liệu không hợp lệ.', 502, 'meta_bad_response')
             result.extend(rows)
             if len(result) > MAX_ROWS:
                 raise Problem('Dữ liệu Meta quá lớn; hãy thu hẹp phạm vi đồng bộ.', 409, 'meta_too_many_rows')
-            paging = payload.get('paging') or {}
-            cursors = paging.get('cursors') or {}
+            paging = payload.get('paging')
+            paging = {} if paging is None else paging
+            if not isinstance(paging, dict):
+                raise Problem('Phân trang Meta không hợp lệ.', 502, 'meta_bad_paging')
+            cursors = paging.get('cursors')
+            cursors = {} if cursors is None else cursors
+            if not isinstance(cursors, dict):
+                raise Problem('Phân trang Meta không hợp lệ.', 502, 'meta_bad_paging')
             after = cursors.get('after') if paging.get('next') else None
             if paging.get('next') and not after:
                 raise Problem('Meta thiếu con trỏ phân trang.', 502, 'meta_bad_paging')
@@ -122,14 +167,19 @@ class MetaReportingReader:
             cursor = after
         raise Problem('Đã đạt giới hạn số trang API Meta.', 409, 'meta_pagination_limit')
 
-    def discover(self):
-        token = self._token()
-        accounts = self._page_rows('me/adaccounts', token, {
-            'fields': 'id,name,account_status,currency,timezone_name',
-        })
+    def discover(self, source=None):
+        if source is not None and source not in SOURCES:
+            raise Problem('Nguồn Meta không hợp lệ.')
+        credentials = self._credentials()
+        token = credentials['access_token']
+        accounts = []
+        if source != 'facebook_content' and self._can_read_ads(credentials):
+            accounts = self._page_rows('me/adaccounts', token, {
+                'fields': 'id,name,account_status,currency,timezone_name',
+            })
         pages = self._page_rows('me/accounts', token, {
             'fields': 'id,name,tasks,access_token',
-        })
+        }) if source != 'facebook_ads' else []
         clean_ads = []
         for item in accounts:
             if isinstance(item, dict) and re.fullmatch(r'act_\d+', str(item.get('id', ''))):
@@ -156,87 +206,105 @@ class MetaReportingReader:
         first, last = validate_range(start, end)
         if not re.fullmatch(r'act_\d+', external_id):
             raise Problem('Ad Account ID không hợp lệ.')
-        token = self._token()
-        common = {'fields': 'date_start,date_stop,spend,impressions,clicks,reach,actions',
+        token = self.require_ads_permission()
+        account = self.ad_account(external_id)
+        from .meta_contract import ATTRIBUTION, normalize_ads, seal_result
+        common = {'fields': 'account_id,account_currency,date_start,date_stop,spend,impressions,clicks,inline_link_clicks,reach,actions',
                   'time_range': json.dumps({'since': start, 'until': end}, separators=(',', ':')),
-                  'time_increment': 1}
+                  'time_increment': 1, 'action_report_time': ATTRIBUTION['action_report_time'],
+                  'action_attribution_windows': json.dumps(ATTRIBUTION['action_attribution_windows']),
+                  'use_account_attribution_setting': 'false', 'use_unified_attribution_setting': 'false'}
         rows = self._page_rows(external_id + '/insights', token, dict(common, level='account'))
         campaigns = self._page_rows(external_id + '/insights', token,
             dict(common, level='campaign', fields=common['fields'] + ',campaign_id,campaign_name'))
-        daily, details = [], []
-        seen_days = set()
-        for item in rows:
-            if not isinstance(item, dict):
-                continue
-            day = item.get('date_start')
-            if not isinstance(day, str) or not start <= day <= end or day in seen_days:
-                raise Problem('Meta trả về ngày bị trùng hoặc ngoài kỳ.', 502, 'meta_bad_response')
-            seen_days.add(day)
-            daily.append({'date': day, 'spend': safe_number(item.get('spend')),
-                'impressions': count(item.get('impressions')), 'clicks': count(item.get('clicks')),
-                'reach': count(item.get('reach')),
-                'leads': _action_count(item.get('actions'),
-                    ('lead', 'onsite_conversion.lead_grouped', 'offsite_conversion.fb_pixel_lead'))})
-        for item in campaigns:
-            if not isinstance(item, dict) or not isinstance(item.get('campaign_id'), str):
-                continue
-            day = item.get('date_start')
-            if not isinstance(day, str) or not start <= day <= end:
-                raise Problem('Meta trả về campaign ngoài kỳ.', 502, 'meta_bad_response')
-            details.append({'date': day, 'campaign_id': item['campaign_id'],
-                'campaign_name': str(item.get('campaign_name') or '')[:180],
-                'spend': safe_number(item.get('spend')),
-                'impressions': count(item.get('impressions')),
-                'clicks': count(item.get('clicks'))})
-        daily.sort(key=lambda x: x['date'])
-        totals = {key: _total(daily, key) for key in ('spend', 'impressions', 'clicks', 'leads')}
-        # Reach across dates/campaigns is non-additive; do not invent a period total.
-        totals['reach'] = None
-        return {'source': 'facebook_ads', 'requested_start': start, 'requested_end': end,
-            'status': 'ready' if daily else 'no_data', 'data_origin': 'meta_api_unverified',
-            'latest_available_date': daily[-1]['date'] if daily else None,
-            'daily': daily, 'entries': details, 'totals': totals,
-            'warnings': ['Dữ liệu Meta chưa có receipt xác minh phục vụ phát hành Marketing.']}
+        return seal_result(self.meta, normalize_ads(rows, campaigns, account, start, end), external_id, account)
 
+    def ad_account(self, external_id):
+        if not isinstance(external_id, str) or not re.fullmatch(r'act_\d+', external_id):
+            raise Problem('Ad Account ID không hợp lệ.')
+        account = self.meta.call('GET', external_id, token=self.require_ads_permission(),
+                                 params={'fields': 'id,name,currency,timezone_name,business,account_status'})
+        if not isinstance(account, dict) or account.get('id') != external_id:
+            raise Problem('Ad Account identity mismatch.', 403, 'meta_asset_not_permitted')
+        return {key: account.get(key) for key in ('id', 'name', 'currency', 'timezone_name', 'business', 'account_status')}
     def content(self, page_id, start, end):
-        first, last = validate_range(start, end)
-        if not re.fullmatch(r'\d+', page_id):
-            raise Problem('Page ID không hợp lệ.')
-        token = self._page_token(page_id)
-        rows = self._page_rows(page_id + '/posts', token, {'fields':
-            'id,created_time,permalink_url,shares,reactions.limit(0).summary(true),comments.limit(0).summary(true)',
-            'since': str(int(datetime.combine(first, dt_time.min, tzinfo=timezone.utc).timestamp())),
-            'until': str(int(datetime.combine(last + timedelta(days=1), dt_time.min, tzinfo=timezone.utc).timestamp()))})
+        with self._phase('page_token'):
+            first, last = validate_range(start, end)
+            if last >= datetime.now(timezone.utc).date():
+                raise Problem('UTC reporting day has not ended.', 409, 'meta_open_day')
+            if not re.fullmatch(r'\d+', page_id):
+                raise Problem('Page ID không hợp lệ.')
+            token = self._page_token(page_id)
+        with self._phase('fetch_posts'):
+            rows = self._page_rows(page_id + '/posts', token, {'fields':
+                'id,created_time,permalink_url,shares,reactions.limit(0).summary(true),comments.limit(0).summary(true)',
+                'since': str(int(datetime.combine(first, dt_time.min, tzinfo=timezone.utc).timestamp())),
+                'until': str(int(datetime.combine(last + timedelta(days=1), dt_time.min, tzinfo=timezone.utc).timestamp()))})
+        with self._phase('normalize_content'):
+            if any(not isinstance(row, dict) or not str(row.get('id', '')).startswith(page_id + '_') for row in rows):
+                raise Problem('Post does not belong to the selected Page.', 502, 'meta_bad_response')
+            from .meta_contract import seal_result
+            return seal_result(self.meta, self._normalize_content(rows, first, last, start, end), page_id)
+
+    def _normalize_content(self, rows, first, last, start, end):
         # Post counters are lifetime values as of fetch time, NOT daily engagement.
         # Only post publication counts can safely be attributed to creation day.
         grouped = {day: {'date': day, 'posts_published': 0,
                            'reactions': None, 'comments': None, 'shares': None,
                            'engagements': None} for day in dates(first, last)}
-        entries, seen = [], set()
+        entries, seen = [], {}
         for item in rows:
-            if not isinstance(item, dict) or not isinstance(item.get('id'), str):
+            if not isinstance(item, dict) or not isinstance(item.get('id'), str) or not item['id'].strip():
+                raise Problem('Meta trả về bài viết không hợp lệ.', 502, 'meta_bad_response')
+            post_id = item['id']
+            try:
+                created = datetime.fromisoformat(item['created_time'])
+                if created.tzinfo is None:
+                    raise ValueError()
+                day = created.astimezone(timezone.utc).date().isoformat()
+            except (KeyError, TypeError, ValueError, OverflowError):
+                raise Problem('Meta trả về thời gian bài viết không hợp lệ.', 502, 'meta_bad_response') from None
+            if not start <= day <= end:
                 continue
-            post_id, day = item['id'], str(item.get('created_time', ''))[:10]
-            if not start <= day <= end or post_id in seen:
+            def post_count(name, summary=False):
+                info = item.get(name)
+                if info is None:
+                    return None
+                if not isinstance(info, dict):
+                    raise Problem('Meta trả về bộ đếm bài viết không hợp lệ.', 502, 'meta_bad_response')
+                if summary:
+                    info = info.get('summary')
+                    if info is None:
+                        return None
+                    if not isinstance(info, dict):
+                        raise Problem('Meta trả về bộ đếm bài viết không hợp lệ.', 502, 'meta_bad_response')
+                value = info.get('total_count' if summary else 'count')
+                if value is not None and (type(value) is not int or value < 0):
+                    raise Problem('Meta trả về bộ đếm bài viết không hợp lệ.', 502, 'meta_bad_response')
+                return value
+            entry = {'date': day, 'post_id': post_id,
+                     'reactions_lifetime': post_count('reactions', summary=True),
+                     'comments_lifetime': post_count('comments', summary=True),
+                     'shares_lifetime': post_count('shares')}
+            if post_id in seen:
+                if entry != seen[post_id]:
+                    raise Problem('Meta trả về bài viết trùng nhưng không nhất quán.', 502, 'meta_bad_response')
                 continue
-            seen.add(post_id)
-            def nested_count(name):
-                info = item.get(name) or {}
-                return count((info.get('summary') or {}).get('total_count')) if isinstance(info, dict) else None
-            reactions, comments = nested_count('reactions'), nested_count('comments')
-            shares = count((item.get('shares') or {}).get('count')) if isinstance(item.get('shares'), dict) else None
-            entries.append({'date': day, 'post_id': post_id,
-                            'reactions_lifetime': reactions,
-                            'comments_lifetime': comments,
-                            'shares_lifetime': shares})
+            seen[post_id] = entry
+            entries.append(entry)
             grouped[day]['posts_published'] += 1
         daily = list(grouped.values())
         totals = {'posts_published': sum(row['posts_published'] for row in daily),
                   'reactions': None, 'comments': None, 'shares': None, 'engagements': None}
 
         return {'source': 'facebook_content', 'requested_start': start, 'requested_end': end,
-            'status': 'ready', 'data_origin': 'meta_api_unverified',
-            'latest_available_date': end, 'daily': daily, 'entries': entries, 'totals': totals,
+            'status': 'ready' if entries else 'no_data', 'data_origin': 'meta_api_unverified',
+            'timezone': 'UTC',
+            # A fully fetched period has daily publication observations, including
+            # zero-post days. Keep metric coverage separate from the last post day.
+            'latest_available_date': end,
+            'latest_post_date': max((row['date'] for row in entries), default=None),
+            'daily': daily, 'entries': entries, 'totals': totals,
             'warnings': ['Tương tác trên từng post là lifetime tại thời điểm lấy; không cộng vào KPI tương tác theo ngày.',
                          'Page/Post views, reach và follower Insights chưa được truy vấn; không suy đoán các giá trị này.',
-                         'Dữ liệu Meta chưa có receipt xác minh phục vụ phát hành Marketing.']}
+                         'Đồng bộ Meta thành công không tự thay thế xác minh nguồn và phê duyệt phát hành.']}

@@ -1,0 +1,30 @@
+{
+  "provider_calls": 0,
+  "mutations": [
+    "own login session",
+    "own logout session"
+  ],
+  "checks": {
+    "health_login_session_cookie_csrf_origin": "PASS",
+    "content_kpi": {
+      "status": "PASS",
+      "period_posts": 14,
+      "page_coverage_days": 28,
+      "period_engagement": null,
+      "engagement_status": "no_data",
+      "snapshot_metrics": null
+    },
+    "historical_source_guard": {
+      "status": "PASS",
+      "http_status": 409,
+      "code": "meta_contract_missing"
+    },
+    "viewer_requires_backend_authorization": {
+      "status": "PASS",
+      "http_status": 401
+    },
+    "served_ui_hashes_match_manifest": "PASS",
+    "own_session_logout": "PASS"
+  },
+  "status": "PASS"
+}

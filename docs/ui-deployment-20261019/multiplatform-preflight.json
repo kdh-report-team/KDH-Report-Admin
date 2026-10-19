@@ -1,0 +1,675 @@
+{
+  "status": "PASS",
+  "run_id": "20261016-132836-5c512a53",
+  "admin_id": "22f75e8e5e140dd87aca972a22bd5e8893cb57d08eb6857881605ca930d8927c",
+  "base_image": "sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d",
+  "job_mode": "request",
+  "client_id": "client_meta_sandbox",
+  "admin_ip": "192.168.0.3",
+  "relay_host_binding": "127.0.0.1:8191",
+  "network_internal": true,
+  "services": {
+    "kdh-meta-2b-pg-20261016-132836-5c512a53": {
+      "id": "41c3cebbed98beab58091b359ba12e4b54f7eb90a41fbe4b9cb5a86539cb87d1",
+      "image": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-pgdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-pgdata-20261016-132836-5c512a53/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "host_config": {
+        "Binds": null,
+        "ContainerIDFile": "",
+        "LogConfig": {
+          "Type": "json-file",
+          "Config": {}
+        },
+        "NetworkMode": "kdh-meta-2b-net-20261016-132836-5c512a53",
+        "PortBindings": {},
+        "RestartPolicy": {
+          "Name": "no",
+          "MaximumRetryCount": 0
+        },
+        "AutoRemove": false,
+        "VolumeDriver": "",
+        "VolumesFrom": null,
+        "ConsoleSize": [
+          0,
+          0
+        ],
+        "CapAdd": null,
+        "CapDrop": null,
+        "CgroupnsMode": "host",
+        "Dns": [],
+        "DnsOptions": [],
+        "DnsSearch": [],
+        "ExtraHosts": null,
+        "GroupAdd": null,
+        "IpcMode": "private",
+        "Cgroup": "",
+        "Links": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyRootfs": false,
+        "SecurityOpt": null,
+        "UTSMode": "",
+        "UsernsMode": "",
+        "ShmSize": 67108864,
+        "Runtime": "runc",
+        "Isolation": "",
+        "CpuShares": 0,
+        "Memory": 805306368,
+        "NanoCpus": 1000000000,
+        "CgroupParent": "",
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": [],
+        "BlkioDeviceReadBps": [],
+        "BlkioDeviceWriteBps": [],
+        "BlkioDeviceReadIOps": [],
+        "BlkioDeviceWriteIOps": [],
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "Devices": [],
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "MemoryReservation": 0,
+        "MemorySwap": 1610612736,
+        "MemorySwappiness": null,
+        "OomKillDisable": false,
+        "PidsLimit": null,
+        "Ulimits": [],
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "IOMaximumIOps": 0,
+        "IOMaximumBandwidth": 0,
+        "Mounts": [
+          {
+            "Type": "volume",
+            "Source": "kdh-meta-2b-pgdata-20261016-132836-5c512a53",
+            "Target": "/var/lib/postgresql/data"
+          }
+        ],
+        "MaskedPaths": [
+          "/proc/acpi",
+          "/proc/asound",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/sys/devices/virtual/powercap",
+          "/sys/firmware"
+        ],
+        "ReadonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ]
+      },
+      "started_at": "2026-10-19T06:25:11.109696588Z",
+      "networks": {
+        "kdh-meta-2b-net-20261016-132836-5c512a53": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+          "EndpointID": "cea23e37783d70c1557313ae527790e6a36b8f349c74f334c57929970e0c3bc6",
+          "Gateway": "",
+          "IPAddress": "192.168.0.2",
+          "MacAddress": "b2:ae:1a:fa:8f:3a",
+          "IPPrefixLen": 20,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "kdh-meta-2b-pg-20261016-132836-5c512a53",
+            "41c3cebbed98"
+          ]
+        }
+      }
+    },
+    "kdh-meta-2b-relay-20261016-132836-5c512a53": {
+      "id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\relay",
+          "Destination": "/relay",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "host_config": {
+        "Binds": null,
+        "ContainerIDFile": "",
+        "LogConfig": {
+          "Type": "json-file",
+          "Config": {}
+        },
+        "NetworkMode": "kdh-meta-2b-ingress-20261016-132836-5c512a53",
+        "PortBindings": {
+          "8090/tcp": [
+            {
+              "HostIp": "127.0.0.1",
+              "HostPort": "8191"
+            }
+          ]
+        },
+        "RestartPolicy": {
+          "Name": "no",
+          "MaximumRetryCount": 0
+        },
+        "AutoRemove": false,
+        "VolumeDriver": "",
+        "VolumesFrom": null,
+        "ConsoleSize": [
+          0,
+          0
+        ],
+        "CapAdd": [
+          "CAP_NET_ADMIN",
+          "CAP_SETGID",
+          "CAP_SETPCAP",
+          "CAP_SETUID"
+        ],
+        "CapDrop": [
+          "ALL"
+        ],
+        "CgroupnsMode": "host",
+        "Dns": [
+          "127.0.0.1"
+        ],
+        "DnsOptions": [],
+        "DnsSearch": [],
+        "ExtraHosts": null,
+        "GroupAdd": null,
+        "IpcMode": "private",
+        "Cgroup": "",
+        "Links": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyRootfs": true,
+        "SecurityOpt": [
+          "no-new-privileges"
+        ],
+        "UTSMode": "",
+        "UsernsMode": "",
+        "ShmSize": 67108864,
+        "Sysctls": {
+          "net.ipv4.ip_forward": "0",
+          "net.ipv6.conf.all.disable_ipv6": "1"
+        },
+        "Runtime": "runc",
+        "Isolation": "",
+        "CpuShares": 0,
+        "Memory": 134217728,
+        "NanoCpus": 500000000,
+        "CgroupParent": "",
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": [],
+        "BlkioDeviceReadBps": [],
+        "BlkioDeviceWriteBps": [],
+        "BlkioDeviceReadIOps": [],
+        "BlkioDeviceWriteIOps": [],
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "Devices": [],
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "MemoryReservation": 0,
+        "MemorySwap": 268435456,
+        "MemorySwappiness": null,
+        "OomKillDisable": false,
+        "PidsLimit": 64,
+        "Ulimits": [],
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "IOMaximumIOps": 0,
+        "IOMaximumBandwidth": 0,
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\relay",
+            "Target": "/relay",
+            "ReadOnly": true
+          }
+        ],
+        "MaskedPaths": [
+          "/proc/acpi",
+          "/proc/asound",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/sys/devices/virtual/powercap",
+          "/sys/firmware"
+        ],
+        "ReadonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ]
+      },
+      "started_at": "2026-10-19T06:25:26.107455975Z",
+      "networks": {
+        "kdh-meta-2b-ingress-20261016-132836-5c512a53": {
+          "IPAMConfig": {
+            "IPv4Address": "192.168.16.2"
+          },
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "9b5f9931cded44124cd928c6065f48bd97ba51c5afabdd5ac46e82849c044a0b",
+          "EndpointID": "592fd7cddd8ef659ecc266611e5a72b46e0fd7f5a1fb21e3821f83dd26c1ba9e",
+          "Gateway": "192.168.16.1",
+          "IPAddress": "192.168.16.2",
+          "MacAddress": "42:25:0f:ec:f5:cf",
+          "IPPrefixLen": 20,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "kdh-meta-2b-relay-20261016-132836-5c512a53",
+            "10a498a7245e"
+          ]
+        },
+        "kdh-meta-2b-net-20261016-132836-5c512a53": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+          "EndpointID": "571ddd76d170013e399510a3ca2a3d966eadcc5ebcbf5814b06405d2f01f72fc",
+          "Gateway": "",
+          "IPAddress": "192.168.0.4",
+          "MacAddress": "0e:27:fd:d2:a5:30",
+          "IPPrefixLen": 20,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "kdh-meta-2b-relay-20261016-132836-5c512a53",
+            "10a498a7245e"
+          ]
+        }
+      }
+    },
+    "kdh-meta-3-egress-20261016-132836-5c512a53": {
+      "id": "c264a6c245cfd98fedd717e0f2e60743058e8d26e7a2577702622e23c993b0e6",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase3\\gateway",
+          "Destination": "/gateway",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "host_config": {
+        "Binds": null,
+        "ContainerIDFile": "",
+        "LogConfig": {
+          "Type": "json-file",
+          "Config": {}
+        },
+        "NetworkMode": "kdh-meta-3-outbound-20261016-132836-5c512a53",
+        "PortBindings": {},
+        "RestartPolicy": {
+          "Name": "no",
+          "MaximumRetryCount": 0
+        },
+        "AutoRemove": false,
+        "VolumeDriver": "",
+        "VolumesFrom": null,
+        "ConsoleSize": [
+          0,
+          0
+        ],
+        "CapAdd": [
+          "CAP_NET_ADMIN",
+          "CAP_SETGID",
+          "CAP_SETPCAP",
+          "CAP_SETUID"
+        ],
+        "CapDrop": [
+          "ALL"
+        ],
+        "CgroupnsMode": "host",
+        "Dns": [
+          "127.0.0.1"
+        ],
+        "DnsOptions": [],
+        "DnsSearch": [],
+        "ExtraHosts": null,
+        "GroupAdd": null,
+        "IpcMode": "private",
+        "Cgroup": "",
+        "Links": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyRootfs": true,
+        "SecurityOpt": [
+          "no-new-privileges"
+        ],
+        "UTSMode": "",
+        "UsernsMode": "",
+        "ShmSize": 67108864,
+        "Sysctls": {
+          "net.ipv4.ip_forward": "0",
+          "net.ipv6.conf.all.disable_ipv6": "1"
+        },
+        "Runtime": "runc",
+        "Isolation": "",
+        "CpuShares": 0,
+        "Memory": 134217728,
+        "NanoCpus": 500000000,
+        "CgroupParent": "",
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": [],
+        "BlkioDeviceReadBps": [],
+        "BlkioDeviceWriteBps": [],
+        "BlkioDeviceReadIOps": [],
+        "BlkioDeviceWriteIOps": [],
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "Devices": [],
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "MemoryReservation": 0,
+        "MemorySwap": 268435456,
+        "MemorySwappiness": null,
+        "OomKillDisable": false,
+        "PidsLimit": 64,
+        "Ulimits": [],
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "IOMaximumIOps": 0,
+        "IOMaximumBandwidth": 0,
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase3\\gateway",
+            "Target": "/gateway",
+            "ReadOnly": true
+          }
+        ],
+        "MaskedPaths": [
+          "/proc/acpi",
+          "/proc/asound",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/sys/devices/virtual/powercap",
+          "/sys/firmware"
+        ],
+        "ReadonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ]
+      },
+      "started_at": "2026-10-19T06:25:20.94080902Z",
+      "networks": {
+        "kdh-meta-2b-net-20261016-132836-5c512a53": {
+          "IPAMConfig": {
+            "IPv4Address": "192.168.0.10"
+          },
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+          "EndpointID": "a3de833ab0dff109bcc44c6e6663056b0b390e59ef41eab2715082110b6076fa",
+          "Gateway": "",
+          "IPAddress": "192.168.0.10",
+          "MacAddress": "4e:ac:d2:17:cd:d5",
+          "IPPrefixLen": 20,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "kdh-meta-3-egress-20261016-132836-5c512a53",
+            "c264a6c245cf"
+          ]
+        },
+        "kdh-meta-3-outbound-20261016-132836-5c512a53": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "e6413878da9c290bbba590f857318c81fcdfee77630622d788723bde24f76258",
+          "EndpointID": "bb9297aec08a3a1423c14b7d3fb1bd992f0f46465e5c25caf561cbc947d887bc",
+          "Gateway": "192.168.32.1",
+          "IPAddress": "192.168.32.2",
+          "MacAddress": "62:27:44:8f:04:2a",
+          "IPPrefixLen": 20,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "kdh-meta-3-egress-20261016-132836-5c512a53",
+            "c264a6c245cf"
+          ]
+        }
+      }
+    }
+  },
+  "table_integrity": {
+    "artifacts": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "clients": {
+      "rows": 2,
+      "sha256": "b1d8d408c0e8b07b913ea8b0098a4bbc0bd868fb01a8820bc74cb680fd3e4e8d"
+    },
+    "connections": {
+      "rows": 1,
+      "sha256": "7b19075d7d0ecd33cf658f8333af24c66513a807e39df8b67d22ac9670000bbe"
+    },
+    "daily_metrics": {
+      "rows": 186,
+      "sha256": "2a5388be866ec1a87b94798e7e7430d94d8268f9b570dbb82e6d6c6a1824f23c"
+    },
+    "datasets": {
+      "rows": 18,
+      "sha256": "82e40e5188fc37fbbcd0a1a5c37f582e314fbc7ce9074dd0f34dc3790e5c8d43"
+    },
+    "delegated_viewer_sessions": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "jobs": {
+      "rows": 12,
+      "sha256": "76e7ae56da8c65116425df7bccf5d9bdc3f2b3f6160fd73bb8d02f472c12f38e"
+    },
+    "marketing_dataset_reviews": {
+      "rows": 28,
+      "sha256": "3fa6e4935e12cd3f3015a10ac70d6a9c51d4ed7ac14609a01c14af76969a524f"
+    },
+    "marketing_release_approvals": {
+      "rows": 2,
+      "sha256": "731b7802ac6bd8fa1d175ec4effc3dcde4a9f70fc320ff35d8f59310dfa52cf6"
+    },
+    "marketing_release_snapshots": {
+      "rows": 2,
+      "sha256": "e057ad7b04f573c4a0fb794a0f7fb45e6fb7fdfbf01740a94f7831261f35ecd0"
+    },
+    "meta_oauth_states": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "oauth_states": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "publications": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "report_bundle_sections": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "report_bundles": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "report_viewer_grants": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "reports": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "schedules": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "schema_migrations": {
+      "rows": 8,
+      "sha256": "da7b9a344173c12341166c4f23f8141607289f09bb80ef8976c27c6fa819f56f"
+    },
+    "secrets": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "settings": {
+      "rows": 2,
+      "sha256": "d1177eae2f4beb7da7bcbf9910cf00c535417e066c5c03b23e66ec2b557f5a69"
+    },
+    "source_assets": {
+      "rows": 1,
+      "sha256": "39c1321cb18ca1c07394d9dd3d31a8efe5cff6b6bfde06b52eeb4e075259e42e"
+    },
+    "source_attestations": {
+      "rows": 3,
+      "sha256": "7fd4b101645a9c176e955ca2c416d05fdf7db0d57e9954110e2ab78bee49ea59"
+    },
+    "source_snapshots": {
+      "rows": 5,
+      "sha256": "c032c7c11928b10cb6652e051d7cadf304433498952b259361843e6d9eecbba9"
+    },
+    "sync_runs": {
+      "rows": 6,
+      "sha256": "257c072d4b508f6e3c7a9380421eb99afc8e3cf8ccaf5190481021768f1f4a82"
+    },
+    "sync_watermarks": {
+      "rows": 1,
+      "sha256": "5cc18b39fef761af7bc92ffaaa60190349185669ee0c87bc7b408cbea1e41fa9"
+    },
+    "upload_locations": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "uploads": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "viewer_handoffs": {
+      "rows": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "table_summary": {
+    "counts": {
+      "clients": 2,
+      "source_assets": 1,
+      "daily_metrics": 186,
+      "sync_runs": 6,
+      "source_snapshots": 5,
+      "source_attestations": 3,
+      "datasets": 18,
+      "marketing_dataset_reviews": 28,
+      "marketing_release_approvals": 2,
+      "marketing_release_snapshots": 2,
+      "report_bundles": 0,
+      "jobs": 12
+    },
+    "vio_page_asset": [
+      {
+        "client_id": "client_meta_sandbox",
+        "asset_type": "facebook_page",
+        "external_id": "2188688654687066",
+        "name": "VIO Agency",
+        "enabled": 0
+      }
+    ],
+    "migration_versions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "provider_calls": 0,
+  "source_identity": "client_meta_sandbox / VIO Agency / 2188688654687066",
+  "migrations": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "health_before": 200
+}

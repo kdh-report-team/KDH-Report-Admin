@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "prefix": "kdh-foundation-smoke-fad42cb3cf",
+  "image_id": "sha256:926d563949e1ecfa70aca33e0aff42f1e73f9f184178a27a099107833ea8c626",
+  "isolated_network": "none (shared PG namespace)",
+  "host_ports": [],
+  "original_volumes_mounted": false,
+  "source_hashes": "PASS",
+  "application": {
+    "modules": "PASS",
+    "health": "PASS",
+    "login_csrf": "PASS",
+    "platform_status": "PASS",
+    "sync_history_scope": "PASS",
+    "marketing_scope": "PASS",
+    "routes": "PASS",
+    "migrations_1_8": "PASS",
+    "background_jobs": "NONE"
+  },
+  "containers_stopped": true
+}

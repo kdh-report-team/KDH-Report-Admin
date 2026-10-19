@@ -1,0 +1,31 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d
+#3 ...
+
+#4 [auth] library/sha256:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d
+#3 ERROR: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+------
+ > [internal] load metadata for docker.io/library/sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d:
+------
+Dockerfile:1
+--------------------
+   1 | >>> FROM sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d
+   2 |     WORKDIR /app
+   3 |     COPY --chown=kdh:kdh kdh/ /app/kdh/
+--------------------
+ERROR: failed to build: failed to solve: sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d: failed to resolve source metadata for docker.io/library/sha256:6820506ebb30b1e8efa57300e47dbd50dc32eeb9c602091e3bd88862a3b35f4d: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/suxgy4zxx9lweng1cgnqkhkq3

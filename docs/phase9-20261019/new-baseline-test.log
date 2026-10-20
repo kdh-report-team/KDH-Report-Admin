@@ -1,0 +1,26 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__________________ test_overview_renders_reference_dashboard __________________
+
+    def test_overview_renders_reference_dashboard():
+        response = client.get('/overview')
+        assert response.status_code == 200
+>       assert '>Tổng quan</h1>' in response.text
+E       assert '>Tổng quan</h1>' in '<!DOCTYPE html>\n<html lang="vi">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-wi...8-31", "previous_start": "2026-08-02", "start": "2026-09-01"}, "report_type": "overview"}</script>\n\n</body>\n</html>'
+E        +  where '<!DOCTYPE html>\n<html lang="vi">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-wi...8-31", "previous_start": "2026-08-02", "start": "2026-09-01"}, "report_type": "overview"}</script>\n\n</body>\n</html>' = <Response [200 OK]>.text
+
+tests\test_reports.py:59: AssertionError
+============================== warnings summary ===============================
+D:\KDH-Report-All\KDH-Report-New\.venv\Lib\site-packages\starlette\testclient.py:40
+  D:\KDH-Report-All\KDH-Report-New\.venv\Lib\site-packages\starlette\testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_reports.py::test_overview_renders_reference_dashboard
+  D:\KDH-Report-All\KDH-Report-New\.venv\Lib\site-packages\starlette\templating.py:161: DeprecationWarning: The `name` is not the first parameter anymore. The first parameter should be the `Request` instance.
+  Replace `TemplateResponse(name, {"request": request})` by `TemplateResponse(request, name)`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_reports.py::test_overview_renders_reference_dashboard - ass...
+1 failed, 2 warnings in 1.91s

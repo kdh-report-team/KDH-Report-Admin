@@ -56,7 +56,7 @@ function renderState() {
     $('#block-release').disabled = !state.candidate;
     $('#create-release').disabled = !checks?.provider_origin_confirmed || decision?.decision !== 'release_approved';
     $('#source-state').innerHTML = checks ? `<p>${esc(label(state.approval.state))} · ${esc(label(checks.state))}</p>${issueList(checks.issues)}<div class="workflow-table"><table><thead><tr><th>KPI</th><th>Kiểm tra</th></tr></thead><tbody>${checks.checks.map(item => `<tr><td>${esc(item.metric_id)}</td><td>${esc(label(item.status))}${issueList(item.issues)}</td></tr>`).join('')}</tbody></table></div>` : state.release ? 'Đã tạo snapshot phát hành. Tiếp tục tại mục Xuất bản.' : 'Chưa có bản chờ duyệt phát hành.';
-    setLink('#internal-preview', state.candidate ? '/auth/handoff/start?mode=preview&target_id=' + state.candidate : null);
+    setLink('#internal-preview', state.candidate && state.meta?.client_id === 'client_kinderhealth' ? '/auth/handoff/start?mode=preview&target_id=' + state.candidate : null);
     const report = state.report;
     $('#create-bundle').disabled = !state.release;
     $('#publish-provisional').disabled = !report || report.status !== 'draft';

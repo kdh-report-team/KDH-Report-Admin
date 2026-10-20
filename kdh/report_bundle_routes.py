@@ -23,16 +23,8 @@ def _revision_arg():
 
 def register_report_bundle_routes(app, store, require, body):
     def handoff_supported(client_id):
-        if client_id != DEFAULT_CLIENT_ID:
-            return False
-        try:
-            value = str(app.config.get('REPORT_NEW_BASE_URL', '')).rstrip('/')
-            parsed = urlsplit(value)
-            return bool(parsed.scheme in ('http', 'https') and parsed.hostname and not parsed.username
-                        and not parsed.password and not parsed.path and not parsed.query and not parsed.fragment
-                        and (parsed.scheme != 'http' or parsed.hostname in ('localhost', '127.0.0.1', '::1')))
-        except ValueError:
-            return False
+        from .viewer_handoff import handoff_supported as supported
+        return supported(client_id)
 
     @app.post('/api/report-bundles')
     @require('admin')

@@ -119,8 +119,9 @@ def register_marketing_console(app, store, require):
                 new_url = ''
         except ValueError:
             new_url = ''
+        from .viewer_handoff import handoff_supported
         return jsonify(client_id=client_id, client_name=client['name'], new_url=new_url,
-                       viewer_handoff_supported=client_id == DEFAULT_CLIENT_ID and bool(new_url),
+                       viewer_handoff_supported=handoff_supported(client_id),
                        sources=[{'id': key, 'label': item['label'], 'integration': item['integration']}
                                 for key, item in SOURCES.items() if not sandbox_marketing_client() or key in ('facebook_content', 'facebook_ads')], snapshots=snapshots,
                        assets=store.all('''SELECT id,name,asset_type,provider,external_id FROM source_assets

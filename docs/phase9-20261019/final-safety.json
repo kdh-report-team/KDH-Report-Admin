@@ -1,0 +1,19 @@
+{
+  "status": "SAFE_STOP",
+  "admin_health": 200,
+  "new_8080_health": 200,
+  "admin_container_unchanged": true,
+  "protected_services_unchanged": true,
+  "business_tables_unchanged": 29,
+  "source_runtime_unchanged": true,
+  "new_phase9_containers": "STOPPED",
+  "relay_extra_endpoint": "REMOVED",
+  "new_network_internal": true,
+  "new_network_active_endpoints": 0,
+  "t_sha256_unchanged": true,
+  "old_new_checkout": "UNCHANGED",
+  "browser_e2e": "NOT RUN",
+  "provider_calls": 0,
+  "live_report_mutations": 0,
+  "blocker": "Ingress ICC disabled; fixed relay listener not reachable from isolated New network. Dedicated relay listener required."
+}

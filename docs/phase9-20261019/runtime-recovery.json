@@ -1,0 +1,32 @@
+{
+  "admin_id": "41a7100e18cbde6d0aa1d58c281a0ad96086b3023b67f73c3a53ee38328cd104",
+  "admin_finished_at": "2026-10-19T16:35:35.599910459Z",
+  "pg_id": "41c3cebbed98beab58091b359ba12e4b54f7eb90a41fbe4b9cb5a86539cb87d1",
+  "pg_finished_at": "2026-10-19T16:35:32.67253725Z",
+  "gateway_id": "c264a6c245cfd98fedd717e0f2e60743058e8d26e7a2577702622e23c993b0e6",
+  "gateway_finished_at": "2026-10-19T16:35:35.589065056Z",
+  "relay_id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+  "relay_finished_at": "2026-10-19T16:35:35.599739934Z",
+  "backup": "checksum and decryption PASS",
+  "backup_prior_restore": "PASS",
+  "backup_off_host": false,
+  "new_8080": "same ID/image/config/mounts/networks; runtime restarted since baseline",
+  "new_8080_started_at": "2026-10-19T16:35:53.688308292Z",
+  "networks": "identity and isolation PASS",
+  "oauth_config": "DPAPI compatibility PASS",
+  "status": "PASS",
+  "schemas": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "queued_jobs": 0,
+  "admin_health": 200,
+  "new_8080_health": 200,
+  "data_unchanged": true
+}

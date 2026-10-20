@@ -1,0 +1,517 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 1.5s
+
+#1 [internal] load remote build context
+#1 DONE 1.5s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/kdh-report-new-app:latest
+#3 DONE 0.1s
+
+#4 [  1/163] FROM docker.io/library/kdh-report-new-app:latest@sha256:f08dfb908074aada9bebec14539001b477f74d3adc34f731e2d48aa962a168c2
+#4 resolve docker.io/library/kdh-report-new-app:latest@sha256:f08dfb908074aada9bebec14539001b477f74d3adc34f731e2d48aa962a168c2 0.1s done
+#4 DONE 0.1s
+
+#5 [ 21/163] COPY --chown=10001:10001 app/models/report.py /app/app/models/report.py
+#5 CACHED
+
+#6 [ 27/163] COPY --chown=10001:10001 app/routes/handoff.py /app/app/routes/handoff.py
+#6 CACHED
+
+#7 [  9/163] COPY --chown=10001:10001 app/integrations/mock/facebook_ads.py /app/app/integrations/mock/facebook_ads.py
+#7 CACHED
+
+#8 [  4/163] COPY --chown=10001:10001 app/bundle_safety.py /app/app/bundle_safety.py
+#8 CACHED
+
+#9 [  7/163] COPY --chown=10001:10001 app/db/session.py /app/app/db/session.py
+#9 CACHED
+
+#10 [ 19/163] COPY --chown=10001:10001 app/mappers/dashboard.py /app/app/mappers/dashboard.py
+#10 CACHED
+
+#11 [ 36/163] COPY --chown=10001:10001 app/schemas/report.py /app/app/schemas/report.py
+#11 CACHED
+
+#12 [ 22/163] COPY --chown=10001:10001 app/presentation.py /app/app/presentation.py
+#12 CACHED
+
+#13 [ 10/163] COPY --chown=10001:10001 app/integrations/mock/facebook_content.py /app/app/integrations/mock/facebook_content.py
+#13 CACHED
+
+#14 [ 31/163] COPY --chown=10001:10001 app/routes/reports.py /app/app/routes/reports.py
+#14 CACHED
+
+#15 [ 35/163] COPY --chown=10001:10001 app/schemas/bundle_view.py /app/app/schemas/bundle_view.py
+#15 CACHED
+
+#16 [ 23/163] COPY --chown=10001:10001 app/repositories/admin_bundle.py /app/app/repositories/admin_bundle.py
+#16 CACHED
+
+#17 [  5/163] COPY --chown=10001:10001 app/config.py /app/app/config.py
+#17 CACHED
+
+#18 [ 17/163] COPY --chown=10001:10001 app/mappers/__init__.py /app/app/mappers/__init__.py
+#18 CACHED
+
+#19 [ 28/163] COPY --chown=10001:10001 app/routes/health.py /app/app/routes/health.py
+#19 CACHED
+
+#20 [ 20/163] COPY --chown=10001:10001 app/models/__init__.py /app/app/models/__init__.py
+#20 CACHED
+
+#21 [ 14/163] COPY --chown=10001:10001 app/integrations/mock/seo.py /app/app/integrations/mock/seo.py
+#21 CACHED
+
+#22 [ 32/163] COPY --chown=10001:10001 app/routes/video.py /app/app/routes/video.py
+#22 CACHED
+
+#23 [ 12/163] COPY --chown=10001:10001 app/integrations/mock/overview.py /app/app/integrations/mock/overview.py
+#23 CACHED
+
+#24 [ 33/163] COPY --chown=10001:10001 app/routes/viewer.py /app/app/routes/viewer.py
+#24 CACHED
+
+#25 [ 34/163] COPY --chown=10001:10001 app/schemas/__init__.py /app/app/schemas/__init__.py
+#25 CACHED
+
+#26 [ 13/163] COPY --chown=10001:10001 app/integrations/mock/overview_fields.json /app/app/integrations/mock/overview_fields.json
+#26 CACHED
+
+#27 [ 24/163] COPY --chown=10001:10001 app/repositories/reports.py /app/app/repositories/reports.py
+#27 CACHED
+
+#28 [  3/163] COPY --chown=10001:10001 app/admin_access.py /app/app/admin_access.py
+#28 CACHED
+
+#29 [ 11/163] COPY --chown=10001:10001 app/integrations/mock/generator.py /app/app/integrations/mock/generator.py
+#29 CACHED
+
+#30 [ 26/163] COPY --chown=10001:10001 app/routes/demo_bundle.py /app/app/routes/demo_bundle.py
+#30 CACHED
+
+#31 [ 18/163] COPY --chown=10001:10001 app/mappers/bundle.py /app/app/mappers/bundle.py
+#31 CACHED
+
+#32 [  2/163] COPY --chown=10001:10001 app/__init__.py /app/app/__init__.py
+#32 CACHED
+
+#33 [ 37/163] COPY --chown=10001:10001 app/services/bundle.py /app/app/services/bundle.py
+#33 CACHED
+
+#34 [ 25/163] COPY --chown=10001:10001 app/repositories/viewer.py /app/app/repositories/viewer.py
+#34 CACHED
+
+#35 [ 30/163] COPY --chown=10001:10001 app/routes/published.py /app/app/routes/published.py
+#35 CACHED
+
+#36 [  8/163] COPY --chown=10001:10001 app/design_preview.py /app/app/design_preview.py
+#36 CACHED
+
+#37 [ 16/163] COPY --chown=10001:10001 app/integrations/mock/video.py /app/app/integrations/mock/video.py
+#37 CACHED
+
+#38 [  6/163] COPY --chown=10001:10001 app/db/base.py /app/app/db/base.py
+#38 CACHED
+
+#39 [ 29/163] COPY --chown=10001:10001 app/routes/pages.py /app/app/routes/pages.py
+#39 CACHED
+
+#40 [ 15/163] COPY --chown=10001:10001 app/integrations/mock/seo_reference.json /app/app/integrations/mock/seo_reference.json
+#40 CACHED
+
+#41 [ 38/163] COPY --chown=10001:10001 app/services/reports.py /app/app/services/reports.py
+#41 CACHED
+
+#42 [ 39/163] COPY --chown=10001:10001 ops/vio_sandbox_entrypoint.py /app/ops/vio_sandbox_entrypoint.py
+#42 DONE 0.1s
+
+#43 [ 40/163] COPY --chown=10001:10001 static/css/dist/dashboard.css /app/static/css/dist/dashboard.css
+#43 DONE 0.1s
+
+#44 [ 41/163] COPY --chown=10001:10001 static/css/pages/executive-polish.css /app/static/css/pages/executive-polish.css
+#44 DONE 0.1s
+
+#45 [ 42/163] COPY --chown=10001:10001 static/css/pages/executive.css /app/static/css/pages/executive.css
+#45 DONE 0.1s
+
+#46 [ 43/163] COPY --chown=10001:10001 static/css/pages/facebook-ads.css /app/static/css/pages/facebook-ads.css
+#46 DONE 0.1s
+
+#47 [ 44/163] COPY --chown=10001:10001 static/css/pages/facebook-content.css /app/static/css/pages/facebook-content.css
+#47 DONE 0.1s
+
+#48 [ 45/163] COPY --chown=10001:10001 static/css/pages/published.css /app/static/css/pages/published.css
+#48 DONE 0.1s
+
+#49 [ 46/163] COPY --chown=10001:10001 static/css/pages/seo.css /app/static/css/pages/seo.css
+#49 DONE 0.1s
+
+#50 [ 47/163] COPY --chown=10001:10001 static/css/pages/snapshot.css /app/static/css/pages/snapshot.css
+#50 DONE 0.1s
+
+#51 [ 48/163] COPY --chown=10001:10001 static/css/pages/video.css /app/static/css/pages/video.css
+#51 DONE 0.1s
+
+#52 [ 49/163] COPY --chown=10001:10001 static/css/shared/basic.css /app/static/css/shared/basic.css
+#52 DONE 0.1s
+
+#53 [ 50/163] COPY --chown=10001:10001 static/css/shared/dashboard.source.css /app/static/css/shared/dashboard.source.css
+#53 DONE 0.1s
+
+#54 [ 51/163] COPY --chown=10001:10001 static/css/shared/fonts.css /app/static/css/shared/fonts.css
+#54 DONE 0.1s
+
+#55 [ 52/163] COPY --chown=10001:10001 static/fonts/LICENSE-Inter.txt /app/static/fonts/LICENSE-Inter.txt
+#55 DONE 0.1s
+
+#56 [ 53/163] COPY --chown=10001:10001 static/fonts/LICENSE-Material-Symbols.txt /app/static/fonts/LICENSE-Material-Symbols.txt
+#56 DONE 0.1s
+
+#57 [ 54/163] COPY --chown=10001:10001 static/fonts/inter-0.ttf /app/static/fonts/inter-0.ttf
+#57 DONE 0.1s
+
+#58 [ 55/163] COPY --chown=10001:10001 static/fonts/inter-1.ttf /app/static/fonts/inter-1.ttf
+#58 DONE 0.1s
+
+#59 [ 56/163] COPY --chown=10001:10001 static/fonts/inter-2.ttf /app/static/fonts/inter-2.ttf
+#59 DONE 0.1s
+
+#60 [ 57/163] COPY --chown=10001:10001 static/fonts/inter-3.ttf /app/static/fonts/inter-3.ttf
+#60 DONE 0.1s
+
+#61 [ 58/163] COPY --chown=10001:10001 static/fonts/inter-4.ttf /app/static/fonts/inter-4.ttf
+#61 DONE 0.1s
+
+#62 [ 59/163] COPY --chown=10001:10001 static/fonts/inter-5.ttf /app/static/fonts/inter-5.ttf
+#62 DONE 0.1s
+
+#63 [ 60/163] COPY --chown=10001:10001 static/fonts/inter-6.ttf /app/static/fonts/inter-6.ttf
+#63 DONE 0.1s
+
+#64 [ 61/163] COPY --chown=10001:10001 static/fonts/inter-7.ttf /app/static/fonts/inter-7.ttf
+#64 DONE 0.1s
+
+#65 [ 62/163] COPY --chown=10001:10001 static/fonts/inter-8.ttf /app/static/fonts/inter-8.ttf
+#65 DONE 0.1s
+
+#66 [ 63/163] COPY --chown=10001:10001 static/fonts/symbols-0.ttf /app/static/fonts/symbols-0.ttf
+#66 DONE 0.1s
+
+#67 [ 64/163] COPY --chown=10001:10001 static/fonts/symbols-1.ttf /app/static/fonts/symbols-1.ttf
+#67 DONE 0.1s
+
+#68 [ 65/163] COPY --chown=10001:10001 static/fonts/symbols-2.ttf /app/static/fonts/symbols-2.ttf
+#68 DONE 0.1s
+
+#69 [ 66/163] COPY --chown=10001:10001 static/fonts/symbols-3.ttf /app/static/fonts/symbols-3.ttf
+#69 DONE 0.1s
+
+#70 [ 67/163] COPY --chown=10001:10001 static/fonts/symbols-4.ttf /app/static/fonts/symbols-4.ttf
+#70 DONE 0.1s
+
+#71 [ 68/163] COPY --chown=10001:10001 static/fonts/symbols-5.ttf /app/static/fonts/symbols-5.ttf
+#71 DONE 0.1s
+
+#72 [ 69/163] COPY --chown=10001:10001 static/fonts/symbols-6.ttf /app/static/fonts/symbols-6.ttf
+#72 DONE 0.1s
+
+#73 [ 70/163] COPY --chown=10001:10001 static/img/facebook-ads/carousel.jpg /app/static/img/facebook-ads/carousel.jpg
+#73 DONE 0.1s
+
+#74 [ 71/163] COPY --chown=10001:10001 static/img/facebook-ads/image.jpg /app/static/img/facebook-ads/image.jpg
+#74 DONE 0.1s
+
+#75 [ 72/163] COPY --chown=10001:10001 static/img/facebook-ads/video.jpg /app/static/img/facebook-ads/video.jpg
+#75 DONE 0.1s
+
+#76 [ 73/163] COPY --chown=10001:10001 static/img/kdh-logo.png /app/static/img/kdh-logo.png
+#76 DONE 0.0s
+
+#77 [ 74/163] COPY --chown=10001:10001 static/img/youtube/video-1.jpg /app/static/img/youtube/video-1.jpg
+#77 DONE 0.1s
+
+#78 [ 75/163] COPY --chown=10001:10001 static/img/youtube/video-2.jpg /app/static/img/youtube/video-2.jpg
+#78 DONE 0.0s
+
+#79 [ 76/163] COPY --chown=10001:10001 static/img/youtube/video-3.jpg /app/static/img/youtube/video-3.jpg
+#79 DONE 0.1s
+
+#80 [ 77/163] COPY --chown=10001:10001 static/img/youtube/video-4.jpg /app/static/img/youtube/video-4.jpg
+#80 DONE 0.1s
+
+#81 [ 78/163] COPY --chown=10001:10001 static/js/pages/facebook-ads.js /app/static/js/pages/facebook-ads.js
+#81 DONE 0.1s
+
+#82 [ 79/163] COPY --chown=10001:10001 static/js/pages/facebook-content.js /app/static/js/pages/facebook-content.js
+#82 DONE 0.1s
+
+#83 [ 80/163] COPY --chown=10001:10001 static/js/pages/handoff.js /app/static/js/pages/handoff.js
+#83 DONE 0.1s
+
+#84 [ 81/163] COPY --chown=10001:10001 static/js/pages/overview.js /app/static/js/pages/overview.js
+#84 DONE 0.1s
+
+#85 [ 82/163] COPY --chown=10001:10001 static/js/pages/published.js /app/static/js/pages/published.js
+#85 DONE 0.1s
+
+#86 [ 83/163] COPY --chown=10001:10001 static/js/pages/seo.js /app/static/js/pages/seo.js
+#86 DONE 0.1s
+
+#87 [ 84/163] COPY --chown=10001:10001 static/js/pages/snapshot.js /app/static/js/pages/snapshot.js
+#87 DONE 0.1s
+
+#88 [ 85/163] COPY --chown=10001:10001 static/js/pages/video.js /app/static/js/pages/video.js
+#88 DONE 0.1s
+
+#89 [ 86/163] COPY --chown=10001:10001 static/js/shared/app.js /app/static/js/shared/app.js
+#89 DONE 0.1s
+
+#90 [ 87/163] COPY --chown=10001:10001 static/js/shared/charts.js /app/static/js/shared/charts.js
+#90 DONE 0.1s
+
+#91 [ 88/163] COPY --chown=10001:10001 static/js/shared/sidebar.js /app/static/js/shared/sidebar.js
+#91 DONE 0.1s
+
+#92 [ 89/163] COPY --chown=10001:10001 templates/components/dashboard/controls.html /app/templates/components/dashboard/controls.html
+#92 DONE 0.1s
+
+#93 [ 90/163] COPY --chown=10001:10001 templates/components/dashboard/header.html /app/templates/components/dashboard/header.html
+#93 DONE 0.1s
+
+#94 [ 91/163] COPY --chown=10001:10001 templates/components/dashboard/navigation.html /app/templates/components/dashboard/navigation.html
+#94 DONE 0.1s
+
+#95 [ 92/163] COPY --chown=10001:10001 templates/components/dashboard/sidebar.html /app/templates/components/dashboard/sidebar.html
+#95 DONE 0.1s
+
+#96 [ 93/163] COPY --chown=10001:10001 templates/layouts/basic.html /app/templates/layouts/basic.html
+#96 DONE 0.1s
+
+#97 [ 94/163] COPY --chown=10001:10001 templates/layouts/dashboard.html /app/templates/layouts/dashboard.html
+#97 DONE 0.1s
+
+#98 [ 95/163] COPY --chown=10001:10001 templates/pages/demo_bundle.html /app/templates/pages/demo_bundle.html
+#98 DONE 0.1s
+
+#99 [ 96/163] COPY --chown=10001:10001 templates/pages/facebook_ads/controls.html /app/templates/pages/facebook_ads/controls.html
+#99 DONE 0.1s
+
+#100 [ 97/163] COPY --chown=10001:10001 templates/pages/facebook_ads/index.html /app/templates/pages/facebook_ads/index.html
+#100 DONE 0.1s
+
+#101 [ 98/163] COPY --chown=10001:10001 templates/pages/facebook_ads/partials/audience.html /app/templates/pages/facebook_ads/partials/audience.html
+#101 DONE 0.1s
+
+#102 [ 99/163] COPY --chown=10001:10001 templates/pages/facebook_ads/partials/campaigns.html /app/templates/pages/facebook_ads/partials/campaigns.html
+#102 DONE 0.1s
+
+#103 [100/163] COPY --chown=10001:10001 templates/pages/facebook_ads/partials/creatives.html /app/templates/pages/facebook_ads/partials/creatives.html
+#103 DONE 0.1s
+
+#104 [101/163] COPY --chown=10001:10001 templates/pages/facebook_ads/partials/funnel.html /app/templates/pages/facebook_ads/partials/funnel.html
+#104 DONE 0.1s
+
+#105 [102/163] COPY --chown=10001:10001 templates/pages/facebook_ads/partials/insights.html /app/templates/pages/facebook_ads/partials/insights.html
+#105 DONE 0.1s
+
+#106 [103/163] COPY --chown=10001:10001 templates/pages/facebook_ads/partials/kpis.html /app/templates/pages/facebook_ads/partials/kpis.html
+#106 DONE 0.1s
+
+#107 [104/163] COPY --chown=10001:10001 templates/pages/facebook_content/controls.html /app/templates/pages/facebook_content/controls.html
+#107 DONE 0.1s
+
+#108 [105/163] COPY --chown=10001:10001 templates/pages/facebook_content/index.html /app/templates/pages/facebook_content/index.html
+#108 DONE 0.1s
+
+#109 [106/163] COPY --chown=10001:10001 templates/pages/facebook_content/partials/engagement.html /app/templates/pages/facebook_content/partials/engagement.html
+#109 DONE 0.1s
+
+#110 [107/163] COPY --chown=10001:10001 templates/pages/facebook_content/partials/formats.html /app/templates/pages/facebook_content/partials/formats.html
+#110 DONE 0.1s
+
+#111 [108/163] COPY --chown=10001:10001 templates/pages/facebook_content/partials/helpers.html /app/templates/pages/facebook_content/partials/helpers.html
+#111 DONE 0.1s
+
+#112 [109/163] COPY --chown=10001:10001 templates/pages/facebook_content/partials/insights.html /app/templates/pages/facebook_content/partials/insights.html
+#112 DONE 0.1s
+
+#113 [110/163] COPY --chown=10001:10001 templates/pages/facebook_content/partials/kpis.html /app/templates/pages/facebook_content/partials/kpis.html
+#113 DONE 0.1s
+
+#114 [111/163] COPY --chown=10001:10001 templates/pages/facebook_content/partials/posts.html /app/templates/pages/facebook_content/partials/posts.html
+#114 DONE 0.1s
+
+#115 [112/163] COPY --chown=10001:10001 templates/pages/facebook_content/partials/reach_mix.html /app/templates/pages/facebook_content/partials/reach_mix.html
+#115 DONE 0.1s
+
+#116 [113/163] COPY --chown=10001:10001 templates/pages/facebook_content/partials/topics.html /app/templates/pages/facebook_content/partials/topics.html
+#116 DONE 0.1s
+
+#117 [114/163] COPY --chown=10001:10001 templates/pages/overview/controls.html /app/templates/pages/overview/controls.html
+#117 DONE 0.1s
+
+#118 [115/163] COPY --chown=10001:10001 templates/pages/overview/index.html /app/templates/pages/overview/index.html
+#118 DONE 0.1s
+
+#119 [116/163] COPY --chown=10001:10001 templates/pages/overview/partials/action_plan.html /app/templates/pages/overview/partials/action_plan.html
+#119 DONE 0.1s
+
+#120 [117/163] COPY --chown=10001:10001 templates/pages/overview/partials/analytics.html /app/templates/pages/overview/partials/analytics.html
+#120 DONE 0.1s
+
+#121 [118/163] COPY --chown=10001:10001 templates/pages/overview/partials/briefing.html /app/templates/pages/overview/partials/briefing.html
+#121 DONE 0.1s
+
+#122 [119/163] COPY --chown=10001:10001 templates/pages/overview/partials/channels.html /app/templates/pages/overview/partials/channels.html
+#122 DONE 0.1s
+
+#123 [120/163] COPY --chown=10001:10001 templates/pages/overview/partials/executive_summary.html /app/templates/pages/overview/partials/executive_summary.html
+#123 DONE 0.1s
+
+#124 [121/163] COPY --chown=10001:10001 templates/pages/overview/partials/footer.html /app/templates/pages/overview/partials/footer.html
+#124 DONE 0.1s
+
+#125 [122/163] COPY --chown=10001:10001 templates/pages/overview/partials/insights.html /app/templates/pages/overview/partials/insights.html
+#125 DONE 0.1s
+
+#126 [123/163] COPY --chown=10001:10001 templates/pages/overview/partials/kpis.html /app/templates/pages/overview/partials/kpis.html
+#126 DONE 0.0s
+
+#127 [124/163] COPY --chown=10001:10001 templates/pages/published/base.html /app/templates/pages/published/base.html
+#127 DONE 0.1s
+
+#128 [125/163] COPY --chown=10001:10001 templates/pages/published/components/chart.html /app/templates/pages/published/components/chart.html
+#128 DONE 0.1s
+
+#129 [126/163] COPY --chown=10001:10001 templates/pages/published/components/evidence.html /app/templates/pages/published/components/evidence.html
+#129 DONE 0.1s
+
+#130 [127/163] COPY --chown=10001:10001 templates/pages/published/components/kpi.html /app/templates/pages/published/components/kpi.html
+#130 DONE 0.0s
+
+#131 [128/163] COPY --chown=10001:10001 templates/pages/published/components/opportunity.html /app/templates/pages/published/components/opportunity.html
+#131 DONE 0.1s
+
+#132 [129/163] COPY --chown=10001:10001 templates/pages/published/components/quality.html /app/templates/pages/published/components/quality.html
+#132 DONE 0.1s
+
+#133 [130/163] COPY --chown=10001:10001 templates/pages/published/components/release_summary.html /app/templates/pages/published/components/release_summary.html
+#133 DONE 0.1s
+
+#134 [131/163] COPY --chown=10001:10001 templates/pages/published/components/table.html /app/templates/pages/published/components/table.html
+#134 DONE 0.1s
+
+#135 [132/163] COPY --chown=10001:10001 templates/pages/published/error.html /app/templates/pages/published/error.html
+#135 DONE 0.1s
+
+#136 [133/163] COPY --chown=10001:10001 templates/pages/published/handoff.html /app/templates/pages/published/handoff.html
+#136 DONE 0.1s
+
+#137 [134/163] COPY --chown=10001:10001 templates/pages/published/index.html /app/templates/pages/published/index.html
+#137 DONE 0.1s
+
+#138 [135/163] COPY --chown=10001:10001 templates/pages/published/internal_preview.html /app/templates/pages/published/internal_preview.html
+#138 DONE 0.1s
+
+#139 [136/163] COPY --chown=10001:10001 templates/pages/report/index.html /app/templates/pages/report/index.html
+#139 DONE 0.1s
+
+#140 [137/163] COPY --chown=10001:10001 templates/pages/seo/controls.html /app/templates/pages/seo/controls.html
+#140 DONE 0.1s
+
+#141 [138/163] COPY --chown=10001:10001 templates/pages/seo/index.html /app/templates/pages/seo/index.html
+#141 DONE 0.1s
+
+#142 [139/163] COPY --chown=10001:10001 templates/pages/seo/partials/details.html /app/templates/pages/seo/partials/details.html
+#142 DONE 0.1s
+
+#143 [140/163] COPY --chown=10001:10001 templates/pages/seo/partials/funnel.html /app/templates/pages/seo/partials/funnel.html
+#143 DONE 0.1s
+
+#144 [141/163] COPY --chown=10001:10001 templates/pages/seo/partials/keywords.html /app/templates/pages/seo/partials/keywords.html
+#144 DONE 0.1s
+
+#145 [142/163] COPY --chown=10001:10001 templates/pages/seo/partials/kpis.html /app/templates/pages/seo/partials/kpis.html
+#145 DONE 0.1s
+
+#146 [143/163] COPY --chown=10001:10001 templates/pages/seo/partials/result.html /app/templates/pages/seo/partials/result.html
+#146 DONE 0.1s
+
+#147 [144/163] COPY --chown=10001:10001 templates/pages/seo/partials/summary.html /app/templates/pages/seo/partials/summary.html
+#147 DONE 0.1s
+
+#148 [145/163] COPY --chown=10001:10001 templates/pages/seo/partials/trend.html /app/templates/pages/seo/partials/trend.html
+#148 DONE 0.1s
+
+#149 [146/163] COPY --chown=10001:10001 templates/pages/snapshot/components.html /app/templates/pages/snapshot/components.html
+#149 DONE 0.1s
+
+#150 [147/163] COPY --chown=10001:10001 templates/pages/snapshot/controls.html /app/templates/pages/snapshot/controls.html
+#150 DONE 0.1s
+
+#151 [148/163] COPY --chown=10001:10001 templates/pages/snapshot/index.html /app/templates/pages/snapshot/index.html
+#151 DONE 0.1s
+
+#152 [149/163] COPY --chown=10001:10001 templates/pages/snapshot/status.html /app/templates/pages/snapshot/status.html
+#152 DONE 0.1s
+
+#153 [150/163] COPY --chown=10001:10001 templates/pages/tiktok/index.html /app/templates/pages/tiktok/index.html
+#153 DONE 0.1s
+
+#154 [151/163] COPY --chown=10001:10001 templates/pages/tiktok/partials/insights.html /app/templates/pages/tiktok/partials/insights.html
+#154 DONE 0.1s
+
+#155 [152/163] COPY --chown=10001:10001 templates/pages/tiktok/partials/table.html /app/templates/pages/tiktok/partials/table.html
+#155 DONE 0.1s
+
+#156 [153/163] COPY --chown=10001:10001 templates/pages/tiktok/partials/videos.html /app/templates/pages/tiktok/partials/videos.html
+#156 DONE 0.1s
+
+#157 [154/163] COPY --chown=10001:10001 templates/pages/video/base.html /app/templates/pages/video/base.html
+#157 DONE 0.1s
+
+#158 [155/163] COPY --chown=10001:10001 templates/pages/video/partials/chart.html /app/templates/pages/video/partials/chart.html
+#158 DONE 0.1s
+
+#159 [156/163] COPY --chown=10001:10001 templates/pages/video/partials/funnel.html /app/templates/pages/video/partials/funnel.html
+#159 DONE 0.1s
+
+#160 [157/163] COPY --chown=10001:10001 templates/pages/video/partials/helpers.html /app/templates/pages/video/partials/helpers.html
+#160 DONE 0.1s
+
+#161 [158/163] COPY --chown=10001:10001 templates/pages/video/partials/kpis.html /app/templates/pages/video/partials/kpis.html
+#161 DONE 0.1s
+
+#162 [159/163] COPY --chown=10001:10001 templates/pages/youtube/index.html /app/templates/pages/youtube/index.html
+#162 DONE 0.1s
+
+#163 [160/163] COPY --chown=10001:10001 templates/pages/youtube/partials/audience.html /app/templates/pages/youtube/partials/audience.html
+#163 DONE 0.1s
+
+#164 [161/163] COPY --chown=10001:10001 templates/pages/youtube/partials/insights.html /app/templates/pages/youtube/partials/insights.html
+#164 DONE 0.1s
+
+#165 [162/163] COPY --chown=10001:10001 templates/pages/youtube/partials/table.html /app/templates/pages/youtube/partials/table.html
+#165 DONE 0.1s
+
+#166 [163/163] COPY --chown=10001:10001 main.py /app/main.py
+#166 DONE 0.1s
+
+#167 exporting to image
+#167 exporting layers
+#167 exporting layers 7.7s done
+#167 exporting manifest sha256:d2f69fb547b56163016150e8d372b034435f8444999138eb53b3cda0e6abd5d3 0.1s done
+#167 exporting config sha256:6665350b74d9aa36b86c11febbdce6e7508b1027888115e6fd7bfa75d9f612b1 0.0s done
+#167 exporting attestation manifest sha256:842cd671c70d5d0d640466eae1a8fb3f35112b6dd8109e819f29b825fa89d6ca 0.0s done
+#167 exporting manifest list sha256:4fc62476f20335567fc4c88aaf33f317fc4f52a1870a7eff24bfe8d4cb5cb931 0.0s done
+#167 naming to docker.io/library/kdh-vio-new:phase9-af197ceb7cae done
+#167 unpacking to docker.io/library/kdh-vio-new:phase9-af197ceb7cae
+#167 unpacking to docker.io/library/kdh-vio-new:phase9-af197ceb7cae 4.4s done
+#167 DONE 13.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/qymlgyd31sifznh2d4hd722o8

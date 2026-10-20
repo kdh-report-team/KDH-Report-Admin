@@ -1,0 +1,13 @@
+{
+  "id": "4d789987abbe66eed81a59149d3be1c66ad556b9fec2450f2d5686c298ffc12c",
+  "name": "kdh-vio-relay-phase9-20261019",
+  "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+  "listener": "192.168.96.2",
+  "config_directory": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase9-private-relay-4e536289",
+  "files": {
+    "launch.py": "2388ea19b60e3fdbb46f710b8f46296a8fe91afa9e619971c87fdc472e34b306",
+    "serve.py": "5f84325f700258abeb6e3c4b5b617e00847e24ceee5739aed0bb5f285a850e49",
+    "config.json": "5ccab62880e24c69fa9ae56192d3dc738e9afeb13f64867f2e7dae89f48f6e6b"
+  },
+  "upstream": "192.168.0.3"
+}

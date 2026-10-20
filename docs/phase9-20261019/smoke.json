@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "tests": {
+    "run": 82,
+    "pass": 82,
+    "skip": 0,
+    "fail": 0
+  },
+  "admin_health": 200,
+  "new_health": 200,
+  "prefix": "kdh-phase9-smoke-265830fb",
+  "network": "none",
+  "original_db_used": false,
+  "admin_image": "sha256:058291bbe5a905e6467b4907ab77bf18bc0e702280f08722ce2908b9e81ca970",
+  "new_image": "sha256:4fc62476f20335567fc4c88aaf33f317fc4f52a1870a7eff24bfe8d4cb5cb931",
+  "new_recheck": "kdh-phase9-smoke-new-6392b109"
+}

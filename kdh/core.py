@@ -151,6 +151,7 @@ def load_config():
 
         'REPORT_SERVICE_TOKEN': os.getenv('REPORT_SERVICE_TOKEN', ''),
         'REPORT_NEW_BASE_URL': os.getenv('REPORT_NEW_BASE_URL', 'http://localhost:8080'),
+        'REPORT_VIO_HANDOFF_ENABLED': os.getenv('REPORT_VIO_HANDOFF_ENABLED', '') == '1',
 
         # Quan trọng:
 

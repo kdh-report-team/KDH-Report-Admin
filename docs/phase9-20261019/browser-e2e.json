@@ -1,0 +1,55 @@
+{
+  "target": "http://127.0.0.1:8193/reports/rpt_4909119771c69125897d8bca84444abe?revision=1",
+  "report_id": "rpt_4909119771c69125897d8bca84444abe",
+  "revision": 1,
+  "provider_calls": 0,
+  "screenshots": [
+    "screenshots/vio-content-1440.png",
+    "screenshots/vio-content-1024.png",
+    "screenshots/vio-content-768.png",
+    "screenshots/vio-content-390.png",
+    "screenshots/vio-content-360.png"
+  ],
+  "negative": {
+    "no_grant": 404,
+    "wrong_revision": 404,
+    "wrong_report": 404,
+    "invalid_or_expired_session": 401,
+    "wrong_client": 400,
+    "logout_revocation": 401
+  },
+  "widths": [
+    {
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "width": 1024,
+      "scroll": 1024
+    },
+    {
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "width": 360,
+      "scroll": 360
+    }
+  ],
+  "handoff": "PASS",
+  "viewer_cookie_namespace": "PASS",
+  "kpis": "PASS",
+  "coverage": "PASS",
+  "timezone": "UTC",
+  "status": "provisional",
+  "demo_routes": "DENIED",
+  "expired_session_resume": "PASS",
+  "browser_errors": 0,
+  "unexpected_requests": 0,
+  "business_data": "UNCHANGED",
+  "result": "PASS"
+}

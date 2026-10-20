@@ -1,0 +1,19 @@
+{
+  "new": {
+    "postgres": "DENIED_ENETUNREACH",
+    "meta_gateway": "DENIED_ENETUNREACH",
+    "internet": "DENIED_ENETUNREACH",
+    "direct_admin": "DENIED_ENETUNREACH"
+  },
+  "private_relay": {
+    "postgres": "DENIED_ENETUNREACH",
+    "meta_gateway": "DENIED_ENETUNREACH",
+    "internet": "DENIED_ENETUNREACH"
+  },
+  "ingress_icc": false,
+  "host_network_icc": false,
+  "host_network_masquerade": false,
+  "new_to_relay_http": 200,
+  "relay_to_admin_http": 200,
+  "forwarding": false
+}

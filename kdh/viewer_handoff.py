@@ -6,7 +6,7 @@ import secrets
 from datetime import datetime, timedelta, timezone
 from urllib.parse import urlencode, urlsplit
 
-from flask import g, jsonify, redirect, render_template, request
+from flask import current_app, g, jsonify, redirect, render_template, request
 
 from .core import Problem, digest, now
 from .platform_data import DEFAULT_CLIENT_ID
@@ -31,11 +31,33 @@ def expiry(seconds):
     return (datetime.now(timezone.utc) + timedelta(seconds=seconds)).isoformat()
 
 
+def handoff_client_allowed(client_id, mode='published'):
+    if client_id == DEFAULT_CLIENT_ID:
+        return True
+    config = current_app.config
+    return (client_id == 'client_meta_sandbox' and mode == 'published'
+            and config.get('REPORT_VIO_HANDOFF_ENABLED') is True
+            and config.get('META_CLIENT_ID') == client_id
+            and urlsplit(config.get('APP_URL', '')).hostname in ('localhost', '127.0.0.1', '::1'))
+
+
+def handoff_supported(client_id):
+    if not handoff_client_allowed(client_id):
+        return False
+    try:
+        public_origin(current_app.config.get('REPORT_NEW_BASE_URL', ''))
+    except (Problem, ValueError):
+        return False
+    return bool(current_app.config.get('REPORT_SERVICE_TOKEN'))
+
+
 def authorize_scope(store, db, user, row):
-    if row['client_id'] != DEFAULT_CLIENT_ID:
+    if not handoff_client_allowed(row['client_id'], row['mode']):
         raise Problem('Khách hàng không hợp lệ.', 403)
     if row['mode'] == 'published':
-        authorized_bundle(store, db, user, row['target_id'], row['revision'])
+        payload = authorized_bundle(store, db, user, row['target_id'], row['revision'])
+        if payload['client']['id'] != row['client_id']:
+            raise Problem('Khách hàng không khớp báo cáo.', 403)
     else:
         from .report_bundles import _admin
         from .marketing_source_check import candidate_state
@@ -64,10 +86,10 @@ def register_handoff_routes(app, store, body):
         service_identity(app)
         data = body()
         admin, audience, callback = configuration()
-        expected = {'state', 'challenge', 'client_id', 'target_id', 'revision', 'mode', 'audience', 'callback'}
-        if (set(data) != expected or not binding(data['state']) or not binding(data['challenge'])
+        expected = {'state', 'challenge', 'target_id', 'revision', 'mode', 'audience', 'callback'}
+        if (set(data) not in (expected, expected | {'client_id'}) or not binding(data['state']) or not binding(data['challenge'])
                 or data['audience'] != audience or data['callback'] != callback
-                or data['client_id'] != DEFAULT_CLIENT_ID or data['mode'] not in ('published', 'preview')
+                or data['mode'] not in ('published', 'preview')
                 or type(data['revision']) is not int or not isinstance(data['target_id'], str)
                 or not re.fullmatch(r'rpt_[a-f0-9]{32}' if data['mode'] == 'published' else r'[a-f0-9]{32}', data['target_id'])
                 or (data['mode'] == 'published' and not 1 <= data['revision'] <= 999999999)
@@ -75,11 +97,27 @@ def register_handoff_routes(app, store, body):
             raise Problem('Giao dịch chuyển phiên không hợp lệ.')
         transaction = secrets.token_urlsafe(32)
         with store.connect(immediate=True) as db:
+            # Ownership comes from the stored target, never from browser input.
+            if data['mode'] == 'published':
+                from .report_bundles import get_revision, _guard_marketing_snapshot, _payload
+                target = get_revision(store, data['target_id'], data['revision'], db=db)
+                client_id = target['client_id']
+                if client_id == 'client_meta_sandbox':
+                    if target['status'] not in ('provisional', 'final'):
+                        raise Problem('Không tìm thấy báo cáo đã xuất bản.', 404, 'report_not_found')
+                    _guard_marketing_snapshot(_payload(target), store, db)
+            else:
+                from .marketing_source_check import candidate_state
+                _, target, _, _, _, _ = candidate_state(store, db, data['target_id'])
+                client_id = target['client_id']
+            if (not handoff_client_allowed(client_id, data['mode'])
+                    or ('client_id' in data and data['client_id'] != client_id)):
+                raise Problem('Khách hàng không hợp lệ.', 400, 'client_not_allowed')
             db.execute('DELETE FROM viewer_handoffs WHERE expires_at<?', (now(),))
             db.execute('DELETE FROM delegated_viewer_sessions WHERE expires_at<?', (now(),))
             db.execute('''INSERT INTO viewer_handoffs
                 (id,state,challenge,client_id,target_id,revision,mode,audience,callback,expires_at)
-                VALUES (?,?,?,?,?,?,?,?,?,?)''', (transaction, data['state'], data['challenge'], data['client_id'],
+                VALUES (?,?,?,?,?,?,?,?,?,?)''', (transaction, data['state'], data['challenge'], client_id,
                 data['target_id'], data['revision'], data['mode'], audience, callback, expiry(600)))
         return jsonify(transaction=transaction, authorize_url=admin + '/viewer/authorize?transaction=' + transaction)
 

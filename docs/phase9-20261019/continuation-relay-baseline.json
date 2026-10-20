@@ -1,0 +1,204 @@
+{
+  "Id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+  "Image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+  "HostConfig": {
+    "Binds": null,
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    },
+    "NetworkMode": "kdh-meta-2b-ingress-20261016-132836-5c512a53",
+    "PortBindings": {
+      "8090/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8191"
+        }
+      ]
+    },
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": [
+      "CAP_NET_ADMIN",
+      "CAP_SETGID",
+      "CAP_SETPCAP",
+      "CAP_SETUID"
+    ],
+    "CapDrop": [
+      "ALL"
+    ],
+    "CgroupnsMode": "host",
+    "Dns": [
+      "127.0.0.1"
+    ],
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": null,
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": true,
+    "SecurityOpt": [
+      "no-new-privileges"
+    ],
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Sysctls": {
+      "net.ipv4.ip_forward": "0",
+      "net.ipv6.conf.all.disable_ipv6": "1"
+    },
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 134217728,
+    "NanoCpus": 500000000,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": [],
+    "BlkioDeviceReadBps": [],
+    "BlkioDeviceWriteBps": [],
+    "BlkioDeviceReadIOps": [],
+    "BlkioDeviceWriteIOps": [],
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": [],
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 268435456,
+    "MemorySwappiness": null,
+    "OomKillDisable": false,
+    "PidsLimit": 64,
+    "Ulimits": [],
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "Mounts": [
+      {
+        "Type": "bind",
+        "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\relay",
+        "Target": "/relay",
+        "ReadOnly": true
+      }
+    ],
+    "MaskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/interrupts",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/sched_debug",
+      "/proc/scsi",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/sys/devices/virtual/powercap",
+      "/sys/firmware"
+    ],
+    "ReadonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ]
+  },
+  "Config": {
+    "User": "0:0",
+    "Entrypoint": [
+      "python"
+    ],
+    "Cmd": [
+      "-B",
+      "/relay/launch.py"
+    ],
+    "WorkingDir": "/app"
+  },
+  "Mounts": [
+    {
+      "Type": "bind",
+      "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\relay",
+      "Destination": "/relay",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    }
+  ],
+  "NetworkSettings": {
+    "SandboxID": "7e6aefad229d32ef061eb2adb3f8629c907f7995c8c735c5170df232a325ec24",
+    "SandboxKey": "/var/run/docker/netns/7e6aefad229d",
+    "Ports": {
+      "8090/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8191"
+        }
+      ]
+    },
+    "Networks": {
+      "kdh-meta-2b-ingress-20261016-132836-5c512a53": {
+        "IPAMConfig": {
+          "IPv4Address": "192.168.16.2"
+        },
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "9b5f9931cded44124cd928c6065f48bd97ba51c5afabdd5ac46e82849c044a0b",
+        "EndpointID": "eb68dcd8c3619e8c6f0cf0b5880cfbd4c644e79b4e192adb74ba5cc91b432c1a",
+        "Gateway": "192.168.16.1",
+        "IPAddress": "192.168.16.2",
+        "MacAddress": "96:68:10:69:95:c1",
+        "IPPrefixLen": 20,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": [
+          "kdh-meta-2b-relay-20261016-132836-5c512a53",
+          "10a498a7245e"
+        ]
+      },
+      "kdh-meta-2b-net-20261016-132836-5c512a53": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "49f89d585af21638c4df71088b0bb6ac0073a7c7bf1735e859f4ea04fb45f50c",
+        "EndpointID": "e9c1bf8fe3e955ebce495936709ab6e4e2dc0d2b72a681d1374262287e332f4b",
+        "Gateway": "",
+        "IPAddress": "192.168.0.4",
+        "MacAddress": "a6:32:5b:d0:60:46",
+        "IPPrefixLen": 20,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": [
+          "kdh-meta-2b-relay-20261016-132836-5c512a53",
+          "10a498a7245e"
+        ]
+      }
+    }
+  }
+}

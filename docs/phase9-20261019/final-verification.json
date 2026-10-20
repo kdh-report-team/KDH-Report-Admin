@@ -1,0 +1,47 @@
+{
+  "result": "PASS",
+  "admin_health": 200,
+  "new_vio_health": 200,
+  "existing_new_8080_health": 200,
+  "admin_image": "sha256:058291bbe5a905e6467b4907ab77bf18bc0e702280f08722ce2908b9e81ca970",
+  "new_image": "sha256:4fc62476f20335567fc4c88aaf33f317fc4f52a1870a7eff24bfe8d4cb5cb931",
+  "admin_host_binding": "none",
+  "postgres_host_binding": "none",
+  "original_relay_binding": "127.0.0.1:8191 only",
+  "new_vio_binding": "127.0.0.1:8193 only",
+  "existing_new_8080": "same container identity and image",
+  "ingress_icc": false,
+  "host_network_icc": false,
+  "host_network_masquerade": false,
+  "network_tests": {
+    "new": {
+      "postgres": "DENIED_ENETUNREACH",
+      "meta_gateway": "DENIED_ENETUNREACH",
+      "internet": "DENIED_ENETUNREACH",
+      "direct_admin": "DENIED_ENETUNREACH"
+    },
+    "private_relay": {
+      "postgres": "DENIED_ENETUNREACH",
+      "meta_gateway": "DENIED_ENETUNREACH",
+      "internet": "DENIED_ENETUNREACH"
+    },
+    "ingress_icc": false,
+    "host_network_icc": false,
+    "host_network_masquerade": false,
+    "new_to_relay_http": 200,
+    "relay_to_admin_http": 200,
+    "forwarding": false
+  },
+  "business_tables_unchanged": true,
+  "provider_calls": 0,
+  "report_mutations": 0,
+  "handoff_e2e": "PASS",
+  "viewer_negative_tests": {
+    "no_grant": 404,
+    "wrong_revision": 404,
+    "wrong_report": 404,
+    "invalid_or_expired_session": 401,
+    "wrong_client": 400,
+    "logout_revocation": 401
+  }
+}

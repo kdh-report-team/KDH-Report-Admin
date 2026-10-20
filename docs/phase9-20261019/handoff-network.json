@@ -1,0 +1,8 @@
+{
+  "id": "924244eef3c9254e93815f06aa16123155245d769dce788e7a992c53034cfa81",
+  "name": "kdh-vio-handoff-phase9-20261019",
+  "internal": true,
+  "relay_peer": "192.168.48.2",
+  "existing_ingress_unchanged": true,
+  "postgres_connected": false
+}

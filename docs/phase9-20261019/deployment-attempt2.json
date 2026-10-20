@@ -1,0 +1,6 @@
+{
+  "status": "BLOCKED",
+  "application_rollback": "Admin untouched",
+  "new_stopped": true,
+  "database_restore": false
+}

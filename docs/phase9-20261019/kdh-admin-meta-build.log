@@ -1,0 +1,43 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.0s
+
+#2 copy /context /
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/kdh-admin-meta:brand-polish-20261019-5a9912259a3a
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/kdh-admin-meta:brand-polish-20261019-5a9912259a3a@sha256:61fc38a6e3d5e64271db0d88ed994b7d355f659d0a3dbbe2dee68632d9baa030
+#4 resolve docker.io/library/kdh-admin-meta:brand-polish-20261019-5a9912259a3a@sha256:61fc38a6e3d5e64271db0d88ed994b7d355f659d0a3dbbe2dee68632d9baa030 0.0s done
+#4 DONE 0.1s
+
+#5 [2/6] COPY --chown=10001:10001 kdh/core.py /app/kdh/core.py
+#5 DONE 0.1s
+
+#6 [3/6] COPY --chown=10001:10001 kdh/viewer_handoff.py /app/kdh/viewer_handoff.py
+#6 DONE 0.1s
+
+#7 [4/6] COPY --chown=10001:10001 kdh/marketing_console.py /app/kdh/marketing_console.py
+#7 DONE 0.1s
+
+#8 [5/6] COPY --chown=10001:10001 kdh/report_bundle_routes.py /app/kdh/report_bundle_routes.py
+#8 DONE 0.1s
+
+#9 [6/6] COPY --chown=10001:10001 static/marketing.js /app/static/marketing.js
+#9 DONE 0.1s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.3s done
+#10 exporting manifest sha256:3d23d6c9a56624fc52cffcef88d8970929c863f101e29e02e4c9a355b2c4725a 0.0s done
+#10 exporting config sha256:f7c10683963985105f4e5edaade6888b7f571d9baad909b676dafbb14e66b216 0.0s done
+#10 exporting attestation manifest sha256:de3a9c84f8d018bd1d51c1f2955a1d12a68a7593ab5d06117c86fc4c37bafc19 0.0s done
+#10 exporting manifest list sha256:058291bbe5a905e6467b4907ab77bf18bc0e702280f08722ce2908b9e81ca970 0.0s done
+#10 naming to docker.io/library/kdh-admin-meta:phase9-4ed4f1cab6e9 done
+#10 unpacking to docker.io/library/kdh-admin-meta:phase9-4ed4f1cab6e9
+#10 unpacking to docker.io/library/kdh-admin-meta:phase9-4ed4f1cab6e9 0.2s done
+#10 DONE 0.7s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/qis98ps4zm59sa6rxk3y1fu42

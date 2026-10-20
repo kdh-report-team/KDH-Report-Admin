@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "admin_id": "e1dc4e5cbd570fca4f77b4c03029559e26ce37ef9c0c13bd0cb939d11383e792",
+  "admin_image": "sha256:058291bbe5a905e6467b4907ab77bf18bc0e702280f08722ce2908b9e81ca970",
+  "new_id": "40e5f7da74234e975bcd158f3f929438b2c8026a18dfda9458f1a4166d01ad4c",
+  "new_image": "sha256:4fc62476f20335567fc4c88aaf33f317fc4f52a1870a7eff24bfe8d4cb5cb931",
+  "new_name": "kdh-vio-new-phase9-20261019",
+  "new_url": "http://127.0.0.1:8193",
+  "rollback_container": "kdh-meta-2b-admin-20261016-132836-5c512a53-before-phase9",
+  "business_tables_unchanged": 29,
+  "network_policy": "PASS",
+  "provider_calls": 0,
+  "production_services": "UNCHANGED"
+}

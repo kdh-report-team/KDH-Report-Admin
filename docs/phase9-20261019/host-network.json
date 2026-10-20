@@ -1,0 +1,8 @@
+{
+  "id": "26784e87d12e9838745fb750bc56623db3014b0a3e1ef37cf4c55b3f91d3d862",
+  "name": "kdh-vio-host-phase9-20261019",
+  "internal": false,
+  "subnet": "192.168.80.0/20",
+  "icc": "false",
+  "masquerade": "false"
+}

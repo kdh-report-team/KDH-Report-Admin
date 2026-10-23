@@ -29,7 +29,9 @@
     letter-spacing: -.025em;
 }
 
-.sidebar .brand strong { font-family: Inter, "Segoe UI", sans-serif; font-weight: 700; }
+.sidebar .brand strong { font-family: Inter, "Segoe UI", sans-serif; font-weight: 700; overflow-wrap: anywhere; }
+.login-brand > div { min-width: 0; }
+.login-brand strong { overflow-wrap: anywhere; }
 .sidebar .brand small { font-size: 11px; color: #667487; }
 .sidebar .nav-label { font-size: 10px; letter-spacing: .09em; font-weight: 650; color: #788393; }
 .sidebar .nav-group { padding-top: 16px; }

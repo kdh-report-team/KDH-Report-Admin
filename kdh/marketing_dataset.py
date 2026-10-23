@@ -43,6 +43,7 @@ ALLOWED_FIELDS = {
     "compare_start",
     "compare_end",
     "asset_id",
+    "content_editorial",
 }
 
 
@@ -186,6 +187,8 @@ def create_marketing_dataset(
 
     data = _validate_input(payload)
     source = data["source"]
+    if 'content_editorial' in data and source != 'facebook_content':
+        raise Problem('Biên tập nội dung chỉ hỗ trợ Facebook Content.', 400, 'content_editorial_scope')
     is_meta = source in ('facebook_content', 'facebook_ads')
     if is_meta:
         if client_id is not None and data.get('client_id', client_id) != client_id:
@@ -263,6 +266,11 @@ def create_marketing_dataset(
     )
 
     preview_json = pack(preview)
+    if source == 'facebook_content' and 'content_editorial' in data:
+        from .meta_marketing import build_preview
+        preview = build_preview(store, client_id=client_id, source=source, asset_id=data.get('asset_id'),
+                                start=data['start'], end=data['end'], content_editorial=data['content_editorial'])
+        preview_json = pack(preview)
 
     if (
         len(preview_json.encode("utf-8"))

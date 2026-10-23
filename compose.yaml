@@ -31,7 +31,7 @@ services:
 
   admin:
     build: .
-    image: kdh-report-admin:demo
+    image: kdh-admin:shared-20261021-dac5a0b9468d
     init: true
 
     depends_on:
@@ -40,6 +40,11 @@ services:
 
     ports:
       - "127.0.0.1:8090:8090"
+
+    # The restricted shared-Viewer relay is pinned to this verified endpoint.
+    networks:
+      default:
+        ipv4_address: 172.26.0.3
 
     environment:
       # ---------------------------------------------------------
@@ -52,6 +57,7 @@ services:
       JOB_MODE: worker
       REPORT_SERVICE_TOKEN: ${REPORT_SERVICE_TOKEN:-}
       REPORT_NEW_BASE_URL: ${REPORT_NEW_BASE_URL:-http://localhost:8080}
+      REPORT_VIO_HANDOFF_ENABLED: ${REPORT_VIO_HANDOFF_ENABLED:-0}
 
       APP_URL: ${APP_URL:-http://localhost:8090}
       COOKIE_SECURE: ${COOKIE_SECURE:-0}

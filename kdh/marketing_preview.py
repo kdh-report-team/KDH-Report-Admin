@@ -389,6 +389,29 @@ def register_marketing_preview_routes(
 ):
     """Register an admin/operator-only preview API."""
 
+    @app.post('/api/marketing/preview')
+    @require('admin')
+    def api_content_editorial_preview():
+        # Read-only computation despite POST: editorial text is not put in URLs.
+        from .marketing_console import marketing_client
+        from .meta_marketing import build_preview
+        from .report_bundles import _check_no_credentials
+        data = request.get_json(silent=True)
+        if (not isinstance(data, dict) or set(data) - {'source', 'start', 'end', 'asset_id', 'content_editorial'}
+                or data.get('source') != 'facebook_content'
+                or any(not isinstance(data.get(k), str) or not data[k] for k in ('start', 'end', 'asset_id'))):
+            raise Problem('Chọn Page và kỳ báo cáo hợp lệ.', 400, 'invalid_preview_query')
+        if 'facebook_content' not in permitted_metric_sources(g.user):
+            raise Problem('Không có quyền xem nguồn.', 403, 'forbidden_source')
+        try:
+            result = build_preview(store, client_id=marketing_client(), source='facebook_content',
+                                   asset_id=data['asset_id'], start=data['start'], end=data['end'],
+                                   content_editorial=data.get('content_editorial'))
+        except ValueError:
+            raise Problem('Kỳ báo cáo không hợp lệ.', 400, 'invalid_preview_query') from None
+        _check_no_credentials(result)
+        return jsonify(result)
+
     @app.get("/api/marketing/preview")
     @require("admin", "operator")
     def api_marketing_preview():

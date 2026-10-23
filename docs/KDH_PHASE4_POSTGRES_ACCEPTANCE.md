@@ -81,11 +81,11 @@ Migrations thực thi trên DB disposable: 1 `reporting_platform_foundation`,
 Cold-start/concurrent migration và transaction rollback được kiểm trong suite.
 
 Bằng chứng bền vững trong repository:
-[từng test và migration](docs/phase4-20261018/postgres-results.json),
-[phân loại SKIP](docs/phase4-20261018/skip-inventory.json),
-[manifest](docs/phase4-20261018/build-manifest.json),
-[runtime read-only](docs/phase4-20261018/sandbox-readiness.json),
-[Git integrity](docs/phase4-20261018/git-integrity.json).
+[từng test và migration](phase4-20261018/postgres-results.json),
+[phân loại SKIP](phase4-20261018/skip-inventory.json),
+[manifest](phase4-20261018/build-manifest.json),
+[runtime read-only](phase4-20261018/sandbox-readiness.json),
+[Git integrity](phase4-20261018/git-integrity.json).
 
 Content và Ads Bundle fixture trên PostgreSQL: PASS qua Flask test client và
 pipeline Admin thực tế, provider được mock. Đã kiểm schema `1.0`, snapshot

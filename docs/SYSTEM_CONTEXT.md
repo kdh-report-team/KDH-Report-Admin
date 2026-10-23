@@ -1,4 +1,189 @@
-# KDH Report — bối cảnh toàn hệ thống
+# VioAgencyAnalytics — bối cảnh toàn hệ thống
+
+## Định hướng 23/10/2026 — rebrand source và chuẩn bị SaaS
+
+VIO Agency phát triển, sở hữu và vận hành VioAgencyAnalytics. Xem [Product Vision](VIOAGENCYANALYTICS_PRODUCT_VISION.md), [Architecture](VIOAGENCYANALYTICS_ARCHITECTURE.md), [Roadmap](SAAS_MIGRATION_ROADMAP.md) và [audit/file map](REBRAND_FILE_MAP.md). Các tài liệu này định nghĩa mục tiêu tương lai; không tuyên bố đã triển khai Google Sign-in, Organization, multi-tenant hoặc Live Dashboard customer.
+
+Repository local là `D:/VioAgencyAnalytics/VioAgencyAnalytics-Admin` và `D:/VioAgencyAnalytics/VioAgencyAnalytics-Web`. Remote/worktree cũ giữ nguyên. Audit rebrand chỉ đọc source và bằng chứng đã có, không kiểm tra runtime Docker, không đọc `.env`, không gọi provider hoặc PostgreSQL. Web production tiếp tục đọc Published Bundle theo quyền/revision; internal preview vẫn là luồng riêng có kiểm soát, không phải Live Dashboard.
+
+Các mục có ngày bên dưới được giữ nguyên như lịch sử. Trạng thái PASS, IP, image, grant hoặc permission trong đó không phải kết quả kiểm tra mới ngày 23/10.
+
+## Cập nhật 22/10/2026 — Biểu đồ Page Insights trên New
+
+New chung 8080 đã cập nhật `kdh-new:insights-chart-20261022-fed378fa5436`:
+sửa nhãn trục Y bị cắt, ngày dd/mm và resize/selector Insights. 317 tests PASS;
+4 chuỗi × 5 viewport browser PASS trên report mới revision 1; dữ liệu/grants không đổi.
+Admin, PG, relay/gateway và mock giữ nguyên. Chi tiết và rollback:
+[biểu đồ Insights](insights-chart-20261022/README.md).
+
+## Cập nhật 22/10/2026 — Khôi phục mở báo cáo Facebook mới
+
+Đã xác nhận người dùng đã phát hành Bundle `rpt_795f2c05f18e6eed68b2bb247e731317`,
+revision 1, provisional, client_meta_sandbox, grant active revision 1–1.
+New bị lỗi kết nối do private relay restart sau Docker đổi IP PostgreSQL;
+đã cập nhật đúng địa chỉ kiểm tra cách ly và restart riêng relay. Browser handoff
+PASS 1440/390; dashboard 15/81/10, UTC, engagements/shares null; sai revision bị chặn.
+Bundle/grants không đổi. Còn rủi ro cấu hình kiểm tra IP tĩnh khi Docker đổi IP.
+Chi tiết: [khôi phục VIO handoff](vio-handoff-recovery-20261022/README.md).
+
+## Cập nhật 22/10/2026 09:47 — VIO đã đồng bộ Insights, chờ duyệt Dataset mới
+
+User chọn lại Page và cho phép một retry sau job đầu bị gián đoạn. Retry
+`5e320fe5250726ec421829fceedcb94f` succeeded, 36/100 requests; sync
+`d1cec7997ce5bbd67b693a2eca5ad16e`, snapshot `0dd5107c80ab72342a4889d2f59b033f`.
+Receipt/daily rows PASS. Đã tạo một Dataset `a036be96e3977c32cd61541afe37b329`,
+awaiting_review, có thể duyệt nội bộ; chưa review/Candidate/release/grant.
+15 bài, 81 reactions lifetime, 10 comments, đủ 28 điểm mỗi 4 metric Page và
+15/15 bài cho 2 metric Post. Day boundary 07:00 UTC nên tổng kỳ UTC không suy ra.
+Revision 1/grants không đổi. Admin browser1440/390 PASS. Chi tiết missing fields,
+evidence và khôi phục relay sau Docker restart trong
+`docs/vio-insights-live-20261022/README.md` (phần kết quả cuối).
+
+## Cập nhật 22/10/2026 09:32 — Insights VIO đọc thật thành công
+
+Người dùng hoàn tất OAuth 09:29; read_insights đã lưu, Page task ANALYZE được
+Meta xác nhận trong diagnostic 11/20 requests, 15–17/10, đúng 3 bài VIO. Cả 4
+metric Page và 2 metric Post trả số liệu thật. End_time ngày là 07:00 UTC;
+không cộng thành tổng kỳ UTC 00:00, giữ period_boundary_mismatch cho tổng.
+Chưa sync: OAuth callback đặt Page enabled=0; cần người dùng chọn lại Page qua
+UI, không tự sửa asset. Không tạo Dataset/review/Bundle; revision 1 giữ nguyên.
+Chi tiết: `docs/vio-insights-live-20261022/README.md` và `diagnostic.json`.
+
+## Cập nhật 22/10/2026 — Admin/Insights và New đã deploy, chờ quyền Meta
+
+Người dùng đã xác nhận phiên rebase New hoàn tất và cho phép tiếp tục New.
+Admin VIO 8191 chạy `kdh-admin-meta:insights-20261021-cf97123433e7`;
+New chung 8080 chạy `kdh-new:tonight-content-20261021-80351dfaa44b`.
+Hash 12 file Admin và 19 file New trong container khớp source local đã kiểm thử.
+Không migration, không sửa revision 1 hoặc grant. Admin 419 offline PASS +
+146 PostgreSQL disposable PASS; UI 102 PASS; New 317 PASS trên exact image.
+
+Browser sau Docker restart: Admin preview 7 mục → handoff hợp lệ → VIO revision 1
+PASS, số liệu 15/80/10 và null/no_data/partial giữ nguyên. Desktop 1440/mobile 390,
+drawer mobile, từ chối sai revision/no grant/origin và logout PASS. Dữ liệu nghiệp vụ
+VIO không đổi. Chưa gọi provider, sync, tạo Dataset hoặc duyệt/phát hành mới.
+Grant đọc lại ngày 22/10 vẫn thiếu read_insights; người dùng đang tự cấp quyền.
+
+Docker Desktop đã được mở lại ngày 22/10. Các container tự khởi động theo policy,
+bao gồm Admin chính 8090 trước đó dừng. Relay `kdh-shared-viewer-primary-relay`
+đang restart loop, khởi động lại không khắc phục; nhánh 8090 → New chưa nghiệm thu.
+Không đổi cấu hình relay hoặc isolation để né lỗi. Nhánh VIO 8191 → New 8080 PASS.
+Docker default bridge đổi ID sau Engine restart; policy và các network dự án không đổi.
+
+Trạng thái hiện hành và bằng chứng: `docs/tonight-delivery-20261021/README.md`.
+Các mục bên dưới là lịch sử, không dùng image/status cũ để thay runtime hiện hành.
+
+## Cập nhật 21/10/2026 — Đã deploy Facebook Content/Insights vào VIO 8191
+
+Theo yêu cầu mới, sau các thay đổi đã qua kiểm thử, tiếp tục cập nhật Docker trong
+phạm vi thử nghiệm đã xác minh; không tự mở rộng sang production hoặc môi trường
+đang được phiên khác xử lý. Lượt này chỉ cập nhật Admin VIO 8191, giữ nguyên New.
+
+Image đang chạy: `kdh-admin-meta:insights-20261021-cd9a3b495991`, container
+`kdh-meta-2b-admin-20261016-132836-5c512a53`. Đã deploy 7 mục Facebook Content,
+preview/editorial và collector Insights tùy chọn. Exact image: 78 backend PASS;
+UI: 102 PASS; browser đăng nhập → handoff → revision 1 trên New 8080 PASS.
+Wrong revision/no grant/wrong origin bị chặn; logout PASS. Hash dữ liệu nghiệp vụ,
+network policy, New và các container khác không đổi. Không migration/provider/sync.
+
+Grant thực tế vẫn thiếu `read_insights`; PERMISSION NOT READY, LIVE NOT RUN.
+New checkout hiện hết rebase (HEAD `1e3df3c7f4a93576ad2599ceee99c1958e7cc636`)
+nhưng giữ nguyên theo chỉ dẫn người dùng, chưa triển khai mapper Insights mới.
+Admin chính 8090 vẫn dừng như trước lượt này. Không tự start hoặc cập nhật nó.
+
+Backup mã hóa/rollback và bằng chứng: `docs/content-insights-deploy-20261021/README.md`.
+Startup manifest dùng bởi Start-KDH đã cập nhật identity của VIO Admin mới.
+
+## Cập nhật 21/10/2026 — Insights collector local, chờ New hết rebase
+
+Admin đã có collector Page/Post Insights v26 tùy chọn: 4 metric Page và 2 metric
+Post, tách lỗi/permission khỏi đọc bài, request budget và projection có kiểm tra
+ranh giới UTC. Lưu raw measurements an toàn trong snapshot/receipt hiện có; 7 mục
+và workflow review/publication giữ nguyên. Không có migration hoặc live sync.
+Grant VIO đọc lại vẫn thiếu read_insights. Diagnostic thật NOT RUN.
+
+141 test PostgreSQL từng SKIP đã chạy PASS trên DB disposable; nhóm Insights/OAuth
+mới có 5 PostgreSQL PASS. Admin UI 102 PASS; browser fixture 5 viewport PASS.
+New đang được phiên khác interactive rebase lên 56a51a0 với nhiều conflict. Người
+dùng xác nhận giữ nguyên New; ngừng sửa New và chưa deploy ứng dụng nào. Phải
+đối chiếu lại mapper/projection sau rebase, không dùng kết quả test cũ để deploy.
+Admin chính 8090 được thấy đang dừng sau Docker restart; không sửa trong lượt này.
+
+Chi tiết catalog, trạng thái CODE/DEPLOY/PERMISSION/LIVE, test evidence và bước
+tiếp theo: `docs/FACEBOOK_CONTENT_INSIGHTS_20261021.md`.
+
+## Cập nhật 21/10/2026 — Facebook Content requirements (source local, CHƯA deploy)
+
+Đã audit mock 8082 và report VIO revision 1 trên New 8080 bằng browser/handoff hợp lệ.
+Sau yêu cầu tiếp theo, bổ sung contract `facebook-content-report-v1`: Admin lưu metadata
+bài, phân bố định dạng, chủ đề do agency nhập, nhận xét theo 7 mục; preview read-only
+và đóng băng vào Dataset mới. Review/source-check/release hiện có chốt cùng contract;
+New validate/copy và render bằng giao diện sẵn có. Revision cũ giữ nguyên đường đọc.
+
+Chưa có Page/Post Insights collector và grant đang lưu thiếu `read_insights`.
+Reach/ER/follower/link clicks/paid-organic/so sánh kỳ chưa được nghiệm thu; Admin hiện
+lý do thiếu, không điền mock. Không gọi Graph, tạo Dataset/Bundle thật hoặc deploy.
+Test: Admin Python 400 PASS/141 SKIP; UI 101 PASS; New 305 PASS; browser fixture 10
+viewport PASS. Hash nghiệp vụ hai DB và HEAD không đổi. Chi tiết, matrix, screenshot
+paths và giới hạn trong `docs/FACEBOOK_CONTENT_REQUIREMENTS_20261021.md`.
+
+## Cập nhật 21/10/2026 — polish biểu đồ và bảng Facebook
+
+New 8080 image `kdh-new:content-shell-20261021-3c0130851869`: biểu đồ bài đăng
+dạng cột, panel full width, căn phải tiêu đề/số liệu và CSS version URL mới.
+Sửa quy tắc grid bị CSS chung lấn trên màn hình rộng. Browser report thật PASS
+ở 1920/1536/1440/1024/768/390/360, đo căn cột <2px; Python 292 PASS.
+Không đổi dữ liệu, ACL, mạng hoặc hai Admin. Xem `docs/content-polish-20261021/RESULT.md`.
+
+## Cập nhật 21/10/2026 — báo cáo Facebook dùng sườn chung
+
+New 8080 đã dùng sườn Facebook Content gốc cho Published Bundle, ẩn các khối/menu
+chưa có dữ liệu; không đổi null/zero/lifetime hoặc Bundle. VIO login/handoff và
+responsive 1440/1024/768/390/360 PASS; New 292 tests, Admin UI 100 tests PASS.
+Xem `docs/content-shell-20261021/RESULT.md` và manifest `responsive-release`.
+Image hiện hành `kdh-new:content-shell-20261021-0c7aaa9bea7c`.
+
+Khi Docker restart trong lượt này, đã khôi phục relay chính và cố định New ở
+192.168.144.3 / 192.168.96.3 trên hai mạng Viewer cũ, tránh tranh IP relay .2.
+Phép thử chặn DB của relay chính dùng IP PostgreSQL đã inspect là 172.26.0.4;
+upstream Admin vẫn 172.26.0.3:8090. Không recreate DB/gateway hoặc mở thêm mạng.
+Revalidate IP DB khi topology đổi; giữ nguyên deny guards. Hai DB business hashes
+không đổi; manifest Start-KDH đã cập nhật đúng container New cuối.
+
+## Cập nhật 21/10/2026 — hai Admin, một New
+
+Đã triển khai Admin chính 8090, Admin VIO 8191 và một New chung 8080.
+Primary giữ client_meta_sandbox theo quyết định người dùng; không chuyển dữ liệu
+hoặc grant giữa hai database. New chọn backend theo hai origin được cấu hình:
+localhost:8080 → primary; 127.0.0.1:8080 → VIO. Nút mở báo cáo tự chọn origin;
+query client_id không chọn backend hoặc cấp quyền. Cookies host-only tách phiên.
+
+VIO login → handoff → báo cáo rpt_4909119771c69125897d8bca84444abe revision 1
+đã browser PASS trên 8080, kể cả sau restart app. Primary login page và đường
+backend PASS; chưa có Bundle/grant primary để nghiệm thu report E2E primary.
+New không nối mạng DB; chỉ qua hai relay cố định, không default route/Internet.
+Các report/grant/dataset và hash bảng nghiệp vụ của hai DB giữ nguyên.
+
+Khởi động đúng dịch vụ bằng Start-KDH.cmd hoặc giữ các dịch vụ active chạy với
+restart unless-stopped. Không Run toàn bộ container backup/test cũ. Xem
+docs/shared-viewer-20261021/RESULT.md; không dùng compose New một-backend cũ.
+New 8193 cũ được giữ stopped cho rollback. Bản thiết kế MockDb 8082 riêng không
+thuộc luồng báo cáo thật và không bị sửa.
+
+## Cập nhật 20/10/2026 — hợp nhất cải tiến vào cặp ứng dụng chính
+
+Admin `main` HEAD `6b52ee2`, New `main` HEAD `837f655`; không đổi HEAD/branch.
+Source Viewer từ working tree VIO đã được đưa vào working tree New chính,
+chưa commit. Admin 8090 và New 8080 đã cập nhật image bất biến, healthy.
+Người dùng quyết định giữ `client_meta_sandbox` trên Admin chính; VIO sandbox
+riêng và mọi dữ liệu/grant của nó không chuyển sang chính.
+
+Database chính chưa có Bundle VIO. Đã kiểm tra anonymous browser và đường
+New → Admin, nhưng chưa kiểm tra authenticated E2E báo cáo thật trên cặp chính.
+Mọi hash table chính giữ nguyên sau deployment; không sync, publish hay migration.
+Chi tiết image, test PASS/SKIP, backup/rollback và giới hạn tại
+[`KDH_PRIMARY_UNIFICATION_RESULT.md`](KDH_PRIMARY_UNIFICATION_RESULT.md).
+Revalidate runtime trước lần thao tác tiếp theo; các mốc dưới đây là lịch sử.
 
 ## Luồng hiện hành 14/10/2026 — chỉ đăng nhập tại Admin
 

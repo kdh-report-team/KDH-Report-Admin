@@ -32,7 +32,7 @@ for expected, current in zip(runtime, originals):
         assert {key: current["NetworkSettings"]["Networks"][name][key] for key in network} == network
 admin = next(x for x in originals if "-admin-" in x["Name"])
 env = dict(item.split("=", 1) for item in admin["Config"]["Env"])
-artifacts = [p for p in HERE.iterdir() if p.is_file()] + [root / "KDH_PHASE5_SANDBOX_DEPLOYMENT_PLAN.md"]
+artifacts = [p for p in HERE.iterdir() if p.is_file()] + [root / "docs" / "KDH_PHASE5_SANDBOX_DEPLOYMENT_PLAN.md"]
 sensitive_keys = [key for key in env if any(word in key.upper() for word in ("SECRET", "PASSWORD", "ENCRYPTION_KEY", "DATABASE_URL", "TOKEN"))]
 for artifact in artifacts:
     content = artifact.read_bytes()

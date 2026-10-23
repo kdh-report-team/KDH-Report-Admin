@@ -141,6 +141,7 @@ class Meta:
                 not set(self.required_permissions()).issubset(scopes)):
             result['status'] = 'reconnect_required'
         result['connected'] = result['status'] == 'connected'
+        result['insights_permission'] = bool(result['connected'] and 'read_insights' in (scopes or []))
         return result
 
     def authorization_url(self, session_id):

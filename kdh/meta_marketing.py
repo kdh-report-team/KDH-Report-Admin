@@ -37,7 +37,8 @@ def scoped_snapshot(store, client_id, source, asset_id, start, end):
     return asset, run, snap, payload
 
 
-def build_preview(store, *, client_id, source, asset_id, start, end, compare_start=None, compare_end=None):
+def build_preview(store, *, client_id, source, asset_id, start, end, compare_start=None, compare_end=None,
+                  content_report=True, content_editorial=None):
     if compare_start is not None or compare_end is not None:
         raise Problem('Meta v1 requires a single period; comparisons are not supported.', 409, 'meta_comparison_unsupported')
     days = (date.fromisoformat(end) - date.fromisoformat(start)).days + 1
@@ -57,7 +58,7 @@ def build_preview(store, *, client_id, source, asset_id, start, end, compare_sta
         widgets.append(item)
         if metric['status'] == 'available':
             evidence.append(dict(item, status='recorded_unverified'))
-    return {'preview_schema_version': '0.1', 'kind': 'marketing_internal_preview', 'generated_at': now(),
+    result = {'preview_schema_version': '0.1', 'kind': 'marketing_internal_preview', 'generated_at': now(),
             'client_id': client_id, 'source_filter': source, 'sources': [source], 'asset_id': asset_id,
             'period': period, 'comparison': None, 'widgets': widgets, 'evidence_cards': evidence,
             'opportunity_candidates': [], 'publishable': False, 'not_a_report_bundle': True,
@@ -68,6 +69,10 @@ def build_preview(store, *, client_id, source, asset_id, start, end, compare_sta
                         'independently_verified': False, 'ready_for_customer_claims': False},
             'summary': {'widget_count': len(widgets), 'widgets_with_values': len(evidence),
                         'evidence_count': len(evidence), 'opportunity_count': 0}}
+    if source == 'facebook_content' and content_report:
+        from .facebook_content_report import build_content_report
+        result['content_report'] = build_content_report(payload, content_editorial)
+    return result
 
 
 def check_source(store, db, candidate, original, latest, assessment, issues):
@@ -83,7 +88,10 @@ def check_source(store, db, candidate, original, latest, assessment, issues):
         asset = run = snap = payload = None
     witnesses = []
     if payload is not None:
-        expected = build_preview(reader, client_id=original['client_id'], source=source, asset_id=asset['id'], start=p['start'], end=p['end'])
+        # Preserve the projection used by historical immutable previews.
+        expected = build_preview(reader, client_id=original['client_id'], source=source, asset_id=asset['id'], start=p['start'], end=p['end'],
+                                 content_report='content_report' in preview,
+                                 content_editorial=preview.get('content_report', {}).get('editorial'))
         expected['generated_at'] = preview.get('generated_at')
         if sha(expected) != sha(preview):
             issues.append('meta_projection_changed_or_stale')
@@ -107,6 +115,12 @@ def check_source(store, db, candidate, original, latest, assessment, issues):
                     or grant.get('connected_at') != proof.get('grant_connected_at')
                     or not READ_SCOPES[source] <= set(grant.get('scopes') or [])):
                 issues.append('grant_changed_or_missing_permission')
+            if any(m.get('status') in ('available', 'partial') and m.get('values')
+                   for m in payload.get('insights', {}).get('measurements', [])):
+                if ('read_insights' not in (grant.get('scopes') or [])
+                        or 'read_insights' not in proof.get('permissions', [])
+                        or 'ANALYZE' not in payload['insights'].get('page_tasks', [])):
+                    issues.append('insights_permission_unconfirmed')
             for key in ('expires_at', 'data_access_expires_at'):
                 value = grant.get(key)
                 if key == 'expires_at' and value is None:
@@ -204,4 +218,7 @@ def release_source(reader, candidate, checks):
     normalized['warnings'] = list(normalized.get('warnings', [])) + [
         'Application adapter verification and authorized review; not an independent Meta audit.',
         'Unavailable/partial optional metrics are not verified claims. Lifetime is not period engagement.']
+    if p['source'] == 'facebook_content' and 'content_report' in preview:
+        from .facebook_content_report import approved_content_report
+        normalized['content_report'] = approved_content_report(preview['content_report'])
     return normalized, checks['checks'][0]['witnesses'][0]

@@ -3,6 +3,48 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import { JSDOM, VirtualConsole } from 'jsdom';
+import { contentReportHtml, editorialFields, topicFields, readEditorial } from '../static/facebook-content-report.js';
+
+test('Facebook report preview preserves null, escapes editorial and binds exact post identities', () => {
+  const dom = new JSDOM('<main></main>');
+  try {
+    const root = dom.window.document.querySelector('main');
+    const report = { schema_version: 'facebook-content-report-v1', period: { start: '2026-09-01', end: '2026-09-02' }, timezone: 'UTC',
+      metrics: [{ label: 'Reactions', value: 0, status: 'available' }, { label: 'Reach', value: null, status: 'unsupported', reason: '<img src=x onerror=alert(1)>' }],
+      comparison: { reason: 'No previous snapshot' }, sections: { posts: { key: 'posts', label: 'Posts', status: 'partial', reason: 'Missing Insights',
+        commentary: { text: '<script>Never execute</script>' }, rows: [{ post_id: '1234_1', title: '<img src=x>', date: '2026-09-01', reactions_lifetime: 0, comments_lifetime: 2, shares_lifetime: null }] } } };
+    root.innerHTML = contentReportHtml(report);
+    assert.equal(root.querySelector('img,script'), null);
+    assert.ok(root.textContent.includes('Chưa có dữ liệu'));
+    assert.ok(root.textContent.includes('Never execute'));
+    assert.ok([...root.querySelectorAll('td')].some(td => td.textContent === '0'));
+    root.innerHTML = editorialFields() + topicFields(report);
+    root.querySelector('[data-content-note="posts"]').value = 'Human editorial';
+    root.querySelector('[data-content-topic]').value = 'Product';
+    assert.deepEqual(readEditorial(root), { notes: { posts: 'Human editorial' }, topics: { '1234_1': 'Product' } });
+    assert.equal(root.querySelectorAll('[data-content-note]').length, 7);
+  } finally { dom.window.close(); }
+});
+
+test('Insights preview separates missing permission, raw zero and provider time boundaries', () => {
+  const dom = new JSDOM('<main></main>');
+  try {
+    const root = dom.window.document.querySelector('main');
+    root.innerHTML = contentReportHtml({ schema_version: 'facebook-content-report-v1',
+      period: { start: '2026-09-01', end: '2026-09-02' }, timezone: 'UTC', metrics: [], sections: {},
+      comparison: { reason: '' }, insights: { status: 'partial', measurements: [
+        { label: 'Views', object_id: '1234', period: 'day', value: null, report_status: 'period_boundary_mismatch',
+          reason: '<script>unsafe</script>', values: [{ value: 0, end_time: '2026-09-02T07:00:00+00:00' }] },
+        { label: 'Post views', object_id: '1234_1', period: 'lifetime', value: null,
+          report_status: 'permission_denied', reason: 'read_insights', values: [] }
+      ] } });
+    assert.equal(root.querySelector('script'), null);
+    assert.match(root.textContent, /period_boundary_mismatch/);
+    assert.match(root.textContent, /permission_denied/);
+    assert.match(root.textContent, /07:00:00\+00:00: 0/);
+    assert.match(root.textContent, /Chưa có dữ liệu/);
+  } finally { dom.window.close(); }
+});
 
 function assertOnlyProviderLogos(root) {
   const allowed = new Set(['facebook', 'meta', 'tiktok', 'google', 'googleanalytics', 'googlesearchconsole', 'googlesheets', 'youtube'].map(name => `/static/brands/${name}.svg`));
@@ -58,8 +100,10 @@ async function marketingHarness({ confirmed = false, role = 'admin', metaDataset
   };
   const context = dom.getInternalVMContext();
   const apiModule = new vm.SourceTextModule(await fs.readFile(new URL('../static/api.js', import.meta.url), 'utf8'), { context });
+  const contentModule = new vm.SourceTextModule(await fs.readFile(new URL('../static/facebook-content-report.js', import.meta.url), 'utf8'), { context });
+  const uiModule = new vm.SourceTextModule(await fs.readFile(new URL('../static/ui.js', import.meta.url), 'utf8'), { context });
   const module = new vm.SourceTextModule(await fs.readFile(new URL('../static/marketing.js', import.meta.url), 'utf8'), { context });
-  await module.link(() => apiModule); await module.evaluate();
+  await module.link(specifier => specifier === './facebook-content-report.js' ? contentModule : specifier === './ui.js' ? uiModule : apiModule); await module.evaluate();
   const idle = async () => { for (let i = 0; i < 200; i++) { if (!w.document.querySelector('[aria-busy="true"]')) return; await new Promise(r => setTimeout(r, 5)); } throw new Error('Workflow remained busy'); };
   await idle();
   const $ = selector => w.document.querySelector(selector);

@@ -48,6 +48,17 @@ class MetaCases:
         self.assertNotIn('client_secret', params)
         return params['state'][0]
 
+    def test_optional_insights_grant_uses_existing_business_config(self):
+        self.connect()
+        self.assertTrue(self.meta.info()['connected'])
+        self.assertFalse(self.meta.info()['insights_permission'])
+        self.metadata['scopes'].append('read_insights')
+        state = self.start()
+        with patch('kdh.meta.requests.request', side_effect=self.provider):
+            self.assertEqual(self.callback(state).status_code, 302)
+        self.assertTrue(self.meta.info()['connected'])
+        self.assertTrue(self.meta.info()['insights_permission'])
+
     def callback(self, state, **query):
         return self.client.get('/api/meta/callback', query_string={'state': state, 'code': 'test-code', **query})
 

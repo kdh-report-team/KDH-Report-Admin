@@ -92,9 +92,51 @@ def _total(daily, key):
 
 
 class MetaReportingReader:
-    def __init__(self, meta, diagnostics=None):
+    def __init__(self, meta, diagnostics=None, request_budget=200):
         self.meta = meta
         self.diagnostics = diagnostics
+        self.request_budget = request_budget
+        self.requests_used = 0
+        self.page_tasks = {}
+
+    def _call(self, path, token, params):
+        if self.requests_used >= self.request_budget:
+            raise Problem('Đã hết ngân sách request Meta.', 409, 'meta_request_budget')
+        self.requests_used += 1
+        return self.meta.call('GET', path, token=token, params=params)
+
+    def _insight_rows(self, path, token, params):
+        # Insights also returns previous/next *time windows*. Never follow those
+        # URLs (they may contain tokens or leave the authorized reporting range).
+        cursor, seen, rows = None, set(), []
+        for _ in range(MAX_PAGES):
+            query = dict(params)
+            if cursor:
+                query['after'] = cursor
+            for attempt in range(3):
+                try:
+                    payload = self._call(path, token, query)
+                    break
+                except Exception as exc:
+                    if not _retryable_source_error(exc) or attempt == 2:
+                        raise
+                    time.sleep(attempt + 1)
+            if not isinstance(payload, dict) or not isinstance(payload.get('data'), list):
+                raise Problem('Insights response invalid.', 502, 'meta_bad_response')
+            rows.extend(payload['data'])
+            if len(rows) > MAX_ROWS:
+                raise Problem('Insights row limit.', 409, 'meta_too_many_rows')
+            paging = payload.get('paging') or {}
+            if not isinstance(paging, dict) or not isinstance(paging.get('cursors', {}), dict):
+                raise Problem('Insights paging invalid.', 502, 'meta_bad_paging')
+            after = paging.get('cursors', {}).get('after') if paging.get('next') else None
+            if not after:
+                return rows
+            if not isinstance(after, str) or len(after) > 2048 or after in seen:
+                raise Problem('Insights cursor invalid.', 502, 'meta_bad_paging')
+            seen.add(after)
+            cursor = after
+        raise Problem('Insights pagination limit.', 409, 'meta_pagination_limit')
 
     def _phase(self, stage):
         return self.diagnostics.phase(stage) if self.diagnostics else nullcontext()
@@ -136,7 +178,7 @@ class MetaReportingReader:
             # Do not include token in params, logs, or resulting data.
             for attempt in range(3):
                 try:
-                    payload = self.meta.call('GET', path, token=token, params=query)
+                    payload = self._call(path, token, query)
                     break
                 except Exception as exc:
                     if not _retryable_source_error(exc) or attempt == 2:
@@ -196,6 +238,8 @@ class MetaReportingReader:
         pages = self._page_rows('me/accounts', self._token(), {'fields': 'id,name,tasks,access_token'})
         for item in pages:
             if isinstance(item, dict) and item.get('id') == page_id:
+                tasks = item.get('tasks')
+                self.page_tasks[page_id] = [t for t in tasks if isinstance(t, str) and t == 'ANALYZE'] if isinstance(tasks, list) else []
                 token = item.get('access_token')
                 if isinstance(token, str) and token:
                     return token
@@ -228,6 +272,8 @@ class MetaReportingReader:
             raise Problem('Ad Account identity mismatch.', 403, 'meta_asset_not_permitted')
         return {key: account.get(key) for key in ('id', 'name', 'currency', 'timezone_name', 'business', 'account_status')}
     def content(self, page_id, start, end):
+        # One Content run includes Page lookup, Posts, Insights, retries and pages.
+        self.request_budget = min(self.request_budget, 100)
         with self._phase('page_token'):
             first, last = validate_range(start, end)
             if last >= datetime.now(timezone.utc).date():
@@ -237,14 +283,36 @@ class MetaReportingReader:
             token = self._page_token(page_id)
         with self._phase('fetch_posts'):
             rows = self._page_rows(page_id + '/posts', token, {'fields':
-                'id,created_time,permalink_url,shares,reactions.limit(0).summary(true),comments.limit(0).summary(true)',
+                'id,created_time,message,permalink_url,attachments{type},shares,reactions.limit(0).summary(true),comments.limit(0).summary(true)',
                 'since': str(int(datetime.combine(first, dt_time.min, tzinfo=timezone.utc).timestamp())),
                 'until': str(int(datetime.combine(last + timedelta(days=1), dt_time.min, tzinfo=timezone.utc).timestamp()))})
         with self._phase('normalize_content'):
             if any(not isinstance(row, dict) or not str(row.get('id', '')).startswith(page_id + '_') for row in rows):
                 raise Problem('Post does not belong to the selected Page.', 502, 'meta_bad_response')
             from .meta_contract import seal_result
-            return seal_result(self.meta, self._normalize_content(rows, first, last, start, end), page_id)
+            result = self._normalize_content(rows, first, last, start, end)
+            from .meta_content_insights import collect
+            result['insights'] = collect(self, page_id, token, result['entries'], start, end)
+            if result['insights']['status'] != 'available':
+                result['warnings'].append('Đã đọc bài viết; Page/Post Insights chưa đầy đủ. Xem trạng thái và lý do từng metric trong bản xem trước.')
+            return seal_result(self.meta, result, page_id)
+
+    def content_insights_diagnostic(self, page_id, post_ids, start, end):
+        """No job or persistence. Shared 20-request budget includes Page lookup."""
+        first, last = validate_range(start, end)
+        if ((last - first).days > 2 or last >= datetime.now(timezone.utc).date()
+                or not isinstance(page_id, str) or not re.fullmatch(r'\d+', page_id)
+                or not isinstance(post_ids, list) or len(post_ids) > 3
+                or any(not isinstance(p, str) or not re.fullmatch(re.escape(page_id) + r'_\d+', p) for p in post_ids)
+                or len(set(post_ids)) != len(post_ids)):
+            raise Problem('Insights diagnostic scope invalid.', 400, 'meta_diagnostic_scope')
+        self.request_budget = min(self.request_budget, 20)
+        credentials = self._credentials()
+        if not {'read_insights', 'pages_read_engagement'}.issubset(credentials.get('scopes') or []):
+            raise Problem('Cần cấp quyền read_insights trước khi kiểm tra.', 403, 'meta_insights_permission')
+        token = self._page_token(page_id)
+        from .meta_content_insights import collect
+        return collect(self, page_id, token, [{'post_id': p} for p in post_ids], start, end, max_posts=3)
 
     def _normalize_content(self, rows, first, last, start, end):
         # Post counters are lifetime values as of fetch time, NOT daily engagement.
@@ -286,6 +354,8 @@ class MetaReportingReader:
                      'reactions_lifetime': post_count('reactions', summary=True),
                      'comments_lifetime': post_count('comments', summary=True),
                      'shares_lifetime': post_count('shares')}
+            from .facebook_content_report import post_metadata
+            entry.update(post_metadata(item, post_id))
             if post_id in seen:
                 if entry != seen[post_id]:
                     raise Problem('Meta trả về bài viết trùng nhưng không nhất quán.', 502, 'meta_bad_response')
@@ -306,5 +376,5 @@ class MetaReportingReader:
             'latest_post_date': max((row['date'] for row in entries), default=None),
             'daily': daily, 'entries': entries, 'totals': totals,
             'warnings': ['Tương tác trên từng post là lifetime tại thời điểm lấy; không cộng vào KPI tương tác theo ngày.',
-                         'Page/Post views, reach và follower Insights chưa được truy vấn; không suy đoán các giá trị này.',
+                         'Page/Post Insights có phạm vi và trạng thái riêng; không suy đoán reach hoặc follower mới từ bộ đếm khác.',
                          'Đồng bộ Meta thành công không tự thay thế xác minh nguồn và phê duyệt phát hành.']}

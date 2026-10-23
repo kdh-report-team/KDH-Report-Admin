@@ -1,0 +1,7 @@
+# Explicit local primary configuration. Does not select or migrate a client.
+# Backend additionally requires loopback APP_URL, client_meta_sandbox,
+# published Bundle validity and an active per-user/report/revision Viewer grant.
+services:
+  admin:
+    environment:
+      REPORT_VIO_HANDOFF_ENABLED: "1"

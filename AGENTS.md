@@ -2,20 +2,22 @@
 
 ## Architecture & Ownership
 
-KDH-Report-Admin owns data, provider integrations, sync, Dataset snapshots, Report Bundles, and admin workflow. KDH-Report-New owns customer-facing report presentation.
+VIO Agency develops, owns, and operates VioAgencyAnalytics. Read `docs/VIOAGENCYANALYTICS_PRODUCT_VISION.md`, `docs/VIOAGENCYANALYTICS_ARCHITECTURE.md`, and `docs/SAAS_MIGRATION_ROADMAP.md` for the product direction. SaaS capabilities described as planned are not implemented. Google Sign-in authenticates users; provider OAuth separately authorizes data access. Preserve existing client scopes, published revisions, and Viewer grants.
 
-Data flow: `Provider -> Sync -> immutable Dataset -> Report Bundle -> KDH-Report-New`.
+VioAgencyAnalytics-Admin owns data, provider integrations, sync, Dataset snapshots, Report Bundles, and admin workflow. VioAgencyAnalytics-Web owns customer-facing report presentation.
+
+Data flow: `Provider -> Sync -> immutable Dataset -> Report Bundle -> VioAgencyAnalytics-Web`.
 
 Read `docs/SYSTEM_CONTEXT.md` for cross-repository decisions, implementation status, and unfinished work. Revalidate its dated runtime observations against the working trees and containers before continuing.
 
-The current UI is single-client KinderHealth; retain `client_id` internally for architecture. Preserve the Vanilla JS / Flask architecture; do not introduce React or Vue.
+Current client-scoped workflows retain KinderHealth compatibility and explicit VIO sandbox support; neither is a production SaaS tenant. Retain `client_id` internally for architecture. Preserve the Vanilla JS / Flask architecture; do not introduce React or Vue.
 
 ## Data & Reporting
 
 - Dataset snapshots and published/final report revisions are immutable.
 - Report Builder and Preview operate only from immutable Dataset snapshots. Never call Google, Meta, TikTok, or YouTube provider APIs from these workflows.
 - Use real backend data only; never fabricate business data to fill the UI.
-- Never send provider credentials or OAuth tokens to KDH-Report-New. Keep secrets, `.env`, and `instance/` out of Git.
+- Never send provider credentials or OAuth tokens to VioAgencyAnalytics-Web. Keep secrets, `.env`, and `instance/` out of Git.
 - Presentation-level section keys are `overview`, `seo`, `facebook_content`, `facebook_ads`, `tiktok`, `youtube`, and `gmb`. GA4, GSC, and Keywords are technical SEO data sources, not top-level report sections.
 
 ## Structure & Style

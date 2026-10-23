@@ -1,5 +1,7 @@
 # Database architecture
 
+Current direction (2026-10-23): VioAgencyAnalytics is developed, owned, and operated by VIO Agency. See [current/target architecture](VIOAGENCYANALYTICS_ARCHITECTURE.md) for the implementation status and proposed SaaS model. The migration and rollout observations below are dated historical context; Dataset-from-sync and the authorized Web Bundle renderer now exist in source. No Organization tenant schema or SaaS isolation migration is applied by this rebrand.
+
 ## Decision
 
 - **Current Compose configuration:** PostgreSQL 16 in service `postgres`, persisted in `postgres-data`; Admin receives `DATABASE_URL` and a stable `ENCRYPTION_KEY` through its environment.

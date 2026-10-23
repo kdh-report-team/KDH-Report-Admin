@@ -1,5 +1,5 @@
 {
-  "name": "kdh-report-admin-ui-tests",
+  "name": "vioagencyanalytics-admin-ui-tests",
   "private": true,
   "type": "module",
   "description": "DOM integration tests only; production frontend has no Node runtime dependency.",

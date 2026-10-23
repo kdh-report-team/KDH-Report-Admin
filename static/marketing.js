@@ -1,4 +1,5 @@
 import { api, setCsrf } from './api.js';
+import { contentReportHtml, editorialFields, topicFields, readEditorial } from './facebook-content-report.js';
 
 const root = document.querySelector('#marketing-console');
 const $ = selector => root.querySelector(selector);
@@ -42,7 +43,7 @@ function setLink(selector, path) {
 function renderState() {
     const handoffNote = $('#viewer-handoff-note');
     handoffNote.hidden = !state.meta || state.meta.viewer_handoff_supported === true;
-    handoffNote.textContent = handoffNote.hidden ? '' : 'Viewer handoff tới KDH-Report-New chưa được cấp cho client sandbox hiện tại. Bản phát hành vẫn được lưu trong Admin.';
+    handoffNote.textContent = handoffNote.hidden ? '' : 'Viewer handoff tới VioAgencyAnalytics Web chưa được cấp cho client sandbox hiện tại. Bản phát hành vẫn được lưu trong Admin.';
     const review = state.review;
     $('#approve-internal').disabled = !review?.checks?.can_approve_internal;
     $('#needs-changes').disabled = !review || !!review.issues?.length;
@@ -70,6 +71,9 @@ function renderState() {
 
 function preview(data) {
     const content = data.marketing?.preview || data.marketing || {};
+    const contentReport = content.content_report || data.sources?.facebook_content?.content_report;
+    $('#content-report-preview').hidden = !contentReport;
+    $('#content-report-preview').innerHTML = contentReportHtml(contentReport);
     const widgets = content.widgets || [];
     const evidence = content.evidence_cards || data.evidence || [];
     const meta = content.meta_snapshot;
@@ -109,6 +113,7 @@ async function refresh() {
 
 function comparisonInputs() {
     const isMeta = ['facebook_content', 'facebook_ads'].includes($('#source').value);
+    $('#content-planning').hidden = $('#source').value !== 'facebook_content';
     $('#comparison-note').textContent = isMeta ? 'Meta: không so sánh kỳ trước.' : 'So sánh với kỳ liền trước có cùng số ngày.';
     root.querySelectorAll('[name="compare_start"], [name="compare_end"]').forEach(input => {
         input.disabled = isMeta;
@@ -160,6 +165,7 @@ function submit(id, handler) {
 
 submit('#dataset-form', async data => {
     const payload = Object.fromEntries(data);
+    if (payload.source === 'facebook_content') payload.content_editorial = readEditorial($('#content-planning'));
     if (!payload.asset_id) delete payload.asset_id;
     if (['facebook_content', 'facebook_ads'].includes(payload.source)) {
         payload.client_id = state.meta.client_id;
@@ -168,13 +174,29 @@ submit('#dataset-form', async data => {
     const created = await api('/marketing/datasets', 'POST', payload);
     await refresh(); await loadSnapshot(created.dataset_id);
 });
+$('#content-note-fields').innerHTML = editorialFields();
+$('#content-plan-preview').addEventListener('click', () => run(async () => {
+    const data = new FormData($('#dataset-form'));
+    let asset = data.get('asset_id');
+    if (!asset) {
+        const choices = state.meta.assets.filter(item => item.asset_type === 'facebook_page');
+        if (choices.length === 1) asset = choices[0].id;
+    }
+    if (!asset || !data.get('start') || !data.get('end')) throw new Error('Chọn Page và kỳ báo cáo để xem dữ liệu đã lưu.');
+    const editorial = readEditorial($('#content-planning'));
+    const result = await api('/marketing/preview', 'POST', { source: 'facebook_content', asset_id: asset, start: data.get('start'), end: data.get('end'), content_editorial: editorial });
+    $('#content-report-preview').hidden = false;
+    $('#content-report-preview').innerHTML = contentReportHtml(result.content_report);
+    $('#content-topic-fields').innerHTML = topicFields(result.content_report);
+    root.querySelectorAll('[data-content-topic]').forEach(input => { input.value = editorial.topics[input.dataset.contentTopic] || ''; });
+}));
 submit('#resume-form', () => loadSnapshot($('#snapshot-id').value));
 submit('#report-resume-form', () => { const [id, revision] = $('#existing-report').value.split(':'); return loadReport(id, revision); });
 function selectedReportLink() {
     const selected = state.reports.find(report => `${report.report_id}:${report.revision}` === $('#existing-report').value);
     const published = selected && ['provisional', 'final'].includes(selected.status);
     setLink('#selected-report-open', published ? `/auth/handoff/start?mode=published&target_id=${selected.report_id}&revision=${selected.revision}` : null);
-    $('#selected-report-hint').textContent = !selected ? 'Chọn báo cáo và phiên bản.' : published && state.meta?.viewer_handoff_supported !== true ? 'Bản đã xuất bản thuộc client chưa được phép handoff sang KDH-Report-New.' : published ? 'Mở phiên bản đã xuất bản trên KDH-Report-New.' : 'Bản nháp chưa xuất bản. Chọn Xem cấu hình để kiểm tra.';
+    $('#selected-report-hint').textContent = !selected ? 'Chọn báo cáo và phiên bản.' : published && state.meta?.viewer_handoff_supported !== true ? 'Bản đã xuất bản thuộc client chưa được phép handoff sang VioAgencyAnalytics Web.' : published ? 'Mở phiên bản đã xuất bản trên VioAgencyAnalytics Web.' : 'Bản nháp chưa xuất bản. Chọn Xem cấu hình để kiểm tra.';
 }
 $('#existing-report').addEventListener('change', selectedReportLink);
 submit('#review-form', async (data, decision) => {

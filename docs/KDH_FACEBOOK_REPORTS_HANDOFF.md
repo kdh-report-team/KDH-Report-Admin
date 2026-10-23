@@ -67,8 +67,8 @@ Outer `schema_version` remains **`1.0`**. Source payload adds
 `contract_version: meta-reporting-v1`. The examples below were generated through
 the real Admin routes with mocked provider transport and disposable SQLite:
 
-* [Facebook Content fixture Bundle](docs/fixtures/facebook_content.bundle.json)
-* [Facebook Ads fixture Bundle](docs/fixtures/facebook_ads.bundle.json)
+* [Facebook Content fixture Bundle](fixtures/facebook_content.bundle.json)
+* [Facebook Ads fixture Bundle](fixtures/facebook_ads.bundle.json)
 
 They contain synthetic test assets and arbitrary test report/review identifiers,
 not VIO business evidence. The release seal is replaced by

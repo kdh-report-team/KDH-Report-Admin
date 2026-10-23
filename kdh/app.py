@@ -197,6 +197,24 @@ def create_app(overrides=None):
 
     @app.before_request
     def session_and_csrf():
+        # Docker opens loopback port links using 127.0.0.1. Normalize browser
+        # entry pages before login so cookies and strict Origin checks agree.
+        # API writes, provider callbacks and internal health calls stay intact.
+        if request.method in ('GET', 'HEAD') and request.path in ('/', '/marketing'):
+            try:
+                canonical = urlsplit(app.config['APP_URL'])
+                incoming = urlsplit(request.host_url)
+                loopbacks = {'localhost', '127.0.0.1'}
+                if (canonical.scheme == incoming.scheme == 'http'
+                        and canonical.hostname in loopbacks and incoming.hostname in loopbacks
+                        and canonical.hostname != incoming.hostname
+                        and (canonical.port or 80) == (incoming.port or 80)
+                        and canonical.path in ('', '/') and not canonical.query and not canonical.fragment
+                        and not canonical.username and not canonical.password):
+                    path = request.full_path[:-1] if request.full_path.endswith('?') else request.full_path
+                    return redirect(canonical.geturl().rstrip('/') + path, 303)
+            except ValueError:
+                pass
         g.user = None
         # The renderer uses a backend-only Bearer token. Admin cookies neither
         # grant access nor affect this read-only API.

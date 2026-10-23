@@ -60,7 +60,7 @@ def main():
         elif isinstance(value,list):
             for item in value: collect(item)
     collect(grant)
-    artifacts=[p for p in HERE.iterdir() if p.is_file()]+[ROOT/'KDH_PHASE5B_SANDBOX_DEPLOYMENT_RESULT.md',PRIOR/'approved-image-result.json']
+    artifacts=[p for p in HERE.iterdir() if p.is_file()]+[ROOT/'docs'/'KDH_PHASE5B_SANDBOX_DEPLOYMENT_RESULT.md',PRIOR/'approved-image-result.json']
     for path in artifacts:
         data=path.read_bytes()
         assert all(value.encode() not in data for value in secret_values)

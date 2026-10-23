@@ -137,6 +137,44 @@ class FacebookBundleTests(unittest.TestCase):
         self.assertEqual(r.status_code, 201, r.json)
         return r.json['report_id']
 
+    def insights_candidate(self):
+        from test_meta_content_insights import response
+        self.grant['scopes'].append('read_insights')
+        self.store.execute('UPDATE secrets SET value=? WHERE name=?',
+            (self.meta.cipher.encrypt(pack(self.grant).encode()), 'meta:client_meta_sandbox'))
+        original = self.meta.call
+        def provider(method, path, **kwargs):
+            if path.endswith('/insights') and not path.startswith('act_'):
+                return response(kwargs['params']['metric'], path.split('/')[0])
+            return original(method, path, **kwargs)
+        with patch.object(self.meta, 'call', side_effect=provider):
+            self.candidate('facebook_content')
+
+    def test_insights_saved_attested_reviewed_and_immutable_bundle(self):
+        self.insights_candidate()
+        before = self.store.one('SELECT data FROM datasets WHERE id=?', (self.origin,))['data']
+        frozen = json.loads(before)['marketing']['preview']['content_report']['insights']
+        self.assertEqual(frozen['measurements'][0]['value'], 3)
+        release = self.release(); report = self.bundle(release)
+        self.assertEqual(self.post(f'/api/report-bundles/{report}/revisions/1/publish', {'status': 'provisional'}).status_code, 200)
+        path = f'/api/internal/v1/report-bundles/{report}?revision=1'
+        result = self.client.get(path, headers={'Authorization': 'Bearer fixture-service'})
+        self.assertEqual(result.status_code, 200)
+        source = result.json['sections']['facebook_content']['data']['sources']['facebook_content']
+        self.assertEqual(source['content_report']['insights'], frozen)
+        self.assertEqual(source['content_report']['review_status'], 'approved')
+        self.assertIsNone(source['totals']['engagements'])
+        self.assertEqual(self.store.one('SELECT data FROM datasets WHERE id=?', (self.origin,))['data'], before)
+        self.assertNotIn('FIXTURE_ONLY', result.get_data(as_text=True))
+
+    def test_insights_removed_permission_blocks_source_verification(self):
+        self.insights_candidate()
+        self.assertEqual(self.check()['issues'], [])
+        self.grant['scopes'].remove('read_insights')
+        self.store.execute('UPDATE secrets SET value=? WHERE name=?',
+            (self.meta.cipher.encrypt(pack(self.grant).encode()), 'meta:client_meta_sandbox'))
+        self.assertIn('insights_permission_unconfirmed', self.check()['issues'])
+
     def test_dual_bundles_immutable_and_viewer_revision_authorization(self):
         reports = []
         for source in ('facebook_content', 'facebook_ads'):
@@ -251,8 +289,8 @@ class FacebookBundleTests(unittest.TestCase):
         def call(method, path, **kwargs):
             if path == '1234/posts':
                 return {'data': [
-                    {'id': '1234_a', 'created_time': '2026-09-01T23:30:00-0100', 'reactions': {'summary': {'total_count': 0}}},
-                    {'id': '1234_b', 'created_time': '2026-09-02T02:00:00Z', 'shares': {'count': 5}}]}
+                    {'id': '1234_101', 'created_time': '2026-09-01T23:30:00-0100', 'reactions': {'summary': {'total_count': 0}}},
+                    {'id': '1234_102', 'created_time': '2026-09-02T02:00:00Z', 'shares': {'count': 5}}]}
             return original_call(method, path, **kwargs)
         with patch.object(self.meta, 'call', side_effect=call):
             self.candidate('facebook_content')

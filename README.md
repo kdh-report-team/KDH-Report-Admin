@@ -1,16 +1,29 @@
-# KDH Report Admin
+# VioAgencyAnalytics Admin
 
-Ứng dụng quản trị báo cáo nội bộ KinderHealth, xây từ thiết kế Stitch trong `stitch_kdh_report_admin_frontend/`. Flask phục vụ cả API và frontend tiếng Việt. Compose hiện chạy ứng dụng cùng worker nền và PostgreSQL 16 trong volume bền vững. SQLite vẫn được hỗ trợ cho môi trường local không cấu hình `DATABASE_URL`. Không cần chạy một Node backend hay MongoDB riêng.
+**VIO Agency phát triển, sở hữu và vận hành VioAgencyAnalytics**, hướng tới nền tảng Self-service Multi-platform Marketing Analytics & Reporting SaaS cho doanh nghiệp và Agency. Sản phẩm phát triển độc lập; việc tham khảo mô hình AgencyAnalytics không hàm ý quan hệ sở hữu hoặc hợp tác.
 
-Đọc [bối cảnh toàn hệ thống Admin ↔ Report-New](docs/SYSTEM_CONTEXT.md) trước khi tiếp tục phát triển: trách nhiệm hai dự án, hợp đồng dữ liệu, trạng thái đã kiểm tra và phần đang dở. Code working tree và container đang chạy có thể khác phiên bản.
+Hiện tại đây là backend và giao diện quản trị nội bộ, chưa phải SaaS self-service production. Google Sign-in cho người dùng là kế hoạch; Google/Meta OAuth hiện có dùng để cấp quyền nguồn dữ liệu, không thay thế đăng nhập ứng dụng. Organization Admin và Customer Viewer trong SaaS tương lai khác vai trò admin nội bộ hiện tại.
+
+- [Product Vision và MVP](docs/VIOAGENCYANALYTICS_PRODUCT_VISION.md)
+- [Kiến trúc hiện tại, đích SaaS và trạng thái provider](docs/VIOAGENCYANALYTICS_ARCHITECTURE.md)
+- [Roadmap và acceptance criteria](docs/SAAS_MIGRATION_ROADMAP.md)
+- [Audit, file map và kết quả kiểm thử rebrand](docs/REBRAND_FILE_MAP.md)
+
+Tên package `kdh`, client ID, cookie/header, database và Docker hiện có là định danh tương thích, không phải tên thương hiệu mới. Rebrand source không cập nhật container/image đang chạy. Các ghi nhận triển khai bên dưới cần đối chiếu cấu hình thực tế trước khi vận hành.
+
+Tài liệu dự án được tập trung tại **[docs/README.md — Mục lục chung](docs/README.md)**: kiến trúc, hướng dẫn vận hành, Facebook Content, hợp đồng Admin → New và lịch sử triển khai.
+
+Ứng dụng quản trị báo cáo của VIO Agency, kế thừa luồng KinderHealth và phạm vi VIO sandbox, xây từ thiết kế Stitch trong `stitch_kdh_report_admin_frontend/`. Flask phục vụ cả API và frontend tiếng Việt. Compose cấu hình ứng dụng cùng worker nền và PostgreSQL 16 trong volume bền vững. SQLite vẫn được hỗ trợ cho môi trường local không cấu hình `DATABASE_URL`. Không cần chạy một Node backend hay MongoDB riêng.
+
+Đọc [bối cảnh toàn hệ thống Admin ↔ Web](docs/SYSTEM_CONTEXT.md) trước khi tiếp tục phát triển: trách nhiệm hai dự án, hợp đồng dữ liệu, trạng thái đã kiểm tra và phần đang dở. Code working tree và container đang chạy có thể khác phiên bản.
 
 ## Chạy bằng Docker
 
-Làm theo [hướng dẫn Docker](DEPLOY_DOCKER.md): cấu hình `.env`, build container và mở **http://localhost:8090**. Tài khoản, kết nối Google và dữ liệu database nằm trong volume `postgres-data`; file ứng dụng vẫn nằm trong `admin-data`. Khóa mã hóa lấy từ `ENCRYPTION_KEY` cố định. Lịch tự động do worker xử lý khi container đang chạy. Admin có thể thêm dữ liệu mẫu riêng trong **Cài đặt**.
+Làm theo [hướng dẫn Docker](docs/DEPLOY_DOCKER.md): cấu hình `.env`, build container và mở **http://localhost:8090**. Tài khoản, kết nối Google và dữ liệu database nằm trong volume `postgres-data`; file ứng dụng vẫn nằm trong `admin-data`. Khóa mã hóa lấy từ `ENCRYPTION_KEY` cố định. Lịch tự động do worker xử lý khi container đang chạy. Admin có thể thêm dữ liệu mẫu riêng trong **Cài đặt**.
 
-## Report Bundle cho KDH-Report-New
+## Report Bundle cho VioAgencyAnalytics-Web
 
-Admin có thể tạo report bundle từ các dataset đã lưu qua `POST /api/report-bundles`, tạo revision mới và xuất bản `provisional`/`final`. KDH-Report-New đọc snapshot bằng `GET /api/internal/v1/report-bundles/{report_id}` với Bearer `REPORT_SERVICE_TOKEN` chỉ giữ ở backend. GET không gọi provider, tính lại KPI hay phụ thuộc dữ liệu live. ID `rpt_...` giữ nguyên qua các revision; nội dung đã xuất bản không được sửa.
+Admin có thể tạo report bundle từ các dataset đã lưu qua `POST /api/report-bundles`, tạo revision mới và xuất bản `provisional`/`final`. VioAgencyAnalytics-Web đọc snapshot qua internal API; service token chỉ giữ ở backend. Viewer production dùng `GET /api/internal/v1/viewer/report-bundles/{report_id}` với phiên người xem và quyền report/revision. Endpoint dịch vụ `GET /api/internal/v1/report-bundles/{report_id}` vẫn giữ nguyên contract, không thay thế kiểm tra quyền Viewer. GET không gọi provider, tính lại KPI hay phụ thuộc dữ liệu live. ID `rpt_...` giữ nguyên qua các revision; nội dung đã xuất bản không được sửa.
 
 Xem [endpoint, JSON contract, ví dụ request/response và migration 2](docs/report-bundles.md). Không thay thế luồng HTML/Excel hiện tại và không cần database thứ hai. Report Builder hỗ trợ tạo bản nháp, lưu cấu hình section và xem trước nội dung snapshot đã lưu trong Admin. Preview chỉ đọc bản DRAFT, không gọi provider hoặc xuất bản báo cáo.
 
@@ -21,7 +34,7 @@ Image: `kdh-report-admin:demo`. Container: `kdh-report-admin-admin-1`. Truy cậ
 Mở Docker Desktop, sau đó nhấp đúp **`demo.cmd`**. Script chờ container khỏe rồi mở trang ứng dụng. Hoặc chạy:
 
 ```powershell
-cd D:\KDH-Report-Admin
+cd D:\VioAgencyAnalytics\VioAgencyAnalytics-Admin
 docker compose up -d --wait
 docker compose ps
 ```
@@ -61,7 +74,7 @@ Mở **Tổng quan → Khám phá báo cáo demo**. Trong **Phân tích & Xuất
 Yêu cầu Python 3.12 trở lên.
 
 ```powershell
-cd D:\KDH-Report-Admin
+cd D:\VioAgencyAnalytics\VioAgencyAnalytics-Admin
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.lock
 .\.venv\Scripts\python.exe run.py
@@ -102,7 +115,7 @@ Tài liệu API đã đối chiếu: [Google OAuth Web Server](https://developer
 
 ## Kết nối Meta OAuth
 
-Admin hỗ trợ kết nối, callback, trạng thái và ngắt kết nối Meta tại **Kết nối nền tảng → Facebook**. Token chỉ lưu mã hóa ở backend. Chưa khám phá tài sản, đồng bộ hoặc tạo Dataset Facebook. Xem [cấu hình, API và giới hạn Meta OAuth](docs/meta-oauth.md).
+Admin hỗ trợ Meta OAuth, khám phá/chọn Page và Ad Account, sync worker, receipt, Dataset, review và publication trong các phạm vi client được phép. Token chỉ lưu mã hóa ở backend. Facebook Content VIO có bằng chứng nghiệm thu theo ngày và collector Insights mới; không suy ra mọi KPI hoặc mọi tài khoản đã được nghiệm thu. Facebook Ads có adapter nhưng lượt rebrand này không xác nhận dữ liệu live. Xem [ma trận triển khai và bằng chứng](docs/VIOAGENCYANALYTICS_ARCHITECTURE.md) và [cấu hình Meta OAuth](docs/meta-oauth.md).
 
 ## Luồng đã triển khai
 
@@ -154,16 +167,16 @@ Người tải chọn kỳ CSV. Nếu tên file có hai ngày thì phải khớp
 
 HTML cũ được ghi **chưa kiểm chứng dữ liệu**, không tự suy luận kỳ dữ liệu từ ngày sửa file. Chúng được xem/tải nhưng không được xuất bản lại qua luồng dữ liệu hợp lệ. Đặc biệt, `generate_seo_report.py` cũ có fallback sang số liệu mẫu khi lỗi nguồn, nên ứng dụng này dùng adapter Google riêng. `creator-backend` là backend Node/MongoDB cho nền tảng nội dung, có phạm vi khác; không được ghép làm backend tài khoản thứ hai.
 
-Facebook Ads, Facebook Content 7/30 ngày/6 tháng và TikTok hiện có **thư viện HTML đã lưu**. Tạo mới trực tiếp từ các API này cần adapter riêng kiểm chứng dữ liệu. Không trình bày chúng như đã kết nối bằng Google OAuth.
+Thư viện HTML cũ của Facebook Ads, Facebook Content và TikTok vẫn được giữ. Luồng Meta mới có adapter riêng và quy trình kiểm chứng/release; không phải chức năng của Google OAuth. TikTok hiện vẫn là scaffold/planned, chưa có tích hợp production chỉ vì đã có giao diện hoặc Metric Catalog.
 
-Xuất bản hiện là **xuất bản nội bộ trong admin**, không public và không đẩy GCS. GCS, chỉnh KPI mục tiêu, upload logo, tự xóa phiên bản và bộ tạo mới Facebook/TikTok nằm ngoài bản chạy đầu này. Không có nút giả báo thao tác đã thành công.
+Xuất bản HTML cũ là **xuất bản nội bộ trong Admin**. Published Report Bundle có luồng phát hành và cấp quyền Viewer riêng sang Web; không mặc định public và không đẩy GCS. Live Dashboard SaaS, billing và white label chưa triển khai. Không có nút giả báo thao tác đã thành công.
 
 ## Vận hành Docker/local
 
 - Một process Waitress và một worker nền. File lock ngăn chạy hai server cùng thư mục dữ liệu. Đây là cấu hình cho một đơn vị, không phải hàng đợi phân tán.
 - Tác vụ chờ được lưu trong database đã cấu hình (PostgreSQL ở Compose hiện tại). Tác vụ đang chạy khi server dừng sẽ chuyển `interrupted` ở lần mở lại, có thể thử lại.
 - Lịch dùng timezone IANA Việt Nam. Khi mở lại sau thời gian tắt, xử lý một lần bị lỡ rồi tính lần tới; không chạy bù toàn bộ lịch sử.
-- Với Compose PostgreSQL: sao lưu database, `admin-data` và khóa `ENCRYPTION_KEY` theo [hướng dẫn Docker](DEPLOY_DOCKER.md). Với local SQLite: database ở `instance/kdh.sqlite3`; nếu dùng khóa file thì giữ cả `instance/encryption.key`. Excel mới lưu trong database; Excel của bản cũ vẫn đọc từ `instance/exports/`. Giữ khóa mã hóa tương ứng cùng bản sao lưu trong kho nội bộ hạn chế quyền đọc.
+- Với Compose PostgreSQL: sao lưu database, `admin-data` và khóa `ENCRYPTION_KEY` theo [hướng dẫn Docker](docs/DEPLOY_DOCKER.md). Với local SQLite: database ở `instance/kdh.sqlite3`; nếu dùng khóa file thì giữ cả `instance/encryption.key`. Excel mới lưu trong database; Excel của bản cũ vẫn đọc từ `instance/exports/`. Giữ khóa mã hóa tương ứng cùng bản sao lưu trong kho nội bộ hạn chế quyền đọc.
 - Không đưa `instance`, `.env`, credential vào Git, thư mục web hoặc bản chia sẻ frontend. Các thư mục này đã được loại trong `.gitignore` / `.dockerignore`.
 - Khi triển khai ngoài localhost, đặt HTTPS reverse proxy, `APP_URL` đúng origin, `COOKIE_SECURE=1`, redirect URI HTTPS đúng trong Google Cloud. Cấp quyền đọc/ghi thư mục dữ liệu cho tài khoản dịch vụ, không cho người dùng không liên quan.
 - Chỉ expose cổng admin sau lớp mạng nội bộ theo nhu cầu đơn vị. Các API dữ liệu đều yêu cầu đăng nhập.
@@ -190,12 +203,12 @@ npm.cmd test
 .\.venv\Scripts\python.exe tests/run_http_smoke.py
 ```
 
-Chạy toàn bộ test Python bằng `python -m unittest discover -s tests -v`, cùng các test giao diện bằng `npm test`. Python dùng `unittest`, Flask test client, SQLite tạm và schema PostgreSQL riêng cho từng bài; giao diện dùng Node test runner và JSDOM với HTTP API giả lập. Các test dùng cấu hình OAuth riêng, không phụ thuộc Client ID/Secret thật trong `.env`. Xem [hướng dẫn kiểm thử PostgreSQL](DEPLOY_DOCKER.md#kiểm-thử).
+Chạy toàn bộ test Python bằng `python -m unittest discover -s tests -v`, cùng các test giao diện bằng `npm test`. Python dùng `unittest`, Flask test client, SQLite tạm và schema PostgreSQL riêng cho từng bài; giao diện dùng Node test runner và JSDOM với HTTP API giả lập. Các test dùng cấu hình OAuth riêng, không phụ thuộc Client ID/Secret thật trong `.env`. Xem [hướng dẫn kiểm thử PostgreSQL](docs/DEPLOY_DOCKER.md#kiểm-thử).
 
 Test Python kiểm tra auth/CSRF/phân quyền, queue, dữ liệu thiếu/độ trễ, Excel theo snapshot, công thức độc hại, CSV, phiên bản/xuất bản, OAuth state, lịch chạy và chế độ demo. Test DOM kiểm tra đăng nhập, bộ lọc chưa áp dụng, export, điều hướng, chuyển demo/thật và xóa dữ liệu phiên cũ khi hết hạn. Dữ liệu giả trong kiểm thử và bộ demo được chọn riêng; lỗi nguồn thật không tự dùng dữ liệu mẫu.
 
 `tests/run_http_smoke.py` tự mở Waitress cùng worker ở cổng 8091, chạy chuỗi đăng nhập → upload CSV → phân tích → tải Excel → lưu/xem HTML → xuất bản → đăng xuất, rồi dừng server. Mỗi lần chạy dùng một thư mục dữ liệu mới `test-results/http-smoke-*`, giữ các file kiểm thử để kiểm tra lại; không dùng dữ liệu Docker hoặc `instance`. Nếu cổng 8091 đang được dùng, lệnh dừng trước khi gửi yêu cầu. Có thể chạy lặp lại mà không xóa dữ liệu test cũ.
 
-Các bài test tự động này chưa đo tỷ lệ bao phủ code, chưa kiểm tra giao diện bằng trình duyệt thật (Playwright/Selenium), chưa kiểm thử tải và chưa có workflow CI trong repository. Luồng cấp quyền OAuth và số liệu Google thật cần kiểm tra với tài khoản được cấp quyền trên các tài sản của đơn vị; JSDOM và adapter giả lập không xác nhận được những quyền đó.
+Unit/DOM tests không thay thế nghiệm thu browser, tải hoặc dữ liệu thật. Repository có script và bằng chứng browser trong các đợt triển khai trước; kết quả rebrand hiện tại được ghi riêng trong [file map](docs/REBRAND_FILE_MAP.md). Luồng cấp quyền OAuth và số liệu Google thật cần kiểm tra với tài khoản được cấp quyền trên các tài sản của đơn vị; JSDOM và adapter giả lập không xác nhận được những quyền đó.
 
 Để mở máy chủ UI test riêng: `.\.venv\Scripts\python.exe tests/serve_ui.py` tại cổng `8091`. Dữ liệu test nằm ở `test-results/ui-state`, không dùng `instance` của ứng dụng thật.

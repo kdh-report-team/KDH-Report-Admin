@@ -2,7 +2,7 @@
 
 Compose chạy Flask/Waitress và worker nền trong service `admin`, cùng PostgreSQL 16 trong service `postgres`. Database nằm trong volume `kdh-report-admin_postgres-data`; file ứng dụng và SQLite cũ vẫn nằm trong `kdh-report-admin_admin-data`, gắn tại `/app/instance`. Khóa mã hóa lấy từ `ENCRYPTION_KEY`. Frontend và API dùng chung **http://localhost:8090**.
 
-Trạng thái code/container, kết quả kiểm thử và phần còn cần làm được ghi tại [SYSTEM_CONTEXT.md](docs/SYSTEM_CONTEXT.md). Kiểm tra lại các test khi có thay đổi mới trước khi deploy.
+Trạng thái code/container, kết quả kiểm thử và phần còn cần làm được ghi tại [SYSTEM_CONTEXT.md](SYSTEM_CONTEXT.md). Kiểm tra lại các test khi có thay đổi mới trước khi deploy.
 
 ## Chuẩn bị và khởi động
 
@@ -43,7 +43,7 @@ GOOGLE_REDIRECT_URI=http://localhost:8090/api/google/callback
 
 Điền `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` và các ID GA4/GSC/Sheets trong `.env`. Đăng ký đúng URI callback ở Google Cloud. Sau khi đổi `.env`, chạy `docker compose up -d --wait` để Compose tạo lại container với cấu hình mới.
 
-Để backend Report-New đọc bundle, tạo `REPORT_SERVICE_TOKEN` ngẫu nhiên, điền cùng giá trị ở `.env` của Admin và môi trường backend Report-New. Compose **Admin** đã truyền biến này vào container. Compose New hiện chưa truyền token/base URL hoặc nối network với Admin; còn phải hoàn thiện phần đó và nối repository vào các trang báo cáo. Không đưa token vào JavaScript trình duyệt. Xem [hợp đồng Bundle](docs/report-bundles.md).
+Để backend Report-New đọc bundle, tạo `REPORT_SERVICE_TOKEN` ngẫu nhiên, điền cùng giá trị ở `.env` của Admin và môi trường backend Report-New. Compose **Admin** đã truyền biến này vào container. Compose New hiện chưa truyền token/base URL hoặc nối network với Admin; còn phải hoàn thiện phần đó và nối repository vào các trang báo cáo. Không đưa token vào JavaScript trình duyệt. Xem [hợp đồng Bundle](report-bundles.md).
 
 Compose cố định `JOB_MODE=worker` và `DATA_DIR=/app/instance`. Lịch tự động chạy bằng worker khi container hoạt động; không cần dịch vụ cron bên ngoài. Máy tắt/ngủ hoặc container dừng thì lịch cũng dừng, các lịch đến hạn được kiểm tra khi ứng dụng hoạt động lại.
 

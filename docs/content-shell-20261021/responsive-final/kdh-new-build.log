@@ -1,0 +1,32 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 CACHED
+
+#2 copy /context /
+#2 CACHED
+
+#3 [internal] load metadata for docker.io/library/kdh-new:content-shell-20261021-base
+#3 DONE 0.1s
+
+#4 [1/2] FROM docker.io/library/kdh-new:content-shell-20261021-base@sha256:465d629733f430e62f99e290a826c08e284cd9e2340093610f24b099cae3ecd5
+#4 resolve docker.io/library/kdh-new:content-shell-20261021-base@sha256:465d629733f430e62f99e290a826c08e284cd9e2340093610f24b099cae3ecd5 0.1s done
+#4 DONE 0.2s
+
+#5 [2/2] COPY --chown=10001:10001 static/css/pages/facebook-content.css /app/static/css/pages/facebook-content.css
+#5 CACHED
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.3s done
+#6 exporting manifest sha256:5be28b67e9ea2c9d09b6fbf3c7e6586c72b0cec7eb660205d5ae2f2c7a964955 0.0s done
+#6 exporting config sha256:97bd39e8c98c1565ab158f4e59fe4a266a8c9818ca4ff8ac4302e8d47a0c4822 done
+#6 exporting attestation manifest sha256:b9fc6492f48d9e94e211e87798b1e40227922578f4c675917ba1014bd47944c0 0.0s done
+#6 exporting manifest list sha256:b7644bd4b0abddcbc6154453d2167faae2453e307d4de10287024fe95cbf447a
+#6 exporting manifest list sha256:b7644bd4b0abddcbc6154453d2167faae2453e307d4de10287024fe95cbf447a 0.0s done
+#6 naming to docker.io/library/kdh-new:content-shell-20261021-0c7aaa9bea7c done
+#6 unpacking to docker.io/library/kdh-new:content-shell-20261021-0c7aaa9bea7c
+#6 unpacking to docker.io/library/kdh-new:content-shell-20261021-0c7aaa9bea7c 0.4s done
+#6 DONE 2.4s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/qqpj465huq4cnh287pr9xc7iv

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "reason": "New dynamic address collided with primary relay; relay stale DB probe IP now matched its own interface",
+  "new_fixed_ips": {
+    "kdh-shared-viewer-primary-20261021": "192.168.144.3",
+    "kdh-vio-handoff-phase9-recovery-20261019": "192.168.96.3"
+  },
+  "checks": {
+    "primary": 200,
+    "vio": 200,
+    "primary_db": "DENIED",
+    "vio_db": "DENIED"
+  },
+  "no_default_route": true,
+  "relay_db_probe_ip": "172.26.0.4",
+  "relay_upstream_unchanged": "172.26.0.3:8090"
+}

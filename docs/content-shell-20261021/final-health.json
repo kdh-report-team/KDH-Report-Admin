@@ -1,0 +1,29 @@
+{
+  "checks": {
+    "primary": 200,
+    "vio": 200,
+    "primary_db": "DENIED",
+    "vio_db": "DENIED"
+  },
+  "new_image": "kdh-new:content-shell-20261021-0c7aaa9bea7c",
+  "new": {
+    "id": "291aa15265f8c69ec7d0bee6df20c8257e694c5cf291903ff6094e59691eb82e",
+    "image": "sha256:b7644bd4b0abddcbc6154453d2167faae2453e307d4de10287024fe95cbf447a",
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "D:\\KDH-Report-All\\KDH-Report-New\\.work\\layout-preview",
+        "Destination": "/app/static/layout-preview",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "networks": [
+      "kdh-shared-viewer-primary-20261021",
+      "kdh-vio-handoff-phase9-recovery-20261019",
+      "kdh-vio-host-phase9-20261019"
+    ],
+    "running": true
+  }
+}

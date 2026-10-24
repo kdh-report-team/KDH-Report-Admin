@@ -1,0 +1,51 @@
+{
+  "kdh-report-admin-admin-1-rollback-unified-20261020": {
+    "id": "ea078b36b1bf6e5facda46d3f49723a82f0a27cf8f719406cac3c9d681a7c5bd",
+    "restart": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    }
+  },
+  "kdh-report-new-app-1-rollback-unified-20261020": {
+    "id": "633b764f9859831692c042784eb27c8d5b08a6aec669f4ca58b39cf0dd1e91ed",
+    "restart": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    }
+  },
+  "kdh-unified-20261020-admin-smoke": {
+    "id": "611cec7f6597f4c5c21a0daecffbe19aac4b4697cc524f52a96aece46bf10e85",
+    "restart": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  },
+  "kdh-unified-20261020-postgres-tests": {
+    "id": "93413564dfa92902806e26de9b56c51eef9a28498a73d9948dd8e56605d85c3a",
+    "restart": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  },
+  "kdh-unified-admin-offline-20261020": {
+    "id": "cfb4991e81a03ede5deb76f75e6b77f0944bc0b2f09b0277b9e733d3bdd5ccea",
+    "restart": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  },
+  "kdh-unified-extra-postgres-20261020": {
+    "id": "5bf313e2b3d2a0b07c312e0fc3c8a65d0743ea1066d937d6d64fcded1ba13c88",
+    "restart": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  },
+  "kdh-unified-facebook-postgres-20261020": {
+    "id": "48526fa5f1780ed2a9c61e8a8fc5f89eebc4eb4c3d96533a97583932fbafa562",
+    "restart": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    }
+  }
+}

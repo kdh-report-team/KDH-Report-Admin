@@ -1,0 +1,428 @@
+{
+  "data": {
+    "kdh-report-admin-admin-1": {
+      "artifacts": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clients": {
+        "count": 3,
+        "sha256": "7e30983e065025dee41476a7e93156cf1615eb557550940461c5ba1d5d5847b5"
+      },
+      "connections": {
+        "count": 10,
+        "sha256": "5a7172aa75cca29c3dfc2f7eae47bf99fc086e50e4fbe590f991e5891d941e6f"
+      },
+      "daily_metrics": {
+        "count": 900,
+        "sha256": "8022ad37304a98d820de104fa32c17ca501ab7501668e79bfc060e09683568ff"
+      },
+      "datasets": {
+        "count": 9,
+        "sha256": "c70dce88f819d2f437f65337eb6b9f120a14bfe41d3cd6e596f59805e4c8a6cb"
+      },
+      "jobs": {
+        "count": 14,
+        "sha256": "7ef22371c972bc1ab00d80f3cca10d808188f77119b5f331e6c2d161b5444740"
+      },
+      "marketing_dataset_reviews": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "marketing_release_approvals": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "marketing_release_snapshots": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "meta_oauth_states": {
+        "count": 1,
+        "sha256": "983edcc8c15d8815eed2674d8013e016cbf4c8336a1aed672540f06c7713bd4a"
+      },
+      "oauth_states": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "publications": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "report_bundle_sections": {
+        "count": 7,
+        "sha256": "1005c98dfb089b1cf0b9f283da0831d753ce5f7935b6ee5e606dcdaa73a2392f"
+      },
+      "report_bundles": {
+        "count": 1,
+        "sha256": "01250fa56068b8527d844d72a0c6a9a73500e61a46f15c5f61979095cd401eb5"
+      },
+      "report_viewer_grants": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "reports": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "schedules": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "schema_migrations": {
+        "count": 8,
+        "sha256": "f8200f1ea07caa5c6fe7826ce41197bcd9840df9787a4ee8880f51d3d1cde873"
+      },
+      "secrets": {
+        "count": 1,
+        "sha256": "5745a622938942d3287994921590c22510b5670a05c9631c0d394a761c5adb21"
+      },
+      "settings": {
+        "count": 3,
+        "sha256": "60ee667232b5ff01312181af31c5caddf6e58892e3df20811a91ec20269b87c9"
+      },
+      "source_assets": {
+        "count": 15,
+        "sha256": "beb77d8d75bbf6a4511f466328968b31412c6cae0ce363f84b5284fddfb9d81a"
+      },
+      "source_attestations": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_snapshots": {
+        "count": 11,
+        "sha256": "fd328d1ccd9262dbae97e8f3ce1929ff7f79d59b40d940e5a6e354e058073734"
+      },
+      "sync_runs": {
+        "count": 23,
+        "sha256": "fa96e99b82cd74b928a54e6f40ca3d56be872ab7924885948383fa47e2d204bd"
+      },
+      "sync_watermarks": {
+        "count": 9,
+        "sha256": "40f4352d654ee0a37e17b7babc1478c63021b238fbe45913bc68f130ef563431"
+      },
+      "upload_locations": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "uploads": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "users": {
+        "count": 2,
+        "sha256": "46279f2ea0aef614ca5e1a49d01152f0b5e0fb41e3a0a25ef215fd7f29c03e7e"
+      }
+    },
+    "kdh-meta-2b-admin-20261016-132836-5c512a53": {
+      "artifacts": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clients": {
+        "count": 2,
+        "sha256": "93d347de4a9b097ca4ee0c88fedcc92134aee898d7bfdbf25b341b163b6d6f71"
+      },
+      "connections": {
+        "count": 1,
+        "sha256": "7706d5ec6232f4ff666afb8957616b0aec7117e27d94031107a34ae3ddb18598"
+      },
+      "daily_metrics": {
+        "count": 186,
+        "sha256": "86b93d241fed1c8946442bd6156a10d1d6427cd4334922cd4185242652730dab"
+      },
+      "datasets": {
+        "count": 22,
+        "sha256": "479ca8fadb46675f322a761b119ce29ce2980c0c0ed7d111cc9ac365cbda5ba2"
+      },
+      "jobs": {
+        "count": 13,
+        "sha256": "206bd8b1cc5d1861ab341f9f47d25b30b6754a24f8c576fffd2a629f734e349a"
+      },
+      "marketing_dataset_reviews": {
+        "count": 35,
+        "sha256": "ee1ef7faab12d098ae0908cef16fa9ae7ea9eb6417f9a8012260899121f3d1c5"
+      },
+      "marketing_release_approvals": {
+        "count": 3,
+        "sha256": "4e32bc6cfe17c81314e3c16a0b7ecd106498978dcf80eeb21976df4f49c13a5e"
+      },
+      "marketing_release_snapshots": {
+        "count": 3,
+        "sha256": "4119d9a515af9c3b660601cf54d868edf9783251fd44d0266d5a67c2f3a9fd11"
+      },
+      "meta_oauth_states": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "oauth_states": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "publications": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "report_bundle_sections": {
+        "count": 6,
+        "sha256": "1542bee481a450439c0eee7617695a506026bd01c8a0f63581232d738aa5d125"
+      },
+      "report_bundles": {
+        "count": 6,
+        "sha256": "913f20fa726839b9a37d227ca3dec6cf003ac129ab4c6f7a1dac36653049c8e9"
+      },
+      "report_viewer_grants": {
+        "count": 1,
+        "sha256": "0de4ca8f7352c99177c8b564de84ee71181d34ca6b3d697279e6c1763beaae83"
+      },
+      "reports": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "schedules": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "schema_migrations": {
+        "count": 8,
+        "sha256": "0da7a22d9a11caa1aef8dfc6e98e7fbec362fd82a513dc81450fea2268401b04"
+      },
+      "secrets": {
+        "count": 1,
+        "sha256": "31d86ac2e22a2e723741df1ba183a778fc75a56e99618994b710e3c3ff8d62ec"
+      },
+      "settings": {
+        "count": 2,
+        "sha256": "133715c79af59cc51554ffadeec482ae4f07eee137fe8df1c9847a2fd668fc89"
+      },
+      "source_assets": {
+        "count": 1,
+        "sha256": "1d064d93478c424f666fee09f8c0ef2729d161e1995737f7fa304bb03f73decb"
+      },
+      "source_attestations": {
+        "count": 4,
+        "sha256": "cd0e7c65be734778c1216db761c51aa512681463844eeea1c1301a114fa0f48c"
+      },
+      "source_snapshots": {
+        "count": 6,
+        "sha256": "08c9e9ef32ec8f398318d1581dbb5a5f7e18e01e434644ea3a62de1dae6aee2c"
+      },
+      "sync_runs": {
+        "count": 7,
+        "sha256": "132c7229d4c4137c9eef6b168b463544b4f7338ede492020bccfede5362d51d7"
+      },
+      "sync_watermarks": {
+        "count": 1,
+        "sha256": "d3b4b754ebad9cc060c001bd2bfb2fb896e5884533a9f3ea6f588ba052e66117"
+      },
+      "upload_locations": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "uploads": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "users": {
+        "count": 1,
+        "sha256": "7b1d5f2714728518a8d528025689aebc7bb9b40b6d0b4101b57fc1544ee525e2"
+      }
+    }
+  },
+  "backups": {
+    "kdh-report-admin-admin-1": "1eaee74d9dd4fb881a15cea476edc642a2f24658d8351c2935ed97c1a8631f0a",
+    "kdh-meta-2b-admin-20261016-132836-5c512a53": "14ef2e5dd9d71b3869028c73c1574b96b53bdda8ddfba60f0ca72d62cdfcc688"
+  },
+  "services": {
+    "kdh-report-admin-admin-1": {
+      "id": "f0f8ee49ddedee922707a8b26b23a11a32f32c74262b3e98409c745638a30ea4",
+      "image": "sha256:e1c8ce68bcbd5c66464a0298ce86be09c5d15e7ed838295fa27322fbd1b63adf",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-report-admin_admin-data",
+          "Source": "/var/lib/docker/volumes/kdh-report-admin_admin-data/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Data/KDH_Marketing_DataPack_v1",
+          "Destination": "/demo-pack",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Report/KDH-Report",
+          "Destination": "/legacy",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default"
+      ],
+      "running": true
+    },
+    "kdh-report-new-app-1": {
+      "id": "527b5899bb046f42e1f5355077468d7c36cbbf9624cbdd99d74db35ee849cabb",
+      "image": "sha256:87844f282565682fefffb3f1436a48b70099129a96704abb743b134df16256f9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Report-All\\KDH-Report-New\\.work\\layout-preview",
+          "Destination": "/app/static/layout-preview",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default",
+        "kdh-report-new_default"
+      ],
+      "running": true
+    },
+    "kdh-report-admin-postgres-1": {
+      "id": "8454125865a6be20d33a31b1872f98ed2c6473ef6e6e1b64a938ab60ca8b9fe2",
+      "image": "sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-report-admin_postgres-data",
+          "Source": "/var/lib/docker/volumes/kdh-report-admin_postgres-data/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default"
+      ],
+      "running": true
+    },
+    "kdh-meta-2b-admin-20261016-132836-5c512a53": {
+      "id": "368dc166e3ef2000a3d947d0093bc69ae39d3fcb273563abbcc31373b832c23a",
+      "image": "sha256:045e724c36a537d444633443399de89ba85562d5963c803326ea0c175151c128",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-meta-2b-pg-20261016-132836-5c512a53": {
+      "id": "41c3cebbed98beab58091b359ba12e4b54f7eb90a41fbe4b9cb5a86539cb87d1",
+      "image": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-pgdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-pgdata-20261016-132836-5c512a53/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-meta-3-egress-20261016-132836-5c512a53": {
+      "id": "c264a6c245cfd98fedd717e0f2e60743058e8d26e7a2577702622e23c993b0e6",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase3\\gateway",
+          "Destination": "/gateway",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53",
+        "kdh-meta-3-outbound-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-meta-2b-relay-20261016-132836-5c512a53": {
+      "id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\relay",
+          "Destination": "/relay",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-ingress-20261016-132836-5c512a53",
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-vio-relay-phase9-20261019": {
+      "id": "4d789987abbe66eed81a59149d3be1c66ad556b9fec2450f2d5686c298ffc12c",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase9-private-relay-4e536289",
+          "Destination": "/relay",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53",
+        "kdh-vio-handoff-phase9-recovery-20261019"
+      ],
+      "running": true
+    },
+    "kdh-vio-new-phase9-20261019": {
+      "id": "0840110c2d6263da0b8d6ff216e4969fa583cbcd51eb4075740c1b0a2f80eda5",
+      "image": "sha256:c88dbe4b61d8adea12e48dcd9298af1eaeddbaf77592953b9637c07a6b2da502",
+      "mounts": [],
+      "networks": [
+        "kdh-vio-handoff-phase9-recovery-20261019",
+        "kdh-vio-host-phase9-20261019"
+      ],
+      "running": false
+    }
+  },
+  "heads": {
+    "D:\\KDH-Report-All\\KDH-Report-Admin": "6b52ee2f3ef29ebb5820e95e88ba318a7599667d",
+    "D:\\KDH-Report-All\\KDH-Report-New": "837f655525d4ee061c1e1365d1e47b57bba175f4"
+  },
+  "status": {
+    "D:\\KDH-Report-All\\KDH-Report-Admin": " M compose.yaml\n M docs/SYSTEM_CONTEXT.md\n M kdh/app.py\n?? KDH_PRIMARY_UNIFICATION_RESULT.md\n?? compose.primary-viewer.yaml\n?? docs/origin-fix-20261021/\n?? docs/shared-viewer-20261021/\n?? docs/unified-admin-20261020/\n?? ops/\n?? tests/test_loopback_entry.py\n",
+    "D:\\KDH-Report-All\\KDH-Report-New": " M README.md\n M app/config.py\n M app/integrations/mock/facebook_ads.py\n M app/integrations/mock/facebook_content.py\n M app/integrations/mock/overview.py\n M app/integrations/mock/seo.py\n M app/integrations/mock/video.py\n M app/routes/reports.py\n M app/routes/video.py\n M compose.yaml\n M main.py\n M package-lock.json\n M static/css/dist/dashboard.css\n M static/css/pages/facebook-ads.css\n M static/css/pages/facebook-content.css\n M static/css/pages/seo.css\n M static/css/pages/video.css\n M static/css/shared/dashboard.source.css\n M static/fonts/LICENSE-Inter.txt\n M static/fonts/LICENSE-Material-Symbols.txt\n M static/js/pages/seo.js\n M static/js/pages/video.js\n M static/js/shared/charts.js\n M static/js/shared/sidebar.js\n M templates/components/dashboard/controls.html\n M templates/components/dashboard/header.html\n M templates/components/dashboard/navigation.html\n M templates/components/dashboard/sidebar.html\n M templates/layouts/dashboard.html\n M templates/pages/facebook_ads/index.html\n M templates/pages/facebook_ads/partials/audience.html\n M templates/pages/facebook_ads/partials/campaigns.html\n M templates/pages/facebook_ads/partials/creatives.html\n M templates/pages/facebook_ads/partials/funnel.html\n M templates/pages/facebook_ads/partials/insights.html\n M templates/pages/facebook_ads/partials/kpis.html\n M templates/pages/facebook_content/index.html\n M templates/pages/facebook_content/partials/engagement.html\n M templates/pages/facebook_content/partials/formats.html\n M templates/pages/facebook_content/partials/helpers.html\n M templates/pages/facebook_content/partials/insights.html\n M templates/pages/facebook_content/partials/kpis.html\n M templates/pages/facebook_content/partials/posts.html\n M templates/pages/facebook_content/partials/reach_mix.html\n M templates/pages/facebook_content/partials/topics.html\n M templates/pages/overview/index.html\n M templates/pages/overview/partials/action_plan.html\n M templates/pages/overview/partials/analytics.html\n M templates/pages/overview/partials/channels.html\n M templates/pages/overview/partials/executive_summary.html\n M templates/pages/overview/partials/footer.html\n M templates/pages/overview/partials/insights.html\n M templates/pages/overview/partials/kpis.html\n M templates/pages/seo/controls.html\n M templates/pages/seo/index.html\n M templates/pages/seo/partials/details.html\n M templates/pages/seo/partials/funnel.html\n M templates/pages/seo/partials/keywords.html\n M templates/pages/seo/partials/kpis.html\n M templates/pages/seo/partials/result.html\n M templates/pages/seo/partials/summary.html\n M templates/pages/seo/partials/trend.html\n M templates/pages/tiktok/index.html\n M templates/pages/tiktok/partials/insights.html\n M templates/pages/tiktok/partials/table.html\n M templates/pages/tiktok/partials/videos.html\n M templates/pages/video/base.html\n M templates/pages/video/partials/chart.html\n M templates/pages/video/partials/funnel.html\n M templates/pages/video/partials/helpers.html\n M templates/pages/video/partials/kpis.html\n M templates/pages/youtube/index.html\n M templates/pages/youtube/partials/audience.html\n M templates/pages/youtube/partials/insights.html\n M templates/pages/youtube/partials/table.html\n M tests/test_facebook_ads.py\n M tests/test_facebook_content.py\n M tests/test_real_data_helpers.py\n M tests/test_reports.py\n M tests/test_seo.py\n M tests/test_video_reports.py\n?? app/admin_access.py\n?? app/bundle_safety.py\n?? app/design_preview.py\n?? app/mappers/\n?? app/repositories/admin_bundle.py\n?? app/repositories/viewer.py\n?? app/routes/demo_bundle.py\n?? app/routes/handoff.py\n?? app/routes/published.py\n?? app/routes/viewer.py\n?? app/schemas/bundle_view.py\n?? app/services/bundle.py\n?? app/viewer_environment.py\n?? compose.mock.yaml\n?? ops/\n?? scripts/render_layout_preview.py\n?? static/css/pages/executive-polish.css\n?? static/css/pages/executive.css\n?? static/css/pages/published.css\n?? static/css/pages/snapshot.css\n?? static/js/pages/handoff.js\n?? static/js/pages/published.js\n?? static/js/pages/snapshot.js\n?? templates/pages/demo_bundle.html\n?? templates/pages/facebook_content/partials/bundle.html\n?? templates/pages/overview/partials/briefing.html\n?? templates/pages/published/\n?? templates/pages/snapshot/\n?? tests/bundle_fixtures.py\n?? tests/fixtures/\n?? tests/test_admin_bundle_repository.py\n?? tests/test_bundle_mapper.py\n?? tests/test_bundle_service.py\n?? tests/test_dashboard_binding.py\n?? tests/test_design_preview.py\n?? tests/test_executive_ui.py\n?? tests/test_handoff.py\n?? tests/test_marketing_view.py\n?? tests/test_published_reports.py\n?? tests/test_seo_snapshot.py\n?? tests/test_shared_viewer.py\n?? tests/test_viewer.py\n?? tests/test_vio_content.py\n"
+  }
+}

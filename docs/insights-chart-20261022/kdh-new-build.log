@@ -1,0 +1,53 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.2s
+
+#1 [internal] load remote build context
+#1 DONE 0.2s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/kdh-new:insights-chart-20261022-base
+#3 DONE 0.2s
+
+#4 [1/7] FROM docker.io/library/kdh-new:insights-chart-20261022-base@sha256:88539e00e31b36f4f044db76412da4472412a44e705655841733720820abc2de
+#4 resolve docker.io/library/kdh-new:insights-chart-20261022-base@sha256:88539e00e31b36f4f044db76412da4472412a44e705655841733720820abc2de 0.1s done
+#4 DONE 0.1s
+
+#4 [1/7] FROM docker.io/library/kdh-new:insights-chart-20261022-base@sha256:88539e00e31b36f4f044db76412da4472412a44e705655841733720820abc2de
+#4 DONE 1.4s
+
+#5 [2/7] COPY --chown=10001:10001 static/js/shared/charts.js /app/static/js/shared/charts.js
+#5 DONE 0.8s
+
+#6 [3/7] COPY --chown=10001:10001 static/js/pages/snapshot.js /app/static/js/pages/snapshot.js
+#6 DONE 0.2s
+
+#7 [4/7] COPY --chown=10001:10001 static/css/pages/facebook-content.css /app/static/css/pages/facebook-content.css
+#7 DONE 0.1s
+
+#8 [5/7] COPY --chown=10001:10001 templates/pages/snapshot/components.html /app/templates/pages/snapshot/components.html
+#8 DONE 0.2s
+
+#9 [6/7] COPY --chown=10001:10001 templates/pages/facebook_content/partials/engagement.html /app/templates/pages/facebook_content/partials/engagement.html
+#9 DONE 0.1s
+
+#10 [7/7] COPY --chown=10001:10001 templates/pages/facebook_content/index.html /app/templates/pages/facebook_content/index.html
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 0.4s done
+#11 exporting manifest sha256:7c7c5cb3fdce681355ff8ea2e841b52436842c7ac47bcd74754993249ceb1c5c 0.0s done
+#11 exporting config sha256:513cb243995e823b61510ae9e56ade42b127b58b7e0c3da3b9b8c2a44cb7e5fb 0.0s done
+#11 exporting attestation manifest sha256:be38508c9c35cb9433d7d568a8629b1ed47bd995c9d75ba22fa0b364eb0c5b4e 0.0s done
+#11 exporting manifest list sha256:a846266d7da7f6c887424270556578ac73de73ac6e6cf506575434db5a5f7b65 0.0s done
+#11 naming to docker.io/library/kdh-new:insights-chart-20261022-fed378fa5436
+#11 naming to docker.io/library/kdh-new:insights-chart-20261022-fed378fa5436 done
+#11 unpacking to docker.io/library/kdh-new:insights-chart-20261022-fed378fa5436
+#11 unpacking to docker.io/library/kdh-new:insights-chart-20261022-fed378fa5436 0.3s done
+#11 DONE 1.6s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/qet3vhy6266rxqz6roferh5dt

@@ -1,0 +1,29 @@
+........................................................................ [ 22%]
+........................................................................ [ 45%]
+........................................................................ [ 68%]
+........................................................................ [ 90%]
+.................F...........                                            [100%]
+=================================== FAILURES ===================================
+_______ test_live_report_uses_original_shell_and_hides_empty_components ________
+
+>   ???
+E   assert 'facebook-content.css?v=content-polish-20261021' in '<!DOCTYPE html>\n<html lang="vi">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-wi..."start": "2026-09-21"}, "report_id": "rpt_f970ac9970eb4868590addebc027e6dd", "revision": 1}</script>\n</body>\n</html>'
+
+D:\KDH-Report-All\KDH-Report-New\tests\test_vio_content.py:133: AssertionError
+=============================== warnings summary ===============================
+../usr/local/lib/python3.12/site-packages/starlette/testclient.py:40
+  /usr/local/lib/python3.12/site-packages/starlette/testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_design_preview.py::test_design_preview_opens_existing_overview_without_login
+tests/test_facebook_ads.py::test_page_aliases_and_local_assets_after_reorganization
+tests/test_published_reports.py::test_old_demo_pages_still_work_without_viewer_auth[/overview]
+tests/test_reports.py::test_overview_renders_reference_dashboard
+  /usr/local/lib/python3.12/site-packages/starlette/templating.py:161: DeprecationWarning: The `name` is not the first parameter anymore. The first parameter should be the `Request` instance.
+  Replace `TemplateResponse(name, {"request": request})` by `TemplateResponse(request, name)`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_vio_content.py::test_live_report_uses_original_shell_and_hides_empty_components
+1 failed, 316 passed, 5 warnings in 10.98s

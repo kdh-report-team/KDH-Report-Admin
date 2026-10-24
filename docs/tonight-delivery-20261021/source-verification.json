@@ -1,0 +1,22 @@
+{
+  "kdh-meta-2b-admin-20261016-132836-5c512a53": {
+    "image": "sha256:430b00f759e59c7310a9d1e8f3867097f588a99cfa0aaf26236c3308e48d5aaa",
+    "file_count": 12,
+    "runtime_and_local_hashes": "MATCH",
+    "health": "healthy"
+  },
+  "kdh-report-new-app-1": {
+    "image": "sha256:88539e00e31b36f4f044db76412da4472412a44e705655841733720820abc2de",
+    "file_count": 19,
+    "runtime_and_local_hashes": "MATCH",
+    "health": "healthy"
+  },
+  "git": {
+    "D:\\KDH-Report-All\\KDH-Report-Admin": "6b52ee2f3ef29ebb5820e95e88ba318a7599667d",
+    "D:\\KDH-Report-All\\KDH-Report-New": "1e3df3c7f4a93576ad2599ceee99c1958e7cc636"
+  },
+  "network_policy": "MATCH",
+  "network_identity_changes": {
+    "bridge": "Docker default bridge ID renewed after Engine restart; policy unchanged"
+  }
+}

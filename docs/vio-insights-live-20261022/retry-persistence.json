@@ -1,0 +1,247 @@
+{
+  "job": {
+    "id": "5e320fe5250726ec421829fceedcb94f",
+    "status": "succeeded",
+    "created_at": "2026-10-22T02:45:38.111406+00:00",
+    "started_at": "2026-10-22T02:45:38.276997+00:00",
+    "finished_at": "2026-10-22T02:45:57.283122+00:00",
+    "steps": "[{\"source\": \"facebook_content\", \"status\": \"succeeded\", \"record_count\": 43}]",
+    "error": null
+  },
+  "run": {
+    "id": "d1cec7997ce5bbd67b693a2eca5ad16e",
+    "status": "succeeded",
+    "record_count": 43,
+    "created_at": "2026-10-22T02:45:38.439862+00:00",
+    "finished_at": "2026-10-22T02:45:57.283122+00:00",
+    "error_code": null,
+    "requested_start": "2026-09-21",
+    "requested_end": "2026-10-18"
+  },
+  "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+  "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+  "receipt_valid": true,
+  "daily_consistent": true,
+  "totals": {
+    "posts_published": 15,
+    "reactions": null,
+    "comments": null,
+    "shares": null,
+    "engagements": null
+  },
+  "insights_status": "available",
+  "requests_used": 36,
+  "measurements": [
+    {
+      "metric": "page_media_view",
+      "object_id": "2188688654687066",
+      "status": "available",
+      "point_count": 28
+    },
+    {
+      "metric": "page_total_media_view_unique",
+      "object_id": "2188688654687066",
+      "status": "available",
+      "point_count": 28
+    },
+    {
+      "metric": "page_post_engagements",
+      "object_id": "2188688654687066",
+      "status": "available",
+      "point_count": 28
+    },
+    {
+      "metric": "page_follows",
+      "object_id": "2188688654687066",
+      "status": "available",
+      "point_count": 28
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1622112046596677",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1622112046596677",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1621684259972789",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1621684259972789",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1619541213520427",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1619541213520427",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1617738463700702",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1617738463700702",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1617296390411576",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1617296390411576",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1612113770929838",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1612113770929838",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1608647147943167",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1608647147943167",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1606662568141625",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1606662568141625",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1604235145051034",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1604235145051034",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1603906321750583",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1603906321750583",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1599996265474922",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1599996265474922",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1597180905756458",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1597180905756458",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1596605852480630",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1596605852480630",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1594908689317013",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1594908689317013",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_media_view",
+      "object_id": "2188688654687066_1592879599519922",
+      "status": "available",
+      "point_count": 1
+    },
+    {
+      "metric": "post_total_media_view_unique",
+      "object_id": "2188688654687066_1592879599519922",
+      "status": "available",
+      "point_count": 1
+    }
+  ],
+  "post_count": 15,
+  "metadata_coverage": {
+    "message": 15,
+    "permalink_url": 0,
+    "format": 15
+  },
+  "matching_datasets": []
+}

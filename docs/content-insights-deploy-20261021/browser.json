@@ -1,0 +1,20 @@
+{
+  "health": "PASS",
+  "login_and_canonical_host": "PASS",
+  "insights_permission_ui": "MISSING_READ_INSIGHTS_CORRECTLY_SHOWN",
+  "existing_revision_1_handoff": "PASS",
+  "metrics": {
+    "posts": 15,
+    "reactions_lifetime": 80,
+    "comments_lifetime": 10,
+    "engagements": "null/no_data",
+    "shares": "null/partial 7/15",
+    "timezone": "UTC"
+  },
+  "wrong_revision_and_no_grant": "DENIED",
+  "wrong_origin": "DENIED",
+  "viewer_logout": "PASS",
+  "business_data": "UNCHANGED",
+  "new_and_other_containers": "UNCHANGED",
+  "provider_calls": "NOT RUN"
+}

@@ -1,0 +1,2599 @@
+{
+  "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+  "client_id": "client_meta_sandbox",
+  "comparison": null,
+  "content_report": {
+    "comparison": {
+      "reason": "Meta contract hiện chỉ hỗ trợ một kỳ; chưa có snapshot kỳ so sánh.",
+      "status": "unsupported"
+    },
+    "daily_posts": [
+      {
+        "date": "2026-09-21",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-09-22",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-09-23",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-09-24",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-09-25",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-09-26",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-09-27",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-09-28",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-09-29",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-09-30",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-01",
+        "posts_published": 2
+      },
+      {
+        "date": "2026-10-02",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-03",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-10-04",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-05",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-10-06",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-07",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-08",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-10-09",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-10",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-11",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-12",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-13",
+        "posts_published": 2
+      },
+      {
+        "date": "2026-10-14",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-15",
+        "posts_published": 1
+      },
+      {
+        "date": "2026-10-16",
+        "posts_published": 0
+      },
+      {
+        "date": "2026-10-17",
+        "posts_published": 2
+      },
+      {
+        "date": "2026-10-18",
+        "posts_published": 0
+      }
+    ],
+    "editorial": {
+      "notes": {},
+      "topics": {}
+    },
+    "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+    "identity": {
+      "account": null,
+      "asset_type": "facebook_page",
+      "client_id": "client_meta_sandbox",
+      "external_id": "2188688654687066"
+    },
+    "insights": {
+      "charts": [
+        {
+          "integer_axis": true,
+          "kind": "bar",
+          "labels": [
+            "2026-09-22T07:00:00+00:00",
+            "2026-09-23T07:00:00+00:00",
+            "2026-09-24T07:00:00+00:00",
+            "2026-09-25T07:00:00+00:00",
+            "2026-09-26T07:00:00+00:00",
+            "2026-09-27T07:00:00+00:00",
+            "2026-09-28T07:00:00+00:00",
+            "2026-09-29T07:00:00+00:00",
+            "2026-09-30T07:00:00+00:00",
+            "2026-10-01T07:00:00+00:00",
+            "2026-10-02T07:00:00+00:00",
+            "2026-10-03T07:00:00+00:00",
+            "2026-10-04T07:00:00+00:00",
+            "2026-10-05T07:00:00+00:00",
+            "2026-10-06T07:00:00+00:00",
+            "2026-10-07T07:00:00+00:00",
+            "2026-10-08T07:00:00+00:00",
+            "2026-10-09T07:00:00+00:00",
+            "2026-10-10T07:00:00+00:00",
+            "2026-10-11T07:00:00+00:00",
+            "2026-10-12T07:00:00+00:00",
+            "2026-10-13T07:00:00+00:00",
+            "2026-10-14T07:00:00+00:00",
+            "2026-10-15T07:00:00+00:00",
+            "2026-10-16T07:00:00+00:00",
+            "2026-10-17T07:00:00+00:00",
+            "2026-10-18T07:00:00+00:00",
+            "2026-10-19T07:00:00+00:00"
+          ],
+          "source": "Facebook Page Insights",
+          "status": "available",
+          "timezone": "provider_end_time",
+          "title": "Lượt xem nội dung Page · mốc kết thúc ngày Meta",
+          "unit": "count",
+          "values": [
+            10313,
+            9967,
+            10060,
+            4890,
+            1664,
+            2206,
+            4022,
+            3862,
+            5448,
+            3305,
+            5952,
+            4380,
+            5599,
+            5739,
+            4568,
+            5352,
+            4625,
+            2017,
+            209,
+            89,
+            114,
+            241,
+            441,
+            324,
+            131,
+            484,
+            539,
+            243
+          ]
+        },
+        {
+          "integer_axis": true,
+          "kind": "bar",
+          "labels": [
+            "2026-09-22T07:00:00+00:00",
+            "2026-09-23T07:00:00+00:00",
+            "2026-09-24T07:00:00+00:00",
+            "2026-09-25T07:00:00+00:00",
+            "2026-09-26T07:00:00+00:00",
+            "2026-09-27T07:00:00+00:00",
+            "2026-09-28T07:00:00+00:00",
+            "2026-09-29T07:00:00+00:00",
+            "2026-09-30T07:00:00+00:00",
+            "2026-10-01T07:00:00+00:00",
+            "2026-10-02T07:00:00+00:00",
+            "2026-10-03T07:00:00+00:00",
+            "2026-10-04T07:00:00+00:00",
+            "2026-10-05T07:00:00+00:00",
+            "2026-10-06T07:00:00+00:00",
+            "2026-10-07T07:00:00+00:00",
+            "2026-10-08T07:00:00+00:00",
+            "2026-10-09T07:00:00+00:00",
+            "2026-10-10T07:00:00+00:00",
+            "2026-10-11T07:00:00+00:00",
+            "2026-10-12T07:00:00+00:00",
+            "2026-10-13T07:00:00+00:00",
+            "2026-10-14T07:00:00+00:00",
+            "2026-10-15T07:00:00+00:00",
+            "2026-10-16T07:00:00+00:00",
+            "2026-10-17T07:00:00+00:00",
+            "2026-10-18T07:00:00+00:00",
+            "2026-10-19T07:00:00+00:00"
+          ],
+          "source": "Facebook Page Insights",
+          "status": "available",
+          "timezone": "provider_end_time",
+          "title": "Người xem duy nhất mỗi ngày · mốc kết thúc ngày Meta",
+          "unit": "count",
+          "values": [
+            10415,
+            9429,
+            9405,
+            4542,
+            1110,
+            1524,
+            2522,
+            2270,
+            3581,
+            2109,
+            3854,
+            2629,
+            3727,
+            3760,
+            3055,
+            3221,
+            2830,
+            1212,
+            119,
+            40,
+            36,
+            117,
+            142,
+            39,
+            46,
+            112,
+            193,
+            67
+          ]
+        },
+        {
+          "integer_axis": true,
+          "kind": "bar",
+          "labels": [
+            "2026-09-22T07:00:00+00:00",
+            "2026-09-23T07:00:00+00:00",
+            "2026-09-24T07:00:00+00:00",
+            "2026-09-25T07:00:00+00:00",
+            "2026-09-26T07:00:00+00:00",
+            "2026-09-27T07:00:00+00:00",
+            "2026-09-28T07:00:00+00:00",
+            "2026-09-29T07:00:00+00:00",
+            "2026-09-30T07:00:00+00:00",
+            "2026-10-01T07:00:00+00:00",
+            "2026-10-02T07:00:00+00:00",
+            "2026-10-03T07:00:00+00:00",
+            "2026-10-04T07:00:00+00:00",
+            "2026-10-05T07:00:00+00:00",
+            "2026-10-06T07:00:00+00:00",
+            "2026-10-07T07:00:00+00:00",
+            "2026-10-08T07:00:00+00:00",
+            "2026-10-09T07:00:00+00:00",
+            "2026-10-10T07:00:00+00:00",
+            "2026-10-11T07:00:00+00:00",
+            "2026-10-12T07:00:00+00:00",
+            "2026-10-13T07:00:00+00:00",
+            "2026-10-14T07:00:00+00:00",
+            "2026-10-15T07:00:00+00:00",
+            "2026-10-16T07:00:00+00:00",
+            "2026-10-17T07:00:00+00:00",
+            "2026-10-18T07:00:00+00:00",
+            "2026-10-19T07:00:00+00:00"
+          ],
+          "source": "Facebook Page Insights",
+          "status": "available",
+          "timezone": "provider_end_time",
+          "title": "Tương tác bài viết trên Page · mốc kết thúc ngày Meta",
+          "unit": "count",
+          "values": [
+            5,
+            4,
+            4,
+            25,
+            54,
+            56,
+            149,
+            141,
+            139,
+            76,
+            151,
+            107,
+            150,
+            148,
+            111,
+            129,
+            140,
+            56,
+            6,
+            0,
+            0,
+            3,
+            13,
+            7,
+            1,
+            17,
+            78,
+            17
+          ]
+        },
+        {
+          "integer_axis": true,
+          "kind": "bar",
+          "labels": [
+            "2026-09-22T07:00:00+00:00",
+            "2026-09-23T07:00:00+00:00",
+            "2026-09-24T07:00:00+00:00",
+            "2026-09-25T07:00:00+00:00",
+            "2026-09-26T07:00:00+00:00",
+            "2026-09-27T07:00:00+00:00",
+            "2026-09-28T07:00:00+00:00",
+            "2026-09-29T07:00:00+00:00",
+            "2026-09-30T07:00:00+00:00",
+            "2026-10-01T07:00:00+00:00",
+            "2026-10-02T07:00:00+00:00",
+            "2026-10-03T07:00:00+00:00",
+            "2026-10-04T07:00:00+00:00",
+            "2026-10-05T07:00:00+00:00",
+            "2026-10-06T07:00:00+00:00",
+            "2026-10-07T07:00:00+00:00",
+            "2026-10-08T07:00:00+00:00",
+            "2026-10-09T07:00:00+00:00",
+            "2026-10-10T07:00:00+00:00",
+            "2026-10-11T07:00:00+00:00",
+            "2026-10-12T07:00:00+00:00",
+            "2026-10-13T07:00:00+00:00",
+            "2026-10-14T07:00:00+00:00",
+            "2026-10-15T07:00:00+00:00",
+            "2026-10-16T07:00:00+00:00",
+            "2026-10-17T07:00:00+00:00",
+            "2026-10-18T07:00:00+00:00",
+            "2026-10-19T07:00:00+00:00"
+          ],
+          "source": "Facebook Page Insights",
+          "status": "available",
+          "timezone": "provider_end_time",
+          "title": "Tổng người theo dõi tại cuối ngày · mốc kết thúc ngày Meta",
+          "unit": "count",
+          "values": [
+            12637,
+            12638,
+            12638,
+            12638,
+            12640,
+            12640,
+            12640,
+            12640,
+            12640,
+            12639,
+            12639,
+            12642,
+            12642,
+            12643,
+            12643,
+            12642,
+            12642,
+            12643,
+            12643,
+            12643,
+            12643,
+            12643,
+            12643,
+            12643,
+            12642,
+            12644,
+            12645,
+            12644
+          ]
+        }
+      ],
+      "fetched_at": "2026-10-22T02:45:39.765268+00:00",
+      "graph_version": "v26.0",
+      "measurement_timezone": "provider_end_time",
+      "measurements": [
+        {
+          "aggregation": "sum_exact_intervals",
+          "coverage": {
+            "available": 28,
+            "expected": 28,
+            "unit": "days"
+          },
+          "fetched_at": "2026-10-22T02:45:39.765350+00:00",
+          "label": "Lượt xem nội dung Page",
+          "metric": "page_media_view",
+          "object_id": "2188688654687066",
+          "period": "day",
+          "reason": "Ranh giới ngày Insights không khớp kỳ UTC; giữ số đo gốc, chưa công bố tổng kỳ.",
+          "report_status": "period_boundary_mismatch",
+          "scope": "page",
+          "status": "available",
+          "unit": "count",
+          "value": null,
+          "values": [
+            {
+              "end_time": "2026-09-22T07:00:00+00:00",
+              "value": 10313
+            },
+            {
+              "end_time": "2026-09-23T07:00:00+00:00",
+              "value": 9967
+            },
+            {
+              "end_time": "2026-09-24T07:00:00+00:00",
+              "value": 10060
+            },
+            {
+              "end_time": "2026-09-25T07:00:00+00:00",
+              "value": 4890
+            },
+            {
+              "end_time": "2026-09-26T07:00:00+00:00",
+              "value": 1664
+            },
+            {
+              "end_time": "2026-09-27T07:00:00+00:00",
+              "value": 2206
+            },
+            {
+              "end_time": "2026-09-28T07:00:00+00:00",
+              "value": 4022
+            },
+            {
+              "end_time": "2026-09-29T07:00:00+00:00",
+              "value": 3862
+            },
+            {
+              "end_time": "2026-09-30T07:00:00+00:00",
+              "value": 5448
+            },
+            {
+              "end_time": "2026-10-01T07:00:00+00:00",
+              "value": 3305
+            },
+            {
+              "end_time": "2026-10-02T07:00:00+00:00",
+              "value": 5952
+            },
+            {
+              "end_time": "2026-10-03T07:00:00+00:00",
+              "value": 4380
+            },
+            {
+              "end_time": "2026-10-04T07:00:00+00:00",
+              "value": 5599
+            },
+            {
+              "end_time": "2026-10-05T07:00:00+00:00",
+              "value": 5739
+            },
+            {
+              "end_time": "2026-10-06T07:00:00+00:00",
+              "value": 4568
+            },
+            {
+              "end_time": "2026-10-07T07:00:00+00:00",
+              "value": 5352
+            },
+            {
+              "end_time": "2026-10-08T07:00:00+00:00",
+              "value": 4625
+            },
+            {
+              "end_time": "2026-10-09T07:00:00+00:00",
+              "value": 2017
+            },
+            {
+              "end_time": "2026-10-10T07:00:00+00:00",
+              "value": 209
+            },
+            {
+              "end_time": "2026-10-11T07:00:00+00:00",
+              "value": 89
+            },
+            {
+              "end_time": "2026-10-12T07:00:00+00:00",
+              "value": 114
+            },
+            {
+              "end_time": "2026-10-13T07:00:00+00:00",
+              "value": 241
+            },
+            {
+              "end_time": "2026-10-14T07:00:00+00:00",
+              "value": 441
+            },
+            {
+              "end_time": "2026-10-15T07:00:00+00:00",
+              "value": 324
+            },
+            {
+              "end_time": "2026-10-16T07:00:00+00:00",
+              "value": 131
+            },
+            {
+              "end_time": "2026-10-17T07:00:00+00:00",
+              "value": 484
+            },
+            {
+              "end_time": "2026-10-18T07:00:00+00:00",
+              "value": 539
+            },
+            {
+              "end_time": "2026-10-19T07:00:00+00:00",
+              "value": 243
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 28,
+            "expected": 28,
+            "unit": "days"
+          },
+          "fetched_at": "2026-10-22T02:45:40.425627+00:00",
+          "label": "Người xem duy nhất mỗi ngày",
+          "metric": "page_total_media_view_unique",
+          "object_id": "2188688654687066",
+          "period": "day",
+          "reason": "",
+          "report_status": "available",
+          "scope": "page",
+          "status": "available",
+          "unit": "count",
+          "value": null,
+          "values": [
+            {
+              "end_time": "2026-09-22T07:00:00+00:00",
+              "value": 10415
+            },
+            {
+              "end_time": "2026-09-23T07:00:00+00:00",
+              "value": 9429
+            },
+            {
+              "end_time": "2026-09-24T07:00:00+00:00",
+              "value": 9405
+            },
+            {
+              "end_time": "2026-09-25T07:00:00+00:00",
+              "value": 4542
+            },
+            {
+              "end_time": "2026-09-26T07:00:00+00:00",
+              "value": 1110
+            },
+            {
+              "end_time": "2026-09-27T07:00:00+00:00",
+              "value": 1524
+            },
+            {
+              "end_time": "2026-09-28T07:00:00+00:00",
+              "value": 2522
+            },
+            {
+              "end_time": "2026-09-29T07:00:00+00:00",
+              "value": 2270
+            },
+            {
+              "end_time": "2026-09-30T07:00:00+00:00",
+              "value": 3581
+            },
+            {
+              "end_time": "2026-10-01T07:00:00+00:00",
+              "value": 2109
+            },
+            {
+              "end_time": "2026-10-02T07:00:00+00:00",
+              "value": 3854
+            },
+            {
+              "end_time": "2026-10-03T07:00:00+00:00",
+              "value": 2629
+            },
+            {
+              "end_time": "2026-10-04T07:00:00+00:00",
+              "value": 3727
+            },
+            {
+              "end_time": "2026-10-05T07:00:00+00:00",
+              "value": 3760
+            },
+            {
+              "end_time": "2026-10-06T07:00:00+00:00",
+              "value": 3055
+            },
+            {
+              "end_time": "2026-10-07T07:00:00+00:00",
+              "value": 3221
+            },
+            {
+              "end_time": "2026-10-08T07:00:00+00:00",
+              "value": 2830
+            },
+            {
+              "end_time": "2026-10-09T07:00:00+00:00",
+              "value": 1212
+            },
+            {
+              "end_time": "2026-10-10T07:00:00+00:00",
+              "value": 119
+            },
+            {
+              "end_time": "2026-10-11T07:00:00+00:00",
+              "value": 40
+            },
+            {
+              "end_time": "2026-10-12T07:00:00+00:00",
+              "value": 36
+            },
+            {
+              "end_time": "2026-10-13T07:00:00+00:00",
+              "value": 117
+            },
+            {
+              "end_time": "2026-10-14T07:00:00+00:00",
+              "value": 142
+            },
+            {
+              "end_time": "2026-10-15T07:00:00+00:00",
+              "value": 39
+            },
+            {
+              "end_time": "2026-10-16T07:00:00+00:00",
+              "value": 46
+            },
+            {
+              "end_time": "2026-10-17T07:00:00+00:00",
+              "value": 112
+            },
+            {
+              "end_time": "2026-10-18T07:00:00+00:00",
+              "value": 193
+            },
+            {
+              "end_time": "2026-10-19T07:00:00+00:00",
+              "value": 67
+            }
+          ]
+        },
+        {
+          "aggregation": "sum_exact_intervals",
+          "coverage": {
+            "available": 28,
+            "expected": 28,
+            "unit": "days"
+          },
+          "fetched_at": "2026-10-22T02:45:40.938918+00:00",
+          "label": "Tương tác bài viết trên Page",
+          "metric": "page_post_engagements",
+          "object_id": "2188688654687066",
+          "period": "day",
+          "reason": "Ranh giới ngày Insights không khớp kỳ UTC; giữ số đo gốc, chưa công bố tổng kỳ.",
+          "report_status": "period_boundary_mismatch",
+          "scope": "page",
+          "status": "available",
+          "unit": "count",
+          "value": null,
+          "values": [
+            {
+              "end_time": "2026-09-22T07:00:00+00:00",
+              "value": 5
+            },
+            {
+              "end_time": "2026-09-23T07:00:00+00:00",
+              "value": 4
+            },
+            {
+              "end_time": "2026-09-24T07:00:00+00:00",
+              "value": 4
+            },
+            {
+              "end_time": "2026-09-25T07:00:00+00:00",
+              "value": 25
+            },
+            {
+              "end_time": "2026-09-26T07:00:00+00:00",
+              "value": 54
+            },
+            {
+              "end_time": "2026-09-27T07:00:00+00:00",
+              "value": 56
+            },
+            {
+              "end_time": "2026-09-28T07:00:00+00:00",
+              "value": 149
+            },
+            {
+              "end_time": "2026-09-29T07:00:00+00:00",
+              "value": 141
+            },
+            {
+              "end_time": "2026-09-30T07:00:00+00:00",
+              "value": 139
+            },
+            {
+              "end_time": "2026-10-01T07:00:00+00:00",
+              "value": 76
+            },
+            {
+              "end_time": "2026-10-02T07:00:00+00:00",
+              "value": 151
+            },
+            {
+              "end_time": "2026-10-03T07:00:00+00:00",
+              "value": 107
+            },
+            {
+              "end_time": "2026-10-04T07:00:00+00:00",
+              "value": 150
+            },
+            {
+              "end_time": "2026-10-05T07:00:00+00:00",
+              "value": 148
+            },
+            {
+              "end_time": "2026-10-06T07:00:00+00:00",
+              "value": 111
+            },
+            {
+              "end_time": "2026-10-07T07:00:00+00:00",
+              "value": 129
+            },
+            {
+              "end_time": "2026-10-08T07:00:00+00:00",
+              "value": 140
+            },
+            {
+              "end_time": "2026-10-09T07:00:00+00:00",
+              "value": 56
+            },
+            {
+              "end_time": "2026-10-10T07:00:00+00:00",
+              "value": 6
+            },
+            {
+              "end_time": "2026-10-11T07:00:00+00:00",
+              "value": 0
+            },
+            {
+              "end_time": "2026-10-12T07:00:00+00:00",
+              "value": 0
+            },
+            {
+              "end_time": "2026-10-13T07:00:00+00:00",
+              "value": 3
+            },
+            {
+              "end_time": "2026-10-14T07:00:00+00:00",
+              "value": 13
+            },
+            {
+              "end_time": "2026-10-15T07:00:00+00:00",
+              "value": 7
+            },
+            {
+              "end_time": "2026-10-16T07:00:00+00:00",
+              "value": 1
+            },
+            {
+              "end_time": "2026-10-17T07:00:00+00:00",
+              "value": 17
+            },
+            {
+              "end_time": "2026-10-18T07:00:00+00:00",
+              "value": 78
+            },
+            {
+              "end_time": "2026-10-19T07:00:00+00:00",
+              "value": 17
+            }
+          ]
+        },
+        {
+          "aggregation": "stock_non_additive",
+          "coverage": {
+            "available": 28,
+            "expected": 28,
+            "unit": "days"
+          },
+          "fetched_at": "2026-10-22T02:45:41.387831+00:00",
+          "label": "Tổng người theo dõi tại cuối ngày",
+          "metric": "page_follows",
+          "object_id": "2188688654687066",
+          "period": "day",
+          "reason": "",
+          "report_status": "available",
+          "scope": "page",
+          "status": "available",
+          "unit": "count",
+          "value": null,
+          "values": [
+            {
+              "end_time": "2026-09-22T07:00:00+00:00",
+              "value": 12637
+            },
+            {
+              "end_time": "2026-09-23T07:00:00+00:00",
+              "value": 12638
+            },
+            {
+              "end_time": "2026-09-24T07:00:00+00:00",
+              "value": 12638
+            },
+            {
+              "end_time": "2026-09-25T07:00:00+00:00",
+              "value": 12638
+            },
+            {
+              "end_time": "2026-09-26T07:00:00+00:00",
+              "value": 12640
+            },
+            {
+              "end_time": "2026-09-27T07:00:00+00:00",
+              "value": 12640
+            },
+            {
+              "end_time": "2026-09-28T07:00:00+00:00",
+              "value": 12640
+            },
+            {
+              "end_time": "2026-09-29T07:00:00+00:00",
+              "value": 12640
+            },
+            {
+              "end_time": "2026-09-30T07:00:00+00:00",
+              "value": 12640
+            },
+            {
+              "end_time": "2026-10-01T07:00:00+00:00",
+              "value": 12639
+            },
+            {
+              "end_time": "2026-10-02T07:00:00+00:00",
+              "value": 12639
+            },
+            {
+              "end_time": "2026-10-03T07:00:00+00:00",
+              "value": 12642
+            },
+            {
+              "end_time": "2026-10-04T07:00:00+00:00",
+              "value": 12642
+            },
+            {
+              "end_time": "2026-10-05T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-06T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-07T07:00:00+00:00",
+              "value": 12642
+            },
+            {
+              "end_time": "2026-10-08T07:00:00+00:00",
+              "value": 12642
+            },
+            {
+              "end_time": "2026-10-09T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-10T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-11T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-12T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-13T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-14T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-15T07:00:00+00:00",
+              "value": 12643
+            },
+            {
+              "end_time": "2026-10-16T07:00:00+00:00",
+              "value": 12642
+            },
+            {
+              "end_time": "2026-10-17T07:00:00+00:00",
+              "value": 12644
+            },
+            {
+              "end_time": "2026-10-18T07:00:00+00:00",
+              "value": 12645
+            },
+            {
+              "end_time": "2026-10-19T07:00:00+00:00",
+              "value": 12644
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:41.821668+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1622112046596677",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 459,
+          "values": [
+            {
+              "end_time": null,
+              "value": 459
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:42.244992+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1622112046596677",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 187,
+          "values": [
+            {
+              "end_time": null,
+              "value": 187
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:42.732245+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1621684259972789",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 370,
+          "values": [
+            {
+              "end_time": null,
+              "value": 370
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:43.440032+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1621684259972789",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 189,
+          "values": [
+            {
+              "end_time": null,
+              "value": 189
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:43.918149+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1619541213520427",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 161,
+          "values": [
+            {
+              "end_time": null,
+              "value": 161
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:44.461779+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1619541213520427",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 58,
+          "values": [
+            {
+              "end_time": null,
+              "value": 58
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:44.943334+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1617738463700702",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 164,
+          "values": [
+            {
+              "end_time": null,
+              "value": 164
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:45.407525+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1617738463700702",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 63,
+          "values": [
+            {
+              "end_time": null,
+              "value": 63
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:45.883129+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1617296390411576",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 373,
+          "values": [
+            {
+              "end_time": null,
+              "value": 373
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:46.404331+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1617296390411576",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 231,
+          "values": [
+            {
+              "end_time": null,
+              "value": 231
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:46.865703+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1612113770929838",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 261,
+          "values": [
+            {
+              "end_time": null,
+              "value": 261
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:47.301501+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1612113770929838",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 163,
+          "values": [
+            {
+              "end_time": null,
+              "value": 163
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:47.740792+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1608647147943167",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 377,
+          "values": [
+            {
+              "end_time": null,
+              "value": 377
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:48.240434+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1608647147943167",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 223,
+          "values": [
+            {
+              "end_time": null,
+              "value": 223
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:48.745960+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1606662568141625",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 908,
+          "values": [
+            {
+              "end_time": null,
+              "value": 908
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:49.244218+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1606662568141625",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 542,
+          "values": [
+            {
+              "end_time": null,
+              "value": 542
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:49.750384+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1604235145051034",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 1185,
+          "values": [
+            {
+              "end_time": null,
+              "value": 1185
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:50.227819+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1604235145051034",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 564,
+          "values": [
+            {
+              "end_time": null,
+              "value": 564
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:50.764041+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1603906321750583",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 452,
+          "values": [
+            {
+              "end_time": null,
+              "value": 452
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:51.259060+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1603906321750583",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 258,
+          "values": [
+            {
+              "end_time": null,
+              "value": 258
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:51.853866+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1599996265474922",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 34896,
+          "values": [
+            {
+              "end_time": null,
+              "value": 34896
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:52.391511+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1599996265474922",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 11290,
+          "values": [
+            {
+              "end_time": null,
+              "value": 11290
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:52.842710+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1597180905756458",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 514,
+          "values": [
+            {
+              "end_time": null,
+              "value": 514
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:53.569688+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1597180905756458",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 310,
+          "values": [
+            {
+              "end_time": null,
+              "value": 310
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:54.128016+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1596605852480630",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 19644,
+          "values": [
+            {
+              "end_time": null,
+              "value": 19644
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:54.603982+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1596605852480630",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 8395,
+          "values": [
+            {
+              "end_time": null,
+              "value": 8395
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:55.083407+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1594908689317013",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 476,
+          "values": [
+            {
+              "end_time": null,
+              "value": 476
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:55.571552+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1594908689317013",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 278,
+          "values": [
+            {
+              "end_time": null,
+              "value": 278
+            }
+          ]
+        },
+        {
+          "aggregation": "per_post_snapshot",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:56.189407+00:00",
+          "label": "Lượt xem bài tích lũy",
+          "metric": "post_media_view",
+          "object_id": "2188688654687066_1592879599519922",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 491,
+          "values": [
+            {
+              "end_time": null,
+              "value": 491
+            }
+          ]
+        },
+        {
+          "aggregation": "non_additive",
+          "coverage": {
+            "available": 1,
+            "expected": 1,
+            "unit": "observations"
+          },
+          "fetched_at": "2026-10-22T02:45:56.675760+00:00",
+          "label": "Người xem bài duy nhất tích lũy",
+          "metric": "post_total_media_view_unique",
+          "object_id": "2188688654687066_1592879599519922",
+          "period": "lifetime",
+          "reason": "",
+          "report_status": "available",
+          "scope": "post",
+          "status": "available",
+          "unit": "count",
+          "value": 294,
+          "values": [
+            {
+              "end_time": null,
+              "value": 294
+            }
+          ]
+        }
+      ],
+      "page_id": "2188688654687066",
+      "page_tasks": [
+        "ANALYZE"
+      ],
+      "permissions": [
+        "ads_read",
+        "pages_read_engagement",
+        "pages_read_user_content",
+        "pages_show_list",
+        "public_profile",
+        "read_insights"
+      ],
+      "post_coverage": {
+        "expected": 15,
+        "selected": 15
+      },
+      "report_timezone": "UTC",
+      "requested_period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "requests_used": 36,
+      "schema_version": "meta-content-insights-v1",
+      "status": "available"
+    },
+    "metrics": [
+      {
+        "aggregation": "sum",
+        "attribution": null,
+        "coverage": {
+          "available": 28,
+          "expected": 28,
+          "unit": "days"
+        },
+        "currency": null,
+        "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+        "grain": "day",
+        "key": "posts_published",
+        "label": "Bài đăng mới trong kỳ",
+        "metric_id": "facebook_content.posts_published",
+        "observed_sum": null,
+        "provider": "meta",
+        "publishable": false,
+        "reason": "",
+        "status": "available",
+        "unit": "count",
+        "value": 15,
+        "verified": false
+      },
+      {
+        "aggregation": "sum",
+        "attribution": null,
+        "coverage": {
+          "available": 0,
+          "expected": 28,
+          "unit": "days"
+        },
+        "currency": null,
+        "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+        "grain": "day",
+        "key": "engagements",
+        "label": "Tương tác phát sinh trong kỳ",
+        "metric_id": "facebook_content.engagements",
+        "observed_sum": null,
+        "provider": "meta",
+        "publishable": false,
+        "reason": "Chưa có tương tác phát sinh theo ngày UTC của nhóm bài trong kỳ. Page Insights đo toàn Page, không thay thế chỉ số này.",
+        "status": "no_data",
+        "unit": "count",
+        "value": null,
+        "verified": false
+      },
+      {
+        "aggregation": "sum_posts_at_fetch",
+        "attribution": null,
+        "coverage": {
+          "available": 15,
+          "expected": 15,
+          "unit": "posts"
+        },
+        "currency": null,
+        "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+        "grain": "snapshot",
+        "key": "reactions_lifetime",
+        "label": "Reactions lifetime",
+        "metric_id": "facebook_content.reactions_lifetime",
+        "observed_sum": 81,
+        "provider": "meta",
+        "publishable": false,
+        "reason": "",
+        "status": "available",
+        "unit": "count",
+        "value": 81,
+        "verified": false
+      },
+      {
+        "aggregation": "sum_posts_at_fetch",
+        "attribution": null,
+        "coverage": {
+          "available": 15,
+          "expected": 15,
+          "unit": "posts"
+        },
+        "currency": null,
+        "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+        "grain": "snapshot",
+        "key": "comments_lifetime",
+        "label": "Comments lifetime",
+        "metric_id": "facebook_content.comments_lifetime",
+        "observed_sum": 10,
+        "provider": "meta",
+        "publishable": false,
+        "reason": "",
+        "status": "available",
+        "unit": "count",
+        "value": 10,
+        "verified": false
+      },
+      {
+        "aggregation": "sum_posts_at_fetch",
+        "attribution": null,
+        "coverage": {
+          "available": 10,
+          "expected": 15,
+          "unit": "posts"
+        },
+        "currency": null,
+        "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+        "grain": "snapshot",
+        "key": "shares_lifetime",
+        "label": "Shares lifetime",
+        "metric_id": "facebook_content.shares_lifetime",
+        "observed_sum": 18,
+        "provider": "meta",
+        "publishable": false,
+        "reason": "Chưa có đủ bộ đếm từng bài.",
+        "status": "partial",
+        "unit": "count",
+        "value": null,
+        "verified": false
+      },
+      {
+        "key": "reach",
+        "label": "Lượt tiếp cận",
+        "reason": "Đã thu thập Insights riêng; chỉ số này chưa có equivalent cùng định nghĩa và phạm vi. Unique viewers mới cần xác minh tương đương và kỳ; không cộng unique theo ngày.",
+        "status": "unsupported",
+        "value": null
+      },
+      {
+        "key": "engagement_rate",
+        "label": "Tỷ lệ tương tác (ER)",
+        "reason": "Cần tương tác và reach cùng phạm vi, kỳ, định nghĩa; Admin chưa đủ đầu vào để tính.",
+        "status": "unsupported",
+        "value": null
+      },
+      {
+        "key": "followers_gained",
+        "label": "Người theo dõi mới",
+        "reason": "Đã thu thập Insights riêng; chỉ số này chưa có equivalent cùng định nghĩa và phạm vi. Phân biệt follows mới, unfollows và tổng followers.",
+        "status": "unsupported",
+        "value": null
+      },
+      {
+        "key": "link_clicks",
+        "label": "Lượt nhấp liên kết",
+        "reason": "Đã thu thập Insights riêng; chỉ số này chưa có equivalent cùng định nghĩa và phạm vi. Cần xác minh click loại link trên v26.",
+        "status": "unsupported",
+        "value": null
+      },
+      {
+        "key": "ctr",
+        "label": "CTR",
+        "reason": "Chưa đủ click và mẫu số đã thống nhất; không tự lấy CTR quảng cáo.",
+        "status": "unsupported",
+        "value": null
+      },
+      {
+        "key": "response_rate",
+        "label": "Tỷ lệ phản hồi tin nhắn",
+        "reason": "Ngoài contract Content hiện tại; chưa có nguồn và định nghĩa được nghiệm thu.",
+        "status": "unsupported",
+        "value": null
+      }
+    ],
+    "period": {
+      "end": "2026-10-18",
+      "start": "2026-09-21"
+    },
+    "review_status": "pending_review",
+    "schema_version": "facebook-content-report-v1",
+    "sections": {
+      "engagement": {
+        "key": "engagement",
+        "label": "Cấu trúc tương tác trong kỳ",
+        "reason": "Đã thu thập Insights riêng; chỉ số này chưa có equivalent cùng định nghĩa và phạm vi. Không cộng lifetime thành tương tác trong kỳ.",
+        "rows": [],
+        "status": "unsupported"
+      },
+      "formats": {
+        "coverage": {
+          "available": 15,
+          "expected": 15,
+          "unit": "posts"
+        },
+        "key": "formats",
+        "label": "Phân bổ định dạng nội dung",
+        "reason": "Phân bố số bài; chưa có reach/ER theo nhóm.",
+        "rows": [
+          {
+            "count": 2,
+            "engagement_rate": null,
+            "key": "album",
+            "label": "Album ảnh",
+            "percent": 13.33,
+            "reach": null
+          },
+          {
+            "count": 13,
+            "engagement_rate": null,
+            "key": "photo",
+            "label": "Ảnh",
+            "percent": 86.67,
+            "reach": null
+          }
+        ],
+        "status": "available"
+      },
+      "insights": {
+        "key": "insights",
+        "label": "Nhận định và đề xuất",
+        "reason": "Chưa có nhận xét do người phụ trách nhập và duyệt.",
+        "rows": [],
+        "status": "unsupported"
+      },
+      "overview": {
+        "key": "overview",
+        "label": "Kết quả tổng quan",
+        "reason": "Chỉ số lifetime được tách riêng; không thay thế tương tác trong kỳ.",
+        "rows": [],
+        "status": "partial"
+      },
+      "posts": {
+        "key": "posts",
+        "label": "Hiệu quả bài đăng",
+        "reason": "Reach, ER và click chưa được thu thập; ô thiếu giữ nguyên null.",
+        "rows": [
+          {
+            "comments_lifetime": 1,
+            "date": "2026-10-17",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "album",
+            "link_clicks": null,
+            "message": "🎊 TỔNG KẾT LỄ KÝ KẾT HỢP TÁC CHIẾN LƯỢC (MOU) - MỞ RỘNG MẠNG LƯỚI ĐỐI TÁC CÙNG VIO ACADEMY\n\nNgày 15.10.2026, VIO Academy đã chính thức ký kết thỏa thuận hợp tác chiến lược (MOU) cùng đối tác, đánh dấu một bước tiến mới trong hành trình mở rộng hệ sinh thái và tăng cường kết nối giữa các doanh nghiệp.\n\nTại buổi lễ, bà Cao Anh Thi – Founder & CEO Công ty TNHH VIO, cùng đại diện các đối tác đã cùng trao đổi, thống nhất các định hướng hợp tác dựa trên thế mạnh và nguồn lực của mỗi doanh nghiệp, tập trung vào: \n🔸 Kết nối khách hàng: Giới thiệu khách hàng, học viên hoặc doanh nghiệp có nhu cầu phù hợp giữa hai bên.\n🔸 Đào tạo & chia sẻ chuyên môn: Phối hợp tổ chức workshop, webinar, seminar và các chương trình đào tạo về Digital Marketing, AI và kỹ năng ứng dụng trong Marketing, kinh doanh.\n🔸 Kết nối nguồn lực: Kết nối chuyên gia, cộng đồng và các cơ hội kinh doanh phù hợp trong hệ sinh thái của hai bên.\n🔸 Phối hợp truyền thông: Truyền thông các hoạt động hợp tác trên website, fanpage và các kênh social chính thức.\n🔸 Hợp tác dài hạn: Xây dựng các chương trình hợp tác dựa trên thế mạnh và định hướng phát triển của từng đơn vị.\n\nVIO Academy trân trọng cảm ơn Quý Đối tác đã tin tưởng, đồng hành và cùng tạo nên dấu mốc ý nghĩa này: \n🤝 CÔNG TY CỔ PHẦN TRUYỀN THÔNG VÀ TRUYỀN HÌNH NAM PHƯƠNG\n🤝 CÔNG TY TNHH CHI THANH IMMIGRATION\n🤝 CÔNG TY TNHH KIỂM TOÁN TƯ VẤN KRESTON IFA\n🤝 CÔNG TY CP TƯ VẤN THUẾ VÀ DỊCH VỤ KẾ TOÁN ĐỈNH CAO\n🤝 CÔNG TY TNHH BẢO HIỂM NHÂN THỌ FWD VIỆT NAM\n🤝 CÔNG TY TNHH 6K INTERNATIONAL\n🤝 CÔNG TY TNHH THE BEAUTY QUYNH LUONG\n🤝 CÔNG TY LUẬT TNHH LAWPRO\n🤝 CÔNG TY TNHH GREEN VOICES\n🤝 CÔNG TY TNHH NGỌC THIÊN LÂM (Hệ thống Viện chăm sóc tóc & Da đầu Wolken Salon)\n\nĐồng thời, VIO Academy xin gửi lời cảm ơn đến Quý khách mời đã dành thời gian hiện diện, giao lưu và góp phần tạo nên một buổi lễ trang trọng và ý nghĩa.\n\n✨ Lễ ký kết khép lại nhưng một chặng đường hợp tác mới cũng chính thức mở ra. VIO Academy mong chờ những định hướng đã thống nhất sẽ từng bước được đưa vào thực tế, để mỗi bên cùng phát huy thế mạnh và tạo nên nhiều dấu ấn đáng nhớ trong thời gian tới.\n\n📸 Cùng VIO Academy nhìn lại những khoảnh khắc đáng nhớ tại Lễ ký kết MOU 2026!\n#VIOAcademy #VIOAgency #DigitalMarketing #MOU #HopTacChienLuoc #StrategicPartnership",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1622112046596677",
+            "post_media_view_lifetime": 459,
+            "post_total_media_view_unique_lifetime": 187,
+            "reach": null,
+            "reactions_lifetime": 10,
+            "shares_lifetime": 2,
+            "title": "🎊 TỔNG KẾT LỄ KÝ KẾT HỢP TÁC CHIẾN LƯỢC (MOU) - MỞ RỘNG MẠNG LƯỚI ĐỐI TÁC CÙNG VIO ACADEMY\n\nNgày 15.10.2026, VIO Academy đã chính thức ký kết thỏa thuận hợp tác chiến lược (MOU) cù",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-17",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🔍 NỘI DUNG SEO VÀ NỘI DUNG BÁN HÀNG KHÁC NHAU NHƯ THẾ NÀO?\n\nNhiều doanh nghiệp nhầm lẫn giữa Nội dung SEO và Nội dung Bán hàng, dẫn đến việc bài viết lên Top nhưng không ra đơn, hoặc bài viết chốt sale lại thiếu truy cập.\n\nThấu hiểu hành vi khách hàng, VIO Agency giúp bạn phân biệt rõ 2 loại nội dung này để tối ưu chuyển đổi:\n🔹 Nội dung SEO:\n- Mục tiêu: Thu hút lưu lượng truy cập, xây dựng uy tín và giải quyết thắc mắc của người dùng.\n- Đặc điểm: Nội dung chi tiết, tối ưu từ khóa, CTA nhẹ nhàng để hướng dẫn đọc thêm.\n\n🔹 Nội dung Bán hàng:\n- Mục tiêu: Tối ưu tỷ lệ chuyển đổi, kích thích khách hàng hành động ngay.\n- Đặc điểm: Súc tích, tập trung vào USP, bằng chứng thực tế và CTA trực diện, mạnh mẽ.\n\n📩 Nhắn ngay cho VIO Agency để nhận tư vấn giải pháp nội dung chuẩn chuyển đổi ngay hôm nay!\n\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n#VIOAgency #NoiDungSEO #NoiDungBanHang #ContentMarketing #ToiUuChuyenDoi #SEOEntity",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1621684259972789",
+            "post_media_view_lifetime": 370,
+            "post_total_media_view_unique_lifetime": 189,
+            "reach": null,
+            "reactions_lifetime": 2,
+            "shares_lifetime": null,
+            "title": "🔍 NỘI DUNG SEO VÀ NỘI DUNG BÁN HÀNG KHÁC NHAU NHƯ THẾ NÀO?\n\nNhiều doanh nghiệp nhầm lẫn giữa Nội dung SEO và Nội dung Bán hàng, dẫn đến việc bài viết lên Top nhưng không ra đơn, ho",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-15",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🎯 NHÌN LẠI KHÓA HỌC SEO THỰC CHIẾN - HỌC THẬT, LÀM THẬT, HIỆU QUẢ THẬT!\n\nCó những hành trình học tập khép lại, nhưng kiến thức và giá trị thực tiễn vẫn tiếp tục đồng hành trên chặng đường phát triển nghề nghiệp. ❤️\n\nCùng VIO Academy nhìn lại khóa học \"SEO Thực Chiến từ cơ bản đến nâng cao\" - nơi học viên được tiếp cận kiến thức SEO bài bản, thực hành trên các dự án thực tế và từng bước xây dựng tư duy triển khai SEO hiệu quả.\n\n✨ Điều làm nên giá trị của khóa học không chỉ nằm ở kiến thức được chia sẻ, mà còn ở những trải nghiệm thực tế:\n✅  Giảng viên giàu kinh nghiệm: Chia sẻ kiến thức gắn liền với công việc thực tế.\n✅  Lộ trình học tập rõ ràng: Từng bước tiếp cận SEO từ nền tảng đến nâng cao.\n✅  Thực hành trên dự án thực tế: Vận dụng kiến thức vào quá trình triển khai SEO.\n✅  Hỗ trợ 1:1: Đồng hành, giải đáp những khó khăn trong quá trình học tập.\n✅  Cộng đồng học viên: Kết nối, chia sẻ kinh nghiệm và hỗ trợ nhau trên hành trình phát triển.\n\nVIO Agency tin rằng, học SEO không chỉ là hiểu cách công cụ tìm kiếm hoạt động, mà còn là biết cách vận dụng kiến thức để giải quyết những bài toán thực tế trong công việc.\n\n📸 Cùng nhìn lại những khoảnh khắc đáng nhớ trong hành trình học SEO thực chiến vừa qua nhé!\n\n💬 Bạn đang muốn nâng cao kỹ năng SEO và áp dụng vào công việc thực tế? Hãy theo dõi VIO Aagency để cập nhật những kiến thức hữu ích và thông tin về các chương trình đào tạo sắp tới!\n\n#VIOAgency #VIOAcademy #SEOThucChien #KhoaHocSEO #DaoTaoSEO #HocSEO #DigitalMarketing",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1619541213520427",
+            "post_media_view_lifetime": 161,
+            "post_total_media_view_unique_lifetime": 58,
+            "reach": null,
+            "reactions_lifetime": 2,
+            "shares_lifetime": 1,
+            "title": "🎯 NHÌN LẠI KHÓA HỌC SEO THỰC CHIẾN - HỌC THẬT, LÀM THẬT, HIỆU QUẢ THẬT!\n\nCó những hành trình học tập khép lại, nhưng kiến thức và giá trị thực tiễn vẫn tiếp tục đồng hành trên chặn",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-13",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🤝 LỄ KÝ KẾT HỢP TÁC CHIẾN LƯỢC (MOU) GIỮA VIO ACADEMY & CÁC ĐỐI TÁC | KẾT NỐI ĐỂ KIẾN TẠO GIÁ TRỊ \n\nNgày 15.10.2026, VIO Academy sẽ tổ chức Lễ ký kết thỏa thuận hợp tác chiến lược (MOU), đánh dấu bước phát triển mới trong hành trình mở rộng hệ sinh thái và tăng cường quan hệ hợp tác với các doanh nghiệp thuộc nhiều lĩnh vực.\n\nTham gia ký kết cùng VIO ACADEMY là các đối tác:\n🤝 CÔNG TY CỔ PHẦN TRUYỀN THÔNG VÀ TRUYỀN HÌNH NAM PHƯƠNG\n🤝 CÔNG TY TNHH CHI THANH IMMIGRATION\n🤝 CÔNG TY TNHH KIỂM TOÁN TƯ VẤN KRESTON IFA\n🤝 CÔNG TY CP TƯ VẤN THUẾ VÀ DỊCH VỤ KẾ TOÁN ĐỈNH CAO\n🤝 CÔNG TY TNHH BẢO HIỂM NHÂN THỌ FWD VIỆT NAM\n🤝 CÔNG TY TNHH 6K INTERNATIONAL\n🤝 CÔNG TY TNHH THE BEAUTY QUYNH LUONG\n🤝 CÔNG TY LUẬT TNHH LAWPRO\n🤝 CÔNG TY TNHH IT SYSTEMS VIỆT NAM\n🤝 CÔNG TY TNHH GREEN VOICES\n🤝 CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ ITO\n🤝 CÔNG TY TNHH NGỌC THIÊN LÂM (Hệ thống Viện chăm sóc tóc & Da đầu Wolken Salon)\n\n🌐 Với sự tham gia của các doanh nghiệp đến từ nhiều lĩnh vực, Lễ ký kết MOU 2026 tiếp tục mở rộng mạng lưới kết nối của VIO Academy, đồng thời tạo không gian để VIO Academy và đối tác chia sẻ thế mạnh, nguồn lực và cùng xây dựng những định hướng phù hợp trong quá trình đồng hành.\n\nĐặc biệt, MOU hướng đến những hoạt động có tính thực tiễn như đào tạo, workshop, kết nối chuyên gia và cộng đồng, phối hợp truyền thông và các chương trình kết nối kinh doanh. \n\nVới VIO Academy, ý nghĩa của mỗi thỏa thuận không chỉ nằm ở thời điểm ký kết, mà ở định hướng chung có thể từng bước được hiện thực hóa bằng các hoạt động cụ thể trong thời gian tới.\n\n🔥 12 đối tác – 12 thế mạnh. Tất cả sẽ cùng hội tụ tại Lễ ký kết MOU ngày 15.10.2026. \nVIO Academy đã sẵn sàng!\n\n#VIOAcademy #VIOAgency #DigitalMarketing #MOU  #HopTacChienLuoc #KetNoiDoanhNghiep #KienTaoGiaTri #PhatTrienBenVung #StrategicPartnership",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1617738463700702",
+            "post_media_view_lifetime": 164,
+            "post_total_media_view_unique_lifetime": 63,
+            "reach": null,
+            "reactions_lifetime": 7,
+            "shares_lifetime": null,
+            "title": "🤝 LỄ KÝ KẾT HỢP TÁC CHIẾN LƯỢC (MOU) GIỮA VIO ACADEMY & CÁC ĐỐI TÁC | KẾT NỐI ĐỂ KIẾN TẠO GIÁ TRỊ \n\nNgày 15.10.2026, VIO Academy sẽ tổ chức Lễ ký kết thỏa thuận hợp tác chiến lược ",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-13",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🚀 3 YẾU TỐ KHIẾN KHÁCH HÀNG SẴN SÀNG TRẢ GIÁ CAO HƠN KHI TƯ VẤN SEO\n\nBán dịch vụ SEO giá cao không nằm ở việc hạ giá để cạnh tranh, mà ở cách bạn định vị giá trị trong tâm trí khách hàng.\n\n🔹 Thấu hiểu điều đó, VIO Agency đồng hành cùng doanh nghiệp xây dựng vị thế dẫn đầu thông qua 3 yếu tố cốt lõi:\n- Minh bạch lộ trình & đo lường ROI: Không hứa hẹn suông, khách hàng sẵn sàng chi đậm khi thấy rõ kế hoạch từng giai đoạn và bài toán doanh thu - chi phí đầu tư dài hạn.\n- Giải pháp may đo theo từng ngành hàng: Thay vì dùng chung một kịch bản, việc nghiên cứu sâu nỗi đau và cá nhân hóa chiến lược giúp khách hàng cảm nhận được sự chuyên nghiệp vượt trội.\n- Bảo chứng bằng năng lực thực chiến: Case study thực tế cùng kết quả tăng trưởng từ các dự án tương đồng là bằng chứng thuyết phục nhất đập tan mọi lo ngại về giá.\n\n📩  Nhắn ngay cho VIO Agency để nhận tư vấn giải pháp SEO bứt phá doanh thu ngay hôm nay!\n\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n\n#VIOAgency #DichVuSEO #ChienLuocSEO #TuVanSEO #MarketingB2B #GiaTriThongMinh",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1617296390411576",
+            "post_media_view_lifetime": 373,
+            "post_total_media_view_unique_lifetime": 231,
+            "reach": null,
+            "reactions_lifetime": 1,
+            "shares_lifetime": null,
+            "title": "🚀 3 YẾU TỐ KHIẾN KHÁCH HÀNG SẴN SÀNG TRẢ GIÁ CAO HƠN KHI TƯ VẤN SEO\n\nBán dịch vụ SEO giá cao không nằm ở việc hạ giá để cạnh tranh, mà ở cách bạn định vị giá trị trong tâm trí khác",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-08",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "📊 KHÔNG BIẾT ĐO LƯỜNG HIỆU QUẢ MARKETING - VIO AGENCY THIẾT LẬP HỆ THỐNG THEO DÕI DỮ LIỆU VÀ KPI\n\nDoanh nghiệp của bạn đang liên tục đốt tiền cho Marketing nhưng lại không rõ chi phí bỏ ra mang về bao nhiêu doanh thu thực tế? Báo cáo chỉ toàn chỉ số ảo như like, share, impression mà không đo lường được tỷ lệ chuyển đổi hay chi phí trên mỗi đơn hàng?\n\n🚀 Vio Agency mang đến giải pháp chuẩn hóa hệ thống tracking dữ liệu toàn diện:\n- Chuẩn hóa hạ tầng Tracking: Cài đặt chính xác Google Analytics 4, Meta Pixel, Google Tag Manager theo sát mọi hành vi khách hàng trên Website/Landing Page. \n- Xây dựng Dashboard trực quan: Tổng hợp toàn bộ dữ liệu Marketing real-time, giúp chủ doanh nghiệp nắm bắt hiệu quả chiến dịch chỉ trong 1 phút. \n- Thiết lập KPI & ROI thực tế: Tập trung đo lường số lượng Lead chất lượng, chi phí/đơn hàng và tỷ lệ chuyển đổi thay vì các con số ảo.\n\n📩 Nhắn ngay cho VIO Agency để được tư vấn thiết lập hệ thống đo lường Marketing chuyên nghiệp!\n\n-----------------------\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n#VIOAgency #DoLuongMarketing #DataTracking #ToiUuKPI #MarketingData #ROI #GA4 #KpiMarketing #DigitalMarketing",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1612113770929838",
+            "post_media_view_lifetime": 261,
+            "post_total_media_view_unique_lifetime": 163,
+            "reach": null,
+            "reactions_lifetime": 2,
+            "shares_lifetime": 1,
+            "title": "📊 KHÔNG BIẾT ĐO LƯỜNG HIỆU QUẢ MARKETING - VIO AGENCY THIẾT LẬP HỆ THỐNG THEO DÕI DỮ LIỆU VÀ KPI\n\nDoanh nghiệp của bạn đang liên tục đốt tiền cho Marketing nhưng lại không rõ chi p",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-05",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🏷️ VAI TRÒ CỦA THƯƠNG HIỆU TRONG VIỆC GIẢM ÁP LỰC CHỐT SALE\n\nĐội ngũ Sales của bạn đang phải chật vật chốt từng đơn hàng, liên tục xử lý từ chối và bị ép giá? Nguyên nhân không nằm ở kỹ năng chốt sales, mà do Thương hiệu chưa đủ mạnh để tạo dựng niềm tin ban đầu!\n\nMột thương hiệu uy tín chính là vũ khí thầm lặng giúp tối ưu quy trình bán hàng:\n🔹 Rút ngắn thời gian thuyết phục: Khách hàng chủ động tìm hiểu và tin tưởng thương hiệu trước khi trò chuyện với Sales. \n🔹 Giảm áp lực cạnh tranh về giá: Niềm tin vào thương hiệu giúp doanh nghiệp giữ vững giá trị sản phẩm, hạn chế tình trạng chiết khấu sâu. \n🔹 Tăng tỷ lệ chuyển đổi tự nhiên: Uy tín thương hiệu đập tan nghi ngờ, biến quyết định mua hàng trở nên nhanh chóng và dễ dàng hơn.\n\n📩 Nhắn ngay cho VIO Agency để nhận tư vấn giải pháp định vị & phát triển thương hiệu bứt phá doanh thu ngay hôm nay!\n\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n#VioAgency #ThuongHieu #ChotSale #GiamApLucSales #DinhViThuongHieu #MarketingB2B #ToiUuChuyenDoi",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1608647147943167",
+            "post_media_view_lifetime": 377,
+            "post_total_media_view_unique_lifetime": 223,
+            "reach": null,
+            "reactions_lifetime": 2,
+            "shares_lifetime": 1,
+            "title": "🏷️ VAI TRÒ CỦA THƯƠNG HIỆU TRONG VIỆC GIẢM ÁP LỰC CHỐT SALE\n\nĐội ngũ Sales của bạn đang phải chật vật chốt từng đơn hàng, liên tục xử lý từ chối và bị ép giá? Nguyên nhân không nằm",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-03",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "album",
+            "link_clicks": null,
+            "message": "🚀 TĂNG DOANH THU - GIẢM CHI PHÍ: SME CẦN LÀM GÌ TRONG THỜI ĐẠI AI? 🔥\n\nTại buổi Showcase định kỳ của BNI Bizlink Chapter ngày 22/09 vừa qua, CEO Cao Anh Thi - Giám đốc VIO đã có những chia sẻ xoay quanh chủ đề “Tăng doanh thu - Giảm chi phí: Chiến lược Digital Marketing và SALE dành cho SME trong thời đại AI”.\n\n✨ Với trọng tâm tăng doanh thu - giảm chi phí, chương trình mang đến những góc nhìn thực tế về cách doanh nghiệp kết hợp Marketing, Sales và công nghệ AI để tối ưu hoạt động kinh doanh. Đây cũng là dịp để các chủ doanh nghiệp cùng trao đổi về những bài toán đang gặp phải trong quá trình tiếp cận khách hàng và thúc đẩy tăng trưởng.\n\n💎 Bên cạnh những chia sẻ giá trị, sự kiện còn là cơ hội để VIO kết nối với cộng đồng doanh nghiệp, mở rộng mối quan hệ và tìm kiếm những cơ hội hợp tác phù hợp trong tương lai.\n\nTrân trọng cảm ơn BNI Bizlink Chapter cùng anh/chị doanh nghiệp đã dành thời gian lắng nghe và chia sẻ cùng VIO Agency. \n-----------------------\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n\n#CEOCaoAnhThi #VIO #BNIBizlink #VIOAgency #DigitalMarketing #Sale #SME #MarketingAI",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1606662568141625",
+            "post_media_view_lifetime": 908,
+            "post_total_media_view_unique_lifetime": 542,
+            "reach": null,
+            "reactions_lifetime": 13,
+            "shares_lifetime": null,
+            "title": "🚀 TĂNG DOANH THU - GIẢM CHI PHÍ: SME CẦN LÀM GÌ TRONG THỜI ĐẠI AI? 🔥\n\nTại buổi Showcase định kỳ của BNI Bizlink Chapter ngày 22/09 vừa qua, CEO Cao Anh Thi - Giám đốc VIO đã có nhữ",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-01",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🔥KHÓA HỌC FACEBOOK ADS THỰC CHIẾN - TỪ THIẾT LẬP CHIẾN DỊCH ĐẾN TỐI ƯU HIỆU QUẢ\n\nChạy Facebook Ads nhưng mỗi ngày vẫn phải nhìn vào ngân sách mà không biết vì sao chi phí tăng, quảng cáo đang có vấn đề ở đâu và nên tối ưu từ chỉ số nào? Hoặc doanh nghiệp đang thuê Agency nhưng khi nhận báo cáo lại khó biết đang chạy hiệu quả hay chỉ đơn giản là ngân sách vẫn đang được tiêu?\n\nĐó là những vấn đề khóa học Facebook Ads Thực Chiến tại VIO Academy tập trung giải quyết thông qua việc học và thực hành trực tiếp.\n\nBạn sẽ được thực hành:\n- Tự thiết lập chiến dịch Facebook Ads hoàn chỉnh\n- Đọc và phân tích CPM, CTR, CPC, CPL, CAC, ROAS\n- Tối ưu chi phí và chất lượng khách hàng\n- Quản lý nhân viên hoặc Agency đang chạy Ads\n- Xây dựng kế hoạch quảng cáo 30 ngày gắn với mục tiêu doanh thu\n\nTrong quá trình học, học viên còn được cung cấp tài liệu, checklist, mẫu kế hoạch ngân sách, mẫu báo cáo & đánh giá Agency, Prompt AI viết Content Ads và được hỗ trợ chữa bài trực tiếp.\n\nThông tin khóa học:\n📚 4 buổi | 16 giờ | Online qua Zoom\n🗓️ 08/10 - 09/10 - 12/10 - 13/10/2026 (18:00-22:00)\n🔥 Đăng ký sớm Nhóm 3 người giảm 10% - Chỉ 6.300.000đ/nhóm\n\nNếu bạn đang cần tự chạy Facebook Ads thực chiến bài bản hơn, hiểu số liệu trước khi quyết định tối ưu hoặc chủ động kiểm soát Agency, hãy đăng ký khóa học ngay từ hôm nay.\n\n-----------------------\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n#VIOAgency #VIOAcademy #FacebookAdsThucChien #HocFacebookAds #FacebookAds",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1604235145051034",
+            "post_media_view_lifetime": 1185,
+            "post_total_media_view_unique_lifetime": 564,
+            "reach": null,
+            "reactions_lifetime": 4,
+            "shares_lifetime": 2,
+            "title": "🔥KHÓA HỌC FACEBOOK ADS THỰC CHIẾN - TỪ THIẾT LẬP CHIẾN DỊCH ĐẾN TỐI ƯU HIỆU QUẢ\n\nChạy Facebook Ads nhưng mỗi ngày vẫn phải nhìn vào ngân sách mà không biết vì sao chi phí tăng, quả",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-10-01",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🤝 ĐIỀU GÌ TẠO NÊN MỐI QUAN HỆ HỢP TÁC LÂU DÀI GIỮA AGENCY VÀ DOANH NGHIỆP?\n\nHợp tác giữa Agency và doanh nghiệp không đơn thuần là hợp đồng mua bán dịch vụ, mà là mối quan hệ đồng hành chiến lược. \n\n💥 Để duy trì sự gắn kết bền vững, 3 yếu tố cốt lõi dưới đây đóng vai trò quyết định:\n- Minh bạch và tin tưởng: Luôn báo cáo số liệu thực tế, làm rõ chỉ số đo lường và chủ động chia sẻ những rủi ro trong quá trình triển khai.\n- Thấu hiểu bài toán kinh doanh: Agency không chỉ làm Marketing máy móc mà phải đóng vai trò người đồng hành, thấu hiểu nỗi đau và mục tiêu tăng trưởng của doanh nghiệp.\n- Tối ưu hiệu quả liên tục: Không hài lòng với kết quả ngắn hạn, luôn chủ động đề xuất giải pháp cải tiến để mang lại giá trị gia tăng dài hạn.\n\n📩 Nhắn ngay cho VIO Agency để xây dựng chiến lược đồng hành bền vững và bứt phá doanh thu cho doanh nghiệp của bạn!\n\n-----------------------\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n#VIOAgency #HopTacBietVung #StrategicPartner #DigitalMarketing #MarketingB2B #ToiUuDoanhThu",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1603906321750583",
+            "post_media_view_lifetime": 452,
+            "post_total_media_view_unique_lifetime": 258,
+            "reach": null,
+            "reactions_lifetime": 2,
+            "shares_lifetime": null,
+            "title": "🤝 ĐIỀU GÌ TẠO NÊN MỐI QUAN HỆ HỢP TÁC LÂU DÀI GIỮA AGENCY VÀ DOANH NGHIỆP?\n\nHợp tác giữa Agency và doanh nghiệp không đơn thuần là hợp đồng mua bán dịch vụ, mà là mối quan hệ đồng ",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 2,
+            "date": "2026-09-27",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🔥 VIO TUYỂN DỤNG NHÂN VIÊN KINH DOANH – SALE 🔥\n\nBạn năng động, yêu thích kinh doanh và mong muốn tìm một môi trường để phát triển lâu dài?\n👉 Gia nhập đội ngũ VIO ngay hôm nay!\n\nTHU NHẬP HẤP DẪN\n• Lương cứng + hoa hồng cao\n• Thu nhập theo năng lực\n\nCƠ HỘI THĂNG TIẾN RÕ RÀNG\n• Lộ trình phát triển minh bạch\n• Có cơ hội nâng cao năng lực và vị trí\n\nMÔI TRƯỜNG CHUYÊN NGHIỆP\n• Trẻ trung – năng động\n• Đồng đội hỗ trợ, làm việc tích cực\n\nĐƯỢC ĐÀO TẠO KỸ NĂNG\n• Được hướng dẫn bài bản từ A–Z\n• Không ngừng nâng cao kỹ năng bán hàng\n\nCHẾ ĐỘ PHÚC LỢI ĐẦY ĐỦ\n• BHXH\n• Nghỉ lễ, nghỉ phép\n• Du lịch và các chính sách phúc lợi khác\n\n📍 Địa điểm làm việc: Thành phố Hồ Chí Minh\n\n👉 Bạn có đam mê kinh doanh? Đừng bỏ lỡ cơ hội gia nhập VIO!\n📩 Gửi CV về: Ketoan.Vioagency@gmail.com\n💬 ỨNG TUYỂN NGAY thì ib ngay vào Fanpage để được tư vấn.\nLiên hệ SĐT:  0899.908.707\n\n#VIO #TuyenDung #NhanVienKinhDoanh #Sale #TuyenDungTPHCM #VieclamTPHCM #CoHoiNgheNghiep",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1599996265474922",
+            "post_media_view_lifetime": 34896,
+            "post_total_media_view_unique_lifetime": 11290,
+            "reach": null,
+            "reactions_lifetime": 11,
+            "shares_lifetime": 6,
+            "title": "🔥 VIO TUYỂN DỤNG NHÂN VIÊN KINH DOANH – SALE 🔥\n\nBạn năng động, yêu thích kinh doanh và mong muốn tìm một môi trường để phát triển lâu dài?\n👉 Gia nhập đội ngũ VIO ngay hôm nay!\n\nTHU",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-09-25",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🎧 VAI TRÒ CỦA ĐỘI NGŨ HỖ TRỢ HẬU MÃI TRONG QUÁ TRÌNH CHỐT KHÁCH\n\nNhiều doanh nghiệp lầm tưởng hậu mãi chỉ bắt đầu sau khi giao dịch hoàn tất. Thực tế, sự xuất hiện của đội ngũ hậu mãi ngay từ bước tư vấn chính là vũ khí chốt đơn cực kỳ đắc lực!\n\n🔥 VIO Agency đồng hành cùng doanh nghiệp tối ưu quy trình bán hàng với 3 điểm tựa niềm tin vững chắc:\n- Xóa tan rào cản lo ngại: Khách hàng luôn lo sợ bị \"bỏ rơi\" sau khi xuống tiền. Cam kết đồng hành rõ ràng từ đội ngũ hậu mãi giúp tăng sự an tâm và củng cố niềm tin của khách hàng.\n- Chứng minh uy tín thực tế: Giới thiệu quy trình tiếp nhận, chăm sóc và xử lý sự cố chuyên nghiệp giúp đập tan nghi ngờ về chất lượng dịch vụ.\n- Tăng tỷ lệ chốt hợp đồng: Khi cảm nhận được sự an tâm lâu dài, quyết định ký kết của khách hàng trở nên nhanh chóng và tự nhiên hơn.\n\n📩 Nhắn ngay cho VIO Agency để nhận tư vấn giải pháp tối ưu quy trình chốt đơn hiệu quả!\n\n-----------------------\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n#VIOAgency #HauMai #ChotKhach #DichVuKhachHang #ToiUuQuyTrinh #MarketingB2B",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1597180905756458",
+            "post_media_view_lifetime": 514,
+            "post_total_media_view_unique_lifetime": 310,
+            "reach": null,
+            "reactions_lifetime": 0,
+            "shares_lifetime": 1,
+            "title": "🎧 VAI TRÒ CỦA ĐỘI NGŨ HỖ TRỢ HẬU MÃI TRONG QUÁ TRÌNH CHỐT KHÁCH\n\nNhiều doanh nghiệp lầm tưởng hậu mãi chỉ bắt đầu sau khi giao dịch hoàn tất. Thực tế, sự xuất hiện của đội ngũ hậu ",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 6,
+            "date": "2026-09-24",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "🚀 KHÓA HỌC XÂY KÊNH – NHẬN HIỆU ỨNG ỨNG DỤNG AI\n\nBạn muốn xây kênh cá nhân, tạo nội dung và làm video ngắn nhưng chưa biết bắt đầu từ đâu?\n\nKhóa học XÂY KÊNH NHẬN HIỆU ỨNG DỤNG AI giúp bạn thực hành trực tiếp:\n\n✅ AI tạo nội dung – lên ý tưởng, viết nội dung nhanh hơn\n🎙️ Giọng nói AI – ứng dụng vào video\n🎬 Quay Short Video – biết cách triển khai video ngắn\n📈 Xây kênh – xây dựng nội dung theo định hướng rõ ràng\n🔥 4 buổi thực hành – ra video ngay\n\n💰 Học phí: 5.000.000đ\n🎁 Ưu đãi học viên: chỉ 2.999.000đ\n📚 ONLINE + OFFLINE | Tháng 10\n\n👉 Muốn biết khóa học phù hợp với mục tiêu xây kênh của bạn như thế nào?\n📞 Tư vấn: 0899 164 707",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1596605852480630",
+            "post_media_view_lifetime": 19644,
+            "post_total_media_view_unique_lifetime": 8395,
+            "reach": null,
+            "reactions_lifetime": 24,
+            "shares_lifetime": 2,
+            "title": "🚀 KHÓA HỌC XÂY KÊNH – NHẬN HIỆU ỨNG ỨNG DỤNG AI\n\nBạn muốn xây kênh cá nhân, tạo nội dung và làm video ngắn nhưng chưa biết bắt đầu từ đâu?\n\nKhóa học XÂY KÊNH NHẬN HIỆU ỨNG DỤNG AI ",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 1,
+            "date": "2026-09-23",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "💡 3 ĐIỂM CHẠM TÂM LÝ GIÚP KHÁCH HÀNG TỰ NGUYỆN MUA DỊCH VỤ SEO\n\nBán dịch vụ SEO không phải là thao thao bất tuyệt về thuật toán, mà là đánh trúng tâm lý doanh nghiệp. Để khách hàng tự nguyện xuống tiền, bạn cần chạm đúng 3 điểm sau:\n🔹 Minh bạch lộ trình & KPI: Đừng hứa hẹn lên top thần tốc. Hãy đưa ra kế hoạch từng giai đoạn rõ ràng, chỉ số đo lường thực tế và cam kết bền vững. \n🔹 Tháo gỡ áp lực chi phí: Chứng minh SEO không phải khoản chi phí tiêu tốn, mà là đầu tư sinh lời dài hạn giúp giảm phụ thuộc vào quảng cáo đắt đỏ. \n🔹 Chứng minh bằng kết quả thực tế: Dùng case study thực chiến và số liệu tăng trưởng thực từ các dự án cùng ngành để đập tan nghi ngờ.\n\nTối ưu đúng điểm chạm – Chốt hợp đồng tự nhiên không cần ép giá! \n📩 Nhắn ngay cho VIO Agency để nhận tư vấn giải pháp SEO bứt phá ngay hôm nay!\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n#VIOAgency #DichVuSEO #ChienLuocSEO #ToiUuChuyenDoi #MarketingB2B #SEOEntity",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1594908689317013",
+            "post_media_view_lifetime": 476,
+            "post_total_media_view_unique_lifetime": 278,
+            "reach": null,
+            "reactions_lifetime": 1,
+            "shares_lifetime": 1,
+            "title": "💡 3 ĐIỂM CHẠM TÂM LÝ GIÚP KHÁCH HÀNG TỰ NGUYỆN MUA DỊCH VỤ SEO\n\nBán dịch vụ SEO không phải là thao thao bất tuyệt về thuật toán, mà là đánh trúng tâm lý doanh nghiệp. Để khách hàng",
+            "topic": null
+          },
+          {
+            "comments_lifetime": 0,
+            "date": "2026-09-21",
+            "engagement_rate": null,
+            "engagements": null,
+            "format": "photo",
+            "link_clicks": null,
+            "message": "💡 LÀM SAO ĐỂ KHÁCH HÀNG THẤY RÕ “CHI PHÍ BỎ RA LÀ KHOẢN ĐẦU TƯ, KHÔNG PHẢI CHI PHÍ”\n\nNhiều doanh nghiệp xem Marketing hay Thiết kế Website là khoản chi phí tiêu tốn ngân sách. Nhưng sự thật là chi phí chỉ mất đi, còn Đầu tư phải sinh ra dòng tiền!\n\n🚀Để biến mỗi đồng ngân sách thành khoản đầu tư sinh lời bền vững, bạn cần:\n- Tập trung vào ROI & Chuyển đổi: Đừng chỉ đo chỉ số ảo. Hãy tập trung vào tỷ lệ ra đơn, số lượng lead chất lượng và giá trị vòng đời khách hàng.\n- Số hóa quy trình bán hàng: Tự động hóa báo giá, tối ưu giao diện Mobile First giúp giữ chân khách hàng và rút ngắn lộ trình chốt đơn 24/7.\n- Xây dựng tài sản số lâu dài: Website chuẩn SEO, bộ Media độc quyền hay hệ thống Remarketing chính là tài sản gia tăng giá trị theo thời gian.\n\n📩 Nhắn ngay cho VIOAgency để tối ưu hóa chiến lược đầu tư Marketing hiệu quả nhất!\n𝐂Ô𝐍𝐆 𝐓𝐘 𝐓𝐍𝐇𝐇 𝐕𝐈𝐎\n 📍 197 TL31, Phường Thạnh Lộc, Quận 12, TP.HCM\n 🌐 Website: https://vioagency.vn\n 📞 Hotline/Zalo: 0773 900 699 - 0899 886 707\n 📧 Email: info@viocompany.com\n#VioAgency #DauTuMarketing #ToiUuLoiNhuan #TangTruongDoanhThu #ToiUuChuyenDoi #DigitalMarketing",
+            "permalink_url": null,
+            "post_id": "2188688654687066_1592879599519922",
+            "post_media_view_lifetime": 491,
+            "post_total_media_view_unique_lifetime": 294,
+            "reach": null,
+            "reactions_lifetime": 0,
+            "shares_lifetime": 1,
+            "title": "💡 LÀM SAO ĐỂ KHÁCH HÀNG THẤY RÕ “CHI PHÍ BỎ RA LÀ KHOẢN ĐẦU TƯ, KHÔNG PHẢI CHI PHÍ”\n\nNhiều doanh nghiệp xem Marketing hay Thiết kế Website là khoản chi phí tiêu tốn ngân sách. Nhưn",
+            "topic": null
+          }
+        ],
+        "status": "partial"
+      },
+      "reach": {
+        "key": "reach",
+        "label": "Tiếp cận tự nhiên và trả phí",
+        "reason": "Chưa có bộ metric reach organic/paid tương đương được xác minh trên v26; không thay bằng impressions hoặc Ads.",
+        "rows": [],
+        "status": "unsupported"
+      },
+      "topics": {
+        "key": "topics",
+        "label": "Hiệu quả theo chủ đề",
+        "reason": "Chưa phân loại chủ đề. Meta không cung cấp taxonomy nghiệp vụ của agency.",
+        "rows": [],
+        "status": "unsupported"
+      }
+    },
+    "source": "facebook_content",
+    "timezone": "UTC"
+  },
+  "evidence_cards": [
+    {
+      "aggregation": "sum",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "attribution": null,
+      "comparison": null,
+      "coverage": {
+        "available": 28,
+        "expected": 28,
+        "unit": "days"
+      },
+      "currency": null,
+      "daily_observations": [],
+      "evidence_id": "3091b450f98cc6d154dcb0c9ff128cb2a2fa43df1c2f64ba1a296fccbb13c4c0",
+      "evidence_status": "recorded_unverified",
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "day",
+      "key": "posts_published",
+      "label": "Bài đăng mới trong kỳ",
+      "lineage": {
+        "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+        "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+        "sync_run_ids": [
+          "d1cec7997ce5bbd67b693a2eca5ad16e"
+        ]
+      },
+      "metric_id": "facebook_content.posts_published",
+      "observed_sum": null,
+      "period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "provider": "meta",
+      "publishable": false,
+      "source": "facebook_content",
+      "status": "recorded_unverified",
+      "type": "kpi",
+      "unit": "count",
+      "value": 15,
+      "verified": false
+    },
+    {
+      "aggregation": "sum_posts_at_fetch",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "attribution": null,
+      "comparison": null,
+      "coverage": {
+        "available": 15,
+        "expected": 15,
+        "unit": "posts"
+      },
+      "currency": null,
+      "daily_observations": [],
+      "evidence_id": "22cc91baa5f00a25ee3b699939c0e28bd1c3ee53b918ccdab48e3e537bdaf072",
+      "evidence_status": "recorded_unverified",
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "snapshot",
+      "key": "reactions_lifetime",
+      "label": "Reactions lifetime",
+      "lineage": {
+        "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+        "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+        "sync_run_ids": [
+          "d1cec7997ce5bbd67b693a2eca5ad16e"
+        ]
+      },
+      "metric_id": "facebook_content.reactions_lifetime",
+      "observed_sum": 81,
+      "period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "provider": "meta",
+      "publishable": false,
+      "source": "facebook_content",
+      "status": "recorded_unverified",
+      "type": "kpi",
+      "unit": "count",
+      "value": 81,
+      "verified": false
+    },
+    {
+      "aggregation": "sum_posts_at_fetch",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "attribution": null,
+      "comparison": null,
+      "coverage": {
+        "available": 15,
+        "expected": 15,
+        "unit": "posts"
+      },
+      "currency": null,
+      "daily_observations": [],
+      "evidence_id": "a9e2e9c12edb994598accb8989db967a7713c006a9b1c82b97e21e6309417065",
+      "evidence_status": "recorded_unverified",
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "snapshot",
+      "key": "comments_lifetime",
+      "label": "Comments lifetime",
+      "lineage": {
+        "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+        "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+        "sync_run_ids": [
+          "d1cec7997ce5bbd67b693a2eca5ad16e"
+        ]
+      },
+      "metric_id": "facebook_content.comments_lifetime",
+      "observed_sum": 10,
+      "period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "provider": "meta",
+      "publishable": false,
+      "source": "facebook_content",
+      "status": "recorded_unverified",
+      "type": "kpi",
+      "unit": "count",
+      "value": 10,
+      "verified": false
+    }
+  ],
+  "generated_at": "2026-10-22T02:46:45.823614+00:00",
+  "kind": "marketing_internal_preview",
+  "meta_snapshot": {
+    "attribution": null,
+    "currency": null,
+    "external_id": "2188688654687066",
+    "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+    "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+    "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+    "sync_run_ids": [
+      "d1cec7997ce5bbd67b693a2eca5ad16e"
+    ],
+    "timezone": "UTC"
+  },
+  "not_a_report_bundle": true,
+  "opportunity_candidates": [],
+  "period": {
+    "end": "2026-10-18",
+    "start": "2026-09-21"
+  },
+  "preview_schema_version": "0.1",
+  "publishable": false,
+  "quality": {
+    "independently_verified": false,
+    "ready_for_customer_claims": false,
+    "status": "unverified_with_data"
+  },
+  "source_filter": "facebook_content",
+  "sources": [
+    "facebook_content"
+  ],
+  "summary": {
+    "evidence_count": 3,
+    "opportunity_count": 0,
+    "widget_count": 5,
+    "widgets_with_values": 3
+  },
+  "widgets": [
+    {
+      "aggregation": "sum",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "attribution": null,
+      "comparison": null,
+      "coverage": {
+        "available": 28,
+        "expected": 28,
+        "unit": "days"
+      },
+      "currency": null,
+      "daily_observations": [],
+      "evidence_id": "3091b450f98cc6d154dcb0c9ff128cb2a2fa43df1c2f64ba1a296fccbb13c4c0",
+      "evidence_status": "recorded_unverified",
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "day",
+      "key": "posts_published",
+      "label": "Bài đăng mới trong kỳ",
+      "lineage": {
+        "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+        "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+        "sync_run_ids": [
+          "d1cec7997ce5bbd67b693a2eca5ad16e"
+        ]
+      },
+      "metric_id": "facebook_content.posts_published",
+      "observed_sum": null,
+      "period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "provider": "meta",
+      "publishable": false,
+      "source": "facebook_content",
+      "status": "available",
+      "type": "kpi",
+      "unit": "count",
+      "value": 15,
+      "verified": false
+    },
+    {
+      "aggregation": "sum",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "attribution": null,
+      "comparison": null,
+      "coverage": {
+        "available": 0,
+        "expected": 28,
+        "unit": "days"
+      },
+      "currency": null,
+      "daily_observations": [],
+      "evidence_id": "a39ba555829ede998d36614acafc9b4a59a5db1c11686c73d05a579eb231f53f",
+      "evidence_status": "not_ready",
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "day",
+      "key": "engagements",
+      "label": "Tương tác phát sinh trong kỳ",
+      "lineage": {
+        "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+        "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+        "sync_run_ids": [
+          "d1cec7997ce5bbd67b693a2eca5ad16e"
+        ]
+      },
+      "metric_id": "facebook_content.engagements",
+      "observed_sum": null,
+      "period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "provider": "meta",
+      "publishable": false,
+      "source": "facebook_content",
+      "status": "no_data",
+      "type": "kpi",
+      "unit": "count",
+      "value": null,
+      "verified": false
+    },
+    {
+      "aggregation": "sum_posts_at_fetch",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "attribution": null,
+      "comparison": null,
+      "coverage": {
+        "available": 15,
+        "expected": 15,
+        "unit": "posts"
+      },
+      "currency": null,
+      "daily_observations": [],
+      "evidence_id": "22cc91baa5f00a25ee3b699939c0e28bd1c3ee53b918ccdab48e3e537bdaf072",
+      "evidence_status": "recorded_unverified",
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "snapshot",
+      "key": "reactions_lifetime",
+      "label": "Reactions lifetime",
+      "lineage": {
+        "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+        "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+        "sync_run_ids": [
+          "d1cec7997ce5bbd67b693a2eca5ad16e"
+        ]
+      },
+      "metric_id": "facebook_content.reactions_lifetime",
+      "observed_sum": 81,
+      "period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "provider": "meta",
+      "publishable": false,
+      "source": "facebook_content",
+      "status": "available",
+      "type": "kpi",
+      "unit": "count",
+      "value": 81,
+      "verified": false
+    },
+    {
+      "aggregation": "sum_posts_at_fetch",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "attribution": null,
+      "comparison": null,
+      "coverage": {
+        "available": 15,
+        "expected": 15,
+        "unit": "posts"
+      },
+      "currency": null,
+      "daily_observations": [],
+      "evidence_id": "a9e2e9c12edb994598accb8989db967a7713c006a9b1c82b97e21e6309417065",
+      "evidence_status": "recorded_unverified",
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "snapshot",
+      "key": "comments_lifetime",
+      "label": "Comments lifetime",
+      "lineage": {
+        "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+        "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+        "sync_run_ids": [
+          "d1cec7997ce5bbd67b693a2eca5ad16e"
+        ]
+      },
+      "metric_id": "facebook_content.comments_lifetime",
+      "observed_sum": 10,
+      "period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "provider": "meta",
+      "publishable": false,
+      "source": "facebook_content",
+      "status": "available",
+      "type": "kpi",
+      "unit": "count",
+      "value": 10,
+      "verified": false
+    },
+    {
+      "aggregation": "sum_posts_at_fetch",
+      "asset_id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+      "attribution": null,
+      "comparison": null,
+      "coverage": {
+        "available": 10,
+        "expected": 15,
+        "unit": "posts"
+      },
+      "currency": null,
+      "daily_observations": [],
+      "evidence_id": "06eb7d38420e9a221955ad20d6271ebe8a4cb19d115c1a375b72dd7ded918ded",
+      "evidence_status": "not_ready",
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "snapshot",
+      "key": "shares_lifetime",
+      "label": "Shares lifetime",
+      "lineage": {
+        "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+        "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+        "sync_run_ids": [
+          "d1cec7997ce5bbd67b693a2eca5ad16e"
+        ]
+      },
+      "metric_id": "facebook_content.shares_lifetime",
+      "observed_sum": 18,
+      "period": {
+        "end": "2026-10-18",
+        "start": "2026-09-21"
+      },
+      "provider": "meta",
+      "publishable": false,
+      "source": "facebook_content",
+      "status": "partial",
+      "type": "kpi",
+      "unit": "count",
+      "value": null,
+      "verified": false
+    }
+  ]
+}

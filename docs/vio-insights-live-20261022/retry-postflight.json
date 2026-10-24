@@ -1,0 +1,27 @@
+{
+  "asset": {
+    "id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+    "enabled": 1,
+    "external_id": "2188688654687066",
+    "client_id": "client_meta_sandbox",
+    "asset_type": "facebook_page",
+    "status": "connected",
+    "external_account_id": "122233410626562850"
+  },
+  "connected_at": "2026-10-22T02:29:59.593203+00:00",
+  "published_and_grants_hash": "2f49be079dfd08aa6fbbe513719d1800e015ede9f716e394bf33505495459e8f",
+  "new_runs": [
+    {
+      "id": "d1cec7997ce5bbd67b693a2eca5ad16e",
+      "status": "succeeded",
+      "job_id": "5e320fe5250726ec421829fceedcb94f",
+      "created_at": "2026-10-22T02:45:38.439862+00:00"
+    },
+    {
+      "id": "1d67b4d5b47696f4a6f3018bd40f866b",
+      "status": "running",
+      "job_id": "b1589509581f925ed3a325f320ea3ef2",
+      "created_at": "2026-10-22T02:38:09.105773+00:00"
+    }
+  ]
+}

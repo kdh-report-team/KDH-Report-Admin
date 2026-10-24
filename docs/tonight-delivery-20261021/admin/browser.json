@@ -1,0 +1,55 @@
+{
+  "health": "PASS",
+  "login_and_canonical_host": "PASS",
+  "permissions": {
+    "connected": true,
+    "insights_permission": false,
+    "scopes": [
+      "pages_show_list",
+      "ads_read",
+      "pages_read_engagement",
+      "pages_read_user_content",
+      "public_profile"
+    ]
+  },
+  "admin_preview": {
+    "sections": 7,
+    "source": "existing saved snapshot",
+    "metrics": {
+      "posts_published": 15,
+      "engagements": null,
+      "reactions_lifetime": 80,
+      "comments_lifetime": 10,
+      "shares_lifetime": null,
+      "reach": null,
+      "engagement_rate": null,
+      "followers_gained": null,
+      "link_clicks": null,
+      "ctr": null,
+      "response_rate": null
+    },
+    "new_dataset_created": false
+  },
+  "existing_revision_1_handoff": "PASS",
+  "metrics": {
+    "posts": 15,
+    "reactions_lifetime": 80,
+    "comments_lifetime": 10,
+    "engagements": "null/no_data",
+    "shares": "null/partial 7/15",
+    "timezone": "UTC"
+  },
+  "responsive_1440_390": "PASS; mobile drawer opens and closes",
+  "wrong_revision_and_no_grant": "DENIED",
+  "wrong_origin": "DENIED",
+  "viewer_logout": "PASS",
+  "docker_restart_state_changes": {
+    "kdh-report-admin-admin-1": {
+      "before": false,
+      "after": true
+    }
+  },
+  "business_data": "UNCHANGED",
+  "other_container_identity_and_config": "UNCHANGED",
+  "provider_calls": "NOT RUN"
+}

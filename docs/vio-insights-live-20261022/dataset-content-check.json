@@ -1,0 +1,29 @@
+{
+  "posts": 15,
+  "coverage": {
+    "message": 15,
+    "title": 15,
+    "permalink_url": 0,
+    "format": 15
+  },
+  "formats": [
+    {
+      "key": "album",
+      "label": "Album ảnh",
+      "count": 2,
+      "percent": 13.33,
+      "reach": null,
+      "engagement_rate": null
+    },
+    {
+      "key": "photo",
+      "label": "Ảnh",
+      "count": 13,
+      "percent": 86.67,
+      "reach": null,
+      "engagement_rate": null
+    }
+  ],
+  "insights_charts": 4,
+  "review": "pending"
+}

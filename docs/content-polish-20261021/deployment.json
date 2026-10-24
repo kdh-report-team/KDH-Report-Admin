@@ -1,0 +1,200 @@
+{
+  "status": "PASS",
+  "service": {
+    "id": "2be2a7440f599866d54b7917ba02e2dfd6d19aa2b163162ccf97dabbee972683",
+    "image": "sha256:9342a27ce977957a9d84fe0390fbf13530a67f408bee03ab5a3a34ce541d24d1",
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "D:\\KDH-Report-All\\KDH-Report-New\\.work\\layout-preview",
+        "Destination": "/app/static/layout-preview",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "networks": [
+      "kdh-shared-viewer-primary-20261021",
+      "kdh-vio-handoff-phase9-recovery-20261019",
+      "kdh-vio-host-phase9-20261019"
+    ],
+    "running": true
+  },
+  "rollback": "kdh-report-new-app-1-before-content-polish-20261021",
+  "image": "kdh-new:content-shell-20261021-25ef745a308c",
+  "protected_services": {
+    "kdh-report-admin-admin-1": {
+      "id": "b276ae231cdc53435dd1f40d406552f80f3fb5daa51076c83254e5dd431ec77b",
+      "image": "sha256:f3db6a2ecaa17865e80c24ef4f75e4a681422f6c817dbf23e74f078dfefec93a",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-report-admin_admin-data",
+          "Source": "/var/lib/docker/volumes/kdh-report-admin_admin-data/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Data/KDH_Marketing_DataPack_v1",
+          "Destination": "/demo-pack",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Report/KDH-Report",
+          "Destination": "/legacy",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default"
+      ],
+      "running": true
+    },
+    "kdh-meta-2b-admin-20261016-132836-5c512a53": {
+      "id": "9290296d0bfea39e1ee1cf97ee1402af0f0d2090be9eb2fb71a8a8a0cbc28aa9",
+      "image": "sha256:045e724c36a537d444633443399de89ba85562d5963c803326ea0c175151c128",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-report-admin-postgres-1": {
+      "id": "8454125865a6be20d33a31b1872f98ed2c6473ef6e6e1b64a938ab60ca8b9fe2",
+      "image": "sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-report-admin_postgres-data",
+          "Source": "/var/lib/docker/volumes/kdh-report-admin_postgres-data/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default"
+      ],
+      "running": true
+    },
+    "kdh-meta-2b-pg-20261016-132836-5c512a53": {
+      "id": "41c3cebbed98beab58091b359ba12e4b54f7eb90a41fbe4b9cb5a86539cb87d1",
+      "image": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-pgdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-pgdata-20261016-132836-5c512a53/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-meta-3-egress-20261016-132836-5c512a53": {
+      "id": "c264a6c245cfd98fedd717e0f2e60743058e8d26e7a2577702622e23c993b0e6",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase3\\gateway",
+          "Destination": "/gateway",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53",
+        "kdh-meta-3-outbound-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-meta-2b-relay-20261016-132836-5c512a53": {
+      "id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\relay",
+          "Destination": "/relay",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-ingress-20261016-132836-5c512a53",
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-vio-relay-phase9-20261019": {
+      "id": "4d789987abbe66eed81a59149d3be1c66ad556b9fec2450f2d5686c298ffc12c",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase9-private-relay-4e536289",
+          "Destination": "/relay",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53",
+        "kdh-vio-handoff-phase9-recovery-20261019"
+      ],
+      "running": true
+    },
+    "kdh-shared-viewer-primary-relay": {
+      "id": "3025281dd369266b9bf1a0e7b61196b0f3e8bef274decbc4e5b469237e3c69fa",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "C:\\Users\\Admin\\AppData\\Local\\KDH-Shared-Viewer-20261021\\primary-relay",
+          "Destination": "/relay",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default",
+        "kdh-shared-viewer-primary-20261021"
+      ],
+      "running": true
+    }
+  },
+  "business_data": "UNCHANGED"
+}

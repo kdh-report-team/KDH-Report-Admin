@@ -1,0 +1,319 @@
+{
+  "mode": "local-assets",
+  "checks": [
+    {
+      "width": 1440,
+      "series": 0,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 1440,
+      "series": 1,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 1440,
+      "series": 2,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 1440,
+      "series": 3,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 1024,
+      "series": 0,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 1024,
+      "series": 1,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 1024,
+      "series": 2,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 1024,
+      "series": 3,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 768,
+      "series": 0,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 768,
+      "series": 1,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 768,
+      "series": 2,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 768,
+      "series": 3,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "29/09",
+        "06/10",
+        "12/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 390,
+      "series": 0,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "06/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 390,
+      "series": 1,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "06/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 390,
+      "series": 2,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "06/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 390,
+      "series": 3,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "06/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 360,
+      "series": 0,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "06/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 360,
+      "series": 1,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "06/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 360,
+      "series": 2,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "06/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    },
+    {
+      "width": 360,
+      "series": 3,
+      "status": "PASS",
+      "outside": [],
+      "overlap": false,
+      "dates": [
+        "22/09",
+        "06/10",
+        "19/10"
+      ],
+      "points": 28,
+      "expected": 28
+    }
+  ],
+  "metrics": {
+    "facebook_content.posts_published": 15,
+    "facebook_content.engagements": null,
+    "facebook_content.reactions_lifetime": 81,
+    "facebook_content.comments_lifetime": 10,
+    "facebook_content.shares_lifetime": null
+  },
+  "wrong_revision": "DENIED",
+  "status": "PASS",
+  "business_unchanged": true
+}

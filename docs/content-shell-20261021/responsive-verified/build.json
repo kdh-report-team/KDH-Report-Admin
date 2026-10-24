@@ -1,0 +1,7 @@
+{
+  "tag": "kdh-new:content-shell-20261021-0c7aaa9bea7c",
+  "image": "sha256:b7644bd4b0abddcbc6154453d2167faae2453e307d4de10287024fe95cbf447a",
+  "files": {
+    "static/css/pages/facebook-content.css": "400245025736b6b0752c38695ead8732e5aceb555ee76f2686d336e6978e0717"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "network": "kdh-unified-20261020-test",
+  "postgres": "kdh-unified-20261020-postgres",
+  "app": "kdh-unified-20261020-admin-smoke",
+  "restore_hashes_match": true,
+  "appdata_restore": true,
+  "smoke": {
+    "health": 200,
+    "login": 200,
+    "marketing_anonymous": 302,
+    "csrf_rejection": 403,
+    "bundle_anonymous": 401
+  },
+  "startup_data_unchanged": true,
+  "migrations": "existing 1-8 unchanged"
+}

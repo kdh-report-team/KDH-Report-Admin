@@ -1,0 +1,90 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.2s
+
+#1 [internal] load remote build context
+#1 DONE 0.2s
+
+#2 copy /context /
+#2 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/library/kdh-new:tonight-content-20261021-base
+#3 DONE 0.2s
+
+#4 [ 1/20] FROM docker.io/library/kdh-new:tonight-content-20261021-base@sha256:fb1089d786b5b3f5a9d383b77e2c13024fb32435a0eff505395a1416943228db
+#4 resolve docker.io/library/kdh-new:tonight-content-20261021-base@sha256:fb1089d786b5b3f5a9d383b77e2c13024fb32435a0eff505395a1416943228db
+#4 resolve docker.io/library/kdh-new:tonight-content-20261021-base@sha256:fb1089d786b5b3f5a9d383b77e2c13024fb32435a0eff505395a1416943228db 0.2s done
+#4 DONE 0.3s
+
+#5 [ 2/20] COPY --chown=10001:10001 app/mappers/bundle.py /app/app/mappers/bundle.py
+#5 CACHED
+
+#6 [ 3/20] COPY --chown=10001:10001 app/mappers/dashboard.py /app/app/mappers/dashboard.py
+#6 CACHED
+
+#7 [ 4/20] COPY --chown=10001:10001 app/mappers/facebook_content.py /app/app/mappers/facebook_content.py
+#7 CACHED
+
+#8 [ 5/20] COPY --chown=10001:10001 app/schemas/bundle_view.py /app/app/schemas/bundle_view.py
+#8 CACHED
+
+#9 [ 6/20] COPY --chown=10001:10001 templates/pages/snapshot/components.html /app/templates/pages/snapshot/components.html
+#9 CACHED
+
+#10 [ 7/20] COPY --chown=10001:10001 static/css/pages/facebook-content.css /app/static/css/pages/facebook-content.css
+#10 CACHED
+
+#11 [ 8/20] COPY --chown=10001:10001 static/js/shared/charts.js /app/static/js/shared/charts.js
+#11 DONE 0.2s
+
+#12 [ 9/20] COPY --chown=10001:10001 templates/pages/facebook_content/controls.html /app/templates/pages/facebook_content/controls.html
+#12 DONE 0.3s
+
+#13 [10/20] COPY --chown=10001:10001 templates/pages/facebook_content/index.html /app/templates/pages/facebook_content/index.html
+#13 DONE 0.3s
+
+#14 [11/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/bundle.html /app/templates/pages/facebook_content/partials/bundle.html
+#14 DONE 0.2s
+
+#15 [12/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/engagement.html /app/templates/pages/facebook_content/partials/engagement.html
+#15 DONE 0.3s
+
+#16 [13/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/formats.html /app/templates/pages/facebook_content/partials/formats.html
+#16 DONE 0.2s
+
+#17 [14/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/helpers.html /app/templates/pages/facebook_content/partials/helpers.html
+#17 DONE 0.2s
+
+#18 [15/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/insights.html /app/templates/pages/facebook_content/partials/insights.html
+#18 DONE 0.2s
+
+#19 [16/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/kpis.html /app/templates/pages/facebook_content/partials/kpis.html
+#19 DONE 0.2s
+
+#20 [17/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/posts.html /app/templates/pages/facebook_content/partials/posts.html
+#20 DONE 0.2s
+
+#21 [18/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/reach_mix.html /app/templates/pages/facebook_content/partials/reach_mix.html
+#21 DONE 0.3s
+
+#22 [19/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/section_status.html /app/templates/pages/facebook_content/partials/section_status.html
+#22 DONE 0.3s
+
+#23 [20/20] COPY --chown=10001:10001 templates/pages/facebook_content/partials/topics.html /app/templates/pages/facebook_content/partials/topics.html
+#23 DONE 0.3s
+
+#24 exporting to image
+#24 exporting layers
+#24 exporting layers 3.0s done
+#24 exporting manifest sha256:6c724ecbfc6ca71d50d73dc76cdcb38998d724802cac33a42dc25b3a92d914c3 0.1s done
+#24 exporting config sha256:2a125f1dff56f7f62945008871e2c36fc65cf01d4c4465a406da9b869c8e7fb8 0.1s done
+#24 exporting attestation manifest sha256:bb1f41a6b2fb4bf1729af60a6d8e2272038e0f40b99275e23b514634e8d833a9 0.1s done
+#24 exporting manifest list sha256:88539e00e31b36f4f044db76412da4472412a44e705655841733720820abc2de
+#24 exporting manifest list sha256:88539e00e31b36f4f044db76412da4472412a44e705655841733720820abc2de 0.0s done
+#24 naming to docker.io/library/kdh-new:tonight-content-20261021-80351dfaa44b done
+#24 unpacking to docker.io/library/kdh-new:tonight-content-20261021-80351dfaa44b
+#24 unpacking to docker.io/library/kdh-new:tonight-content-20261021-80351dfaa44b 1.2s done
+#24 DONE 5.9s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/7gzculf5fewx1q28fhvqkprhf

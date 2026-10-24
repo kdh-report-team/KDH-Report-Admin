@@ -1,0 +1,7 @@
+{
+  "/api/v1/health": 200,
+  "/": 303,
+  "/overview": 404,
+  "/demo-bundle": 404,
+  "/api/v1/reports/facebook-content": 404
+}

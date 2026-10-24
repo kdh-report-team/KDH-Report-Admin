@@ -1,0 +1,29 @@
+{
+  "connection": {
+    "status": "connected",
+    "connected": true,
+    "connected_at": "2026-10-19T12:57:44.266218+00:00",
+    "scopes": [
+      "pages_show_list",
+      "ads_read",
+      "pages_read_engagement",
+      "pages_read_user_content",
+      "public_profile"
+    ],
+    "insights_permission": false,
+    "client_id": "client_meta_sandbox"
+  },
+  "graph_version": "v26.0",
+  "asset": {
+    "id": "cff1f3d5e6f433e021850fbde5b1d3f3",
+    "client_id": "client_meta_sandbox",
+    "provider": "meta",
+    "asset_type": "facebook_page",
+    "external_id": "2188688654687066",
+    "enabled": 1,
+    "connection_id": "7c624e8bffe9bde457dd5beb5b7cc882",
+    "connection_status": "connected",
+    "external_account_id": "122233410626562850"
+  },
+  "account_binding_matches": true
+}

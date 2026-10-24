@@ -1,0 +1,13 @@
+{
+  "new": {
+    "localhost": {
+      "status": 303,
+      "location": "http://localhost:8090/viewer/reports"
+    },
+    "127.0.0.1": {
+      "status": 303,
+      "location": "http://localhost:8191/viewer/reports"
+    }
+  },
+  "admin_tests_exit": 0
+}

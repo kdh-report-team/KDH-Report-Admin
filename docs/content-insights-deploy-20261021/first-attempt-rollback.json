@@ -1,0 +1,23 @@
+{
+  "status": "ROLLED_BACK",
+  "service": {
+    "id": "9290296d0bfea39e1ee1cf97ee1402af0f0d2090be9eb2fb71a8a8a0cbc28aa9",
+    "image": "sha256:045e724c36a537d444633443399de89ba85562d5963c803326ea0c175151c128",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+        "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+        "Destination": "/app/instance",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "networks": [
+      "kdh-meta-2b-net-20261016-132836-5c512a53"
+    ],
+    "running": true
+  }
+}

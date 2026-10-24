@@ -1,0 +1,236 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.2s
+
+#1 [internal] load remote build context
+#1 DONE 0.2s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/kdh-admin:unified-baseline-f94dc37137a5
+#3 DONE 0.1s
+
+#4 [ 1/69] FROM docker.io/library/kdh-admin:unified-baseline-f94dc37137a5@sha256:f94dc37137a5e01d0fb4cc98e4bb710a4160cfa761e341f4a07f8607ab621b0f
+#4 resolve docker.io/library/kdh-admin:unified-baseline-f94dc37137a5@sha256:f94dc37137a5e01d0fb4cc98e4bb710a4160cfa761e341f4a07f8607ab621b0f 0.1s done
+#4 DONE 0.1s
+
+#5 [ 2/69] COPY --chown=10001:10001 kdh/app.py /app/kdh/app.py
+#5 DONE 0.1s
+
+#6 [ 3/69] COPY --chown=10001:10001 kdh/core.py /app/kdh/core.py
+#6 DONE 0.1s
+
+#7 [ 4/69] COPY --chown=10001:10001 kdh/demo.py /app/kdh/demo.py
+#7 DONE 0.1s
+
+#8 [ 5/69] COPY --chown=10001:10001 kdh/evidence_engine.py /app/kdh/evidence_engine.py
+#8 DONE 0.1s
+
+#9 [ 6/69] COPY --chown=10001:10001 kdh/google.py /app/kdh/google.py
+#9 DONE 0.1s
+
+#10 [ 7/69] COPY --chown=10001:10001 kdh/jobs.py /app/kdh/jobs.py
+#10 DONE 0.3s
+
+#11 [ 8/69] COPY --chown=10001:10001 kdh/manual_load_pack.py /app/kdh/manual_load_pack.py
+#11 DONE 0.2s
+
+#12 [ 9/69] COPY --chown=10001:10001 kdh/marketing_approval.py /app/kdh/marketing_approval.py
+#12 DONE 0.1s
+
+#13 [10/69] COPY --chown=10001:10001 kdh/marketing_console.py /app/kdh/marketing_console.py
+#13 DONE 0.1s
+
+#14 [11/69] COPY --chown=10001:10001 kdh/marketing_dataset.py /app/kdh/marketing_dataset.py
+#14 DONE 0.1s
+
+#15 [12/69] COPY --chown=10001:10001 kdh/marketing_preview.py /app/kdh/marketing_preview.py
+#15 DONE 0.1s
+
+#16 [13/69] COPY --chown=10001:10001 kdh/marketing_provenance.py /app/kdh/marketing_provenance.py
+#16 DONE 0.1s
+
+#17 [14/69] COPY --chown=10001:10001 kdh/marketing_publication.py /app/kdh/marketing_publication.py
+#17 DONE 0.1s
+
+#18 [15/69] COPY --chown=10001:10001 kdh/marketing_release.py /app/kdh/marketing_release.py
+#18 DONE 0.1s
+
+#19 [16/69] COPY --chown=10001:10001 kdh/marketing_review.py /app/kdh/marketing_review.py
+#19 DONE 0.1s
+
+#20 [17/69] COPY --chown=10001:10001 kdh/marketing_source_check.py /app/kdh/marketing_source_check.py
+#20 DONE 0.1s
+
+#21 [18/69] COPY --chown=10001:10001 kdh/meta.py /app/kdh/meta.py
+#21 DONE 0.1s
+
+#22 [19/69] COPY --chown=10001:10001 kdh/meta.py.bak /app/kdh/meta.py.bak
+#22 DONE 0.1s
+
+#23 [20/69] COPY --chown=10001:10001 kdh/meta_contract.py /app/kdh/meta_contract.py
+#23 DONE 0.1s
+
+#24 [21/69] COPY --chown=10001:10001 kdh/meta_diagnostics.py /app/kdh/meta_diagnostics.py
+#24 DONE 0.2s
+
+#25 [22/69] COPY --chown=10001:10001 kdh/meta_marketing.py /app/kdh/meta_marketing.py
+#25 DONE 0.1s
+
+#26 [23/69] COPY --chown=10001:10001 kdh/meta_reporting.py /app/kdh/meta_reporting.py
+#26 DONE 0.1s
+
+#27 [24/69] COPY --chown=10001:10001 kdh/meta_reporting_routes.py /app/kdh/meta_reporting_routes.py
+#27 DONE 0.1s
+
+#28 [25/69] COPY --chown=10001:10001 kdh/meta_reporting_worker.py /app/kdh/meta_reporting_worker.py
+#28 DONE 0.1s
+
+#29 [26/69] COPY --chown=10001:10001 kdh/metric_calculator.py /app/kdh/metric_calculator.py
+#29 DONE 0.1s
+
+#30 [27/69] COPY --chown=10001:10001 kdh/metric_catalog.py /app/kdh/metric_catalog.py
+#30 DONE 0.1s
+
+#31 [28/69] COPY --chown=10001:10001 kdh/metric_reader.py /app/kdh/metric_reader.py
+#31 DONE 0.1s
+
+#32 [29/69] COPY --chown=10001:10001 kdh/metric_routes.py /app/kdh/metric_routes.py
+#32 DONE 0.1s
+
+#33 [30/69] COPY --chown=10001:10001 kdh/metric_snapshot.py /app/kdh/metric_snapshot.py
+#33 DONE 0.1s
+
+#34 [31/69] COPY --chown=10001:10001 kdh/migrations.py /app/kdh/migrations.py
+#34 DONE 0.1s
+
+#35 [32/69] COPY --chown=10001:10001 kdh/opportunity_engine.py /app/kdh/opportunity_engine.py
+#35 DONE 0.0s
+
+#36 [33/69] COPY --chown=10001:10001 kdh/overview_trend.py /app/kdh/overview_trend.py
+#36 DONE 0.0s
+
+#37 [34/69] COPY --chown=10001:10001 kdh/platform_data.py /app/kdh/platform_data.py
+#37 DONE 0.1s
+
+#38 [35/69] COPY --chown=10001:10001 kdh/platform_dataset.py /app/kdh/platform_dataset.py
+#38 DONE 0.1s
+
+#39 [36/69] COPY --chown=10001:10001 kdh/platform_registry.py /app/kdh/platform_registry.py
+#39 DONE 0.1s
+
+#40 [37/69] COPY --chown=10001:10001 kdh/postgres.py /app/kdh/postgres.py
+#40 DONE 0.1s
+
+#41 [38/69] COPY --chown=10001:10001 kdh/reports.py /app/kdh/reports.py
+#41 DONE 0.1s
+
+#42 [39/69] COPY --chown=10001:10001 kdh/report_bundles.py /app/kdh/report_bundles.py
+#42 DONE 0.0s
+
+#43 [40/69] COPY --chown=10001:10001 kdh/report_bundle_routes.py /app/kdh/report_bundle_routes.py
+#43 DONE 0.0s
+
+#44 [41/69] COPY --chown=10001:10001 kdh/seo_composite.py /app/kdh/seo_composite.py
+#44 DONE 0.1s
+
+#45 [42/69] COPY --chown=10001:10001 kdh/seo_composite_loader.py /app/kdh/seo_composite_loader.py
+#45 DONE 0.1s
+
+#46 [43/69] COPY --chown=10001:10001 kdh/viewer_access.py /app/kdh/viewer_access.py
+#46 DONE 0.1s
+
+#47 [44/69] COPY --chown=10001:10001 kdh/viewer_handoff.py /app/kdh/viewer_handoff.py
+#47 DONE 0.1s
+
+#48 [45/69] COPY --chown=10001:10001 kdh/__init__.py /app/kdh/__init__.py
+#48 DONE 0.1s
+
+#49 [46/69] COPY --chown=10001:10001 templates/index.html /app/templates/index.html
+#49 DONE 0.1s
+
+#50 [47/69] COPY --chown=10001:10001 templates/marketing.html /app/templates/marketing.html
+#50 DONE 0.0s
+
+#51 [48/69] COPY --chown=10001:10001 templates/report.html /app/templates/report.html
+#51 DONE 0.0s
+
+#52 [49/69] COPY --chown=10001:10001 static/admin-refinement.css /app/static/admin-refinement.css
+#52 DONE 0.1s
+
+#53 [50/69] COPY --chown=10001:10001 static/admin-shell.css /app/static/admin-shell.css
+#53 DONE 0.1s
+
+#54 [51/69] COPY --chown=10001:10001 static/api.js /app/static/api.js
+#54 DONE 0.1s
+
+#55 [52/69] COPY --chown=10001:10001 static/app.js /app/static/app.js
+#55 DONE 0.1s
+
+#56 [53/69] COPY --chown=10001:10001 static/gmb-template.csv /app/static/gmb-template.csv
+#56 DONE 0.1s
+
+#57 [54/69] COPY --chown=10001:10001 static/logo.svg /app/static/logo.svg
+#57 DONE 0.1s
+
+#58 [55/69] COPY --chown=10001:10001 static/marketing.css /app/static/marketing.css
+#58 DONE 0.1s
+
+#59 [56/69] COPY --chown=10001:10001 static/marketing.js /app/static/marketing.js
+#59 DONE 0.1s
+
+#60 [57/69] COPY --chown=10001:10001 static/meta_reporting_ui.js /app/static/meta_reporting_ui.js
+#60 DONE 0.1s
+
+#61 [58/69] COPY --chown=10001:10001 static/style.css /app/static/style.css
+#61 DONE 0.1s
+
+#62 [59/69] COPY --chown=10001:10001 static/ui.js /app/static/ui.js
+#62 DONE 0.1s
+
+#63 [60/69] COPY --chown=10001:10001 static/views.js /app/static/views.js
+#63 DONE 0.1s
+
+#64 [61/69] COPY --chown=10001:10001 static/brands/facebook.svg /app/static/brands/facebook.svg
+#64 DONE 0.1s
+
+#65 [62/69] COPY --chown=10001:10001 static/brands/google.svg /app/static/brands/google.svg
+#65 DONE 0.1s
+
+#66 [63/69] COPY --chown=10001:10001 static/brands/googleanalytics.svg /app/static/brands/googleanalytics.svg
+#66 DONE 0.1s
+
+#67 [64/69] COPY --chown=10001:10001 static/brands/googlesearchconsole.svg /app/static/brands/googlesearchconsole.svg
+#67 DONE 0.1s
+
+#68 [65/69] COPY --chown=10001:10001 static/brands/googlesheets.svg /app/static/brands/googlesheets.svg
+#68 DONE 0.1s
+
+#69 [66/69] COPY --chown=10001:10001 static/brands/meta.svg /app/static/brands/meta.svg
+#69 DONE 0.1s
+
+#70 [67/69] COPY --chown=10001:10001 static/brands/tiktok.svg /app/static/brands/tiktok.svg
+#70 DONE 0.0s
+
+#71 [68/69] COPY --chown=10001:10001 static/brands/youtube.svg /app/static/brands/youtube.svg
+#71 DONE 0.0s
+
+#72 [69/69] COPY --chown=10001:10001 run.py /app/run.py
+#72 DONE 0.0s
+
+#73 exporting to image
+#73 exporting layers
+#73 exporting layers 4.8s done
+#73 exporting manifest sha256:22b76d7749a3ae0c57b24fce06d9a9c277d03c118077b3830d1b8c50c58ccd58 0.0s done
+#73 exporting config sha256:c60669cfe27358904349bd1a8941e06ab945e8072bce52c0cca089592bd79487 0.0s done
+#73 exporting attestation manifest sha256:e28b6eddfaf027b0c11873a0d56a6328ca1379c95337a2a45cb549689062d5cb 0.0s done
+#73 exporting manifest list sha256:e1c8ce68bcbd5c66464a0298ce86be09c5d15e7ed838295fa27322fbd1b63adf
+#73 exporting manifest list sha256:e1c8ce68bcbd5c66464a0298ce86be09c5d15e7ed838295fa27322fbd1b63adf 0.0s done
+#73 naming to docker.io/library/kdh-admin:unified-20261020-ffeef2ce9a18 done
+#73 unpacking to docker.io/library/kdh-admin:unified-20261020-ffeef2ce9a18
+#73 unpacking to docker.io/library/kdh-admin:unified-20261020-ffeef2ce9a18 2.0s done
+#73 DONE 7.7s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/zlk2jhpp7n1lnezpo9fmt018k

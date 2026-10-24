@@ -1,0 +1,29 @@
+{
+  "authenticated_browser_e2e": "NOT RUN: no primary login credential; no VIO Bundle in primary DB",
+  "widths": [
+    {
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "width": 1024,
+      "scroll": 1024
+    },
+    {
+      "width": 768,
+      "scroll": 768
+    },
+    {
+      "width": 390,
+      "scroll": 390
+    },
+    {
+      "width": 360,
+      "scroll": 360
+    }
+  ],
+  "blocked_requests": [],
+  "page_errors": [],
+  "new_to_admin_entry": "PASS",
+  "primary_login_render": "PASS"
+}

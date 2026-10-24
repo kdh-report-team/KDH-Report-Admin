@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "can_approve_internal": true,
+    "can_publish_final": false,
+    "can_publish_provisional": false,
+    "has_traceable_evidence": true,
+    "provider_verified": false,
+    "snapshot_valid": true
+  },
+  "client_id": "client_meta_sandbox",
+  "dataset_id": "a036be96e3977c32cd61541afe37b329",
+  "dataset_sha256": "03177e0bb550145d4c489ef0136fb595801725387140fd17431498cac17ed3b1",
+  "issues": [],
+  "latest_review": null,
+  "note": "Internal review is not provider verification or publication approval.",
+  "review_status": "awaiting_review",
+  "source": "facebook_content",
+  "summary": {
+    "evidence_count": 3,
+    "opportunity_count": 0,
+    "widget_count": 5
+  }
+}

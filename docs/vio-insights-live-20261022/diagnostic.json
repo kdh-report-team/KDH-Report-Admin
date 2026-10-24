@@ -1,0 +1,533 @@
+{
+  "client_id": "client_meta_sandbox",
+  "page_id": "2188688654687066",
+  "asset_enabled": false,
+  "connected_at": "2026-10-22T02:29:59.593203+00:00",
+  "scopes": [
+    "read_insights",
+    "pages_show_list",
+    "ads_read",
+    "pages_read_engagement",
+    "pages_read_user_content",
+    "public_profile"
+  ],
+  "diagnostic_only": true,
+  "insights": {
+    "schema_version": "meta-content-insights-v1",
+    "page_id": "2188688654687066",
+    "graph_version": "v26.0",
+    "requested_period": {
+      "start": "2026-10-15",
+      "end": "2026-10-17"
+    },
+    "report_timezone": "UTC",
+    "measurement_timezone": "provider_end_time",
+    "fetched_at": "2026-10-22T02:32:16.146153+00:00",
+    "permissions": [
+      "ads_read",
+      "pages_read_engagement",
+      "pages_read_user_content",
+      "pages_show_list",
+      "public_profile",
+      "read_insights"
+    ],
+    "page_tasks": [
+      "ANALYZE"
+    ],
+    "post_coverage": {
+      "selected": 3,
+      "expected": 3
+    },
+    "measurements": [
+      {
+        "metric": "page_media_view",
+        "object_id": "2188688654687066",
+        "scope": "page",
+        "period": "day",
+        "unit": "count",
+        "label": "Lượt xem nội dung Page",
+        "aggregation": "sum_exact_intervals",
+        "status": "available",
+        "values": [
+          {
+            "value": 131,
+            "end_time": "2026-10-16T07:00:00+00:00"
+          },
+          {
+            "value": 484,
+            "end_time": "2026-10-17T07:00:00+00:00"
+          },
+          {
+            "value": 539,
+            "end_time": "2026-10-18T07:00:00+00:00"
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:16.146188+00:00",
+        "reason": "Ranh giới ngày Insights không khớp kỳ UTC; giữ số đo gốc, chưa công bố tổng kỳ.",
+        "value": null,
+        "coverage": {
+          "available": 3,
+          "expected": 3,
+          "unit": "days"
+        },
+        "report_status": "period_boundary_mismatch"
+      },
+      {
+        "metric": "page_total_media_view_unique",
+        "object_id": "2188688654687066",
+        "scope": "page",
+        "period": "day",
+        "unit": "count",
+        "label": "Người xem duy nhất mỗi ngày",
+        "aggregation": "non_additive",
+        "status": "available",
+        "values": [
+          {
+            "value": 46,
+            "end_time": "2026-10-16T07:00:00+00:00"
+          },
+          {
+            "value": 112,
+            "end_time": "2026-10-17T07:00:00+00:00"
+          },
+          {
+            "value": 193,
+            "end_time": "2026-10-18T07:00:00+00:00"
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:18.482910+00:00",
+        "reason": "",
+        "value": null,
+        "coverage": {
+          "available": 3,
+          "expected": 3,
+          "unit": "days"
+        },
+        "report_status": "available"
+      },
+      {
+        "metric": "page_post_engagements",
+        "object_id": "2188688654687066",
+        "scope": "page",
+        "period": "day",
+        "unit": "count",
+        "label": "Tương tác bài viết trên Page",
+        "aggregation": "sum_exact_intervals",
+        "status": "available",
+        "values": [
+          {
+            "value": 1,
+            "end_time": "2026-10-16T07:00:00+00:00"
+          },
+          {
+            "value": 17,
+            "end_time": "2026-10-17T07:00:00+00:00"
+          },
+          {
+            "value": 78,
+            "end_time": "2026-10-18T07:00:00+00:00"
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:18.878687+00:00",
+        "reason": "Ranh giới ngày Insights không khớp kỳ UTC; giữ số đo gốc, chưa công bố tổng kỳ.",
+        "value": null,
+        "coverage": {
+          "available": 3,
+          "expected": 3,
+          "unit": "days"
+        },
+        "report_status": "period_boundary_mismatch"
+      },
+      {
+        "metric": "page_follows",
+        "object_id": "2188688654687066",
+        "scope": "page",
+        "period": "day",
+        "unit": "count",
+        "label": "Tổng người theo dõi tại cuối ngày",
+        "aggregation": "stock_non_additive",
+        "status": "available",
+        "values": [
+          {
+            "value": 12642,
+            "end_time": "2026-10-16T07:00:00+00:00"
+          },
+          {
+            "value": 12644,
+            "end_time": "2026-10-17T07:00:00+00:00"
+          },
+          {
+            "value": 12645,
+            "end_time": "2026-10-18T07:00:00+00:00"
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:19.381738+00:00",
+        "reason": "",
+        "value": null,
+        "coverage": {
+          "available": 3,
+          "expected": 3,
+          "unit": "days"
+        },
+        "report_status": "available"
+      },
+      {
+        "metric": "post_media_view",
+        "object_id": "2188688654687066_1622112046596677",
+        "scope": "post",
+        "period": "lifetime",
+        "unit": "count",
+        "label": "Lượt xem bài tích lũy",
+        "aggregation": "per_post_snapshot",
+        "status": "available",
+        "values": [
+          {
+            "value": 458,
+            "end_time": null
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:19.793513+00:00",
+        "reason": "",
+        "value": 458,
+        "coverage": {
+          "available": 1,
+          "expected": 1,
+          "unit": "observations"
+        },
+        "report_status": "available"
+      },
+      {
+        "metric": "post_total_media_view_unique",
+        "object_id": "2188688654687066_1622112046596677",
+        "scope": "post",
+        "period": "lifetime",
+        "unit": "count",
+        "label": "Người xem bài duy nhất tích lũy",
+        "aggregation": "non_additive",
+        "status": "available",
+        "values": [
+          {
+            "value": 187,
+            "end_time": null
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:20.264000+00:00",
+        "reason": "",
+        "value": 187,
+        "coverage": {
+          "available": 1,
+          "expected": 1,
+          "unit": "observations"
+        },
+        "report_status": "available"
+      },
+      {
+        "metric": "post_media_view",
+        "object_id": "2188688654687066_1621684259972789",
+        "scope": "post",
+        "period": "lifetime",
+        "unit": "count",
+        "label": "Lượt xem bài tích lũy",
+        "aggregation": "per_post_snapshot",
+        "status": "available",
+        "values": [
+          {
+            "value": 370,
+            "end_time": null
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:20.730172+00:00",
+        "reason": "",
+        "value": 370,
+        "coverage": {
+          "available": 1,
+          "expected": 1,
+          "unit": "observations"
+        },
+        "report_status": "available"
+      },
+      {
+        "metric": "post_total_media_view_unique",
+        "object_id": "2188688654687066_1621684259972789",
+        "scope": "post",
+        "period": "lifetime",
+        "unit": "count",
+        "label": "Người xem bài duy nhất tích lũy",
+        "aggregation": "non_additive",
+        "status": "available",
+        "values": [
+          {
+            "value": 189,
+            "end_time": null
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:21.278557+00:00",
+        "reason": "",
+        "value": 189,
+        "coverage": {
+          "available": 1,
+          "expected": 1,
+          "unit": "observations"
+        },
+        "report_status": "available"
+      },
+      {
+        "metric": "post_media_view",
+        "object_id": "2188688654687066_1619541213520427",
+        "scope": "post",
+        "period": "lifetime",
+        "unit": "count",
+        "label": "Lượt xem bài tích lũy",
+        "aggregation": "per_post_snapshot",
+        "status": "available",
+        "values": [
+          {
+            "value": 161,
+            "end_time": null
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:21.685856+00:00",
+        "reason": "",
+        "value": 161,
+        "coverage": {
+          "available": 1,
+          "expected": 1,
+          "unit": "observations"
+        },
+        "report_status": "available"
+      },
+      {
+        "metric": "post_total_media_view_unique",
+        "object_id": "2188688654687066_1619541213520427",
+        "scope": "post",
+        "period": "lifetime",
+        "unit": "count",
+        "label": "Người xem bài duy nhất tích lũy",
+        "aggregation": "non_additive",
+        "status": "available",
+        "values": [
+          {
+            "value": 58,
+            "end_time": null
+          }
+        ],
+        "fetched_at": "2026-10-22T02:32:22.218044+00:00",
+        "reason": "",
+        "value": 58,
+        "coverage": {
+          "available": 1,
+          "expected": 1,
+          "unit": "observations"
+        },
+        "report_status": "available"
+      }
+    ],
+    "status": "available",
+    "requests_used": 11,
+    "charts": [
+      {
+        "title": "Lượt xem nội dung Page · mốc kết thúc ngày Meta",
+        "source": "Facebook Page Insights",
+        "status": "available",
+        "kind": "bar",
+        "unit": "count",
+        "integer_axis": true,
+        "timezone": "provider_end_time",
+        "labels": [
+          "2026-10-16T07:00:00+00:00",
+          "2026-10-17T07:00:00+00:00",
+          "2026-10-18T07:00:00+00:00"
+        ],
+        "values": [
+          131,
+          484,
+          539
+        ]
+      },
+      {
+        "title": "Người xem duy nhất mỗi ngày · mốc kết thúc ngày Meta",
+        "source": "Facebook Page Insights",
+        "status": "available",
+        "kind": "bar",
+        "unit": "count",
+        "integer_axis": true,
+        "timezone": "provider_end_time",
+        "labels": [
+          "2026-10-16T07:00:00+00:00",
+          "2026-10-17T07:00:00+00:00",
+          "2026-10-18T07:00:00+00:00"
+        ],
+        "values": [
+          46,
+          112,
+          193
+        ]
+      },
+      {
+        "title": "Tương tác bài viết trên Page · mốc kết thúc ngày Meta",
+        "source": "Facebook Page Insights",
+        "status": "available",
+        "kind": "bar",
+        "unit": "count",
+        "integer_axis": true,
+        "timezone": "provider_end_time",
+        "labels": [
+          "2026-10-16T07:00:00+00:00",
+          "2026-10-17T07:00:00+00:00",
+          "2026-10-18T07:00:00+00:00"
+        ],
+        "values": [
+          1,
+          17,
+          78
+        ]
+      },
+      {
+        "title": "Tổng người theo dõi tại cuối ngày · mốc kết thúc ngày Meta",
+        "source": "Facebook Page Insights",
+        "status": "available",
+        "kind": "bar",
+        "unit": "count",
+        "integer_axis": true,
+        "timezone": "provider_end_time",
+        "labels": [
+          "2026-10-16T07:00:00+00:00",
+          "2026-10-17T07:00:00+00:00",
+          "2026-10-18T07:00:00+00:00"
+        ],
+        "values": [
+          12642,
+          12644,
+          12645
+        ]
+      }
+    ]
+  },
+  "requests_used": 11,
+  "calls": [
+    {
+      "path": "me/accounts",
+      "metric": null
+    },
+    {
+      "path": "2188688654687066/insights",
+      "metric": "page_media_view",
+      "response_shape": [
+        {
+          "name": "page_media_view",
+          "period": "day",
+          "id_matches": true,
+          "values_count": 3
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066/insights",
+      "metric": "page_total_media_view_unique",
+      "response_shape": [
+        {
+          "name": "page_total_media_view_unique",
+          "period": "day",
+          "id_matches": true,
+          "values_count": 3
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066/insights",
+      "metric": "page_post_engagements",
+      "response_shape": [
+        {
+          "name": "page_post_engagements",
+          "period": "day",
+          "id_matches": true,
+          "values_count": 3
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066/insights",
+      "metric": "page_follows",
+      "response_shape": [
+        {
+          "name": "page_follows",
+          "period": "day",
+          "id_matches": true,
+          "values_count": 3
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066_1622112046596677/insights",
+      "metric": "post_media_view",
+      "response_shape": [
+        {
+          "name": "post_media_view",
+          "period": "lifetime",
+          "id_matches": true,
+          "values_count": 1
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066_1622112046596677/insights",
+      "metric": "post_total_media_view_unique",
+      "response_shape": [
+        {
+          "name": "post_total_media_view_unique",
+          "period": "lifetime",
+          "id_matches": true,
+          "values_count": 1
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066_1621684259972789/insights",
+      "metric": "post_media_view",
+      "response_shape": [
+        {
+          "name": "post_media_view",
+          "period": "lifetime",
+          "id_matches": true,
+          "values_count": 1
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066_1621684259972789/insights",
+      "metric": "post_total_media_view_unique",
+      "response_shape": [
+        {
+          "name": "post_total_media_view_unique",
+          "period": "lifetime",
+          "id_matches": true,
+          "values_count": 1
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066_1619541213520427/insights",
+      "metric": "post_media_view",
+      "response_shape": [
+        {
+          "name": "post_media_view",
+          "period": "lifetime",
+          "id_matches": true,
+          "values_count": 1
+        }
+      ]
+    },
+    {
+      "path": "2188688654687066_1619541213520427/insights",
+      "metric": "post_total_media_view_unique",
+      "response_shape": [
+        {
+          "name": "post_total_media_view_unique",
+          "period": "lifetime",
+          "id_matches": true,
+          "values_count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,396 @@
+{
+  "services": {
+    "kdh-report-admin-admin-1": {
+      "id": "ea078b36b1bf6e5facda46d3f49723a82f0a27cf8f719406cac3c9d681a7c5bd",
+      "image": "sha256:f94dc37137a5e01d0fb4cc98e4bb710a4160cfa761e341f4a07f8607ab621b0f",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-report-admin_admin-data",
+          "Source": "/var/lib/docker/volumes/kdh-report-admin_admin-data/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Data/KDH_Marketing_DataPack_v1",
+          "Destination": "/demo-pack",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Report/KDH-Report",
+          "Destination": "/legacy",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default"
+      ],
+      "running": true
+    },
+    "kdh-report-new-app-1": {
+      "id": "633b764f9859831692c042784eb27c8d5b08a6aec669f4ca58b39cf0dd1e91ed",
+      "image": "sha256:f08dfb908074aada9bebec14539001b477f74d3adc34f731e2d48aa962a168c2",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Report-All\\KDH-Report-New\\.work\\layout-preview",
+          "Destination": "/app/static/layout-preview",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default",
+        "kdh-report-new_default"
+      ],
+      "running": true
+    },
+    "kdh-report-admin-postgres-1": {
+      "id": "8454125865a6be20d33a31b1872f98ed2c6473ef6e6e1b64a938ab60ca8b9fe2",
+      "image": "sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-report-admin_postgres-data",
+          "Source": "/var/lib/docker/volumes/kdh-report-admin_postgres-data/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default"
+      ],
+      "running": true
+    }
+  },
+  "protected": {
+    "kdh-vio-new-phase9-20261019": {
+      "id": "0840110c2d6263da0b8d6ff216e4969fa583cbcd51eb4075740c1b0a2f80eda5",
+      "image": "sha256:c88dbe4b61d8adea12e48dcd9298af1eaeddbaf77592953b9637c07a6b2da502",
+      "mounts": [],
+      "networks": [
+        "kdh-vio-handoff-phase9-recovery-20261019",
+        "kdh-vio-host-phase9-20261019"
+      ],
+      "running": true
+    },
+    "kdh-vio-new-phase9-20261019-phase10-superseded-e69c6cd6": {
+      "id": "e69c6cd64d1c4cd187efcf3a6a32f6bd918b1ed31949d52357714e371dba887d",
+      "image": "sha256:71078a2d7801db6d4f1195ad80fb3c480a63c6f6b41be7ee29ccfcaf8d69b191",
+      "mounts": [],
+      "networks": [
+        "kdh-vio-handoff-phase9-recovery-20261019"
+      ],
+      "running": true
+    },
+    "kdh-vio-new-phase9-20261019-phase10-superseded-55671a1c": {
+      "id": "55671a1c745ef55ca0bcc1c1d6d32512819de71589da854166c4cb5860133379",
+      "image": "sha256:5aba8b105df5c73375c0a184ef5400eec0be10f1df5ff942eb73f6ff9042fa13",
+      "mounts": [],
+      "networks": [
+        "kdh-vio-handoff-phase9-recovery-20261019"
+      ],
+      "running": true
+    },
+    "kdh-meta-2b-admin-20261016-132836-5c512a53": {
+      "id": "e1dc4e5cbd570fca4f77b4c03029559e26ce37ef9c0c13bd0cb939d11383e792",
+      "image": "sha256:058291bbe5a905e6467b4907ab77bf18bc0e702280f08722ce2908b9e81ca970",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": false
+    },
+    "kdh-vio-new-phase9-20261019-before-phase10": {
+      "id": "40e5f7da74234e975bcd158f3f929438b2c8026a18dfda9458f1a4166d01ad4c",
+      "image": "sha256:4fc62476f20335567fc4c88aaf33f317fc4f52a1870a7eff24bfe8d4cb5cb931",
+      "mounts": [],
+      "networks": [
+        "kdh-vio-handoff-phase9-recovery-20261019"
+      ],
+      "running": true
+    },
+    "kdh-vio-relay-phase9-20261019": {
+      "id": "4d789987abbe66eed81a59149d3be1c66ad556b9fec2450f2d5686c298ffc12c",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase9-private-relay-4e536289",
+          "Destination": "/relay",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53",
+        "kdh-vio-handoff-phase9-recovery-20261019"
+      ],
+      "running": false
+    },
+    "kdh-meta-2b-admin-20261016-132836-5c512a53-before-phase9": {
+      "id": "41a7100e18cbde6d0aa1d58c281a0ad96086b3023b67f73c3a53ee38328cd104",
+      "image": "sha256:61fc38a6e3d5e64271db0d88ed994b7d355f659d0a3dbbe2dee68632d9baa030",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [],
+      "running": false
+    },
+    "kdh-meta-3-egress-20261016-132836-5c512a53": {
+      "id": "c264a6c245cfd98fedd717e0f2e60743058e8d26e7a2577702622e23c993b0e6",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\phase3\\gateway",
+          "Destination": "/gateway",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53",
+        "kdh-meta-3-outbound-20261016-132836-5c512a53"
+      ],
+      "running": false
+    },
+    "kdh-meta-2b-relay-20261016-132836-5c512a53": {
+      "id": "10a498a7245ef7b9e8dc2a67b389160d7feeec2fe6939ae5d1d06cf5cac3028f",
+      "image": "sha256:d4e4e09a6a43af0c01e98d135bb1ff8ac65bd2c0bbb27cd5bc778c28e658b0b9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Meta-Phase2B\\20261016-132836-5c512a53\\relay",
+          "Destination": "/relay",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-ingress-20261016-132836-5c512a53",
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": false
+    },
+    "kdh-meta-2b-pg-20261016-132836-5c512a53": {
+      "id": "41c3cebbed98beab58091b359ba12e4b54f7eb90a41fbe4b9cb5a86539cb87d1",
+      "image": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-pgdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-pgdata-20261016-132836-5c512a53/_data",
+          "Destination": "/var/lib/postgresql/data",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": false
+    }
+  },
+  "checks": {
+    "migrations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "pending_jobs": 0,
+    "schedules": 0
+  },
+  "data": {
+    "artifacts": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attempts": {
+      "count": 3,
+      "sha256": "b2ed8e87725ff779c0ae11e24f6232d08d421a1d5b99a01694f5248debc6f694"
+    },
+    "clients": {
+      "count": 3,
+      "sha256": "7e30983e065025dee41476a7e93156cf1615eb557550940461c5ba1d5d5847b5"
+    },
+    "connections": {
+      "count": 10,
+      "sha256": "5a7172aa75cca29c3dfc2f7eae47bf99fc086e50e4fbe590f991e5891d941e6f"
+    },
+    "daily_metrics": {
+      "count": 900,
+      "sha256": "8022ad37304a98d820de104fa32c17ca501ab7501668e79bfc060e09683568ff"
+    },
+    "datasets": {
+      "count": 9,
+      "sha256": "c70dce88f819d2f437f65337eb6b9f120a14bfe41d3cd6e596f59805e4c8a6cb"
+    },
+    "delegated_viewer_sessions": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "events": {
+      "count": 54,
+      "sha256": "e4995ea4ce7896c559dfe3bd2975a4cea4dcda10d60d00bf1da7c40d9b358215"
+    },
+    "jobs": {
+      "count": 12,
+      "sha256": "569e77375336c561b55cb0a9ab310997556b274017c0959b2ce05f6843ef48f0"
+    },
+    "marketing_dataset_reviews": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "marketing_release_approvals": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "marketing_release_snapshots": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "meta_oauth_states": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "oauth_states": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "publications": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "report_bundle_sections": {
+      "count": 7,
+      "sha256": "1005c98dfb089b1cf0b9f283da0831d753ce5f7935b6ee5e606dcdaa73a2392f"
+    },
+    "report_bundles": {
+      "count": 1,
+      "sha256": "01250fa56068b8527d844d72a0c6a9a73500e61a46f15c5f61979095cd401eb5"
+    },
+    "report_viewer_grants": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reports": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "schedules": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "schema_migrations": {
+      "count": 8,
+      "sha256": "f8200f1ea07caa5c6fe7826ce41197bcd9840df9787a4ee8880f51d3d1cde873"
+    },
+    "secrets": {
+      "count": 1,
+      "sha256": "5745a622938942d3287994921590c22510b5670a05c9631c0d394a761c5adb21"
+    },
+    "sessions": {
+      "count": 2,
+      "sha256": "8926574c7f23ef8770df4b9487d39b2c1f58f92466a291b182a0ce44ba4bc675"
+    },
+    "settings": {
+      "count": 3,
+      "sha256": "60ee667232b5ff01312181af31c5caddf6e58892e3df20811a91ec20269b87c9"
+    },
+    "source_assets": {
+      "count": 15,
+      "sha256": "beb77d8d75bbf6a4511f466328968b31412c6cae0ce363f84b5284fddfb9d81a"
+    },
+    "source_attestations": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "source_snapshots": {
+      "count": 11,
+      "sha256": "fd328d1ccd9262dbae97e8f3ce1929ff7f79d59b40d940e5a6e354e058073734"
+    },
+    "sync_runs": {
+      "count": 21,
+      "sha256": "aa0acec7445a16a8b77971abb995d2adcbc03fd56c0e12d18ee5fcb80675df91"
+    },
+    "sync_watermarks": {
+      "count": 9,
+      "sha256": "40f4352d654ee0a37e17b7babc1478c63021b238fbe45913bc68f130ef563431"
+    },
+    "upload_locations": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "uploads": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "users": {
+      "count": 2,
+      "sha256": "46279f2ea0aef614ca5e1a49d01152f0b5e0fb41e3a0a25ef215fd7f29c03e7e"
+    },
+    "viewer_handoffs": {
+      "count": 3,
+      "sha256": "69f5bbe94e8d6cdb52d68181fa3c291d8431abc5e73683aa007cb2736aa36eff"
+    }
+  },
+  "backup": {
+    "database.dump": {
+      "sha256": "eca8b67ac05048e1d1602244358966e46f02c6a350465c7ec94ca7ac7ea83777",
+      "encrypted_sha256": "0016879d2e1a78dce13dc93a151df19ff5c37981a5fa8ad1752b9a5c53bec2dd",
+      "bytes": 1120949
+    },
+    "appdata.tar": {
+      "sha256": "d95f1dfe74a8a721e96ceee9f87c4d1669ac2441d73ce596dd549803397f2479",
+      "encrypted_sha256": "c142abf9621c14aff7d743d47467d5122128335851bfcc670da8487e8bad0ca5",
+      "bytes": 1536000
+    }
+  },
+  "private_backup": "C:\\Users\\Admin\\AppData\\Local\\KDH-Primary-Deployment\\unified-20261020",
+  "scope": "client_meta_sandbox unchanged",
+  "off_host_backup": false
+}

@@ -1,0 +1,68 @@
+# Active local shared Viewer. Existing networks were verified during deployment.
+# Credentials must be supplied privately; never infer a backend from client_id.
+name: kdh-report-admin
+services:
+  new:
+    container_name: kdh-report-new-app-1
+    image: kdh-new:tonight-content-20261021-80351dfaa44b
+    pull_policy: never
+    ports:
+      - "127.0.0.1:8080:8000"
+    volumes:
+      # Public empty layout pages only; never store customer data here.
+      - type: bind
+        source: ./.work/layout-preview
+        target: /app/static/layout-preview
+        read_only: true
+        bind:
+          create_host_path: false
+    environment:
+      APP_ENV: production
+      DEBUG: "false"
+      REPORT_PREVIEW_ENABLED: "false"
+      REPORT_ADMIN_BASE_URL: http://192.168.144.2:8090
+      REPORT_ADMIN_PUBLIC_URL: http://localhost:8090
+      REPORT_NEW_PUBLIC_URL: http://localhost:8080
+      REPORT_SERVICE_TOKEN: ${REPORT_SERVICE_TOKEN:?Private primary backend token required}
+      REPORT_VIO_VIEWER_ENABLED: "true"
+      REPORT_VIO_ADMIN_BASE_URL: http://192.168.96.2:8090
+      REPORT_VIO_ADMIN_PUBLIC_URL: http://localhost:8191
+      REPORT_VIO_NEW_PUBLIC_URL: http://127.0.0.1:8080
+      REPORT_VIO_SERVICE_TOKEN: ${REPORT_VIO_SERVICE_TOKEN:?Private VIO backend token required}
+    command: ["python", "-B", "/app/ops/shared_viewer_entrypoint.py"]
+    user: "0:0"
+    read_only: true
+    dns: ["127.0.0.1"]
+    cap_drop: ["ALL"]
+    cap_add: ["NET_ADMIN", "SETUID", "SETGID", "SETPCAP"]
+    security_opt: ["no-new-privileges:true"]
+    sysctls:
+      net.ipv6.conf.all.disable_ipv6: "1"
+      net.ipv4.ip_forward: "0"
+    tmpfs: ["/tmp:rw,nosuid,nodev,noexec,size=64m,mode=1777"]
+    mem_limit: 512m
+    cpus: 1
+    logging:
+      driver: none
+    restart: unless-stopped
+    networks:
+      host: {}
+      primary:
+        ipv4_address: 192.168.144.3
+      vio:
+        ipv4_address: 192.168.96.3
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=3)"]
+      interval: 3s
+      timeout: 4s
+      retries: 10
+networks:
+  host:
+    external: true
+    name: kdh-vio-host-phase9-20261019
+  primary:
+    external: true
+    name: kdh-shared-viewer-primary-20261021
+  vio:
+    external: true
+    name: kdh-vio-handoff-phase9-recovery-20261019

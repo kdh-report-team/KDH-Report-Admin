@@ -1,0 +1,31 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#2 copy /context /
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/kdh-admin-meta:origin-baseline-058291bbe5a9
+#3 DONE 0.1s
+
+#4 [1/2] FROM docker.io/library/kdh-admin-meta:origin-baseline-058291bbe5a9@sha256:058291bbe5a905e6467b4907ab77bf18bc0e702280f08722ce2908b9e81ca970
+#4 resolve docker.io/library/kdh-admin-meta:origin-baseline-058291bbe5a9@sha256:058291bbe5a905e6467b4907ab77bf18bc0e702280f08722ce2908b9e81ca970 0.1s done
+#4 DONE 0.3s
+
+#5 [2/2] COPY --chown=10001:10001 app.py /app/kdh/app.py
+#5 DONE 0.1s
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.2s done
+#6 exporting manifest sha256:cf68669a0549251764c358164fee4805766324f80386467155944dc3f2d5e649 0.0s done
+#6 exporting config sha256:e8fb0456dc9a9f5575af66b2ff0df2578693ad350df8973fb87872d2a0c19421 0.0s done
+#6 exporting attestation manifest sha256:2e39eefa2ea8ac3f13b8c772994e20ddd6dcb5617bdd15a5850476cad94eb51b
+#6 exporting attestation manifest sha256:2e39eefa2ea8ac3f13b8c772994e20ddd6dcb5617bdd15a5850476cad94eb51b 0.0s done
+#6 exporting manifest list sha256:045e724c36a537d444633443399de89ba85562d5963c803326ea0c175151c128 0.0s done
+#6 naming to docker.io/library/kdh-admin-meta:origin-fix-20261021-4c8b2e4b3c8a done
+#6 unpacking to docker.io/library/kdh-admin-meta:origin-fix-20261021-4c8b2e4b3c8a 0.1s done
+#6 DONE 0.6s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/yzrslioyzfymnc3q41xlzwf1a

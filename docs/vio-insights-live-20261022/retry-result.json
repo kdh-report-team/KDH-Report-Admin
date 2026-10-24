@@ -1,0 +1,14 @@
+{
+  "id": "5e320fe5250726ec421829fceedcb94f",
+  "status": "succeeded",
+  "steps": [
+    {
+      "record_count": 43,
+      "source": "facebook_content",
+      "status": "succeeded"
+    }
+  ],
+  "error": null,
+  "started_at": "2026-10-22T02:45:38.276997+00:00",
+  "finished_at": "2026-10-22T02:45:57.283122+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "tag": "kdh-new:content-shell-20261021-25ef745a308c",
+  "image": "sha256:9342a27ce977957a9d84fe0390fbf13530a67f408bee03ab5a3a34ce541d24d1",
+  "files": {
+    "app/mappers/dashboard.py": "2c3615bb5cec7f901711bfa22547bf80102308a2569a909a3d886d40206e88e4",
+    "templates/pages/facebook_content/index.html": "52fb4e8d6ecb31f9273b3e7d620c3b6590c0430f07d6262d5cba38b1806eedb0",
+    "templates/pages/facebook_content/partials/formats.html": "3c262fd383063e7d06d66e40ced424a7fa12d2c969e78b0c18c6823069e203c1",
+    "templates/pages/facebook_content/partials/posts.html": "a7bc7e867f7d0fbcbe27dfca99d44c7d333821ec31aad3eb2b0e7e34c00fe038",
+    "static/css/pages/facebook-content.css": "c1880d6599d9f50a51d26d63433d434e4a18edc3a9d64d73a782aa1fd15f3c90"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "report_id": "rpt_795f2c05f18e6eed68b2bb247e731317",
+  "revision": 1,
+  "handoff": "PASS",
+  "metrics": {
+    "facebook_content.posts_published": 15,
+    "facebook_content.engagements": null,
+    "facebook_content.reactions_lifetime": 81,
+    "facebook_content.comments_lifetime": 10,
+    "facebook_content.shares_lifetime": null
+  },
+  "timezone": "UTC",
+  "viewport_1440": "PASS",
+  "viewport_390": "PASS",
+  "wrong_revision": "DENIED",
+  "javascript_errors": [],
+  "blocked_requests": [],
+  "viewer_logout": "PASS",
+  "bundle_and_grants_unchanged": true
+}

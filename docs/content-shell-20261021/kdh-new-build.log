@@ -1,0 +1,65 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.2s
+
+#1 [internal] load remote build context
+#1 DONE 0.2s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/kdh-new:content-shell-20261021-base
+#3 DONE 0.3s
+
+#4 [ 1/11] FROM docker.io/library/kdh-new:content-shell-20261021-base@sha256:6f147fcfcd869639a95358914b4734bf2842e05e44c823592a891e53dbb0bd86
+#4 resolve docker.io/library/kdh-new:content-shell-20261021-base@sha256:6f147fcfcd869639a95358914b4734bf2842e05e44c823592a891e53dbb0bd86
+#4 resolve docker.io/library/kdh-new:content-shell-20261021-base@sha256:6f147fcfcd869639a95358914b4734bf2842e05e44c823592a891e53dbb0bd86 0.3s done
+#4 DONE 0.3s
+
+#4 [ 1/11] FROM docker.io/library/kdh-new:content-shell-20261021-base@sha256:6f147fcfcd869639a95358914b4734bf2842e05e44c823592a891e53dbb0bd86
+#4 DONE 2.2s
+
+#5 [ 2/11] COPY --chown=10001:10001 app/mappers/dashboard.py /app/app/mappers/dashboard.py
+#5 DONE 1.0s
+
+#6 [ 3/11] COPY --chown=10001:10001 templates/pages/facebook_content/index.html /app/templates/pages/facebook_content/index.html
+#6 DONE 0.3s
+
+#7 [ 4/11] COPY --chown=10001:10001 templates/pages/facebook_content/partials/kpis.html /app/templates/pages/facebook_content/partials/kpis.html
+#7 DONE 0.2s
+
+#8 [ 5/11] COPY --chown=10001:10001 templates/pages/facebook_content/partials/formats.html /app/templates/pages/facebook_content/partials/formats.html
+#8 DONE 0.1s
+
+#9 [ 6/11] COPY --chown=10001:10001 templates/pages/facebook_content/partials/topics.html /app/templates/pages/facebook_content/partials/topics.html
+#9 DONE 0.1s
+
+#10 [ 7/11] COPY --chown=10001:10001 templates/pages/facebook_content/partials/posts.html /app/templates/pages/facebook_content/partials/posts.html
+#10 DONE 0.1s
+
+#11 [ 8/11] COPY --chown=10001:10001 templates/pages/facebook_content/partials/reach_mix.html /app/templates/pages/facebook_content/partials/reach_mix.html
+#11 DONE 0.1s
+
+#12 [ 9/11] COPY --chown=10001:10001 templates/pages/facebook_content/partials/insights.html /app/templates/pages/facebook_content/partials/insights.html
+#12 DONE 0.1s
+
+#13 [10/11] COPY --chown=10001:10001 templates/components/dashboard/navigation.html /app/templates/components/dashboard/navigation.html
+#13 DONE 0.1s
+
+#14 [11/11] COPY --chown=10001:10001 static/css/pages/facebook-content.css /app/static/css/pages/facebook-content.css
+#14 DONE 0.2s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.9s done
+#15 exporting manifest sha256:d7e507e6b49a18ae51cd0243f2b4f86d3b131794f861130dfdb52f49be1ecd10 0.0s done
+#15 exporting config sha256:db008a0d7689e8a4e63ca795034935bb5f763c2adb4331b7127af2b51b9d0197 0.0s done
+#15 exporting attestation manifest sha256:909bd0993604f2abbe799a2739c653eae74d85c2c5e2daf7bb2953595c54bf15 0.0s done
+#15 exporting manifest list sha256:465d629733f430e62f99e290a826c08e284cd9e2340093610f24b099cae3ecd5 0.0s done
+#15 naming to docker.io/library/kdh-new:content-shell-20261021-ac46611ca761 done
+#15 unpacking to docker.io/library/kdh-new:content-shell-20261021-ac46611ca761
+#15 unpacking to docker.io/library/kdh-new:content-shell-20261021-ac46611ca761 0.6s done
+#15 DONE 3.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/7m7relr05a1fc13uxa3lpla1u

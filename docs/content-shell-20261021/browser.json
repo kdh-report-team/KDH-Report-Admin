@@ -1,0 +1,25 @@
+{
+  "login": "PASS",
+  "report": "PASS",
+  "docker_entry": "PASS",
+  "fragment_preserved": "PASS",
+  "wrong_origin_denied": 403,
+  "health": "PASS",
+  "cross_environment": "DENIED",
+  "wrong_revision_and_no_grant": "DENIED",
+  "responsive": {
+    "1440": "PASS",
+    "1024": "PASS",
+    "768": "PASS",
+    "390": "PASS",
+    "360": "PASS"
+  },
+  "shared_layout_and_data_visibility": "PASS",
+  "visible_kpis": [
+    15,
+    80,
+    10
+  ],
+  "business_data": "UNCHANGED",
+  "protected_services": "UNCHANGED"
+}

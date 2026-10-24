@@ -1,0 +1,12 @@
+{
+  "login": "PASS",
+  "report": "PASS",
+  "docker_entry": "PASS",
+  "fragment_preserved": "PASS",
+  "wrong_origin_denied": 403,
+  "health": "PASS",
+  "cross_environment": "DENIED",
+  "wrong_revision_and_no_grant": "DENIED",
+  "business_data": "UNCHANGED",
+  "protected_services": "UNCHANGED"
+}

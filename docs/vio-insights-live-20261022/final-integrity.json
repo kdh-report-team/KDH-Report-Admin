@@ -1,0 +1,49 @@
+{
+  "published_revision_1_and_grants": "UNCHANGED",
+  "jobs_after_reconnect": [
+    {
+      "id": "d1cec7997ce5bbd67b693a2eca5ad16e",
+      "status": "succeeded",
+      "job_id": "5e320fe5250726ec421829fceedcb94f",
+      "created_at": "2026-10-22T02:45:38.439862+00:00"
+    },
+    {
+      "id": "1d67b4d5b47696f4a6f3018bd40f866b",
+      "status": "running",
+      "job_id": "b1589509581f925ed3a325f320ea3ef2",
+      "created_at": "2026-10-22T02:38:09.105773+00:00"
+    }
+  ],
+  "health": {
+    "http://localhost:8191/health": 200,
+    "http://127.0.0.1:8080/api/v1/health": 200
+  },
+  "isolation": {
+    "kdh-meta-2b-relay-20261016-132836-5c512a53": {
+      "probes": [
+        {
+          "target": "192.168.0.4",
+          "errno": 101
+        },
+        {
+          "target": "1.1.1.1",
+          "errno": 101
+        }
+      ],
+      "default_route": false
+    },
+    "kdh-vio-relay-phase9-20261019": {
+      "probes": [
+        {
+          "target": "192.168.0.4",
+          "errno": 101
+        },
+        {
+          "target": "1.1.1.1",
+          "errno": 101
+        }
+      ],
+      "default_route": false
+    }
+  }
+}

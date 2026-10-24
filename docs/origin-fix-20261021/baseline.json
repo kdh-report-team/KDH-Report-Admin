@@ -1,0 +1,5 @@
+{
+  "head": "6b52ee2f3ef29ebb5820e95e88ba318a7599667d",
+  "status": " M compose.yaml\n M docs/SYSTEM_CONTEXT.md\n?? KDH_PRIMARY_UNIFICATION_RESULT.md\n?? compose.primary-viewer.yaml\n?? docs/unified-admin-20261020/\n?? ops/\n",
+  "app_sha256": "10e09594376006fab0d14a0cb6130be0555dc3fffef35c3013355283d0dfb485"
+}

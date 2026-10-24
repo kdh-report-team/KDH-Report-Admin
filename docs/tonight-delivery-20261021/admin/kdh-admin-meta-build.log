@@ -1,0 +1,69 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#1 [internal] load remote build context
+#1 DONE 0.1s
+
+#2 copy /context /
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/kdh-admin-meta:insights-20261021-base
+#3 DONE 0.1s
+
+#4 [ 1/13] FROM docker.io/library/kdh-admin-meta:insights-20261021-base@sha256:6eab0f453566cd574acc6072ed83fbbda2a05540a2affc6c2ccd1774a30bf77b
+#4 resolve docker.io/library/kdh-admin-meta:insights-20261021-base@sha256:6eab0f453566cd574acc6072ed83fbbda2a05540a2affc6c2ccd1774a30bf77b 0.1s done
+#4 DONE 0.6s
+
+#5 [ 2/13] COPY --chown=10001:10001 kdh/app.py /app/kdh/app.py
+#5 DONE 0.1s
+
+#6 [ 3/13] COPY --chown=10001:10001 kdh/facebook_content_report.py /app/kdh/facebook_content_report.py
+#6 DONE 0.1s
+
+#7 [ 4/13] COPY --chown=10001:10001 kdh/meta_content_insights.py /app/kdh/meta_content_insights.py
+#7 DONE 0.1s
+
+#8 [ 5/13] COPY --chown=10001:10001 kdh/meta_reporting.py /app/kdh/meta_reporting.py
+#8 DONE 0.1s
+
+#9 [ 6/13] COPY --chown=10001:10001 kdh/meta_marketing.py /app/kdh/meta_marketing.py
+#9 DONE 0.2s
+
+#10 [ 7/13] COPY --chown=10001:10001 kdh/marketing_dataset.py /app/kdh/marketing_dataset.py
+#10 DONE 0.2s
+
+#11 [ 8/13] COPY --chown=10001:10001 kdh/marketing_preview.py /app/kdh/marketing_preview.py
+#11 DONE 0.3s
+
+#12 [ 9/13] COPY --chown=10001:10001 kdh/meta.py /app/kdh/meta.py
+#12 DONE 0.1s
+
+#13 [10/13] COPY --chown=10001:10001 static/facebook-content-report.js /app/static/facebook-content-report.js
+#13 DONE 0.1s
+
+#14 [11/13] COPY --chown=10001:10001 static/marketing.js /app/static/marketing.js
+#14 DONE 0.1s
+
+#15 [12/13] COPY --chown=10001:10001 static/views.js /app/static/views.js
+#15 DONE 0.1s
+
+#16 [13/13] COPY --chown=10001:10001 templates/marketing.html /app/templates/marketing.html
+#16 DONE 0.2s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 1.3s done
+#17 exporting manifest sha256:86caa7e709d517c9acfe3d015c45cc8af9a7a107a364657959f5aa5368d198bd 0.0s done
+#17 exporting config sha256:3f551ed4db20bd0805ac24863365e49c260fd9d325ab49114b82a50764307266 0.0s done
+#17 exporting attestation manifest sha256:46e895d1cf40505d5f1598531cc3ea621f6c204828d643ea85c313d018d42e1e
+#17 exporting attestation manifest sha256:46e895d1cf40505d5f1598531cc3ea621f6c204828d643ea85c313d018d42e1e 0.1s done
+#17 exporting manifest list sha256:430b00f759e59c7310a9d1e8f3867097f588a99cfa0aaf26236c3308e48d5aaa 0.1s done
+#17 naming to docker.io/library/kdh-admin-meta:insights-20261021-cf97123433e7
+#17 naming to docker.io/library/kdh-admin-meta:insights-20261021-cf97123433e7 0.0s done
+#17 unpacking to docker.io/library/kdh-admin-meta:insights-20261021-cf97123433e7
+#17 unpacking to docker.io/library/kdh-admin-meta:insights-20261021-cf97123433e7 0.7s done
+#17 DONE 2.6s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/7lh02srz0y1bqz4hm31xd95bs

@@ -1,0 +1,21 @@
+{
+  "job": {
+    "id": "b1589509581f925ed3a325f320ea3ef2",
+    "status": "running",
+    "created_at": "2026-10-22T02:38:08.897850+00:00",
+    "started_at": "2026-10-22T02:38:09.000310+00:00",
+    "finished_at": null,
+    "steps": "[{\"source\": \"facebook_content\", \"status\": \"running\", \"record_count\": 0}]",
+    "error": null
+  },
+  "run": {
+    "id": "1d67b4d5b47696f4a6f3018bd40f866b",
+    "status": "running",
+    "record_count": 0,
+    "created_at": "2026-10-22T02:38:09.105773+00:00",
+    "finished_at": null,
+    "error_code": null,
+    "requested_start": "2026-09-21",
+    "requested_end": "2026-10-18"
+  }
+}

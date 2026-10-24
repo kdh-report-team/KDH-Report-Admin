@@ -1,0 +1,57 @@
+{
+  "results": [
+    {
+      "page": "Admin fixture",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "page": "Admin fixture",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "page": "Admin fixture",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "page": "Admin fixture",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "page": "Admin fixture",
+      "width": 360,
+      "overflow": false
+    },
+    {
+      "page": "New fixture",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "page": "New fixture",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "page": "New fixture",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "page": "New fixture",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "page": "New fixture",
+      "width": 360,
+      "overflow": false
+    }
+  ],
+  "page_errors": [],
+  "preview_provider_calls": 0,
+  "preview_dataset_writes": 0
+}

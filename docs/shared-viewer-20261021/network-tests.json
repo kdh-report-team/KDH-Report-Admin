@@ -1,0 +1,10 @@
+{
+  "kdh-report-admin-postgres-1": "DENIED",
+  "kdh-meta-2b-pg-20261016-132836-5c512a53": "DENIED",
+  "kdh-meta-3-egress-20261016-132836-5c512a53": "DENIED",
+  "kdh-meta-2b-admin-20261016-132836-5c512a53": "DENIED",
+  "kdh-report-admin-admin-1": "DENIED",
+  "internet": "DENIED",
+  "REPORT_ADMIN": 200,
+  "REPORT_VIO_ADMIN": 200
+}

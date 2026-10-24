@@ -1,0 +1,667 @@
+[
+  {
+    "path": "app/admin_access.py",
+    "existed": false,
+    "source_sha256": "2cc7a3e7b9dc31f8ef9a49843d2301007f059b5cd808282735a5d3541f93bf8f"
+  },
+  {
+    "path": "app/bundle_safety.py",
+    "existed": false,
+    "source_sha256": "3ce584804094c85ded4ebe632dba6daf3c8a521d20dd65b0645da3b20e12bdb0"
+  },
+  {
+    "path": "app/config.py",
+    "existed": true,
+    "source_sha256": "33c77a450d5555b649367206c6015f77840b552627062035fea9e191348acd92"
+  },
+  {
+    "path": "app/design_preview.py",
+    "existed": false,
+    "source_sha256": "da1e610455b9d4d995eba23e4b050ae3167e4d4ff4a448fddf2c801d56023c7f"
+  },
+  {
+    "path": "app/integrations/mock/facebook_ads.py",
+    "existed": true,
+    "source_sha256": "3454dd5dc43e0d349643849a9ab49ea8ef6b68a7f47275f3a843df5db2bf0981"
+  },
+  {
+    "path": "app/integrations/mock/facebook_content.py",
+    "existed": true,
+    "source_sha256": "97be387ff58836bef767cca45d2034adcdee58af18df23a1379227a67a1cad66"
+  },
+  {
+    "path": "app/integrations/mock/overview.py",
+    "existed": true,
+    "source_sha256": "4681f126f1e7048f3bff8b92f671df00f67bc50a24383d6efb5757d985bcf030"
+  },
+  {
+    "path": "app/integrations/mock/seo.py",
+    "existed": true,
+    "source_sha256": "b8a78f7dfa420746803f770fdec4c46bb8d417175998a1776369609022a2e838"
+  },
+  {
+    "path": "app/integrations/mock/video.py",
+    "existed": true,
+    "source_sha256": "85e5d910b16777053b87f7edbac137fdc4ce10fb47de4f3dda0e9fdf4c7df4c2"
+  },
+  {
+    "path": "app/mappers/__init__.py",
+    "existed": false,
+    "source_sha256": "aa80be08ac07157f132762bdd06051be8a8da4fa68df4f9ac1b396448098520d"
+  },
+  {
+    "path": "app/mappers/bundle.py",
+    "existed": false,
+    "source_sha256": "58e3ed30ccb74d62113eb2938e00b125f1d069e038ba3f08fed07a410a6b0f65"
+  },
+  {
+    "path": "app/mappers/dashboard.py",
+    "existed": false,
+    "source_sha256": "aa57be4f134b4f537a1148a96fe72e80c86ee368264b6c48cc38d56c606dde41"
+  },
+  {
+    "path": "app/repositories/admin_bundle.py",
+    "existed": false,
+    "source_sha256": "2d5d6e3bf8b4c474fa38cbbc07c5c21320dea2c68c9c2f8651f6fa60f3f137b1"
+  },
+  {
+    "path": "app/repositories/viewer.py",
+    "existed": false,
+    "source_sha256": "7650333cfb04e2a423770acf35a5fea477f028869839c8549defc831482433b6"
+  },
+  {
+    "path": "app/routes/demo_bundle.py",
+    "existed": false,
+    "source_sha256": "0755ce51efaeb78f45fa79b06dcd1085a11d5b69faaf2119975638db16854ac3"
+  },
+  {
+    "path": "app/routes/handoff.py",
+    "existed": false,
+    "source_sha256": "f6edffd0617e9fdfb6066b52a136c310a3ba0e2cc7d8c5d5d46aad84e32b54b4"
+  },
+  {
+    "path": "app/routes/published.py",
+    "existed": false,
+    "source_sha256": "fd1cde330956bbda59777d35e800da4b89727dac63e0285c89f940a44d63017f"
+  },
+  {
+    "path": "app/routes/reports.py",
+    "existed": true,
+    "source_sha256": "65b82cb8471ecd48b5738d8d5ef141269d6c26101ce2bb642eb77cf823b7727b"
+  },
+  {
+    "path": "app/routes/video.py",
+    "existed": true,
+    "source_sha256": "a07d901042728aca029cfcbe9d8bab036d2196f40213f3feccbfa10ee32f5be6"
+  },
+  {
+    "path": "app/routes/viewer.py",
+    "existed": false,
+    "source_sha256": "aef2611711cd06c264813b0d82b35aa42aee841c9ffeff1b93705c2f5ce464b5"
+  },
+  {
+    "path": "app/schemas/bundle_view.py",
+    "existed": false,
+    "source_sha256": "7d6487e4eed86808ebb853858720fd95f0d5d20c07292aef967d57aa3e292b46"
+  },
+  {
+    "path": "app/services/bundle.py",
+    "existed": false,
+    "source_sha256": "7a1d01ca366345155759c3f989ce36175aa8a78958251ce8c97935ae29c40cb5"
+  },
+  {
+    "path": "main.py",
+    "existed": true,
+    "source_sha256": "271587a81bf4190eb065a496ce8da9a23777df78ed11b6f59ed8ed4cf57b9062"
+  },
+  {
+    "path": "package-lock.json",
+    "existed": true,
+    "source_sha256": "03acbec2b69ea2518407558d35af8324704dfd20224bde7ac1a55cef4c690e16"
+  },
+  {
+    "path": "static/css/dist/dashboard.css",
+    "existed": true,
+    "source_sha256": "9d9996e1c9c77cfb44afdf2ba488a4f2b6c400d95c3e0fb23b613ac15c9c544e"
+  },
+  {
+    "path": "static/css/pages/executive-polish.css",
+    "existed": false,
+    "source_sha256": "05c0284cbb9a4d3ae64de07509ab53f7ca5bca56cccdef1e69054405d6c2d905"
+  },
+  {
+    "path": "static/css/pages/executive.css",
+    "existed": false,
+    "source_sha256": "6dd3783014a9064950ee67e99e4be0f81e4c3d55c67bba236dc9e687bcbf3d50"
+  },
+  {
+    "path": "static/css/pages/facebook-ads.css",
+    "existed": true,
+    "source_sha256": "9ded32a98cf14779fb3b5025f6bab27acc6798cd487bec40a9d8b4ff096b36ff"
+  },
+  {
+    "path": "static/css/pages/facebook-content.css",
+    "existed": true,
+    "source_sha256": "bf06f4fe5c8a9672ddcabd3548b2f06301725590ea73df7c0974c3331df8fe47"
+  },
+  {
+    "path": "static/css/pages/published.css",
+    "existed": false,
+    "source_sha256": "75b1f81fd7675f7f19637fcfb33c9f78590be5f27bf80b9063b3870eec05d66f"
+  },
+  {
+    "path": "static/css/pages/seo.css",
+    "existed": true,
+    "source_sha256": "12f4797cb4f7930feeaed8546bdc8dae27f2854d435327e3b9d9af1b7e1110eb"
+  },
+  {
+    "path": "static/css/pages/snapshot.css",
+    "existed": false,
+    "source_sha256": "62493f48d5a7af404c6e41908c8479b5307b4d51983eb810a8a99e06167bfa3e"
+  },
+  {
+    "path": "static/css/pages/video.css",
+    "existed": true,
+    "source_sha256": "34d416a5129ac456c641cc60c5225238affe73723395a7b0729c2485aa0cd10f"
+  },
+  {
+    "path": "static/css/shared/dashboard.source.css",
+    "existed": true,
+    "source_sha256": "2bf4259d999232dd971a9950b16933ced6209391b19b54eb8391e3ef9730b309"
+  },
+  {
+    "path": "static/fonts/LICENSE-Inter.txt",
+    "existed": true,
+    "source_sha256": "b3195af0fb14368d1b3b10fb9d3fe503b7163ea083859d2ee553bc74da07c320"
+  },
+  {
+    "path": "static/fonts/LICENSE-Material-Symbols.txt",
+    "existed": true,
+    "source_sha256": "49bbe9114e49214df2ccc324cb3ac8d1d1aa1c3a0947f94c286765e86647b32e"
+  },
+  {
+    "path": "static/js/pages/handoff.js",
+    "existed": false,
+    "source_sha256": "5362301f3045f23e6dd873b7f1bec0c97fa538367bd2fc3466d1765105f4fb93"
+  },
+  {
+    "path": "static/js/pages/published.js",
+    "existed": false,
+    "source_sha256": "dcbb6bbc379a5afed468fb27a140124d95d34c81627ea5e89d96af0fc026985b"
+  },
+  {
+    "path": "static/js/pages/seo.js",
+    "existed": true,
+    "source_sha256": "120e0b95c63c4864bfe2cce8fa77601e91f6d2b06913618e4efd906dfa0d0efc"
+  },
+  {
+    "path": "static/js/pages/snapshot.js",
+    "existed": false,
+    "source_sha256": "daee5a491bf5990ec3e7e7acb238b0126dde4d3260b2b326327a10d0abcd7b71"
+  },
+  {
+    "path": "static/js/pages/video.js",
+    "existed": true,
+    "source_sha256": "37fd66934bcaa2e8d38c4cb2c943208223165c9a9ac60b0827ab7adaef0786a4"
+  },
+  {
+    "path": "static/js/shared/charts.js",
+    "existed": true,
+    "source_sha256": "ee6e76f1b645474c2b71d0db61b2df69db5bf05a0a3f0637e074c44ea3d10a9d"
+  },
+  {
+    "path": "static/js/shared/sidebar.js",
+    "existed": true,
+    "source_sha256": "e9aecc7d7308061fb4db2ec1ada2b32f2f68b94b2507db190cb37cfc327d8082"
+  },
+  {
+    "path": "templates/components/dashboard/controls.html",
+    "existed": true,
+    "source_sha256": "8fc0421ca2b807387664a4279252df38303604d25e1e301bf86c67772c9f34db"
+  },
+  {
+    "path": "templates/components/dashboard/header.html",
+    "existed": true,
+    "source_sha256": "07db9433bfcec176277b743b9f8e46e6a1526f71b4ce757c950b272fddfe6bc4"
+  },
+  {
+    "path": "templates/components/dashboard/navigation.html",
+    "existed": true,
+    "source_sha256": "a05a2d56caf45221eec7f3816a8d2ea19489a4ef74ba2951918a6cb3497bb0ec"
+  },
+  {
+    "path": "templates/components/dashboard/sidebar.html",
+    "existed": true,
+    "source_sha256": "326d5c0647a026636c1e895cd396bb86ffe4beca2433062178867e83bd86c368"
+  },
+  {
+    "path": "templates/layouts/dashboard.html",
+    "existed": true,
+    "source_sha256": "f9153da67ad1aabea260373f374cbaee652ada9ee9dcb681f969897c6a4e8841"
+  },
+  {
+    "path": "templates/pages/demo_bundle.html",
+    "existed": false,
+    "source_sha256": "f35a75cee128d60b39a1e7c814b7a115ed5e16edb0d4843956c3bec53dbcc6fe"
+  },
+  {
+    "path": "templates/pages/facebook_ads/index.html",
+    "existed": true,
+    "source_sha256": "f93b621edeec20a5967c416c2e53af8dbf7e0877ba4a1d7052c7596022d61899"
+  },
+  {
+    "path": "templates/pages/facebook_ads/partials/audience.html",
+    "existed": true,
+    "source_sha256": "6cd74a44527ce05c3a235bc38617b8e0ea09cb9b49c76933c54103f1cd1409ea"
+  },
+  {
+    "path": "templates/pages/facebook_ads/partials/campaigns.html",
+    "existed": true,
+    "source_sha256": "3597d64352cd821efd4f6a31781514827d86846cfd6b799c0071f922c1163b1e"
+  },
+  {
+    "path": "templates/pages/facebook_ads/partials/creatives.html",
+    "existed": true,
+    "source_sha256": "12d0c0adb33ea054daef02c021524340214577d870bdcbb6b20bde567b76fc0d"
+  },
+  {
+    "path": "templates/pages/facebook_ads/partials/funnel.html",
+    "existed": true,
+    "source_sha256": "0ad5673a5e6a5baeb645ba5c38a9c5ad5a57148ccb48535c7d904c5329a6b2c9"
+  },
+  {
+    "path": "templates/pages/facebook_ads/partials/insights.html",
+    "existed": true,
+    "source_sha256": "96c0a5a181b2b86ddb5b3aa308a999250904a29902e71283c8641296ac27acc3"
+  },
+  {
+    "path": "templates/pages/facebook_ads/partials/kpis.html",
+    "existed": true,
+    "source_sha256": "677a9e197b4ea25e5db4ed9b6df6a18cefc098242fb46d61f23d78034e654d4f"
+  },
+  {
+    "path": "templates/pages/facebook_content/index.html",
+    "existed": true,
+    "source_sha256": "7b6779842391b25b6b791de95b5422432095486801662614d53d2f554089b5bc"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/bundle.html",
+    "existed": false,
+    "source_sha256": "1f858675717458f57f69bfecdfb8354d95a7b8d96b8ce5e0e20603d193d682c0"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/engagement.html",
+    "existed": true,
+    "source_sha256": "baa5efaa33c2f05906657a16618eca21dbc637cbe98030cf292dda2ed20aee68"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/formats.html",
+    "existed": true,
+    "source_sha256": "5d4a6d04bf575784b9ef5fd3377ce32d4e4b6a52df82bae85829c271b36dcb6b"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/helpers.html",
+    "existed": true,
+    "source_sha256": "5c3625021c0c5f215e0ebf9b0428be239d021c1d35fdc7ea246256eeb1e8864c"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/insights.html",
+    "existed": true,
+    "source_sha256": "74353b51f814897825d135d1a377a80648680cd868d3ee4f6463166d40866ba6"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/kpis.html",
+    "existed": true,
+    "source_sha256": "4a3678fdbae9ce17d1ca19b54d6b0f6a64debac32a77fe66ad266ed4f49f2a9f"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/posts.html",
+    "existed": true,
+    "source_sha256": "ef14ca92b837e6b213297740761db6f317380a8754730cd3708abe09b79e6cbd"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/reach_mix.html",
+    "existed": true,
+    "source_sha256": "0f8faf753a0b23ec8bf71c2d4641afc09df310f6495db410b722c85d33272f09"
+  },
+  {
+    "path": "templates/pages/facebook_content/partials/topics.html",
+    "existed": true,
+    "source_sha256": "a2951f00241bd910b50947dd5e6993e46d0ceb941aac793cce0569c1000f49c3"
+  },
+  {
+    "path": "templates/pages/overview/index.html",
+    "existed": true,
+    "source_sha256": "db0c64895855a44ab09789bb6f4535486cb5bab4c71fab1b4c7b4ed295c4a2ee"
+  },
+  {
+    "path": "templates/pages/overview/partials/action_plan.html",
+    "existed": true,
+    "source_sha256": "5cd119e424500b5c8472ed8eec96d6a0e0bf5d20e2c346d4f9e4004b64aa95fc"
+  },
+  {
+    "path": "templates/pages/overview/partials/analytics.html",
+    "existed": true,
+    "source_sha256": "e919250ff046ca5e529218329ecdb93edb8e5aa9df3aa00e67e46d965d1a2f72"
+  },
+  {
+    "path": "templates/pages/overview/partials/briefing.html",
+    "existed": false,
+    "source_sha256": "1b7a8fc8e6edf0a01481c338f376e69ce92b19e465281287fca8f0e1e69dd61e"
+  },
+  {
+    "path": "templates/pages/overview/partials/channels.html",
+    "existed": true,
+    "source_sha256": "18212c40e65f54945ce71cc7da962e9fc71b35f2b60784c4110cb83aefc40a89"
+  },
+  {
+    "path": "templates/pages/overview/partials/executive_summary.html",
+    "existed": true,
+    "source_sha256": "d16d0fc81f8e0e5eb36d972730b59a4546d647650cc2ef0feb0fb83f1457d934"
+  },
+  {
+    "path": "templates/pages/overview/partials/footer.html",
+    "existed": true,
+    "source_sha256": "22ad013cc903ca1f06e5eb99014eb6ca9196aba8e472852538d25fc860d758a3"
+  },
+  {
+    "path": "templates/pages/overview/partials/insights.html",
+    "existed": true,
+    "source_sha256": "9349a8862810b3609cc9a54a01e5775050b3504ca5e5e4db454b95dc3eadd9e9"
+  },
+  {
+    "path": "templates/pages/overview/partials/kpis.html",
+    "existed": true,
+    "source_sha256": "0424730f5c1992f78520b0cedf766d0ae894ddfe58fc5854fb6f7a4081559e1d"
+  },
+  {
+    "path": "templates/pages/published/base.html",
+    "existed": false,
+    "source_sha256": "99752925d466971d7c1c78f9e92d8c8b694026978a1861736fbf4fc90d8869ed"
+  },
+  {
+    "path": "templates/pages/published/components/chart.html",
+    "existed": false,
+    "source_sha256": "a62ad2c49c16326db892bc4ad0992354e496bfaca42e0af0c3123bd793605a2b"
+  },
+  {
+    "path": "templates/pages/published/components/evidence.html",
+    "existed": false,
+    "source_sha256": "28c98ea4ed5edc537f36f4a6a622659a596d4403eebb44906850c4c25d89443b"
+  },
+  {
+    "path": "templates/pages/published/components/kpi.html",
+    "existed": false,
+    "source_sha256": "9bbd14cfce19210339973d5602e7c02529ba40c2f343d242b392576fc74a1656"
+  },
+  {
+    "path": "templates/pages/published/components/opportunity.html",
+    "existed": false,
+    "source_sha256": "08fdc9a96a9158df0fadc70e6e7ee9f226eebc9b0b631c9a8a1fe854f401b1a4"
+  },
+  {
+    "path": "templates/pages/published/components/quality.html",
+    "existed": false,
+    "source_sha256": "6ec23a116a838894f1e03b0d5221a6732fa39df0abbd4875cbf0a192e2e2d8b3"
+  },
+  {
+    "path": "templates/pages/published/components/release_summary.html",
+    "existed": false,
+    "source_sha256": "4ac9a40772b36124f684628d5d0cafc26c5ce34c32a0bc00fe236761ae94225a"
+  },
+  {
+    "path": "templates/pages/published/components/table.html",
+    "existed": false,
+    "source_sha256": "456dee8bd3aea07924c05c276d491a06a04402a183a2bde045f1409ecce18ed3"
+  },
+  {
+    "path": "templates/pages/published/error.html",
+    "existed": false,
+    "source_sha256": "9ba1dff74d5ca4c370880f89cae47a4a1dca35a524239fed8b2bcbd2aa653a43"
+  },
+  {
+    "path": "templates/pages/published/handoff.html",
+    "existed": false,
+    "source_sha256": "e4d4cc3286d87ac81a37c70bcb62b175ba8e8e76a050ec1977668214df1e1d2e"
+  },
+  {
+    "path": "templates/pages/published/index.html",
+    "existed": false,
+    "source_sha256": "974f865b6fa49950c723245713b9a76e841f24fa7c5550553d1e6a3d448c343a"
+  },
+  {
+    "path": "templates/pages/published/internal_preview.html",
+    "existed": false,
+    "source_sha256": "71cb9119ad42959dc76f755cde767dd46c675e3b45a9c45c5600718962b26f47"
+  },
+  {
+    "path": "templates/pages/seo/controls.html",
+    "existed": true,
+    "source_sha256": "e83539da7890a43acf9fb4d75bbc35509aaac8ba928a636eb3f57c298083efb1"
+  },
+  {
+    "path": "templates/pages/seo/index.html",
+    "existed": true,
+    "source_sha256": "166923d1e87d43c67eb8fbd47c06ea5dafa8588142f81e97dd544ba731b7c81a"
+  },
+  {
+    "path": "templates/pages/seo/partials/details.html",
+    "existed": true,
+    "source_sha256": "d9c560ca348858b95e6340e634517334b36181c14ac935bbbc9891b35319f1cd"
+  },
+  {
+    "path": "templates/pages/seo/partials/funnel.html",
+    "existed": true,
+    "source_sha256": "4cdc96b6c15b394b73b912640d113ea40621e33af174e8d4e144a8c732d1956b"
+  },
+  {
+    "path": "templates/pages/seo/partials/keywords.html",
+    "existed": true,
+    "source_sha256": "a33dc15fb685c27e7ec110a4be4f42b692a773a612343224d0f883278be767bb"
+  },
+  {
+    "path": "templates/pages/seo/partials/kpis.html",
+    "existed": true,
+    "source_sha256": "a7116e68ee9a65b964802b2d33733e1efc6f5264a1a44d962b620a1d04453ce1"
+  },
+  {
+    "path": "templates/pages/seo/partials/result.html",
+    "existed": true,
+    "source_sha256": "fc4c05e0975a0daac236033458fd4a1e97fcc69fa22ea82c180182d1008edc98"
+  },
+  {
+    "path": "templates/pages/seo/partials/summary.html",
+    "existed": true,
+    "source_sha256": "9c45171d6b47bce2dbde8e33c7bc77cbdc2bc7ac86a407e7f57e0a9714e21c66"
+  },
+  {
+    "path": "templates/pages/seo/partials/trend.html",
+    "existed": true,
+    "source_sha256": "5e70864a2eec6f5a98f46c2723f6771698d1242cfaba3a6a0d3daa802f31e316"
+  },
+  {
+    "path": "templates/pages/snapshot/components.html",
+    "existed": false,
+    "source_sha256": "3cf1a9a30bada2c5845217caf18a2742d80860bd5cdc3e81be348b8d8dcede1e"
+  },
+  {
+    "path": "templates/pages/snapshot/controls.html",
+    "existed": false,
+    "source_sha256": "9ea317fc9bc75328bf8d8805cc7683665397ac77a396262baeec7840f5519813"
+  },
+  {
+    "path": "templates/pages/snapshot/index.html",
+    "existed": false,
+    "source_sha256": "b1d35b5cc7e641a3cac9d4a9178bd45c68dc3e7ac2c9c762d053a94b1458cc8f"
+  },
+  {
+    "path": "templates/pages/snapshot/status.html",
+    "existed": false,
+    "source_sha256": "8cc692ed269c2bc0f5f0b792453665c2ed14f48cb28ebda920ee1cc8f82acaa1"
+  },
+  {
+    "path": "templates/pages/tiktok/index.html",
+    "existed": true,
+    "source_sha256": "20330a6308269641ae9a973e8457cecff0192a72915f320afee1fdecfe6a45bf"
+  },
+  {
+    "path": "templates/pages/tiktok/partials/insights.html",
+    "existed": true,
+    "source_sha256": "1ae082d2d0a5350c01381f4faaf68204703e4554d2363a8f3009234cf866c441"
+  },
+  {
+    "path": "templates/pages/tiktok/partials/table.html",
+    "existed": true,
+    "source_sha256": "e22dd6e4f9f37cb4c7ef138568066080f4d516aea80206344340aa60c86e456c"
+  },
+  {
+    "path": "templates/pages/tiktok/partials/videos.html",
+    "existed": true,
+    "source_sha256": "07116b0956b9deae769ba27ad2d6194aea31b4131677a840c991d80a7d1739b9"
+  },
+  {
+    "path": "templates/pages/video/base.html",
+    "existed": true,
+    "source_sha256": "09df8c2fa0315048be3a3815a748ef96516ba436672ec50f5c47018d4d46a565"
+  },
+  {
+    "path": "templates/pages/video/partials/chart.html",
+    "existed": true,
+    "source_sha256": "beeed749f5d205b43de9929b558623095e23810a3533e827f2918f82c0f1fa05"
+  },
+  {
+    "path": "templates/pages/video/partials/funnel.html",
+    "existed": true,
+    "source_sha256": "2d05bfd04fbe3337609c6b513bad795bade390ebd8c78a051cdc2400efc2bb7b"
+  },
+  {
+    "path": "templates/pages/video/partials/helpers.html",
+    "existed": true,
+    "source_sha256": "8a36d5158c763afe92464b3f082a431e425a0204953881b548675be22eb98853"
+  },
+  {
+    "path": "templates/pages/video/partials/kpis.html",
+    "existed": true,
+    "source_sha256": "5008c2f30444236bf3d8be12d86d31f570a37a9d81b4468219614eb21f6009ef"
+  },
+  {
+    "path": "templates/pages/youtube/index.html",
+    "existed": true,
+    "source_sha256": "77290650a1c2c88209f66a4219a38673bf4cb7ac37680a1315112933528255d7"
+  },
+  {
+    "path": "templates/pages/youtube/partials/audience.html",
+    "existed": true,
+    "source_sha256": "6f65a50bbbb0661e895ce36a99694a219aecf66a2e22838205078397e07e2a65"
+  },
+  {
+    "path": "templates/pages/youtube/partials/insights.html",
+    "existed": true,
+    "source_sha256": "a3e0133093ec6f2ec91a5705df407567224f1825ae94ef75b1e6e0a1cbed019a"
+  },
+  {
+    "path": "templates/pages/youtube/partials/table.html",
+    "existed": true,
+    "source_sha256": "9a41f99a46364955dfd794de24660c14d253242389b1aa176d649a0ee19d6326"
+  },
+  {
+    "path": "tests/bundle_fixtures.py",
+    "existed": false,
+    "source_sha256": "ed9d1c0d0f599de7668f97432dce92609b753870701612f8b0cee858a758fe8d"
+  },
+  {
+    "path": "tests/fixtures/facebook_content_vio.json",
+    "existed": false,
+    "source_sha256": "910eafa581e873d293daaff80510d3df75789d8b45bd16e6d1d9b12ec550502c"
+  },
+  {
+    "path": "tests/test_admin_bundle_repository.py",
+    "existed": false,
+    "source_sha256": "5a76de52ebcfaf170e25b987520ca71c803642c10e69bda8a5c239b40c0f295c"
+  },
+  {
+    "path": "tests/test_bundle_mapper.py",
+    "existed": false,
+    "source_sha256": "c4c7207aa0657c7a5dccf7f2433e55fe5f1090ee0b34324521dd9de3b7eaf653"
+  },
+  {
+    "path": "tests/test_bundle_service.py",
+    "existed": false,
+    "source_sha256": "8593bf33791def77b8e28f11a430486c22329e635be8c9d7bc6d0ccfe3397aa4"
+  },
+  {
+    "path": "tests/test_dashboard_binding.py",
+    "existed": false,
+    "source_sha256": "f80b7035d3edce7825e9017a1c12386edbca402ebc5fa851239861c23b846752"
+  },
+  {
+    "path": "tests/test_design_preview.py",
+    "existed": false,
+    "source_sha256": "229b00e535b409d5517cedb7ff38320dd6e3ce5af2edb0b479a373b6bcc25c25"
+  },
+  {
+    "path": "tests/test_executive_ui.py",
+    "existed": false,
+    "source_sha256": "251373119f599c910482061515b5cf19db515e70b0bc373a96b2095fe1b6a076"
+  },
+  {
+    "path": "tests/test_facebook_ads.py",
+    "existed": true,
+    "source_sha256": "0452fae64a59046258c3d2d20df36106209ab38549dc81637b33654659698ebb"
+  },
+  {
+    "path": "tests/test_facebook_content.py",
+    "existed": true,
+    "source_sha256": "7674669905f0fe7994a049a632a6c1229ffe31e27895b83241d2388129bfb97e"
+  },
+  {
+    "path": "tests/test_handoff.py",
+    "existed": false,
+    "source_sha256": "8e5142f7cd8c93e8fe420553d52e15eb01d0bc2ec263b03e41426e92d2486894"
+  },
+  {
+    "path": "tests/test_marketing_view.py",
+    "existed": false,
+    "source_sha256": "a40d590439f39091f826a69556ea84b118b6733d774041d68dbae8ec2847e5ba"
+  },
+  {
+    "path": "tests/test_published_reports.py",
+    "existed": false,
+    "source_sha256": "00025399acb906bac8f830d62e1d313e509874b017e03604a1aa10487482981c"
+  },
+  {
+    "path": "tests/test_real_data_helpers.py",
+    "existed": true,
+    "source_sha256": "38b0acb5da43a7aa7a029263f4a425f856c8fd86b28d437ebe7caf886209c9b3"
+  },
+  {
+    "path": "tests/test_reports.py",
+    "existed": true,
+    "source_sha256": "68067b8cc55056f93f7a6d3604632531b0f3cfa84edbcbdc2f3569b480d6fdc3"
+  },
+  {
+    "path": "tests/test_seo.py",
+    "existed": true,
+    "source_sha256": "aff11316f5002ad1ede6dbf669a61f19cc89bf7c1e3ae15695deaaf25e8acde0"
+  },
+  {
+    "path": "tests/test_seo_snapshot.py",
+    "existed": false,
+    "source_sha256": "8dfac51dc8eff1a3da8757c4896c73c3a70787a2c6260369560944cf81e9f1e1"
+  },
+  {
+    "path": "tests/test_video_reports.py",
+    "existed": true,
+    "source_sha256": "0ae8bf5c7c0d8a056e8043451961ff403296947a7d4bf91a6599a7e7e2b96425"
+  },
+  {
+    "path": "tests/test_viewer.py",
+    "existed": false,
+    "source_sha256": "8812f2da261b20e5791a0f7231b1c420cb8ce14b65574ea1011710b33babbfcf"
+  },
+  {
+    "path": "tests/test_vio_content.py",
+    "existed": false,
+    "source_sha256": "665e484d37cac3d7162ae6bffa74a0db010fee41da75fb60acca67edee62aa8e"
+  }
+]

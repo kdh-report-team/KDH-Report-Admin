@@ -1,0 +1,20 @@
+........................................................................ [ 22%]
+........................................................................ [ 45%]
+........................................................................ [ 68%]
+........................................................................ [ 90%]
+.............................                                            [100%]
+=============================== warnings summary ===============================
+../usr/local/lib/python3.12/site-packages/starlette/testclient.py:40
+  /usr/local/lib/python3.12/site-packages/starlette/testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_design_preview.py::test_design_preview_opens_existing_overview_without_login
+tests/test_facebook_ads.py::test_page_aliases_and_local_assets_after_reorganization
+tests/test_published_reports.py::test_old_demo_pages_still_work_without_viewer_auth[/overview]
+tests/test_reports.py::test_overview_renders_reference_dashboard
+  /usr/local/lib/python3.12/site-packages/starlette/templating.py:161: DeprecationWarning: The `name` is not the first parameter anymore. The first parameter should be the `Request` instance.
+  Replace `TemplateResponse(name, {"request": request})` by `TemplateResponse(request, name)`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+317 passed, 5 warnings in 10.00s

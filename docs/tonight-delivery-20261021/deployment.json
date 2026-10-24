@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "admin": {
+    "status": "PASS",
+    "service": {
+      "id": "9cd0c41b1d8e996798e846ba60170e99da18aee889220aae86a82af9963cce54",
+      "image": "sha256:430b00f759e59c7310a9d1e8f3867097f588a99cfa0aaf26236c3308e48d5aaa",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "tag": "kdh-admin-meta:insights-20261021-cf97123433e7",
+    "rollback": "kdh-meta-2b-admin-20261016-132836-5c512a53-before-tonight-20261021",
+    "business_data": "UNCHANGED",
+    "other_services": "UNCHANGED"
+  },
+  "new": {
+    "id": "32246ebfa75f85d2f17cc1dee9cd223d84aeb69ec8b50970f9fddeebe127acd1",
+    "image": "sha256:88539e00e31b36f4f044db76412da4472412a44e705655841733720820abc2de",
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "D:\\KDH-Report-All\\KDH-Report-New\\.work\\layout-preview",
+        "Destination": "/app/static/layout-preview",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "networks": [
+      "kdh-shared-viewer-primary-20261021",
+      "kdh-vio-handoff-phase9-recovery-20261019",
+      "kdh-vio-host-phase9-20261019"
+    ],
+    "running": true
+  },
+  "new_tag": "kdh-new:tonight-content-20261021-80351dfaa44b",
+  "new_rollback": "kdh-report-new-app-1-before-tonight-content-20261021",
+  "business_data": "UNCHANGED",
+  "other_services": "UNCHANGED",
+  "networks": "UNCHANGED"
+}

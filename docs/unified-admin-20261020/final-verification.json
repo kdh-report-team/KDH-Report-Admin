@@ -1,0 +1,17 @@
+{
+  "admin": {
+    "image": "sha256:e1c8ce68bcbd5c66464a0298ce86be09c5d15e7ed838295fa27322fbd1b63adf",
+    "source_files_matched": 68,
+    "health": "healthy"
+  },
+  "new": {
+    "image": "sha256:87844f282565682fefffb3f1436a48b70099129a96704abb743b134df16256f9",
+    "source_files_matched": 162,
+    "health": "healthy"
+  },
+  "database": "all table hashes unchanged",
+  "separate_vio": "unchanged",
+  "encryption_key": "unchanged",
+  "client": "client_meta_sandbox",
+  "test_resources": "stopped; no deletion"
+}

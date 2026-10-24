@@ -1,0 +1,260 @@
+{
+  "snapshot": {
+    "attribution": null,
+    "currency": null,
+    "external_id": "2188688654687066",
+    "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+    "snapshot_id": "0dd5107c80ab72342a4889d2f59b033f",
+    "snapshot_sha256": "5c9487c65769a7a27b3c4354fb00e9b716fd35a513675f96c9b4109813518c24",
+    "sync_run_ids": [
+      "d1cec7997ce5bbd67b693a2eca5ad16e"
+    ],
+    "timezone": "UTC"
+  },
+  "metrics": [
+    {
+      "aggregation": "sum",
+      "attribution": null,
+      "coverage": {
+        "available": 28,
+        "expected": 28,
+        "unit": "days"
+      },
+      "currency": null,
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "day",
+      "key": "posts_published",
+      "label": "Bài đăng mới trong kỳ",
+      "metric_id": "facebook_content.posts_published",
+      "observed_sum": null,
+      "provider": "meta",
+      "publishable": false,
+      "reason": "",
+      "status": "available",
+      "unit": "count",
+      "value": 15,
+      "verified": false
+    },
+    {
+      "aggregation": "sum",
+      "attribution": null,
+      "coverage": {
+        "available": 0,
+        "expected": 28,
+        "unit": "days"
+      },
+      "currency": null,
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "day",
+      "key": "engagements",
+      "label": "Tương tác phát sinh trong kỳ",
+      "metric_id": "facebook_content.engagements",
+      "observed_sum": null,
+      "provider": "meta",
+      "publishable": false,
+      "reason": "Chưa có tương tác phát sinh theo ngày UTC của nhóm bài trong kỳ. Page Insights đo toàn Page, không thay thế chỉ số này.",
+      "status": "no_data",
+      "unit": "count",
+      "value": null,
+      "verified": false
+    },
+    {
+      "aggregation": "sum_posts_at_fetch",
+      "attribution": null,
+      "coverage": {
+        "available": 15,
+        "expected": 15,
+        "unit": "posts"
+      },
+      "currency": null,
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "snapshot",
+      "key": "reactions_lifetime",
+      "label": "Reactions lifetime",
+      "metric_id": "facebook_content.reactions_lifetime",
+      "observed_sum": 81,
+      "provider": "meta",
+      "publishable": false,
+      "reason": "",
+      "status": "available",
+      "unit": "count",
+      "value": 81,
+      "verified": false
+    },
+    {
+      "aggregation": "sum_posts_at_fetch",
+      "attribution": null,
+      "coverage": {
+        "available": 15,
+        "expected": 15,
+        "unit": "posts"
+      },
+      "currency": null,
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "snapshot",
+      "key": "comments_lifetime",
+      "label": "Comments lifetime",
+      "metric_id": "facebook_content.comments_lifetime",
+      "observed_sum": 10,
+      "provider": "meta",
+      "publishable": false,
+      "reason": "",
+      "status": "available",
+      "unit": "count",
+      "value": 10,
+      "verified": false
+    },
+    {
+      "aggregation": "sum_posts_at_fetch",
+      "attribution": null,
+      "coverage": {
+        "available": 10,
+        "expected": 15,
+        "unit": "posts"
+      },
+      "currency": null,
+      "fetched_at": "2026-10-22T02:45:57.215488+00:00",
+      "grain": "snapshot",
+      "key": "shares_lifetime",
+      "label": "Shares lifetime",
+      "metric_id": "facebook_content.shares_lifetime",
+      "observed_sum": 18,
+      "provider": "meta",
+      "publishable": false,
+      "reason": "Chưa có đủ bộ đếm từng bài.",
+      "status": "partial",
+      "unit": "count",
+      "value": null,
+      "verified": false
+    },
+    {
+      "key": "reach",
+      "label": "Lượt tiếp cận",
+      "reason": "Đã thu thập Insights riêng; chỉ số này chưa có equivalent cùng định nghĩa và phạm vi. Unique viewers mới cần xác minh tương đương và kỳ; không cộng unique theo ngày.",
+      "status": "unsupported",
+      "value": null
+    },
+    {
+      "key": "engagement_rate",
+      "label": "Tỷ lệ tương tác (ER)",
+      "reason": "Cần tương tác và reach cùng phạm vi, kỳ, định nghĩa; Admin chưa đủ đầu vào để tính.",
+      "status": "unsupported",
+      "value": null
+    },
+    {
+      "key": "followers_gained",
+      "label": "Người theo dõi mới",
+      "reason": "Đã thu thập Insights riêng; chỉ số này chưa có equivalent cùng định nghĩa và phạm vi. Phân biệt follows mới, unfollows và tổng followers.",
+      "status": "unsupported",
+      "value": null
+    },
+    {
+      "key": "link_clicks",
+      "label": "Lượt nhấp liên kết",
+      "reason": "Đã thu thập Insights riêng; chỉ số này chưa có equivalent cùng định nghĩa và phạm vi. Cần xác minh click loại link trên v26.",
+      "status": "unsupported",
+      "value": null
+    },
+    {
+      "key": "ctr",
+      "label": "CTR",
+      "reason": "Chưa đủ click và mẫu số đã thống nhất; không tự lấy CTR quảng cáo.",
+      "status": "unsupported",
+      "value": null
+    },
+    {
+      "key": "response_rate",
+      "label": "Tỷ lệ phản hồi tin nhắn",
+      "reason": "Ngoài contract Content hiện tại; chưa có nguồn và định nghĩa được nghiệm thu.",
+      "status": "unsupported",
+      "value": null
+    }
+  ],
+  "sections": {
+    "engagement": {
+      "status": "unsupported",
+      "reason": "Đã thu thập Insights riêng; chỉ số này chưa có equivalent cùng định nghĩa và phạm vi. Không cộng lifetime thành tương tác trong kỳ.",
+      "coverage": null
+    },
+    "formats": {
+      "status": "available",
+      "reason": "Phân bố số bài; chưa có reach/ER theo nhóm.",
+      "coverage": {
+        "available": 15,
+        "expected": 15,
+        "unit": "posts"
+      }
+    },
+    "insights": {
+      "status": "unsupported",
+      "reason": "Chưa có nhận xét do người phụ trách nhập và duyệt.",
+      "coverage": null
+    },
+    "overview": {
+      "status": "partial",
+      "reason": "Chỉ số lifetime được tách riêng; không thay thế tương tác trong kỳ.",
+      "coverage": null
+    },
+    "posts": {
+      "status": "partial",
+      "reason": "Reach, ER và click chưa được thu thập; ô thiếu giữ nguyên null.",
+      "coverage": null
+    },
+    "reach": {
+      "status": "unsupported",
+      "reason": "Chưa có bộ metric reach organic/paid tương đương được xác minh trên v26; không thay bằng impressions hoặc Ads.",
+      "coverage": null
+    },
+    "topics": {
+      "status": "unsupported",
+      "reason": "Chưa phân loại chủ đề. Meta không cung cấp taxonomy nghiệp vụ của agency.",
+      "coverage": null
+    }
+  },
+  "page_insights": [
+    {
+      "metric": "page_media_view",
+      "status": "available",
+      "report_status": "period_boundary_mismatch",
+      "coverage": {
+        "available": 28,
+        "expected": 28,
+        "unit": "days"
+      },
+      "value": null
+    },
+    {
+      "metric": "page_total_media_view_unique",
+      "status": "available",
+      "report_status": "available",
+      "coverage": {
+        "available": 28,
+        "expected": 28,
+        "unit": "days"
+      },
+      "value": null
+    },
+    {
+      "metric": "page_post_engagements",
+      "status": "available",
+      "report_status": "period_boundary_mismatch",
+      "coverage": {
+        "available": 28,
+        "expected": 28,
+        "unit": "days"
+      },
+      "value": null
+    },
+    {
+      "metric": "page_follows",
+      "status": "available",
+      "report_status": "available",
+      "coverage": {
+        "available": 28,
+        "expected": 28,
+        "unit": "days"
+      },
+      "value": null
+    }
+  ]
+}

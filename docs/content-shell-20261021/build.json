@@ -1,0 +1,16 @@
+{
+  "tag": "kdh-new:content-shell-20261021-ac46611ca761",
+  "image": "sha256:465d629733f430e62f99e290a826c08e284cd9e2340093610f24b099cae3ecd5",
+  "files": {
+    "app/mappers/dashboard.py": "36550cb755601a11a3a710271d90a367784271c6252a9931ddec88cbbdd66195",
+    "templates/pages/facebook_content/index.html": "6a305f542dc70e58ebaeac49d9de9d86c22ba2243c1a6300f57489ba7469dc48",
+    "templates/pages/facebook_content/partials/kpis.html": "e56dfef9f640e19bb44140a8cfceba5b40af939f5558cf9c57bb2ec3ff341d0a",
+    "templates/pages/facebook_content/partials/formats.html": "b65a50db4c53d032308f889c80912a149575de9d56dded75b381ce98d9226798",
+    "templates/pages/facebook_content/partials/topics.html": "3404a3b8b9eb527c8c8bafa772a9f67575a500b80512b44e694ef532f1c73c01",
+    "templates/pages/facebook_content/partials/posts.html": "f7a156ad537b4b5b585beb7259f586eb7b70ec51368b951e6c7d708f7315a5a6",
+    "templates/pages/facebook_content/partials/reach_mix.html": "0991e8404545740d930c79805f9e823648cc34d951a9e65a537bfd32202f74d3",
+    "templates/pages/facebook_content/partials/insights.html": "0b4208f4d109ac1f3389a8d22c7a918169230412c126215b11fdcff4f188fa0c",
+    "templates/components/dashboard/navigation.html": "4d1c2bf612b96de1436cba013e79a44584a66eb3b17293960d62f73b7d74668d",
+    "static/css/pages/facebook-content.css": "f84be3fff9a87c0b81050096ad066254d06ead673db8ea7081de77c06cd840a2"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "tag": "kdh-new:insights-chart-20261022-fed378fa5436",
+  "image": "sha256:a846266d7da7f6c887424270556578ac73de73ac6e6cf506575434db5a5f7b65",
+  "files": {
+    "static/js/shared/charts.js": "1e68aff0bd9f2ad0617e1e3324bcaca413684831fa04a19cfc308a388bfbdfc7",
+    "static/js/pages/snapshot.js": "40f4975274e6c1752f88c721a4ba2e6c1e20f14ae10ba20ea0c433386882d41f",
+    "static/css/pages/facebook-content.css": "3dfcb59602ae4de19f30c3f05db96011480d67f91b265aad9f4db5a81b01fcfc",
+    "templates/pages/snapshot/components.html": "efc78369b2d27849ad2799b713d9c9e4de3e168c4f09fe753dc81034678d8fd1",
+    "templates/pages/facebook_content/partials/engagement.html": "76fc3c822fb0bee432169bc5d036c71036b557f071e4694a85af284ed0e177a7",
+    "templates/pages/facebook_content/index.html": "492d53385e2cb7190d6b7b55057f654aa9b1ac1146224421f57efe99a39bada6"
+  }
+}

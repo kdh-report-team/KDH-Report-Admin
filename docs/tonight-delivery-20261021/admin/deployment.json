@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "service": {
+    "id": "9cd0c41b1d8e996798e846ba60170e99da18aee889220aae86a82af9963cce54",
+    "image": "sha256:430b00f759e59c7310a9d1e8f3867097f588a99cfa0aaf26236c3308e48d5aaa",
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+        "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+        "Destination": "/app/instance",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "networks": [
+      "kdh-meta-2b-net-20261016-132836-5c512a53"
+    ],
+    "running": true
+  },
+  "tag": "kdh-admin-meta:insights-20261021-cf97123433e7",
+  "rollback": "kdh-meta-2b-admin-20261016-132836-5c512a53-before-tonight-20261021",
+  "business_data": "UNCHANGED",
+  "other_services": "UNCHANGED"
+}

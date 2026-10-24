@@ -1,0 +1,25 @@
+{
+  "tag": "kdh-new:tonight-content-20261021-80351dfaa44b",
+  "image": "sha256:88539e00e31b36f4f044db76412da4472412a44e705655841733720820abc2de",
+  "files": {
+    "app/mappers/bundle.py": "94c322f27b537cdf984445d543388091b3bece7d12909a4713ceb96f7a982a6b",
+    "app/mappers/dashboard.py": "866f22297141c86736dc08c842150ea660f5b2016db2e15b9be18ad826d24d0d",
+    "app/mappers/facebook_content.py": "7325b673df8538fa24f54b35d418349a3fe87a471cb03423080170d5c8fffeae",
+    "app/schemas/bundle_view.py": "0634063fdc430edee34132a0d18b4194f3f7c96efc18005bc255c022b683c0e9",
+    "templates/pages/snapshot/components.html": "287c3cf836dd16ff3ed00d6e8c131ff560b8522e48228d4e5872f01f38ad94eb",
+    "static/css/pages/facebook-content.css": "1f97edc86860a9cd641e5f4f0b2a134644c3416718d44a0a759faebbadba3ec0",
+    "static/js/shared/charts.js": "8cb7625dd5525725cb2f0fc685b5b411b7ab415f89dfc53bbd3e6cdb30153451",
+    "templates/pages/facebook_content/controls.html": "dac5961f0400e6cc8d18d9075469328677f6a22e8cda1bf6fc31edcc73efebe8",
+    "templates/pages/facebook_content/index.html": "05a856b2fe3387bb2b07e75141ea8592a504544459974d9cb0c549f7b34e79f2",
+    "templates/pages/facebook_content/partials/bundle.html": "1f858675717458f57f69bfecdfb8354d95a7b8d96b8ce5e0e20603d193d682c0",
+    "templates/pages/facebook_content/partials/engagement.html": "b1f488c6d03d0e51c698327d4f5e385b47c99cb6145e85efd7a6caf18b78a684",
+    "templates/pages/facebook_content/partials/formats.html": "b1caf0967981e93c2ba9a62f3bd1b2f35b32346cacb347547e064eccf12aea2e",
+    "templates/pages/facebook_content/partials/helpers.html": "5c3625021c0c5f215e0ebf9b0428be239d021c1d35fdc7ea246256eeb1e8864c",
+    "templates/pages/facebook_content/partials/insights.html": "57b369f76658865fec4b1bcd295a2db3f1b85132bbb0f790f67a0842fbaf2718",
+    "templates/pages/facebook_content/partials/kpis.html": "3cd528e68e2b0adfb84fab32beb101e75f53b47a6069692fa1e9029957948593",
+    "templates/pages/facebook_content/partials/posts.html": "79b4567192b0731e1d03a4bed754c88e9efc37a91233b93db501415341402987",
+    "templates/pages/facebook_content/partials/reach_mix.html": "8f752987c91d207d6846f23946066bfdbef64958bb2bd6ba257f475b4c44e9ed",
+    "templates/pages/facebook_content/partials/section_status.html": "216f7c70602f7b2be9b26301636ebf954856a11b5c59dc56307d4436bc91e510",
+    "templates/pages/facebook_content/partials/topics.html": "1f52072aeeb2c167e6786d3d0f3a1f57bb9fc683260654b623f9eb5fd7233536"
+  }
+}

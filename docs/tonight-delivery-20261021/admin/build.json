@@ -1,0 +1,18 @@
+{
+  "tag": "kdh-admin-meta:insights-20261021-cf97123433e7",
+  "image": "sha256:430b00f759e59c7310a9d1e8f3867097f588a99cfa0aaf26236c3308e48d5aaa",
+  "files": {
+    "kdh/app.py": "4c8b2e4b3c8aa6bcc550754415026244043e40454ce91c72ee7a75d4a14859bd",
+    "kdh/facebook_content_report.py": "8fbf8dba7ef1f677015c221465719a641a62e7e3436b742ac04bcda61e190666",
+    "kdh/meta_content_insights.py": "6829ac7b0e6949435573a95a4b8fc40fda5219689186cb8552e2a9018a2efcb3",
+    "kdh/meta_reporting.py": "daa82a425833a0d9a929530d911f09565b502eaea90ec216585908585fbdd898",
+    "kdh/meta_marketing.py": "457c2ec700d56b9f069b21f668297236d2623a2be45d593db5d0561fcb38a105",
+    "kdh/marketing_dataset.py": "7164685ee585c0b9932de24dc786b1cd00fdac77204a3ac588bbfc1655831550",
+    "kdh/marketing_preview.py": "9e860fe4dfd45d41a9df6131324458dc6c2eceb5504eb84ffc6c3f79e18e4e2f",
+    "kdh/meta.py": "2d5e266785ad4cc8cdc6fcd238691c2461e8a16ba5c60ef8118bf4338f0cbc21",
+    "static/facebook-content-report.js": "f34921c968a3edd9e8de3f618fbd26533d4a4a02b00d18fd8bccc0236653fb34",
+    "static/marketing.js": "f0b42353e8a06e46099a3a9c4d6ee4c3e404c1a5d14b95cae2582311c59c7dd2",
+    "static/views.js": "588714e597673f2b3f7519ad2221b3b1bc53e8475c2de1032ac8892848559fa5",
+    "templates/marketing.html": "f610b47253d5ba539b352001abd2b0d2c46a8c9faf82f08d29c1038c913c6089"
+  }
+}

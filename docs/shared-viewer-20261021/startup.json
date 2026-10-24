@@ -1,0 +1,45 @@
+{
+  "active": {
+    "kdh-meta-2b-pg-20261016-132836-5c512a53": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "kdh-meta-3-egress-20261016-132836-5c512a53": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "kdh-meta-2b-relay-20261016-132836-5c512a53": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "kdh-vio-relay-phase9-20261019": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "kdh-shared-viewer-primary-relay": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "kdh-meta-2b-admin-20261016-132836-5c512a53": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "kdh-report-admin-admin-1": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "kdh-report-new-app-1": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    }
+  },
+  "retired": [
+    "kdh-report-admin-admin-1-before-shared-20261021",
+    "kdh-report-new-app-1-before-shared-20261021",
+    "kdh-meta-2b-admin-20261016-132836-5c512a53-before-shared-20261021",
+    "kdh-vio-new-phase9-20261019",
+    "kdh-vio-new-phase9-20261019-before-phase10",
+    "kdh-vio-new-phase9-20261019-phase10-superseded-e69c6cd6",
+    "kdh-vio-new-phase9-20261019-phase10-superseded-55671a1c"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "service": {
+    "id": "3093b9f9c786c932bdec0f59841db678ec5b2ea048ecb7f5723009e6868b948f",
+    "image": "sha256:a846266d7da7f6c887424270556578ac73de73ac6e6cf506575434db5a5f7b65",
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "D:\\KDH-Report-All\\KDH-Report-New\\.work\\layout-preview",
+        "Destination": "/app/static/layout-preview",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "networks": [
+      "kdh-shared-viewer-primary-20261021",
+      "kdh-vio-handoff-phase9-recovery-20261019",
+      "kdh-vio-host-phase9-20261019"
+    ],
+    "running": true
+  },
+  "image": "kdh-new:insights-chart-20261022-fed378fa5436",
+  "rollback": "kdh-report-new-app-1-before-insights-chart-20261022",
+  "business_unchanged": true,
+  "protected_unchanged": true
+}

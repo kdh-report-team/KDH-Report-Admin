@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "container": "kdh-meta-2b-admin-20261016-132836-5c512a53",
+  "id": "368dc166e3ef2000a3d947d0093bc69ae39d3fcb273563abbcc31373b832c23a",
+  "image": "sha256:045e724c36a537d444633443399de89ba85562d5963c803326ea0c175151c128",
+  "rollback": "kdh-meta-2b-admin-20261016-132836-5c512a53-before-origin-fix-20261021",
+  "business_data": "unchanged",
+  "protected_services": "unchanged"
+}

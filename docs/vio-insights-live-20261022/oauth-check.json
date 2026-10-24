@@ -1,0 +1,30 @@
+{
+  "kdh-meta-2b-admin-20261016-132836-5c512a53": {
+    "client_id": "client_meta_sandbox",
+    "scopes": [
+      "pages_show_list",
+      "ads_read",
+      "pages_read_engagement",
+      "pages_read_user_content",
+      "public_profile"
+    ],
+    "connected_at": "2026-10-19T12:57:44.266218+00:00",
+    "oauth_attempts": []
+  },
+  "kdh-report-admin-admin-1": {
+    "client_id": "client_meta_sandbox",
+    "scopes": [
+      "pages_show_list",
+      "ads_read",
+      "pages_read_engagement",
+      "public_profile"
+    ],
+    "connected_at": "2026-10-16T01:53:25.773079+00:00",
+    "oauth_attempts": [
+      {
+        "expires_at": "2026-10-21T01:44:39.037510+00:00",
+        "consumed": 0
+      }
+    ]
+  }
+}

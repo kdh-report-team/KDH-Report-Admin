@@ -1,0 +1,18 @@
+{
+  "client_id": "client_meta_sandbox",
+  "created_at": "2026-10-22T02:46:46.100533+00:00",
+  "data_origin": "persisted_unverified",
+  "dataset_id": "a036be96e3977c32cd61541afe37b329",
+  "exportable": false,
+  "preview_summary": {
+    "evidence_count": 3,
+    "opportunity_count": 0,
+    "widget_count": 5,
+    "widgets_with_values": 3
+  },
+  "publishable": false,
+  "report_type": "facebook-content",
+  "review_status": "pending",
+  "source": "facebook_content",
+  "valid": false
+}

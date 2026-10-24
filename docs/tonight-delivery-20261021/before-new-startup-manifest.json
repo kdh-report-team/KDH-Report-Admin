@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "rollback": {
+    "kdh-report-admin-admin-1": "kdh-report-admin-admin-1-before-shared-20261021",
+    "kdh-meta-2b-admin-20261016-132836-5c512a53": "kdh-meta-2b-admin-20261016-132836-5c512a53-before-shared-20261021",
+    "kdh-report-new-app-1": "kdh-report-new-app-1-before-shared-20261021"
+  },
+  "services": {
+    "kdh-report-admin-admin-1": {
+      "id": "b276ae231cdc53435dd1f40d406552f80f3fb5daa51076c83254e5dd431ec77b",
+      "image": "sha256:f3db6a2ecaa17865e80c24ef4f75e4a681422f6c817dbf23e74f078dfefec93a",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Report/KDH-Report",
+          "Destination": "/legacy",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "volume",
+          "Name": "kdh-report-admin_admin-data",
+          "Source": "/var/lib/docker/volumes/kdh-report-admin_admin-data/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Data/KDH_Marketing_DataPack_v1",
+          "Destination": "/demo-pack",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default"
+      ],
+      "running": true
+    },
+    "kdh-meta-2b-admin-20261016-132836-5c512a53": {
+      "id": "9cd0c41b1d8e996798e846ba60170e99da18aee889220aae86a82af9963cce54",
+      "image": "sha256:430b00f759e59c7310a9d1e8f3867097f588a99cfa0aaf26236c3308e48d5aaa",
+      "mounts": [
+        {
+          "Type": "volume",
+          "Name": "kdh-meta-2b-appdata-20261016-132836-5c512a53",
+          "Source": "/var/lib/docker/volumes/kdh-meta-2b-appdata-20261016-132836-5c512a53/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "z",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-meta-2b-net-20261016-132836-5c512a53"
+      ],
+      "running": true
+    },
+    "kdh-report-new-app-1": {
+      "id": "7d260180f75370f175db4d977a2469e3a83ba0b2e67be39b9aa7467e513e6367",
+      "image": "sha256:fb1089d786b5b3f5a9d383b77e2c13024fb32435a0eff505395a1416943228db",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Report-All\\KDH-Report-New\\.work\\layout-preview",
+          "Destination": "/app/static/layout-preview",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-shared-viewer-primary-20261021",
+        "kdh-vio-handoff-phase9-recovery-20261019",
+        "kdh-vio-host-phase9-20261019"
+      ],
+      "running": true
+    }
+  }
+}

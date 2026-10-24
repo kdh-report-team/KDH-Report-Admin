@@ -1,0 +1,20 @@
+{
+  "admin": {
+    "tag": "kdh-admin:shared-20261021-dac5a0b9468d",
+    "image": "sha256:f3db6a2ecaa17865e80c24ef4f75e4a681422f6c817dbf23e74f078dfefec93a",
+    "files": {
+      "kdh/app.py": "4c8b2e4b3c8aa6bcc550754415026244043e40454ce91c72ee7a75d4a14859bd"
+    }
+  },
+  "new": {
+    "tag": "kdh-new:shared-20261021-4b0bc56adfe3",
+    "image": "sha256:6f147fcfcd869639a95358914b4734bf2842e05e44c823592a891e53dbb0bd86",
+    "files": {
+      "app/config.py": "8570b5d3d261cad9366f37878c7706fa98d11d1073683c377c6292a908895aad",
+      "app/viewer_environment.py": "a000028ee92ee550cff78d1a2a3a0b5996bb2b1f9047ced16683a3eebf162acf",
+      "app/routes/viewer.py": "e658608917b0c56c55ca8a009ef3791d6ccaaa156da6498e2428acd171c7b37c",
+      "app/routes/handoff.py": "2165c3b57498c2ac585fbb1dde430993f64d438e8f8dd6d3da6c37e7b1120d7b",
+      "ops/shared_viewer_entrypoint.py": "cd1b784381433b388231e80ebc6bf3dc9a3bb39cdacaaaabb09b97849b462bcf"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "services": {
+    "kdh-report-admin-admin-1": {
+      "id": "f0f8ee49ddedee922707a8b26b23a11a32f32c74262b3e98409c745638a30ea4",
+      "image": "sha256:e1c8ce68bcbd5c66464a0298ce86be09c5d15e7ed838295fa27322fbd1b63adf",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Report/KDH-Report",
+          "Destination": "/legacy",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "bind",
+          "Source": "/run/desktop/mnt/host/d/KDH-Data/KDH_Marketing_DataPack_v1",
+          "Destination": "/demo-pack",
+          "Mode": "ro",
+          "RW": false,
+          "Propagation": "rprivate"
+        },
+        {
+          "Type": "volume",
+          "Name": "kdh-report-admin_admin-data",
+          "Source": "/var/lib/docker/volumes/kdh-report-admin_admin-data/_data",
+          "Destination": "/app/instance",
+          "Driver": "local",
+          "Mode": "rw",
+          "RW": true,
+          "Propagation": ""
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default"
+      ],
+      "running": true
+    },
+    "kdh-report-new-app-1": {
+      "id": "527b5899bb046f42e1f5355077468d7c36cbbf9624cbdd99d74db35ee849cabb",
+      "image": "sha256:87844f282565682fefffb3f1436a48b70099129a96704abb743b134df16256f9",
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "D:\\KDH-Report-All\\KDH-Report-New\\.work\\layout-preview",
+          "Destination": "/app/static/layout-preview",
+          "Mode": "",
+          "RW": false,
+          "Propagation": "rprivate"
+        }
+      ],
+      "networks": [
+        "kdh-report-admin_default",
+        "kdh-report-new_default"
+      ],
+      "running": true
+    }
+  },
+  "rollback": {
+    "kdh-report-admin-admin-1": "kdh-report-admin-admin-1-rollback-unified-20261020",
+    "kdh-report-new-app-1": "kdh-report-new-app-1-rollback-unified-20261020"
+  },
+  "backend_checks": {
+    "/health": 200,
+    "/api/internal/v1/viewer/report-bundles/rpt_missing?revision=1": 401
+  },
+  "data_unchanged": true,
+  "client_id": "client_meta_sandbox",
+  "vio_handoff_flag": true,
+  "admin_url": "http://localhost:8090",
+  "new_url": "http://localhost:8080"
+}
